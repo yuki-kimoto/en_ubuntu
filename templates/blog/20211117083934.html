@@ -1,69 +1,69 @@
-<h2>Google Chromeをインストールする</h2>
+<h2> Install Google Chrome </h2>
 
-Google Chromeをインストールします。Ubuntu 18で試しました。
+Install Google Chrome. I tried it on Ubuntu 18.
 
-Google Chrome用のリポジトリを追加します。
+Add a repository for Google Chrome.
 
 <pre>
-sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+sudo sh -c'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
 </pre>
 
-事前に必要なライブラリを追加します。
+Add the required libraries in advance.
 
 <pre>
 sudo apt install -y wget
 sudo apt install -y gnupg
 </pre>
 
-公開鍵を追加します。
+Add the public key.
 
 <pre>
-sudo wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+sudo wget -q -O --https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add-
 </pre>
 
-Google Chrome用のリポジトリをアップデート。
+Updated repository for Google Chrome.
 
 <pre>
 sudo apt update
 </pre>
 
-Google Chromeをaptコマンドでインストール。
+Install Google Chrome with the apt command.
 
 <pre>
 sudo apt install -y google-chrome-stable
 </pre>
 
-バージョン確認してみましょう。
+Let's check the version.
 
 <pre>
 google-chrome --version
 </pre>
 
-バージョンの出力結果です。
+This is the output result of the version.
 
 <pre>
 Google Chrome 96.0.4664.45
 </pre>
 
-<h3>Google Chromeをヘッドレス実行する</h3>
+<h3> Run Google Chrome headless </h3>
 
-ヘッドレス実行とはGUI画面なしでWebサイトのアクセスすることです。Google Chromeをヘッドレス実行してスクリーンショットを取得します。
+Headless execution means accessing a website without a GUI screen. Run Google Chrome headless and take a screenshot.
 
 <pre>
 google-chrome --disable-setuid-sandbox --no-sandbox --headless --disable-gpu --dump-dom https://www.chromestatus.com/
 </pre>
 
-画面にHTMLのツリーが表示されればOKです。
+It is OK if the HTML tree is displayed on the screen.
 
-<h3>JavaScript対応のWebスクレイピングをPerlで行うには?</h3>
+<h3> How to do JavaScript-compatible web scraping in Perl? </H3>
 
-JavaScript対応のWebスクレイピングをPerlで行うにはGoogle Chromeに加えて、<a href="/blog/20211116083934.html">ChromeDriverのインストール</a>と<a href="https://perlzemi.com/blog/20091116124667.html">Perlモジュール</a>の<a href="https://perlzemi.com/blog/20210105145700.html">Selenium::Remote::Driver</a>が必要です。
+To do JavaScript-enabled web scraping in Perl, in addition to Google Chrome, <a href="/blog/20211116083934.html"> Install Chrome Driver</a> and <a href="https://perlzemi.com" /blog/20091116124667.html"> Perl module</a> <a href="https://perlzemi.com/blog/20210105145700.html"> Selenium::Remote::Driver</a> is required.
 
-Google Chrome用のリポジトリを削除したい場合。
+If you want to delete the repository for Google Chrome.
 
-<h3>Google Chrome用のリポジトリを削除したい場合</h3>
+<h3> If you want to delete the repository for Google Chrome </h3>
 
-間違ったりなどして、Google Chrome用のリポジトリを削除したい場合の手順です。
+This is the procedure when you want to delete the repository for Google Chrome due to mistakes.
 
 <pre>
 sudo rm /etc/apt/sources.list.d/google-chrome.list
