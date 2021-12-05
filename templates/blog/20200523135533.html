@@ -1,45 +1,45 @@
-<div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
+        <span itemprop = "name"> Ubuntu </ span>
       </a>
-      <meta itemprop="position" content="1" />
-    </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <meta itemprop = "position" content = "1" />
+    </ li>
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop="name">パッケージ管理</span>
+        <span itemprop = "name"> Package management </ span>
       </a>
-      <meta itemprop="position" content="2" />
-    </li>
+      <meta itemprop = "position" content = "2" />
+    </ li>
     <li>
       here
-    </li>
-  </ul>
-</div>
-<h2>postgresqlのインストール - PostgreSQLサーバー</h2>
+    </ li>
+  </ ul>
+</ div>
+<h2> Installing postgresql-PostgreSQL server </ h2>
 
-PostgreSQLデータベースサーバーを使えるように「postgresql」をインストールしましょう。PostgreSQLは、利便性の高いリレーショナルデータベースシステムです。<a href="/blog/20200530085516.html">apt</a>コマンドを使います。
+Let's install "postgresql" so that we can use the PostgreSQL database server. PostgreSQL is a convenient relational database system. Use the <a href="/blog/20200530085516.html"> apt </a> command.
 
 <pre>
 sudo apt install -y postgresql
-</pre>
+</ pre>
 
-<h4>PostgreSQLデータベースサーバーがインストールされたことの確認</h4>
+<h4> Confirm that the PostgreSQL database server is installed </ h4>
 
-PostgreSQLデータベースサーバーがインストールされたことを<a href="/blog/20200605104005.html">systemctl</a>コマンドのstatusを使って、確認しましょう。
+Use the status of the <a href="/blog/20200605104005.html"> systemctl </a> command to confirm that the PostgreSQL database server has been installed.
 
 <pre>
 systemctl status postgresql
-</pre>
+</ pre>
 
-次のように状態が表示されます。
+The status is displayed as follows.
 
 <pre>
-● postgresql.service - PostgreSQL RDBMS
+● postgresql.service --PostgreSQL RDBMS
    Loaded: loaded (/lib/systemd/system/postgresql.service; enabled; vendor preset: enabled)
    Active: active (exited) since Wed 2020-06-03 08:56:27 JST; 11s ago
- Main PID: 26352 (code=exited, status=0/SUCCESS)
+ Main PID: 26352 (code = exited, status = 0 / SUCCESS)
     Tasks: 0 (limit: 9479)
    CGroup: /system.slice/postgresql.service
-</pre>
+</ pre>

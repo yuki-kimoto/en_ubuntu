@@ -1,64 +1,64 @@
-<div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
+        <span itemprop = "name"> Ubuntu </ span>
       </a>
-      <meta itemprop="position" content="1" />
-    </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <meta itemprop = "position" content = "1" />
+    </ li>
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop="name">パッケージ管理</span>
+        <span itemprop = "name"> Package management </ span>
       </a>
-      <meta itemprop="position" content="2" />
-    </li>
+      <meta itemprop = "position" content = "2" />
+    </ li>
     <li>
       here
-    </li>
-  </ul>
-</div>
-<h2>ヘッダーファイルの読み込みパス</h2>
+    </ li>
+  </ ul>
+</ div>
+<h2> Header file read path </ h2>
 
-Ubuntuのヘッダーファイルの読み込みパスについての情報です。
+Information about the read path of Ubuntu header files.
 
-<h4>aptでインストールしたパッケージのヘッダーファイル</h4>
+<h4> Header file for packages installed with apt </ h4>
 
-aptでインストールしたパッケージのヘッダーファイルは「/usr/include」にあります。
-
-<pre>
-/usr/include
-</pre>
-
-<h3>ヘッダーファイルの読み込みパスを調べる</h3>
-
-ヘッダーファイルの読み込みパスは、C言語のプリプロセッサに書き込まれています。
-
-まず、gccが使っているプリプロセッサのパスを調べます。
+The header files for packages installed with apt are in "/ usr / include".
 
 <pre>
-gcc -print-prog-name=cc1
-</pre>
+/ usr / include
+</ pre>
 
-以下のように出力されます。
+<h3> Check the read path of the header file </ h3>
 
-<pre>
-/usr/lib/gcc/x86_64-linux-gnu/7/cc1
-</pre>
+The header file read path is written to the C preprocessor.
 
-プリプロセッサのバージョンを表示すると、インクルードパスをが表示されます。
+First, find out the path of the preprocessor used by gcc.
 
 <pre>
-/usr/lib/gcc/x86_64-linux-gnu/7/cc1 -v
-</pre>
+gcc -print-prog-name = cc1
+</ pre>
 
-デフォルトのヘッダーファイルの読み込みパスが表示されます。
+The output is as follows.
+
+<pre>
+/ usr / lib / gcc / x86_64-linux-gnu / 7 / cc1
+</ pre>
+
+When viewing the preprocessor version, the include path is displayed.
+
+<pre>
+/ usr / lib / gcc / x86_64-linux-gnu / 7 / cc1 -v
+</ pre>
+
+The default header file read path is displayed.
 
 <pre>
 ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/7/../../../../x86_64-linux-gnu/include"
 #include "..." search starts here:
 #include <...> search starts here:
- /usr/lib/gcc/x86_64-linux-gnu/7/include
- /usr/local/include
- /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed
- /usr/include
-</pre>
+ / usr / lib / gcc / x86_64-linux-gnu / 7 / include
+ / usr / local / include
+ / usr / lib / gcc / x86_64-linux-gnu / 7 / include-fixed
+ / usr / include
+</ pre>

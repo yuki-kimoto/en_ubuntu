@@ -1,42 +1,42 @@
-<h2>hostsファイル「/etc/hosts」 - ホスト名とIPアドレスの対応</h2>
+<h2> hosts file "/ etc / hosts" --Correspondence between host name and IP address </ h2>
 
-hostsファイルは、IPアドレスとホスト名の対応を記述するためのファイルです。
-
-<pre>
-cat /etc/hosts
-</pre>
-
-デフォルトでは、localhostとループバックアドレスの対応が書かれています。IPv4とIPv6。
+The hosts file is a file that describes the correspondence between IP addresses and host names.
 
 <pre>
-127.0.0.1               localhost.localdomain localhost
-::1             localhost6.localdomain6 localhost6
-</pre>
+cat / etc / hosts
+</ pre>
 
-<h3>ホスト名を扱うアプリケーションにおける自動的なIPアドレス解決</h3>
-
-hostsファイルの役割は、ホスト名を扱うアプリケーションで、IPアドレスを自動的に解決できることです。
-
-viを使って、hostsファイルを編集します。
+By default, the correspondence between localhost and the loopback address is written. IPv4 and IPv6.
 
 <pre>
-sudo vi /etc/hosts
-</pre>
+127.0.0.1 localhost.localdomain localhost
+:: 1 localhost6.localdomain6 localhost6
+</ pre>
 
-たとえば、データベースへ接続するアプリケーションにおいて、データベースへの接続先ホストを記述したとしてください。
+<h3> Automatic IP address resolution in applications that handle host names </ h3>
 
-この場合、開発環境と本番環境では、データベースが異なり、そのIPアドレスも異なります。このような場合に、アプリケーションにおいて、ホスト名を記述しておき、hostsファイルでIPアドレスを解決してもらうことができます。
+The role of the hosts file is to allow applications that work with hostnames to resolve IP addresses automatically.
+
+Use vi to edit the hosts file.
+
+<pre>
+sudo vi / etc / hosts
+</ pre>
+
+For example, suppose an application that connects to a database describes the host to connect to the database.
+
+In this case, the development environment and the production environment have different databases and different IP addresses. In such a case, you can write the host name in the application and have the hosts file resolve the IP address.
 
 <pre>
 13.66.226.204 database
-</pre>
+</ pre>
 
-mysqlコマンドで、ホスト名を使ったサンプルです。開発環境と本番環境で、それぞれIPアドレスとの対応を定義すれば、同じ記述で、接続できます。
+This is a sample using the host name in the mysql command. If you define the correspondence with the IP address in the development environment and the production environment, you can connect with the same description.
 
 <pre>
-# IPアドレスで指定
+#Specified by IP address
 mysql -h 13.66.226.204 -ukimoto -p
 
-# ホスト名で指定
+#Specified by host name
 mysql -h database -ukimoto -p
-</pre>
+</ pre>
