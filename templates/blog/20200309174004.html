@@ -2,42 +2,42 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop = "name"> Apache </ span>
-      </a>
+        <span itemprop = "name"> Apache </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Enable mod_headers module in Apache </ h2>
+<h2> Enable mod_headers module in Apache </h2>
 
 In Ubuntu Apache, the mod_headers module for using the RequestHeader directory is not enabled by default, so enable it.
 
 <pre>
 sudo a2enmod headers
-</ pre>
+</pre>
 
-Please <a href="/blog/20200519084454.html"> Restart Apache </a> for the settings to take effect.
+Please <a href="/blog/20200519084454.html"> Restart Apache</a> for the settings to take effect.
 
 Please refer to the following articles for how to enable / disable Apache modules.
 
 <ul>
-  <li> <a href="/blog/20200610082714.html"> Enable / disable Apache config file-basic config / module config / site config </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200610082714.html"> Enable / disable Apache config file-basic config / module config / site config</a> </li>
+</ul>
 
-<h3> Apache error message when mod_headers does not exist </ h3>
+<h3> Apache error message when mod_headers does not exist </h3>
 
 Example Apache error message when mod_headers does not exist.
 
 <pre>
 Invalid command'RequestHeader', perhaps misspelled or defined by a module not included in the server configuration
-</ pre>
+</pre>

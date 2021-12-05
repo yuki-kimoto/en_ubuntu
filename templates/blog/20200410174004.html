@@ -1,8 +1,8 @@
-<h2> Differences between Ubuntu and CentOS and common parts </ h2>
+<h2> Differences between Ubuntu and CentOS and common parts </h2>
 
-Here is a summary of the differences between Ubuntu and <a href="https://en.centos.perlzemi.com/"> CentOS </a>. It's good to be able to work with both.
+Here is a summary of the differences between Ubuntu and <a href="https://en.centos.perlzemi.com/"> CentOS</a>. It's good to be able to work with both.
 
-<h3> Shell shebang "/ bin / sh" </ h3>
+<h3> Shell shebang "/ bin / sh" </h3>
 
 In CentOS, "/ bin / sh" has a symbolic link in "/ bin / bash", so it will be executed in bash.
 
@@ -12,25 +12,25 @@ If you write the shebang as follows, it will be executed by "/ bin / sh" on Ubun
 
 <pre>
 #! / bin / sh
-</ pre>
+</pre>
 
 And when using the bash grammar, a grammar error occurs as follows.
 
 <pre>
 ./morbo: 10: ./morbo: Syntax error: "(" unexpected
-</ pre>
+</pre>
 
-<a href="https://en.linux.perlzemi.com/"> Linux </a> To have inter-portability, explicitly write bash and shebang.
+<a href="https://en.linux.perlzemi.com/"> Linux</a> To have inter-portability, explicitly write bash and shebang.
 
 <pre>
 #! / bin / bash
-</ pre>
+</pre>
 
 If you want to have portability between Unixes, you will need to rewrite it with sh syntax.
 
-You can write portable programs between Unix / Linux by writing <a href="https://en.perlzemi.com/"> Perl </a>.
+You can write portable programs between Unix / Linux by writing <a href="https://en.perlzemi.com/"> Perl</a>.
 
-<h3> Package management </ h3>
+<h3> Package management </h3>
 
 There is a difference between apt in the package management tool Ubuntu and yum in CentOS.
 
@@ -38,7 +38,7 @@ Starting with CentOS 8, dnf replaces yum. yum is an alias for dnf.
 
 The package name is also different. It seems that package management cannot be standardized at this time.
 
-<h3> sudo </ h3>
+<h3> sudo </h3>
 
 For Ubuntu, sudo is available by default.
 
@@ -47,7 +47,7 @@ To allow sudo, Ubuntu adds the user to the sudo group.
 <pre>
 #Allow sudo on Ubuntu
 gpasswd -a myapp sudo
-</ pre>
+</pre>
 
 Sudo is not enabled on CentOS. Make settings to enable sudo with visudo. (For CentOS 7)
 
@@ -57,22 +57,22 @@ Uncomment "% wheel ALL = (ALL) ALL".
 ## Allows people in group wheel to run all commands
 #% wheel ALL = (ALL) ALL
 % wheel ALL = (ALL) ALL
-</ pre>
+</pre>
 
 To allow sudo, add the user to the wheel group.
 
 <pre>
 #Allow sudo on CentOS
 gpasswd -a myapp wheel
-</ pre>
+</pre>
 
-<h3> Server </ h3>
+<h3> Server </h3>
 
-<h4> Apache </ h4>
+<h4> Apache </h4>
 
 Apache has a different name. In CentOS it is httpd, but in Ubuntu it is apache2.
 
-The location of the configuration file and the name when executing the <a href="/blog/20200605104005.html"> systemctl </a> command are different.
+The location of the configuration file and the name when executing the <a href="/blog/20200605104005.html"> systemctl</a> command are different.
 
 The configuration of the configuration file is also different between CentOS and Ubuntu.
 
@@ -80,7 +80,7 @@ Apache on Ubuntu has configuration file enable commands such as a2ensite, a2enmo
 
 In Ubuntu, it is easier to enable / disable the configuration file using commands.
 
-<h3> Firewall </ h3>
+<h3> Firewall </h3>
 
 The firewall is ufw for Ubuntu and firewalld for CentOS.
 
@@ -90,19 +90,19 @@ VPS and cloud services usually have a firewall setting, so if you set it with th
 
 In case of on-premises, firewall management is performed by command.
 
-<h3> cron </ h3>
+<h3> cron </h3>
 
 For Ubuntu, cron is installed by default, which is a normal cron. You can use cron naturally.
 
 For CentOS, the default cron is anacron. If you want a regular cron, you need to uninstall anacron and install a regular cron.
 
-<h3> SeLinux </ h3>
+<h3> SeLinux </h3>
 
 In case of Ubuntu, the function corresponding to SeLinux of CentOS is off by default.
 
 For CentOS, SeLinux is on by default. This function causes a proxy error when connecting with a reverse proxy, so you need to disable SeLinux or set it to allow reverse proxy.
 
-<h3> SSL certificate by Let's Encrypt </ h3>
+<h3> SSL certificate by Let's Encrypt </h3>
 
 On Ubuntu, certbot can be installed from apt.
 
@@ -112,29 +112,29 @@ On CentOS, install certbot as follows.
 # Cent OS 7
 yum install epel-release
 yum install --enablerepo = epel certbot
-</ pre>
+</pre>
 
 If the certbot is not included in the epel repository, such as when a new Cent OS version is just out, you will need to install it from source code. Also, certbot is named certbot-auto.
 
-<h3> What is common to Ubuntu and CentOS </ h3>
+<h3> What is common to Ubuntu and CentOS </h3>
 
 CentOS and Ubuntu have recently become common.
 
-<h4> systemctl </ h4>
+<h4> systemctl </h4>
 
 In both CentOS and Ubuntu, services (those who start as a server) are now managed by systemd, and the management command is also systemctl.
 
 From CentOS 7, you can use the systemctl command in common with Ubuntu.
 
-<h4> journalctl </ h4>
+<h4> journalctl </h4>
 
 For systemd log management, journalctl can be used for both Ubuntu and CentOS.
 
 From CentOS 7, you can use the journalctl command in common with Ubuntu.
 
-<h3> Perl </ h3>
+<h3> Perl </h3>
 
-<a href="https://en.perlzemi.com/"> Perl </a> is installed by default in a typical Ubuntu configuration.
+<a href="https://en.perlzemi.com/"> Perl</a> is installed by default in a typical Ubuntu configuration.
 
 Perl is often not installed by default in a typical CentOS configuration. In addition, Perl's core modules are separate from the perl package.
 
@@ -142,15 +142,15 @@ Perl is often not installed by default in a typical CentOS configuration. In add
 #Install Perl on CentOS
 yum install perl
 yum install perl-core
-</ pre>
+</pre>
 
-<h3> Server state after package installation </ h3>
+<h3> Server state after package installation </h3>
 
 If you installed the server application, it will be launched for Ubuntu.
 
 If you installed the server application, it is not started for CentOS.
 
-<h3> Standard package type </ h3>
+<h3> Standard package type </h3>
 
 Ubuntu provides a Let's Encrypt client, certbot, and a Redis server as standard packages.
 
@@ -158,9 +158,9 @@ For CentOS (for CentOS 7), the above is not provided. It is available by install
 
 <pre>
 sudo yum -y install epel-release
-</ pre>
+</pre>
 
-<h3> The magnitude of change between versions </ h3>
+<h3> The magnitude of change between versions </h3>
 
 Ubuntu is as compatible as possible, despite changes, and I feel that there are few major changes.
 

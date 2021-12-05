@@ -2,39 +2,39 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop = "name"> Package management </ span>
-      </a>
+        <span itemprop = "name"> Package management </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Install wkhtmltopdf-convert HTML to PDF </ h2>
+<h2> Install wkhtmltopdf-convert HTML to PDF </h2>
 
-I will explain how to install wkhtmltopdf. Install wkhtmltopdf using the <a href="/blog/20200530085516.html"> apt </a> command. Run with administrator privileges using sudo.
+I will explain how to install wkhtmltopdf. Install wkhtmltopdf using the <a href="/blog/20200530085516.html"> apt</a> command. Run with administrator privileges using sudo.
 
 <pre>
 sudo apt install -y wkhtmltopdf
-</ pre>
+</pre>
 
-<h3> Confirmation of installation of wkhtmltopdf </ h3>
+<h3> Confirmation of installation of wkhtmltopdf </h3>
 
 Make sure the wkhtmltopdf command is available.
 
 <pre>
 wkhtmltopdf
-</ pre>
+</pre>
 
-<h3> What is wkhtmltopdf? </ H3>
+<h3> What is wkhtmltopdf? </H3>
 
 wkhtmltopdf is a tool for converting HTML to PDF. Converts the result rendered by the rendering engine Webkit to PDF.
 
@@ -42,11 +42,11 @@ wkhtmltopdf can be used to create PDF forms. It is convenient to convert a form 
 
 The generated PDF does not reach the quality of the book, but I think it can be used for the production of vocational school textbooks and doujinshi.
 
-<h3> Fixed a bug that wkhtmltopdf cannot be executed </ h3>
+<h3> Fixed a bug that wkhtmltopdf cannot be executed </h3>
 
 It seems that X Server or Qt is required for PDF generation of wkhtmltopdf, but there is a bug that can not be executed if the old Qt is not patched.
 
-<a href="https://github.com/wkhtmltopdf/wkhtmltopdf/issues/2037"> QXcbConnection: Could not connect to display </a>
+<a href="https://github.com/wkhtmltopdf/wkhtmltopdf/issues/2037"> QXcbConnection: Could not connect to display</a>
 
 One way to solve this seems to be to install wkhtmltopdf, which utilizes patched Qt. This may not be a formal means.
 
@@ -57,17 +57,17 @@ tar vxf wkhtmltox-0.12.3_linux-generic-amd64.tar.xz
 
 mkdir -p / usr / local / bin
 sudo cp wkhtmltox / bin / wk * / usr / local / bin /
-</ pre>
+</pre>
 
 <pre>
 $ / usr / local / bin / wkhtmltopdf --version
-</ pre>
+</pre>
 
 <pre>
 wkhtmltopdf 0.12.3 (with patched qt)
-</ pre>
+</pre>
 
-<h3> Solution when wkhtmltopdf shows SSL error Check on Ubuntu 18 </ h3>
+<h3> Solution when wkhtmltopdf shows SSL error Check on Ubuntu 18 </h3>
 
 Solution if wkhtmltopdf shows SSL error.
 
@@ -76,27 +76,27 @@ Exit with code 1 due to network error: UnknownNetworkError
 QSslSocket: cannot call unresolved function CRYPTO_num_locks
 QSslSocket: cannot call unresolved function CRYPTO_set_id_callback
 QSslSocket: cannot call unresolved function CRYPTO_set_locking_callback
-</ pre>
+</pre>
 
 Installing the following packages solved the problem.
 
 <pre>
 sudo apt install libssl1.0-dev
-</ pre>
+</pre>
 
-<h3> If Japanese cannot be displayed with wkhtmltopdf </ h3>
+<h3> If Japanese cannot be displayed with wkhtmltopdf </h3>
 
 If Japanese cannot be displayed with wkhtmltopdf If it looks like "□□□", please install the Japanese font.
 
 <ul>
-  <li> <a href="/blog/20200906132441.html"> Japanese font IPA font installation </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200906132441.html"> Japanese font IPA font installation</a> </li>
+</ul>
 
 <!-
 
 To solve this, the procedure to install the latest version of wkhtmltopdf on Ubuntu 18 is published, so I will write it here.
 
-<h4> Install wkhtmltopdf 0.12.6 on Ubuntu 18. </ h4>
+<h4> Install wkhtmltopdf 0.12.6 on Ubuntu 18. </h4>
 
 Installing 0.12.6 on Ubuntu 18.
 
@@ -108,17 +108,17 @@ Check the version you are currently using, if any.
 
 <pre>
 $ wkhtmltopdf --version
-</ pre>
+</pre>
 
 <pre>
 wkhtmltopdf 0.12.3 (with patched qt)
-</ pre>
+</pre>
 
 Delete the existing version by finding and deleting all the files in "wkhtml".
 
 <pre>
 sudo find / -name * wkhtml *
-</ pre>
+</pre>
 
 Delete "wkhtmltopdf" and "wkhtmltox" related files.
 
@@ -126,13 +126,13 @@ Download the version 0.12.6 .deb package.
 
 <pre>
 wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb
-</ pre>
+</pre>
 
 Install the .deb package.
 
 <pre>
 sudo dpkg -i wkhtmltox_0.12.6-1.bionic_amd64.deb
-</ pre>
+</pre>
 
 
 If you get the error that the dependency is missing, use "sudo apt install -f" to install the dependency.
@@ -141,10 +141,10 @@ Make sure the correct version is installed and accessible.
 
 <pre>
 $ wkhtmltopdf --version
-</ pre>
+</pre>
 
 <pre>
 wkhtmltopdf 0.12.6 (with patched qt)
-</ pre>
+</pre>
 
 ->

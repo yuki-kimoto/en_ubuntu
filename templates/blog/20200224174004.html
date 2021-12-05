@@ -2,43 +2,43 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200829052743.html">
-        <span itemprop = "name"> MariaDB </ span>
-      </a>
+        <span itemprop = "name"> MariaDB </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> MariaDB initialization and user creation </ h2>
+<h2> MariaDB initialization and user creation </h2>
 
 This is an explanation of the initial settings of MariaDB required when using it as a database server.
 
-<h3> MariaDB root user connection </ h3>
+<h3> MariaDB root user connection </h3>
 
 On Ubuntu, to connect as the MariaDB root user, access using Ubuntu root privileges. That is, use sudo to connect as the root user without a password.
 
 <pre>
 sudo mysql -uroot
-</ pre>
+</pre>
 
 To end the connection to MariaDB, type quit and press Enter.
 
 <pre>
 quit
-</ pre>
+</pre>
 
-<h3> Time Zone Settings-Options </ h3>
+<h3> Time Zone Settings-Options </h3>
 
-MariaDB's default time zone is the OS time zone. in short. If you have <a href="/blog/20200507174004.html"> OS time zone setting </a>, you do not need to set MariaDB time zone.
+MariaDB's default time zone is the OS time zone. in short. If you have <a href="/blog/20200507174004.html"> OS time zone setting</a>, you do not need to set MariaDB time zone.
 
 You need to set the time zone when MariaDB is provided as a cloud service. In this case, set the time zone in the MariaDB configuration file. As it is, it is UTC time.
 
@@ -50,31 +50,31 @@ time_zone
 
 # value
 +09: 00
-</ pre>
+</pre>
 
-<h3> MariaDB configuration file location </ h3>
+<h3> MariaDB configuration file location </h3>
 
 In the initial setting, no special setting is required, but since the memory setting is always done, the location of the MariaDB configuration file in Ubuntu is described.
 
 <ul>
-  <li> <a href="/blog/20200223174004.html"> Ubuntu MariaDB configuration file location </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200223174004.html"> Ubuntu MariaDB configuration file location</a> </li>
+</ul>
 
-<h3> Creating a database </ h3>
+<h3> Creating a database </h3>
 
-Here, <a href="https://en.mariadb.perlzemi.com/blog/20200521082643.html"> create a database </a> for your web application. The database name should be myappdb. You can change the database name later (although with some ingenuity).
+Here, <a href="https://en.mariadb.perlzemi.com/blog/20200521082643.html"> create a database</a> for your web application. The database name should be myappdb. You can change the database name later (although with some ingenuity).
 
 <pre>
 create database myappdb;
-</ pre>
+</pre>
 
-Display the <a href="https://en.mariadb.perlzemi.com/blog/20200518082643.html"> database list </a> to see the database you created.
+Display the <a href="https://en.mariadb.perlzemi.com/blog/20200518082643.html"> database list</a> to see the database you created.
 
 <pre>
 show databases;
-</ pre>
+</pre>
 
-<h3> Creating an application user </ h3>
+<h3> Creating an application user </h3>
 
 Let's create a MariaDB user for your web application. A user with select, insert, update, delete permissions.
 
@@ -86,32 +86,32 @@ sudo mysql -uroot
 
 #MariaDB Sample to connect to cloud service
 mysql -h my-devel-db-001.mariadb.database.azure.com -ukanri@my-devel-db-001 -p
-</ pre>
+</pre>
 
 You will be asked for a password, so enter it.
 
 If the database is remote and you cannot connect, also check the firewall on the database server side.
 
-<a href="https://en.mariadb.perlzemi.com/blog/20200523082643.html"> Create a user in MariaDB </a>.
+<a href="https://en.mariadb.perlzemi.com/blog/20200523082643.html"> Create a user in MariaDB</a>.
 
 <pre>
 create user myapp;
-</ pre>
+</pre>
 
-Next, <a href="https://en.mariadb.perlzemi.com/blog/20200522082643.html"> Set database access permissions and passwords </a>.
+Next, <a href="https://en.mariadb.perlzemi.com/blog/20200522082643.html"> Set database access permissions and passwords</a>.
 
 The localhost part below is the setting when the database server is on the same server. In the case of a cloud server, specify the IP address or domain name of the connection source.
 
 <pre>
 grant insert, update, delete, select on myappdb. * to'myapp' @'localhost' identified by'eifjutab &';
-</ pre>
+</pre>
 
 When installing DBD :: mysql with Perl, you need to have connection permission to the test database, so set it.
 
 <pre>
 create database test;
 grant all privileges on test. * to'myapp' @'localhost' identified by's3kr1t';
-</ pre>
+</pre>
 
 Make sure you can disconnect and connect to MariaDB with the newly created "myapp" user.
 
@@ -121,6 +121,6 @@ mysql -umyapp -p
 
 #MariaDB Sample to connect to cloud service
 mysql -h my-devel-db-001.mariadb.database.azure.com -umyapp@my-devel-db-001 -p
-</ pre>
+</pre>
 
 This completes the initial settings and user creation.

@@ -2,34 +2,34 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop = "name"> Package management </ span>
-      </a>
+        <span itemprop = "name"> Package management </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
-<h2> Header file read path </ h2>
+    </li>
+  </ul>
+</div>
+<h2> Header file read path </h2>
 
 Information about the read path of Ubuntu header files.
 
-<h4> Header file for packages installed with apt </ h4>
+<h4> Header file for packages installed with apt </h4>
 
 The header files for packages installed with apt are in "/ usr / include".
 
 <pre>
 / usr / include
-</ pre>
+</pre>
 
-<h3> Check the read path of the header file </ h3>
+<h3> Check the read path of the header file </h3>
 
 The header file read path is written to the C preprocessor.
 
@@ -37,19 +37,19 @@ First, find out the path of the preprocessor used by gcc.
 
 <pre>
 gcc -print-prog-name = cc1
-</ pre>
+</pre>
 
 The output is as follows.
 
 <pre>
 / usr / lib / gcc / x86_64-linux-gnu / 7 / cc1
-</ pre>
+</pre>
 
 When viewing the preprocessor version, the include path is displayed.
 
 <pre>
 / usr / lib / gcc / x86_64-linux-gnu / 7 / cc1 -v
-</ pre>
+</pre>
 
 The default header file read path is displayed.
 
@@ -61,4 +61,4 @@ ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/7/../../../../x86_
  / usr / local / include
  / usr / lib / gcc / x86_64-linux-gnu / 7 / include-fixed
  / usr / include
-</ pre>
+</pre>

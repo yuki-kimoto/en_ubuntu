@@ -2,23 +2,23 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop = "name"> Apache </ span>
-      </a>
+        <span itemprop = "name"> Apache </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Self SSL certificate location </ h2>
+<h2> Self SSL certificate location </h2>
 
 In a production environment, a real SSL certificate is used, but in a test environment, it is troublesome to obtain an SSL certificate just for HTTPS testing, so you may want to use a self-SSL certificate. I have.
 
@@ -27,9 +27,9 @@ The location of the self-SSL certificate on Ubuntu is: The private key for the s
 <pre>
 Self SSL certificate /etc/ssl/certs/ssl-cert-snakeoil.pem
 Private key for self SSL certificate /etc/ssl/private/ssl-cert-snakeoil.key
-</ pre>
+</pre>
 
-<h4> Apache self-SSL certificate and self-SSL certificate private key setting </ h4>
+<h4> Apache self-SSL certificate and self-SSL certificate private key setting </h4>
 
 It is the setting of the private key of the self-SSL certificate and the self-SSL certificate in Apache. You do not need to specify an intermediate certificate file.
 
@@ -37,4 +37,4 @@ It is the setting of the private key of the self-SSL certificate and the self-SS
   SSLEngine on
   SSLCertificateFile /etc/ssl/certs/ssl-cert-snakeoil.pem
   SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
-</ pre>
+</pre>

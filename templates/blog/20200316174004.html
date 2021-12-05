@@ -2,47 +2,47 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop = "name"> Apache </ span>
-      </a>
+        <span itemprop = "name"> Apache </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Enable mod_cgid to use CGI programs </ h2>
+<h2> Enable mod_cgid to use CGI programs </h2>
 
 If you want to use CGI programs, enable mod_cgid.
 
 Perform this step if you have a CGI program and need to run it.
 
-For new <a href="https://en.webapp.perlzemi.com/"> Web system development </a>, we recommend a development method that can support real-time Web / cloud servers.
+For new <a href="https://en.webapp.perlzemi.com/"> Web system development</a>, we recommend a development method that can support real-time Web / cloud servers.
 
-<h4> Enable mod_cgid </ h4>
+<h4> Enable mod_cgid </h4>
 
-mod_cgid is an Apache module, but to <a href="/blog/20200610082714.html"> enable the Apache module </a>, use the a2enmod command.
+mod_cgid is an Apache module, but to <a href="/blog/20200610082714.html"> enable the Apache module</a>, use the a2enmod command.
 
 <pre>
 sudo a2enmod cgid
-</ pre>
+</pre>
 
-After enabling it, you need to <a href="/blog/20200519084454.html"> restart Apache </a>.
+After enabling it, you need to <a href="/blog/20200519084454.html"> restart Apache</a>.
 
-<h3> Directory where CGI can be executed </ h3>
+<h3> Directory where CGI can be executed </h3>
 
 The directories where CGI can be executed are the following directories.
 
 <pre>
 / usr / lib / cgi-bin /
-</ pre>
+</pre>
 
 If you place the CGI program in it and give it execute permission, you can call the CGI program from a web browser.
 
@@ -53,11 +53,11 @@ In this case, you need to make additional settings.
 The location to set this is the default virtual host configuration file.
 
 <ul>
-  <li> <a href="/blog/20200314174004.html"> Apache default virtual host settings </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200314174004.html"> Apache default virtual host settings</a> </li>
+</ul>
 
-<h3> Difference between mod_cgi and mod_cgid </ h3>
+<h3> Difference between mod_cgi and mod_cgid </h3>
 
 From the user's point of view, mod_cgid seems to behave the same as mod_cgid, with one exception. It seems good to choose mod_cgid, which has a low cost.
 
-<a href="https://httpd.apache.org/docs/2.4/ja/mod/mod_cgid.html"> Apache module mod_cgid </a>
+<a href="https://httpd.apache.org/docs/2.4/ja/mod/mod_cgid.html"> Apache module mod_cgid</a>

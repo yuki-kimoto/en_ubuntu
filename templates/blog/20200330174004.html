@@ -2,44 +2,44 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200723101434.html">
-        <span itemprop = "name"> User Management </ span>
-      </a>
+        <span itemprop = "name"> User Management </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Add user to group --gpasswd -a </ h2>
+<h2> Add user to group --gpasswd -a </h2>
 
-Use "gpasswd -a" to add users to the group. Execute with root privileges with <a href="/blog/20200406174004.html"> sudo </a>.
+Use "gpasswd -a" to add users to the group. Execute with root privileges with <a href="/blog/20200406174004.html"> sudo</a>.
 
 <pre>
 sudo gpasswd -a username group name
-</ pre>
+</pre>
 
 This is a sample to add kimoto to myapp-group group.
 
 <pre>
 sudo gpasswd -a kimoto myapp-group
-</ pre>
+</pre>
 
-Users added to the group can be found in the <a href="/blog/20200403174004.html"> /etc/group </a> file.
+Users added to the group can be found in the <a href="/blog/20200403174004.html"> /etc/group</a> file.
 
 <pre>
 sudo cat / etc / group
-</ pre>
+</pre>
 
 This is an output example.
 
 <pre>
 myapp-group: x: 1009: kimoto, ken
-</ pre>
+</pre>

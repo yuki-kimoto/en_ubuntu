@@ -2,23 +2,23 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop = "name"> Apache </ span>
-      </a>
+        <span itemprop = "name"> Apache </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Apache default virtual host settings </ h2>
+<h2> Apache default virtual host settings </h2>
 
 This is an explanation of how to write a default virtual host for a domain name or direct IP address that is not set in another virtual host.
 
@@ -30,7 +30,7 @@ In Ubuntu, the following files are placed and enabled from the beginning.
 
 <pre>
 sites-available / 000-default.conf
-</ pre>
+</pre>
 
 The reason why it starts with the name 000 seems to be a device to make it read first. Apache seems to read the configuration files in lexicographical order when wildcards are specified.
 
@@ -65,8 +65,8 @@ Let's take a look inside.
         # following line enables the CGI configuration for this host only
         # after it has been globally disabled with "a2disconf".
         #Include conf-available/serve-cgi-bin.conf
-</ VirtualHost>
-</ pre>
+</VirtualHost>
+</pre>
 
 
 The default virtual host settings should be described in this file.
@@ -76,5 +76,5 @@ This setting is for port 80, but you can also set the default virtual host for 4
 <pre>
 <VirtualHost *: 443>
 
-</ VirtualHost>
-</ pre>
+</VirtualHost>
+</pre>

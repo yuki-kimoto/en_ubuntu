@@ -2,23 +2,23 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200723101434.html">
-        <span itemprop = "name"> User Management </ span>
-      </a>
+        <span itemprop = "name"> User Management </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> sudo --Run with administrator privileges </ h2>
+<h2> sudo --Run with administrator privileges </h2>
 
 sudo is a function for a general user to execute a command with the authority of another user, but it is generally used to execute the command with the authority of root.
 
@@ -26,39 +26,39 @@ If you do not specify a user with sudo, execute the command with root user privi
 
 <pre>
 sudo command
-</ pre>
+</pre>
 
 When you run sudo, you will be asked for your own password again. Once you enter your password,
 
 
-<h3> How to use sudo </ h3>
+<h3> How to use sudo </h3>
 
-As an operation method, first create an administrator <a href="/blog/20200511173052.html"> general user with useradd </a> (kimoto etc.).
+As an operation method, first create an administrator <a href="/blog/20200511173052.html"> general user with useradd</a> (kimoto etc.).
 
 <pre>
 sudo useradd -m kimoto
-</ pre>
+</pre>
 
-<a href="/blog/20200510173052.html"> Set a password with passwd </a>.
+<a href="/blog/20200510173052.html"> Set a password with passwd</a>.
 
 <pre>
 sudo passwd kimoto
-</ pre>
+</pre>
 
 With gpasswd, add a regular administrator user to the sudo group.
 
 <pre>
 sudo gpasswd -a kimoto sudo
-</ pre>
+</pre>
 
 Kimoto can now run commands that require root privileges with his password.
 
-<h3> Advantages of sudo </ h3>
+<h3> Advantages of sudo </h3>
 
 The advantage of sudo.
 
 <ul>
-  <li> sudo has a function to record who executed what command </ li>
-  <li> Over time, you lose root privileges. You will be prompted to re-enter your password. It is safe even if the terminal is left unattended. </ li>
-  <li> Root authority is also a risky authority, so if you know who worked, you can work with a sense of tension </ li>
-</ ul>
+  <li> sudo has a function to record who executed what command </li>
+  <li> Over time, you lose root privileges. You will be prompted to re-enter your password. It is safe even if the terminal is left unattended. </li>
+  <li> Root authority is also a risky authority, so if you know who worked, you can work with a sense of tension </li>
+</ul>

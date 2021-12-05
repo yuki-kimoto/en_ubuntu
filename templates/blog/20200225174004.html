@@ -2,35 +2,35 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200820081929.html">
-        <span itemprop = "name"> Redis </ span>
-      </a>
+        <span itemprop = "name"> Redis </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Redis server start / stop / restart / status check </ h2>
+<h2> Redis server start / stop / restart / status check </h2>
 
 Explains how to start / stop / restart / check the status of the Redis server.
 
-<h4> Check Redis status </ h4>
+<h4> Check Redis status </h4>
 
-To check the status of Redis, use "status" of the <a href="/blog/20200605104005.html"> systemctl </a> command.
+To check the status of Redis, use "status" of the <a href="/blog/20200605104005.html"> systemctl</a> command.
 
 <pre>
 sudo systemctl status redis-server
-</ pre>
+</pre>
 
-<h5> If it is running </ h5>
+<h5> If it is running </h5>
 
 If it is running, the following will be displayed.
 
@@ -44,9 +44,9 @@ If it is running, the following will be displayed.
     Tasks: 4 (limit: 9479)
    CGroup: /system.slice/redis-server.service
            mq108380 /usr/bin/redis-server 127.0.0.1:6379
-</ pre>
+</pre>
 
-<h5> When stopped </ h5>
+<h5> When stopped </h5>
 
 If it is stopped, the following will be displayed.
 
@@ -58,49 +58,49 @@ If it is stopped, the following will be displayed.
            man: redis-server (1)
   Process: 27892 ExecStop = / bin / kill -s TERM $ MAINPID (code = exited, status = 0 / SUCCESS)
  Main PID: 108380 (code = exited, status = 0 / SUCCESS)
-</ pre>
+</pre>
 
-<h4> Start Redis </ h4>
+<h4> Start Redis </h4>
 
 To start Redis, use the systemctl command "start". Run with root privileges using the sudo command.
 
 <pre>
 sudo systemctl start redis-server
-</ pre>
+</pre>
 
 Even if the boot is successful, the message that it was successful is not returned. Please check the status.
 
-<h4> Stop Redis </ h4>
+<h4> Stop Redis </h4>
 
 To stop Redis, use the systemctl command "stop". Run with root privileges using the sudo command.
 
 <pre>
 sudo systemctl stop redis-server
-</ pre>
+</pre>
 
 If the outage is successful, no successful message will be returned. Please check the status.
 
-<h4> Restart Redis </ h4>
+<h4> Restart Redis </h4>
 
 To restart Redis, use the systemctl command "restart". Run with root privileges using the sudo command.
 
 <pre>
 sudo systemctl restart redis-server
-</ pre>
+</pre>
 
 restart simply executes the stop command and executes the start command.
 
-<h3> To see the Redis start / stop log </ h3>
+<h3> To see the Redis start / stop log </h3>
 
 Servers such as Redis are centrally managed by a program called systemd.
 
 The Redis start / stop log is output to the systemd log.
 
-Use the <a href="/blog/20200602135100.html"> journalctl command </a> to see the systemd logs. Specify the unit "redis-server" with the "-u" option. Please note that you will not be able to see the Redis server logs unless you run it with sudo. If you want to see only the last part of the log, combine the "-r" option.
+Use the <a href="/blog/20200602135100.html"> journalctl command</a> to see the systemd logs. Specify the unit "redis-server" with the "-u" option. Please note that you will not be able to see the Redis server logs unless you run it with sudo. If you want to see only the last part of the log, combine the "-r" option.
 
 <pre>
 sudo journalctl -r -u redis-server
-</ pre>
+</pre>
 
 This is a sample log.
 
@@ -111,25 +111,25 @@ Jul 22 13:24:33 shinshina-development-app-00000001 systemd [1]: Starting Advance
 --Reboot -
 Jul 22 13:13:48 shinshina-development-app-00000001 systemd [1]: Stopped Advanced key-value store.
 Jul 22 13:13:47 shinshina-development-app-00000001 systemd [1]: Stopping Advanced key-value store ...
-</ pre>
+</pre>
 
-<h3> To see the Redis systemd config file </ h3>
+<h3> To see the Redis systemd config file </h3>
 
 You can see the Redis systemd configuration file under "systemctl status redis-server".
 
-Let's take a look at the configuration file with the <a href="https://en.linux.perlzemi.com/blog/20200113083613.html"> cat command </a>.
+Let's take a look at the configuration file with the <a href="https://en.linux.perlzemi.com/blog/20200113083613.html"> cat command</a>.
 
 <pre>
 cat /lib/systemd/system/redis-server.service
-</ pre>
+</pre>
 
-<h3> Redis Troubleshooting </ h3>
+<h3> Redis Troubleshooting </h3>
 
 The Redis server may not start with the following error.
 
 <pre>
 redis-server.service: Can't open PID file /var/run/redis/redis-server.pid (yet?) after start: No such file or directory
-</ pre>
+</pre>
 
 This is an error that occurs when IPv6 is not enabled in the server's network settings and IPv6 is enabled in the Redis server's configuration file.
 
@@ -138,25 +138,25 @@ Edit and modify your Redis config file. Make a backup in case you make a mistake
 <pre>
 sudo cp /etc/redis/redis.conf /etc/redis/redis.conf.bak
 sudo vi /etc/redis/redis.conf
-</ pre>
+</pre>
 
 The following
 
 <pre>
 bind 127.0.0.1 :: 1
-</ pre>
+</pre>
 
 Changed to
 
 <pre>
 bind 127.0.0.1
-</ pre>
+</pre>
 
-<h4> Start and check Redis </ h4>
+<h4> Start and check Redis </h4>
 
 Start and check Redis.
 
 <pre>
 sudo systemctl start redis-server
 sudo systemctl status redis-server
-</ pre>
+</pre>

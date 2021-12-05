@@ -2,32 +2,32 @@
    <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
      <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
        <a itemprop="item" href="/">
-         <span itemprop = "name"> Ubuntu </ span>
-       </a>
+         <span itemprop = "name"> Ubuntu </span>
+      </a>
        <meta itemprop = "position" content = "1" />
-     </ li>
+     </li>
      <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
        <a itemprop="item" href="/blog/20200822150919.html">
-         <span itemprop = "name"> Email settings </ span>
-       </a>
+         <span itemprop = "name"> Email settings </span>
+      </a>
        <meta itemprop = "position" content = "2" />
-     </ li>
+     </li>
      <li>
        here
-     </ li>
-   </ ul>
-</ div>
+     </li>
+   </ul>
+</div>
 
-<h2> How to check the Postfix version </ h2>
+<h2> How to check the Postfix version </h2>
 
 How to check the Postfix version. The postconf command will display the Postfix settings, so look at the item called mail_version.
 
 <pre>
 sudo postconf | grep -P'^ mail_version'
-</ pre>
+</pre>
 
 This is a sample when the Postfix version is displayed.
 
 <pre>
 mail_version = 3.3.0
-</ pre>
+</pre>

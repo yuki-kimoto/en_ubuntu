@@ -2,23 +2,23 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200902120232.html">
-        <span itemprop = "name"> Domain management </ span>
-      </a>
+        <span itemprop = "name"> Domain management </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Creating an email address and setting up a DNS server </ h2>
+<h2> Creating an email address and setting up a DNS server </h2>
 
 This section describes how to create an email address and set up a DNS server.
 
@@ -26,63 +26,63 @@ If you already have an email address to use with your web service, this step is 
 
 This section describes the case of creating a new email address at the same time as the Web service.
 
-<h3> General procedure for creating an email address </ h3>
+<h3> General procedure for creating an email address </h3>
 
-<h4> Get a domain </ h4>
+<h4> Get a domain </h4>
 
 For information on how to get a domain, refer to the article on getting a domain name and setting up a DNS server.
 
 <ul>
-  <li> <a href="/blog/20200807062918.html"> Get domain name and set DNS server </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200807062918.html"> Get domain name and set DNS server</a> </li>
+</ul>
 
-<h4> Rent a shared rental server </ h4>
+<h4> Rent a shared rental server </h4>
 
 The easiest way to get an email address is to rent a rental server with the ability to create an email address.
 
 If the service that provides the domain has an email address creation service, you can also use it.
 
-<h4> Log in to the management screen </ h4>
+<h4> Log in to the management screen </h4>
 
 Log in to the management screen.
 
-<h4> Find out the IP address of the shared rental server </ h4>
+<h4> Find out the IP address of the shared rental server </h4>
 
 Go to the page where the IP address of the shared rental server is posted and make a note of the IP address. Make a note of the IP address as shown below.
 
 <pre>
 59.106.185.101
-</ pre>
+</pre>
 
-<h3> DNS server mail settings </ h3>
+<h3> DNS server mail settings </h3>
 
 Set the mail of the DNS server.
 
-<h4> A record settings </ h4>
+<h4> A record settings </h4>
 
 Set the A record in the subdomain "mail". Set the IP address of the shared rental server you checked earlier.
 
 <table>
-  <tr> <th> mail </ th> <td> A record </ td> <td> 59.106.185.101 </ td> </ tr>
-</ table>
+  <tr> <th> mail </th> <td> A record </td> <td> 59.106.185.101 </td> </tr>
+</table>
 
-<h4> MX record settings </ h4>
+<h4> MX record settings </h4>
 
 Set the MX record. This is a setting to enable domain resolution of the notation "xxx@perlclub.net".
 
 <table>
-  <tr> <th> empty </ th> <td> MX record </ td> <td> mail.perlclub.net </ td> </ tr>
-</ table>
+  <tr> <th> empty </th> <td> MX record </td> <td> mail.perlclub.net </td> </tr>
+</table>
 
-<h3> Email settings for shared rental server </ h3>
+<h3> Email settings for shared rental server </h3>
 
 It is a mail setting on the shared rental server.
 
-<h4> Add domain name </ h4>
+<h4> Add domain name </h4>
 
 Add the domain name "perlclub.net" from the Add Domain Name item.
 
-<h4> Add email address </ h4>
+<h4> Add email address </h4>
 
 Create a new email address from Add Email Address.
 
@@ -92,9 +92,9 @@ kimoto_test@perlclub.net
 
 #Support email address
 support@perlclub.net
-</ pre>
+</pre>
 
-<h3> Email client settings </ h3>
+<h3> Email client settings </h3>
 
 After completing the settings on the shared rental server side, you can send and receive emails with the email client.
 

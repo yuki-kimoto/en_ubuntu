@@ -2,98 +2,98 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200823150919.html">
-        <span itemprop = "name"> systemd </ span>
-      </a>
+        <span itemprop = "name"> systemd </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Register Mojolicious application with systemd </ h2>
+<h2> Register Mojolicious application with systemd </h2>
 
-Register your Mojolicious application with <a href="/blog/20200823150919.html"> systemd </a>. With systemd management, you can start / stop / restart using the systemctl command. You can also have the Mojolicious application restart automatically when you restart the OS.
+Register your Mojolicious application with <a href="/blog/20200823150919.html"> systemd</a>. With systemd management, you can start / stop / restart using the systemctl command. You can also have the Mojolicious application restart automatically when you restart the OS.
 
-<h3> Information required for systemd configuration file </ h3>
+<h3> Information required for systemd configuration file </h3>
 
 Please note that the path of hypnotoad and the environment variables loaded by the user must be specified in the systemd configuration file as well.
 
-<h4> hypnotoad path </ h4>
+<h4> hypnotoad path </h4>
 
 Find out the path of hypnotoad.
 
 <pre>
 which hypnotoad
-</ pre>
+</pre>
 
 It was displayed as follows.
 
 <pre>
 ~ / perl5 / perlbrew / perls / perl-5.20.3 / bin / hypnotoad
-</ pre>
+</pre>
 
 Since the "~" part is changed to the home directory, check the home directory name.
 
 <pre>
 #Home directory name
 env | grep -P'^ HOME'
-</ pre>
+</pre>
 
 It was displayed as follows.
 
 <pre>
 HOME = / home / myapp
-</ pre>
+</pre>
 
 The path for hypnotoad is as follows.
 
 <pre>
 /home/myapp/perl5/perlbrew/perls/perl-5.20.3/bin/hypnotoad
-</ pre>
+</pre>
 
-<h4> Web application path </ h4>
+<h4> Web application path </h4>
 
 The path of the web application program. If you made it using the Mojolicious template, it will be in the following location. Suppose you created it with the name "Webapp".
 
 <pre>
 / home / myapp / webapp / script / webapp
-</ pre>
+</pre>
 
-<h4> Web application process ID file </ h4>
+<h4> Web application process ID file </h4>
 
 The path to the process ID file for the web application.
 
 <pre>
 /home/myapp/webapp/script/hypnotoad.pid
-</ pre>
+</pre>
 
-<h4> Environment variables </ h4>
+<h4> Environment variables </h4>
 
 This time, I will write an article assuming that the following environment variables are set in "~ / .bashrc".
 
 <pre>
 export MY_SERVER_ENV = my_dev
-</ pre>
+</pre>
 
 You need to write this environment variable in the systemd configuration file.
 
-<h3> systemd configuration file </ h3>
+<h3> systemd configuration file </h3>
 
 This is a systemd configuration file. Give it the following name.
 
 <pre>
 sudo vi /lib/systemd/system/webapp.service
-</ pre>
+</pre>
 
-<a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi </a> Open the command and write the following content.
+<a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi</a> Open the command and write the following content.
 
 <pre>
 [Unit]
@@ -113,51 +113,51 @@ Environment = MY_SERVER_ENV = my_dev
 
 [Install]
 WantedBy = multi-user.target
-</ pre>
+</pre>
 
-<h3> Service activation </ h3>
+<h3> Service activation </h3>
 
 Let's activate the service.
 
 <pre>
 sudo systemctl enable webapp
-</ pre>
+</pre>
 
 If the Mojolicious application is already running, stop it.
 
 <pre>
 /home/myapp/perl5/perlbrew/perls/perl-5.20.3/bin/hypnotoad /home/myapp/webapp/script/webapp --stop
-</ pre>
+</pre>
 
 Start your Mojolicious application under systemd's control.
 
 <pre>
 sudo systemctl start webapp
-</ pre>
+</pre>
 
 Let's check if the Mojolicious application is running.
 
 <pre>
 sudo systemctl status webapp
-</ pre>
+</pre>
 
 
 Check if the Mojolicious application can be restarted.
 
 <pre>
 sudo systemctl reload webapp
-</ pre>
+</pre>
 
 Let's see if the Mojolicious application can be stopped.
 
 <pre>
 sudo systemctl stop webapp
-</ pre>
+</pre>
 
-<h3> OS restart </ h3>
+<h3> OS restart </h3>
 
-Perform <a href="/blog/20200903120232.html"> Restart OS </a> and see if the Mojolicious application is automatically restarted.
+Perform <a href="/blog/20200903120232.html"> Restart OS</a> and see if the Mojolicious application is automatically restarted.
 
 <pre>
 sudo reboot
-</ pre>
+</pre>

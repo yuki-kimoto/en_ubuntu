@@ -1,20 +1,20 @@
-<h2> Locale check and change --localectl command </ h2>
+<h2> Locale check and change --localectl command </h2>
 
-You can check and change the locale with the <b> localectl command </ b>. Locale specifies which country's language to output to the screen and which character code to output when there is locale-compatible software.
+You can check and change the locale with the <b> localectl command </b>. Locale specifies which country's language to output to the screen and which character code to output when there is locale-compatible software.
 
 When building a Web system development environment with Perl, I feel that the default settings are fine and unnecessary for the locale settings.
 
-The reason is that <a href="https://perlzemi.com/"> Perl programming language </a> is OS flat and locale flat in terms of character code.
+The reason is that <a href="https://perlzemi.com/"> Perl programming language</a> is OS flat and locale flat in terms of character code.
 
 (It is unconfirmed as of May 13, 2020 whether it is really okay.)
 
-<h3> Locale confirmation </ h3>
+<h3> Locale confirmation </h3>
 
 You can check the current locale with the localectl command.
 
 <pre>
 localectlctl
-</ pre>
+</pre>
 
 The currently set locale is displayed as shown below. The default is "C.UTF-8". In the initial installation state, the shell can input and output in UTF-8.
 
@@ -23,35 +23,35 @@ The currently set locale is displayed as shown below. The default is "C.UTF-8". 
        VC Keymap: n / a
       X11 Layout: us
        X11 Model: pc105
-</ pre>
+</pre>
 
-<h3> List of available locales </ h3>
+<h3> List of available locales </h3>
 
 Use the "localectl list-locales" command to see a list of available locales.
 
 <pre>
 localectl list-locales
-</ pre>
+</pre>
 
 <pre>
 C.UTF-8
 en_US.utf8
-</ pre>
+</pre>
 
 Apparently there is no locale available in Japanese.
 
-<h3> Locale installation </ h3>
+<h3> Locale installation </h3>
 
 Let's install the locale. Download the Japanese package with the apt command. Run with administrator privileges using sodo.
 
 <pre>
 sudo apt install language-pack-ja
-</ pre>
+</pre>
 
 Check the available locales again.
 
 <pre>
-localectl list-locales </ pre>
+localectl list-locales </pre>
 
 "Ja_JP.utf8" has been added.
 
@@ -59,12 +59,12 @@ localectl list-locales </ pre>
 C.UTF-8
 en_US.utf8
 ja_JP.utf8
-</ pre>
+</pre>
 
-<h3> Change locale </ h3>
+<h3> Change locale </h3>
 
 Let's change the locale. Use the "localectl set-locale" command to change the locale. Execute with administrator privileges using the sudo command.
 
 <pre>
 sudo localectl set-locale LANG = ja_JP.UTF-8
-</ pre>
+</pre>

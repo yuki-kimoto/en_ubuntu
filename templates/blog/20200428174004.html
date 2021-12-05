@@ -2,48 +2,48 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop = "name"> Package management </ span>
-      </a>
+        <span itemprop = "name"> Package management </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
-<h2> Library loading path </ h2>
+    </li>
+  </ul>
+</div>
+<h2> Library loading path </h2>
 
 Information about the loading path of Ubuntu libraries.
 
-<h4> Load path of library of package installed by apt </ h4>
+<h4> Load path of library of package installed by apt </h4>
 
 The library of the package installed by apt is in "/ usr / lib / x86_64-linux-gnu".
 
 <pre>
 / usr / lib / x86_64-linux-gnu
-</ pre>
+</pre>
 
-<h4> Check the library loading path </ h4>
+<h4> Check the library loading path </h4>
 
 Look in "/etc/ld.so.conf" to check the loading path of the library.
 
 <pre>
 cat /etc/ld.so.conf
-</ pre>
+</pre>
 
 Looking at the contents, it is further included.
 
 <pre>
 include ld.so.conf.d/*.conf
-</ pre>
+</pre>
 
-So, let's output all the read files with <a href="https://en.linux.perlzemi.com/blog/20200113083613.html"> cat command </a>.
+So, let's output all the read files with <a href="https://en.linux.perlzemi.com/blog/20200113083613.html"> cat command</a>.
 
 <pre>
 $ cat /etc/ld.so.conf.d/*.conf
@@ -54,4 +54,4 @@ $ cat /etc/ld.so.conf.d/*.conf
 / usr / local / lib / x86_64-linux-gnu
 / lib / x86_64-linux-gnu
 / usr / lib / x86_64-linux-gnu
-</ pre>
+</pre>

@@ -2,29 +2,29 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200823150919.html">
-        <span itemprop = "name"> systemd </ span>
-      </a>
+        <span itemprop = "name"> systemd </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> journalctl command --view systemd management logs </ h2>
+<h2> journalctl command --view systemd management logs </h2>
 
-You can use the <b> journalctl command </ b> to see the logs of applications (server applications) managed by systemd. Execute with root privileges with <a href="/blog/20200531085516.html"> sudo </a>.
+You can use the <b> journalctl command </b> to see the logs of applications (server applications) managed by systemd. Execute with root privileges with <a href="/blog/20200531085516.html"> sudo</a>.
 
 <pre>
 sudo journalctl
-</ pre>
+</pre>
 
 The log contains the date, time, host name, application name, process ID, and message.
 
@@ -42,70 +42,70 @@ Jun 02 14:11:19 myhost systemd [88231]: Reached target Sockets.
 Jun 02 14:11:19 myhost systemd [88231]: Reached target Basic System.
 Jun 02 14:11:19 myhost systemd [88231]: Reached target Default.
 Jun 02 14:11:19 myhost systemd [88231]: Startup finished in 20ms.
-</ pre>
+</pre>
 
-The log file will be opened using <a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi </a>, so press "Shift + G". You can move to the bottom.
+The log file will be opened using <a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi</a>, so press "Shift + G". You can move to the bottom.
 
-<h3> Extract only the log of a specific application </ h3>
+<h3> Extract only the log of a specific application </h3>
 
 To retrieve only the logs for a specific application, specify the unit name with "-u". You can see it from the latest log by specifying the "-r" option.
 
-<h4> View Apache logs </ h4>
+<h4> View Apache logs </h4>
 
-Display the log of <a href="/blog/20200526151435.html"> Apache </a>.
+Display the log of <a href="/blog/20200526151435.html"> Apache</a>.
 
 <pre>
 #Apache
 sudo journalctl -r -u apache2
-</ pre>
+</pre>
 
-<h4> View MariaDB logs </ h4>
+<h4> View MariaDB logs </h4>
 
 View MariaDB logs.
 
 <pre>
 #MariaDB
 sudo journalctl -r -u mariadb
-</ pre>
+</pre>
 
-<h4> View SSH server logs </ h4>
+<h4> View SSH server logs </h4>
 
 View SSH server logs.
 
 <pre>
 # SSH server
 sudo journalctl -r -u sshd
-</ pre>
+</pre>
 
-<h4> View Postfix logs </ h4>
+<h4> View Postfix logs </h4>
 
 <pre>
 #Postfix
 sudo journalctl -r -u postfix
-</ pre>
+</pre>
 
-<h4> View cron logs </ h4>
+<h4> View cron logs </h4>
 
 <pre>
 # cron
 sudo journalctl -r -u cron
-</ pre>
+</pre>
 
-<h4> View FTP server logs </ h4>
+<h4> View FTP server logs </h4>
 
 <pre>
 #FTP server
 sudo journalctl -r -u vsftpd
-</ pre>
+</pre>
 
-<h4> View Redis server logs </ h4>
+<h4> View Redis server logs </h4>
 
 <pre>
 #Redis server
 sudo journalctl -r -u redis-server
-</ pre>
+</pre>
 
-<h3> journalctl options </ h3>
+<h3> journalctl options </h3>
 
 It is an option of journalctl.
 
@@ -176,4 +176,4 @@ command:
       --update-catalog Updates the message catalog database
       --new-id128 Generate a new 128-bit ID
       --setup-keys Generate a new FSS key pair
-</ pre>
+</pre>

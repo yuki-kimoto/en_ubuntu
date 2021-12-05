@@ -2,27 +2,27 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200822150919.html">
-        <span itemprop = "name"> Email settings </ span>
-      </a>
+        <span itemprop = "name"> Email settings </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Cloud mail delivery SendGrid and Postfix work together </ h2>
+<h2> Cloud mail delivery SendGrid and Postfix work together </h2>
 
 SendGrid is a cloud mail delivery service for mail delivery.
 
-<h3> Reasons to use SendGrid </ h3>
+<h3> Reasons to use SendGrid </h3>
 
 That's why we use SendGrid. SendGrid is a cloud service for mail delivery, and if you exceed 12,000 emails a month, you will be charged a monthly fee.
 
@@ -30,7 +30,7 @@ If you want to deliver mail for free, you can use postfix to set up an SMTP serv
 
 However, you will run into problems such as not being able to send emails via SMTP on port 25 on the cloud server, increasing the number of emails delivered, and not wanting to be blacklisted.
 
-<h4> I can't send mail via SMTP on port 25 on the cloud server </ h4>
+<h4> I can't send mail via SMTP on port 25 on the cloud server </h4>
 
 As a public cloud server configuration, if you are dynamically showing your IP address to the outside world, your email will not arrive if the selected IP address is blacklisted.
 
@@ -40,7 +40,7 @@ In such cases, you can connect to SengGrid using SendGrid and the Web API of mai
 
 When migrating from an existing system, it seems that the relay function can be used to migrate without modifying the application.
 
-<h4> The number of emails increases and it takes time to process </ h4>
+<h4> The number of emails increases and it takes time to process </h4>
 
 If the number of emails is increasing and it takes a long time to process, SendGrid seems to finish the process faster.
 
@@ -48,35 +48,35 @@ If the number of emails is increasing and it takes a long time to process, SendG
 
 The experience story is written.
 
-<h4> I don't want to be blacklisted </ h4>
+<h4> I don't want to be blacklisted </h4>
 
 If the IP address of the sender of the email is blacklisted, the email will not be delivered.
 
 With SendGrid, even if such a thing happens inside SendGrid, it seems that SendGrid will solve it and achieve a high arrival rate.
 
-<h3> SendGrid Price </ h3>
+<h3> SendGrid Price </h3>
 
 The price is as follows.
 
-<a href="https://sendgrid.kke.co.jp/plan/"> SendGrid Price (as of May 21, 2020) </a>
+<a href="https://sendgrid.kke.co.jp/plan/"> SendGrid Price (as of May 21, 2020)</a>
 
-<a href="https://sendgrid.kke.co.jp/plan/"> <img src = "/ images / sendgrid / sendgrid-price.png" width = "100%"> </a>
+<a href="https://sendgrid.kke.co.jp/plan/"> <img src = "/ images / sendgrid / sendgrid-price.png" width = "100%"></a>
 
-<h3> SendGrid application </ h3>
+<h3> SendGrid application </h3>
 
 From the top page, enter your email address to apply.
 
-<a href="https://sendgrid.kke.co.jp"> SendGrid application </a>
+<a href="https://sendgrid.kke.co.jp"> SendGrid application</a>
 
-<a href="https://sendgrid.kke.co.jp"> <img src = "/ images / sendgrid / sendgrid-top.png" width = "100%"> </a>
+<a href="https://sendgrid.kke.co.jp"> <img src = "/ images / sendgrid / sendgrid-top.png" width = "100%"></a>
 
 After the review, you will receive an email with this approval.
 
-<h3> SendGrid information required to send Web API and relay mail </ h3>
+<h3> SendGrid information required to send Web API and relay mail </h3>
 
 The SendGrid information required to send Web API and relay emails is the API key. (Before 2021, the user name and password were necessary information, but from the viewpoint of preventing junk mail, it seems that the API key is required.)
 
-<h3> Get the API key </ h3>
+<h3> Get the API key </h3>
 
 Get your API key. Log in to the SendGrid management screen. Click "Settings" in the left sidebar. Click "API keys".
 
@@ -88,7 +88,7 @@ Change "API Key Permissions" to "Full Access".
 
 The created API key is displayed. It will only be displayed once, so copy and paste it and save it somewhere. If you turn off the screen, delete it and recreate it.
 
-<h3> Link SendGrid and Postfix </ h3>
+<h3> Link SendGrid and Postfix </h3>
 
 SendGrid has a Web API, but you can also work with Postfix to connect sending mail from the sendmail command to SendGrid.
 
@@ -98,25 +98,25 @@ The disadvantage is that you need to install and configure Postfix.
 
 (Since the GUI screen appears for the installation of Postfix on Ubuntu, I still don't know if the installation can be automated.)
 
-<h4> SendGrid official documentation </ h4>
+<h4> SendGrid official documentation </h4>
 
 The SendGrid documentation is detailed for detailed instructions.
 
 Basic documentation. If you want to start anew, follow the steps in "SendGrid Documents --Postfix".
 
-<a href="https://sendgrid.kke.co.jp/docs/Integrate/Mail_Servers/postfix.html"> SendGrid Document --Postfix </a>
+<a href="https://sendgrid.kke.co.jp/docs/Integrate/Mail_Servers/postfix.html"> SendGrid Document --Postfix</a>
 
 Below, you will find useful information for mail delivery.
 
-<a href="https://sendgrid.kke.co.jp/blog/?p=8192"> Customize the relay from Postfix to SendGrid --SendGrid Blog </a>
+<a href="https://sendgrid.kke.co.jp/blog/?p=8192"> Customize the relay from Postfix to SendGrid --SendGrid Blog</a>
 
-<h4> Procedure for linking SendGrid and Postfix </ h4>
+<h4> Procedure for linking SendGrid and Postfix </h4>
 
 Edit the Postfix configuration file.
 
 <pre>
 sudo vi /etc/postfix/main.cf
-</ pre>
+</pre>
 
 Add the following settings. Using the SMTP-Auth protocol, Postfix asks SendGrid to deliver the mail.
 
@@ -132,40 +132,40 @@ smtp_sasl_tls_security_options = noanonymous
 smtp_tls_security_level = encrypt
 header_size_limit = 4096000
 relayhost = [smtp.sendgrid.net]: 587
-</ pre>
+</pre>
 
 Now create the password file described in the settings above.
 
 <pre>
 sudo vi / etc / postfix / sasl_passwd
-</ pre>
+</pre>
 
 Specify the API key obtained by SendGrid. Replace the API key part with the obtained API key.
 
 <pre>
 [smtp.sendgrid.net]: 587 apikey: API key
-</ pre>
+</pre>
 
 Then make sure that this file is restricted to read and write only by the root account, and use the postmap command to update the hashtable for Postfix to use this new file:
 
 <pre>
 sudo chmod 600 / etc / postfix / sasl_passwd
 sudo postmap / etc / postfix / sasl_passwd
-</ pre>
+</pre>
 
-Finally restart Postfix with <a href="/blog/20200605104005.html"> systemctl </a>:
+Finally restart Postfix with <a href="/blog/20200605104005.html"> systemctl</a>:
 
 <pre>
 sudo systemctl restart postfix
-</ pre>
+</pre>
 
-<h3> Send an email with the sendmail command </ h3>
+<h3> Send an email with the sendmail command </h3>
 
 Let's send an email with the sendmail command. If there is no sender, the email has been rejected, so "-f" is used to specify the sender's email address.
 
 <pre>
 echo Hello | sendmail -f kimoto.example@foo.com kimoto.example@foo.com
-</ pre>
+</pre>
 
 If you can send an email, the settings are correct.
 
@@ -173,15 +173,15 @@ If you haven't been able to send it, use the mailq command to first look at the 
 
 <pre>
 mailq
-</ pre>
+</pre>
 
 If the queue says send failed, it has failed.
 
-To see the Postfix systemd logs, use the <a href="/blog/20200602135100.html"> journalctl command </a>. Specify the unit "postfix" with the "-u" option. Please note that you will not be able to see the Postfix logs unless you run it with sudo. If you want to see only the last part of the log, combine the "-r" option.
+To see the Postfix systemd logs, use the <a href="/blog/20200602135100.html"> journalctl command</a>. Specify the unit "postfix" with the "-u" option. Please note that you will not be able to see the Postfix logs unless you run it with sudo. If you want to see only the last part of the log, combine the "-r" option.
 
 <pre>
 sudo journalctl -r -u postfix
-</ pre>
+</pre>
 
 This is a sample Postfix log.
 
@@ -191,4 +191,4 @@ Jul 22 13:24:35 shinshina-development-app-00000001 systemd [1]: Started PostfixM
 Jul 22 13:24:35 shinshina-development-app-00000001 systemd [1]: Starting Postfix Mail Transport Agent ...
 --Reboot -
 Jul 22 13:13:47 shinshina-development-app-00000001 systemd [1]: Stopped Postfix Mail Transport Agent.
-</ pre>
+</pre>

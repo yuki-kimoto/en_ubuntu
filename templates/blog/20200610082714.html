@@ -2,23 +2,23 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop = "name"> Apache </ span>
-      </a>
+        <span itemprop = "name"> Apache </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Enable / disable Apache config file-basic config / module config / site config </ h2>
+<h2> Enable / disable Apache config file-basic config / module config / site config </h2>
 
 In Apache of Ubunut, there is a command to enable / disable the configuration file by a command.
 
@@ -35,11 +35,11 @@ drwxr-xr-x 2 root root 4096 Jun 8 16:07 mods-enabled
 -rw-r--r-- 1 root root 320 Jul 17 2019 ports.conf
 drwxr-xr-x 2 root root 4096 May 26 14:59 sites-available
 drwxr-xr-x 2 root root 4096 May 26 14:59 sites-enabled
-</ pre>
+</pre>
 
 Those that start with conf are general settings, those that start with mods are Apache module settings, and those that start with sites are virtual host settings for running multiple sites.
 
-<h4> Apache configuration file to enable </ h4>
+<h4> Apache configuration file to enable </h4>
 
 The following are valid as Apache configuration files. One of the following must be true for the setting to take effect: The configuration file stored in available will not be valid as it is.
 
@@ -54,79 +54,79 @@ The following are valid as Apache configuration files. One of the following must
 # | `-* .Conf
 # `--sites-enabled
 # `-* .Conf
-</ pre>
+</pre>
 
-<h3> General configuration file </ h2>
+<h3> General configuration file </h2>
 
 First of all, you'll want to write your new config file in apache2.conf, but it's a good idea to leave this as the default.
 
-Create the new configuration file you create in "conf-available". Let's place it with the name "myapache2.conf". Create a new one with the <a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi command </a>.
+Create the new configuration file you create in "conf-available". Let's place it with the name "myapache2.conf". Create a new one with the <a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi command</a>.
 
 <pre>
 sudo vi conf-available/myapache2.conf
-</ pre>
+</pre>
 
 Please save and exit.
 
-<h4> Enable common Apache config files in a2enconf </ h4>
+<h4> Enable common Apache config files in a2enconf </h4>
 
 Then enable this configuration file with the a2enconf command.
 
 <pre>
 sudo a2enconf myapache2
-</ pre>
+</pre>
 
-Take a look inside "conf-enabled" with the <a href="https://en.linux.perlzemi.com/blog/20191126082723.html"> ls </a> command.
+Take a look inside "conf-enabled" with the <a href="https://en.linux.perlzemi.com/blog/20191126082723.html"> ls</a> command.
 
 <pre>
 ls -l conf-enabled
-</ pre>
+</pre>
 
-Then <a href="https://en.linux.perlzemi.com/blog/20200610092705.html"> symbolic link </a> is created for "conf-available / myapache2.conf" I understand.
+Then <a href="https://en.linux.perlzemi.com/blog/20200610092705.html"> symbolic link</a> is created for "conf-available / myapache2.conf" I understand.
 
 <pre>
 myapache2.conf-> ../conf-available/myapache2.conf
-</ pre>
+</pre>
 
 The Apache configuration file you created is now valid.
 
-After enabling it, you need to <a href="/blog/20200519084454.html"> restart Apache </a> for Apache to reflect your settings.
+After enabling it, you need to <a href="/blog/20200519084454.html"> restart Apache</a> for Apache to reflect your settings.
 
-<h4> Disable common Apache config files with a2disconf </ h4>
+<h4> Disable common Apache config files with a2disconf </h4>
 
 To disable it, use the a2disconf command.
 
 <pre>
 sudo a2disconf myapache2
-</ pre>
+</pre>
 
 After disabling it, you will need to restart Apache for the settings to take effect.
 
-<h3> Module configuration file </ h2>
+<h3> Module configuration file </h2>
 
 Some Apache modules are available but not enabled. The settings for such modules are in "mods-available".
 
-<h4> Enable Apache module configuration file with a2enmod </ h4>
+<h4> Enable Apache module configuration file with a2enmod </h4>
 
 Use the a2enmod command to enable the Apache module configuration file. Try enabling the ssl module (mod_ssl).
 
 <pre>
 sudo a2enmod ssl
-</ pre>
+</pre>
 
 A symbolic link will be created in "mods-enabled". Apache needs to be restarted for the settings to take effect.
 
-<h4> Disable Apache module configuration file with a2dismod </ h4>
+<h4> Disable Apache module configuration file with a2dismod </h4>
 
 To disable the Apache module configuration file, use the a2dismod command.
 
 <pre>
 sudo a2dismod ssl
-</ pre>
+</pre>
 
 After disabling it, you need to restart Apache for the settings to take effect.
 
-<h3> Virtual host configuration file for running multiple sites </ h2>
+<h3> Virtual host configuration file for running multiple sites </h2>
 
 Ubuntu provides a "sites-available" directory for running multiple sites on a virtual host.
 
@@ -136,26 +136,26 @@ Make the domain name of the site the name of the configuration file. The extensi
 
 <pre>
 vi www.mysite.example.conf
-</ pre>
+</pre>
 
 Let's write the virtual host settings in this.
 
-<h4> Enable virtual host config file on a2ensite </ h4>
+<h4> Enable virtual host config file on a2ensite </h4>
 
 Use the a2ensite command to enable the virtual host configuration file. Try enabling the ssl module (mod_ssl).
 
 <pre>
 sudo a2ensite www.mysite.example
-</ pre>
+</pre>
 
 A symbolic link will be created in "sites-enabled". Apache needs to be restarted for the settings to take effect.
 
-<h4> Disable virtual host config file with a2dissite </ h4>
+<h4> Disable virtual host config file with a2dissite </h4>
 
 To disable the virtual host configuration file, use the a2dissite command.
 
 <pre>
 sudo a2dissite www.mysite.example
-</ pre>
+</pre>
 
 After disabling it, you need to restart Apache for the settings to take effect.

@@ -1,29 +1,29 @@
-<h2> File backup automation using cron and rsync </ h2>
+<h2> File backup automation using cron and rsync </h2>
 
 Learn how to automate file backups using cron and rsync.
 
-<h4> Create a backup directory on the backup server </ h4>
+<h4> Create a backup directory on the backup server </h4>
 
 Create a backup directory on your backup server. Suppose "/ datadrive" already exists.
 
 <pre>
 mkdir -p / datadrive / backup
-</ pre>
+</pre>
 
-<h4> Use rsync for file backup </ h4>
+<h4> Use rsync for file backup </h4>
 
-Use <a href="https://en.linux.perlzemi.com/blog/20190130171737.html"> rsync </a> to back up your files.
+Use <a href="https://en.linux.perlzemi.com/blog/20190130171737.html"> rsync</a> to back up your files.
 
 <pre>
 sudo rsync -e "ssh -p22" -av --delete /datadrive/myapp@133.242.230.50:/datadrive/backup/datadrive/
 sudo rsync -e "ssh -p22" -av --delete /etc_letsencrypt/ myapp@133.242.230.50:/datadrive/backup/etc_letsencrypt/
-</ pre>
+</pre>
 
 rsync can copy directories recursively and only copy the diffs of the files, so the only time to update the files is to check the diffs and copy the diffs.
 
 If you specify the "--delete" option, deleted files will also be detected and mirroring will be possible.
 
-<h4> Transfer files from the production machine to the backup machine </ h4>
+<h4> Transfer files from the production machine to the backup machine </h4>
 
 The file is transferred from the production machine to the backup machine. For security reasons, root login to the production machine seems to be prohibited by SSH.
 
@@ -31,9 +31,9 @@ Some files you want to back up require root privileges.
 
 Therefore, execute the rsync command on the production machine side to transfer it to the backup machine.
 
-<h4> Create a private / public key pair and register the public key on the backup server </ h4>
+<h4> Create a private / public key pair and register the public key on the backup server </h4>
 
-On the production machine, use the <a href="/blog/20200623095744.html"> ssh-keygen command </a> to create a private / public key pair and register the public key on the backup server.
+On the production machine, use the <a href="/blog/20200623095744.html"> ssh-keygen command</a> to create a private / public key pair and register the public key on the backup server.
 
 Generate a private / public key pair in the root directory.
 
@@ -43,13 +43,13 @@ sudo chmod 700 /root/.ssh
 
 # File name is "/root/.ssh/id_rsa_backup"
 sudo ssh-keygen -t rsa
-</ pre>
+</pre>
 
 Shows the public key.
 
 <pre>
 sudo cat /root/.ssh/id_rsa_backup.pub
-</ pre>
+</pre>
 
 Make a copy of the displayed public key.
 
@@ -59,34 +59,34 @@ Work on a backup server.
 mkdir -p ~ / .ssh
 chmod 700 ~ / .ssh
 cd ~ / .ssh
-</ pre>
+</pre>
 
 Register the public key. Open the "authorized_keys" file and paste the copied public key at the bottom.
 
 <pre>
 vi ~ / .ssh / authorized_keys
-</ pre>
+</pre>
 
 Now you can do rsync with SSH public key authentication.
 
 <pre>
 sudo rsync -e "ssh -p22 -i /root/.ssh/id_rsa_backup" -av --delete /datadrive/myapp@133.242.230.50:/datadrive/backup/datadrive/
 sudo rsync -e "ssh -p22 -i /root/.ssh/id_rsa_backup" -av --delete /etc_letsencrypt/ myapp@133.242.230.50:/datadrive/backup/etc_letsencrypt/
-</ pre>
+</pre>
 
 Create a backup directory as well.
 
-<h4> Register file backup in root crontab </ h4>
+<h4> Register file backup in root crontab </h4>
 
-Register the command to be executed in <a href="/blog/20200604085516.html"> crontab </a> of the root of the production machine.
+Register the command to be executed in <a href="/blog/20200604085516.html"> crontab</a> of the root of the production machine.
 
 You can open the root crontab as follows:
 
 <pre>
 sudo crontab -e
-</ pre>
+</pre>
 
-Write the backup command in crontab as follows. Please note that <a href="/blog/20200531085516.html"> sudo </a> is not written in crontab.
+Write the backup command in crontab as follows. Please note that <a href="/blog/20200531085516.html"> sudo</a> is not written in crontab.
 
 Time is arbitrary. I think it's better to have less processing at night.
 
@@ -97,6 +97,6 @@ MAILTO = kimoto.yuki@gmail.com
 
 30 03 * * * rsync -e "ssh -p22 -i /root/.ssh/id_rsa_backup" -a --delete /datadrive/myapp@133.242.230.50:/datadrive/backup/datadrive/
 30 03 * * * rsync -e "ssh -p22 -i /root/.ssh/id_rsa_backup" -a --delete /etc_letsencrypt/ myapp@133.242.230.50:/datadrive/backup/etc_letsencrypt/
-</ pre>
+</pre>
 
 Note that the rsync command can't create multi-level directories like "mkdir -p".

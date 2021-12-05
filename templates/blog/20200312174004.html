@@ -2,82 +2,82 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop = "name"> Apache </ span>
-      </a>
+        <span itemprop = "name"> Apache </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Manage Apache configuration files with Git </ h2>
+<h2> Manage Apache configuration files with Git </h2>
 
-Ubuntu's Apache configuration file is easy to manage with <a href="https://en.git.perlzemi.com/"> Git </a>, so let's manage it with Git. prize.
+Ubuntu's Apache configuration file is easy to manage with <a href="https://en.git.perlzemi.com/"> Git</a>, so let's manage it with Git. prize.
 
 <pre>
 cd / etc / apache2
-</ pre>
+</pre>
 
-<h4> Initialize Git repository </ h4>
+<h4> Initialize Git repository </h4>
 
-Use "<a href="https://en.git.perlzemi.com/blog/20200605092020.html"> git init </a>" to initialize it as a Git repository.
+Use "<a href="https://en.git.perlzemi.com/blog/20200605092020.html"> git init</a>" to initialize it as a Git repository.
 
 <pre>
 sudo git init
-</ pre>
+</pre>
 
-<h4> Creating .gitignore </ h4>
+<h4> Creating .gitignore </h4>
 
-conf-enabled, mods-enabled, sites-enabled are configuration files that are enabled for each environment, so <a href="https://en.git.perlzemi.com/blog/20200610092020.html"> Use .gitignore </a> to remove it from Git management. Edit with the <a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi </a> command.
+conf-enabled, mods-enabled, sites-enabled are configuration files that are enabled for each environment, so <a href="https://en.git.perlzemi.com/blog/20200610092020.html"> Use .gitignore</a> to remove it from Git management. Edit with the <a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi</a> command.
 
 <pre>
 sudo vi .gitignore
-</ pre>
+</pre>
 
 Describe the following settings. Now conf-enabled, mods-enabled, sites-enabled are no longer managed by Git.
 
 <pre>
 * -enable
-</ pre>
+</pre>
 
-<h4> Tips on how to manage </ h4>
+<h4> Tips on how to manage </h4>
 
 It is recommended to leave apache2.conf, envvars, magic, ports.conf untouched by default.
 
 Let's include all the configuration files in the development environment and the production environment in xxx-available.
 
-<h4> Put it in the staging environment </ h4>
+<h4> Put it in the staging environment </h4>
 
 Next, use the "git add command" to put the files you want to manage into the staging environment. Specify "." To put all the files under the current directory in the staging environment.
 
 <pre>
 sudo git add.
-</ pre>
+</pre>
 
 Let's check the file in the staging environment with the "git status command".
 
 <pre>
 sudo git status
-</ pre>
+</pre>
 
 If you make a mistake, use "git reset" to restore it.
 
 <pre>
 sudo git reset
-</ pre>
+</pre>
 
 If properly staged, it's finally a commit.
 
 <pre>
 sudo git commit -m "first commit"
-</ pre>
+</pre>
 
 Push to a remote repository such as Github. Importing from the remote repository and reflecting it in the remote repository will be handled in another location.

@@ -2,27 +2,27 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop = "name"> Apache </ span>
-      </a>
+        <span itemprop = "name"> Apache </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Let's Encrypt SSL certificate moving to a new server </ h2>
+<h2> Let's Encrypt SSL certificate moving to a new server </h2>
 
 It is a record of moving work of Let's Encrypt SSL certificate. I am moving the SSL certificate created by Let's Encrypt to a new server, and I will publish the procedure at that time.
 
-<h3> Which file should I move? </ H3>
+<h3> Which file should I move? </H3>
 
 The first question is, which files should I move to get certbot to work properly at the destination? The concern is that the certbot has been upgraded and the configuration files are incompatible.
 
@@ -86,23 +86,23 @@ The directory structure of the migration source was like this. The domain name h
 /etc/letsencrypt/options-ssl-apache.conf
 / etc / letsencrypt / renewal
 /etc/letsencrypt/renewal/www.myhost.example.conf
-</ pre>
+</pre>
 
 The version of certbot is 1.0.0.
 
 <pre>
 certbot --version
 certbot 1.0.0
-</ pre>
+</pre>
 
 The version of the destination certbot is "0.27.0". Why is the version down ???
 
 <pre>
 certbot --version
 certbot 0.27.0
-</ pre>
+</pre>
 
-<h3> What you need, what you don't need </ h3>
+<h3> What you need, what you don't need </h3>
 
 "Options-ssl-apache.conf" is for automatic setting of SSL certificate in Apache, but I decided to set it manually, so I don't need it.
 
@@ -122,21 +122,21 @@ It seems that "/ etc / letsencrypt / archive" contains information on all Let's 
 
 So, it seems safe to move everything as it is.
 
-<h4> What you need to move Let's Encrypt SSL certificate </ h4>
+<h4> What you need to move Let's Encrypt SSL certificate </h4>
 
 What you need to move your Let's Encrypt SSL certificate. Let's move everything under "/ etc / letsencrypt".
 
 <ul>
-  <li> / etc / letsencrypt </ li>
-</ ul>
+  <li> / etc / letsencrypt </li>
+</ul>
 
-<h3> You have to move with root privileges </ h3>
+<h3> You have to move with root privileges </h3>
 
 Since the "/ etc / letsencrypt" directory must be moved with root privileges, the necessary items are fixed in tar.gz with "sudo tar cfv", moved to the migration destination, and "sudo tar xfv" is expanded. Step on.
 
 Since root login is prohibited, you cannot move with rsync.
 
-<h4> Working at the source </ h4>
+<h4> Working at the source </h4>
 
 Tar it and move it to the application user's home directory. Owned so that it can be erased immediatelyAlso change to the application user.
 
@@ -145,30 +145,30 @@ cd / etc
 sudo tar cfv letsencrypt.tar.gz letsencrypt
 sudo chown myapp letsencrypt.tar.gz
 sudo mv letsencrypt.tar.gz /home/myapp/
-</ pre>
+</pre>
 
-Reference: <a href="/blog/20200531085516.html"> sudo </a>, <a href="https://en.linux.perlzemi.com/blog/20191012191854.html"> cd </a> , <a href="https://en.linux.perlzemi.com/blog/20190129171737.html"> tar </a>, <a href="https://en.linux.perlzemi.com/blog/ 20200603102015.html "> chown </a>, <a href="https://en.linux.perlzemi.com/blog/20191204081652.html"> mv </a>
+Reference: <a href="/blog/20200531085516.html"> sudo</a>, <a href="https://en.linux.perlzemi.com/blog/20191012191854.html"> cd</a> , <a href="https://en.linux.perlzemi.com/blog/20190129171737.html"> tar</a>, <a href="https://en.linux.perlzemi.com/blog/ 20200603102015.html "> chown</a>, <a href="https://en.linux.perlzemi.com/blog/20191204081652.html"> mv</a>
 
 Move to the home directory of the application user you are moving to.
 
-<h4> Working at the destination </ h4>
+<h4> Working at the destination </h4>
 
-Unzip it, copy it with <a href="https://en.linux.perlzemi.com/blog/20190130171737.html"> rsync </a>, and recursively change the owner to root.
+Unzip it, copy it with <a href="https://en.linux.perlzemi.com/blog/20190130171737.html"> rsync</a>, and recursively change the owner to root.
 
 <pre>
 cd ~
 tar xfv letsencrypt.tar.gz
 sudo rsync -av letsencrypt / / etc / letsencrypt /
 sudo chown -R root: root / etc / letsencrypt /
-</ pre>
+</pre>
 
 Delete unnecessary files described above. You can leave it as it is, even if you don't erase it.
 
-<h3> Check webroot_map in the configuration file in the renewal directory </ h3>
+<h3> Check webroot_map in the configuration file in the renewal directory </h3>
 
 If the user name has been changed when you moved, you need to update the path described in the configuration file in the renewal directory.
 
 <pre>
 [[webroot_map]]
 www.myhost.example = /home/myapp/fooapp/public
-</ pre>
+</pre>

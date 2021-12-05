@@ -2,35 +2,35 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop = "name"> Apache </ span>
-      </a>
+        <span itemprop = "name"> Apache </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Apache start / stop / restart / status check </ h2>
+<h2> Apache start / stop / restart / status check </h2>
 
 Explains how to start / stop / restart / check the status of Apache.
 
-<h4> Apache status check </ h4>
+<h4> Apache status check </h4>
 
-To check the status of Apache, use "status" of the <a href="/blog/20200605104005.html"> systemctl </a> command.
+To check the status of Apache, use "status" of the <a href="/blog/20200605104005.html"> systemctl</a> command.
 
 <pre>
 sudo systemctl status apache2
-</ pre>
+</pre>
 
-<h5> If it is running </ h5>
+<h5> If it is running </h5>
 
 If it is running, the following will be displayed.
 
@@ -48,9 +48,9 @@ If it is running, the following will be displayed.
            tq120968 / usr / sbin / apache2 -k start
            tq120971 / usr / sbin / apache2 -k start
            mq120972 / usr / sbin / apache2 -k start
-</ pre>
+</pre>
 
-<h5> When stopped </ h5>
+<h5> When stopped </h5>
 
 If it is stopped, the following will be displayed.
 
@@ -62,63 +62,63 @@ If it is stopped, the following will be displayed.
    Active: inactive (dead) since Tue 2020-05-19 08:52:07 JST; 3min 51s ago
   Process: 120415 ExecStop = / usr / sbin / apachectl stop (code = exited, status = 0 / SUCCE
  Main PID: 104579 (code = exited, status = 0 / SUCCESS)
-</ pre>
+</pre>
 
-<h4> Starting Apache </ h4>
+<h4> Starting Apache </h4>
 
 To start Apache, use the systemctl command "start". Run with root privileges using the sudo command.
 
 <pre>
 sudo systemctl start apache2
-</ pre>
+</pre>
 
 Even if the boot is successful, the message that it was successful is not returned. Please check the status.
 
-<h4> Stop Apache </ h4>
+<h4> Stop Apache </h4>
 
 To stop Apache, use the systemctl command "stop". Run with root privileges using the sudo command.
 
 <pre>
 sudo systemctl stop apache2
-</ pre>
+</pre>
 
 If the outage is successful, no successful message will be returned. Please check the status.
 
-<h4> Restart Apache </ h4>
+<h4> Restart Apache </h4>
 
 To restart Apache, use the systemctl command "restart". Run with root privileges using the sudo command.
 
 <pre>
 sudo systemctl restart apache2
-</ pre>
+</pre>
 
 restart simply executes the stop command and executes the start command. Normally, use the reload command as it will disconnect the processing from the HTTP client.
 
 If the reboot is successful, you will not get a successful message. Please check the status.
 
-<h4> Apache graceful restart </ h4>
+<h4> Apache graceful restart </h4>
 
 A graceful restart of Apache is done using the "reload" systemctl command. Run with root privileges using the sudo command.
 
 <pre>
 sudo systemctl reload apache2
-</ pre>
+</pre>
 
 A restart called a graceful restart is a restart that uses a technology that allows Apache to be restarted while correctly returning an HTTP response to an HTTP client connected to Apache. .. It can handle all HTTP client processing correctly, so usually use this restart.
 
 If the reboot is successful, you will not get a successful message. Please check the status.
 
-<h3> To see the Apache start / stop log </ h3>
+<h3> To see the Apache start / stop log </h3>
 
 Servers such as Apache are centrally managed by a program called systemd.
 
 The Apache start / stop log is output to the systemd log.
 
-Use the <a href="/blog/20200602135100.html"> journalctl command </a> to see the systemd logs. Specify the unit "apache2" with the "-u" option. Please note that you will not be able to see the Apache logs unless you run it with sudo. If you want to see only the last part of the log, combine the "-r" option.
+Use the <a href="/blog/20200602135100.html"> journalctl command</a> to see the systemd logs. Specify the unit "apache2" with the "-u" option. Please note that you will not be able to see the Apache logs unless you run it with sudo. If you want to see only the last part of the log, combine the "-r" option.
 
 <pre>
 sudo journalctl -r -u apache2
-</ pre>
+</pre>
 
 This is a sample log.
 
@@ -134,26 +134,26 @@ Jul 22 13:13:48 shinshina-development-app-00000001 systemd [1]: Stopped The Apac
 Jul 22 13:13:47 shinshina-development-app-00000001 systemd [1]: Stopping The Apache HTTP Server ...
 Jul 22 06:25:03 shinshina-development-app-00000001 systemd [1]: Reloaded The Apache HTTP Server.
 Jul 22 06:25:03 shinshina-development-app-00000001 systemd [1]: Reloading The Apache HTTP Server.
-</ pre>
+</pre>
 
-<h3> Check if the Apache configuration file is correct before rebooting </ h3>
+<h3> Check if the Apache configuration file is correct before rebooting </h3>
 
 Before restarting Apache (graceful restart), use "apachectl -t" to confirm that the Apache configuration file is correct. If you forget this, the reboot may fail and the web system may stop. It's easy to do, so be careful.
 
 <pre>
 #Apache configuration file test
 apachectl -t
-</ pre>
+</pre>
 
-<h3> To see the Apache systemd configuration file </ h3>
+<h3> To see the Apache systemd configuration file </h3>
 
 You can see the Apache systemd configuration file with "systemctl status apache2".
 
-Let's take a look at the configuration file with the <a href="https://en.linux.perlzemi.com/blog/20200113083613.html"> cat command </a>.
+Let's take a look at the configuration file with the <a href="https://en.linux.perlzemi.com/blog/20200113083613.html"> cat command</a>.
 
 <pre>
 cat /lib/systemd/system/apache2.service
-</ pre>
+</pre>
 
 Start, stop, reloadYou can check the mand definition and so on.
 
@@ -173,16 +173,16 @@ Restart = on-abort
 
 [Install]
 WantedBy = multi-user.target
-</ pre>
+</pre>
 
-<h3> Other Apache information </ h3>
+<h3> Other Apache information </h3>
 
-<h4> To install Apache </ h4>
+<h4> To install Apache </h4>
 
 The following article explains how to install Apache.
 
-<a href="/blog/20200424174004.html"> Installation of apache2 --Apache version 2 series which is a web server </a>
+<a href="/blog/20200424174004.html"> Installation of apache2 --Apache version 2 series which is a web server</a>
 
-<h4> Apache configuration file </ h4>
+<h4> Apache configuration file </h4>
 
 The Apache configuration file will be discussed in another article.

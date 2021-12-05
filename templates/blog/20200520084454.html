@@ -2,37 +2,37 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200830052743.html">
-        <span itemprop = "name"> cron </ span>
-      </a>
+        <span itemprop = "name"> cron </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Start / stop / restart / status check of cron, cron execution log </ h2>
+<h2> Start / stop / restart / status check of cron, cron execution log </h2>
 
 Explains how to start / stop / restart / check the status of cron.
 
 Cron is a server that automatically executes jobs on a regular basis.
 
-<h4> Check the status of cron </ h4>
+<h4> Check the status of cron </h4>
 
-To check the status of cron, use "status" of the <a href="/blog/20200605104005.html"> systemctl </a> command.
+To check the status of cron, use "status" of the <a href="/blog/20200605104005.html"> systemctl</a> command.
 
 <pre>
 sudo systemctl status cron
-</ pre>
+</pre>
 
-<h5> If it is running </ h5>
+<h5> If it is running </h5>
 
 If it is running, the following will be displayed.
 
@@ -56,9 +56,9 @@ May 20 09:17:01 development-batch CRON [96646]: pam_unix (cron: session): sessio
 May 20 10:17:01 development-batch CRON [100899]: pam_unix (cron: session): session opened for user root by (uid = 0)
 May 20 10:17:01 development-batch CRON [100900]: (root) CMD (cd / && run-parts --report /etc/cron.hourly)
 May 20 10:17:01 development-batch CRON [100899]: pam_unix (cron: session): session closed for user root
-</ pre>
+</pre>
 
-<h5> When stopped </ h5>
+<h5> When stopped </h5>
 
 If it is stopped, the following will be displayed.
 
@@ -80,51 +80,51 @@ May 20 10:17:01 development-batch CRON [100900]: (root) CMD (cd / && run-parts -
 May 20 10:17:01 development-batch CRON [100899]: pam_unix (cron: session): session closed for user root
 May 20 11:04:56 development-batch systemd [1]: Stopping Regular background program processing daemon ...
 May 20 11:04:56 development-batch systemd [1]: Stopped Regular background program processing daemon.
-</ pre>
+</pre>
 
-<h4> Start cron </ h4>
+<h4> Start cron </h4>
 
 Start cron using the systemctl command "start". Run with root privileges using the sudo command.
 
 <pre>
 sudo systemctl start cron
-</ pre>
+</pre>
 
 Even if the boot is successful, the message that it was successful is not returned. Please check the status.
 
-<h4> Stop cron </ h4>
+<h4> Stop cron </h4>
 
 To stop cron, use the systemctl command "stop". Run with root privileges using the sudo command.
 
 <pre>
 sudo systemctl stop cron
-</ pre>
+</pre>
 
 If the outage is successful, no successful message will be returned. Please check the status.
 
-<h4> Restart cron </ h4>
+<h4> Restart cron </h4>
 
 To restart cron, use the systemctl command "restart". Run with root privileges using the sudo command.
 
 <pre>
 sudo systemctl restart cron
-</ pre>
+</pre>
 
 restart simply executes the stop command and executes the start command. Normally, use the reload command as it will disconnect the processing from the HTTP client.
 
 If the reboot is successful, you will not get a successful message. Please check the status.
 
-<h3> To see the cron execution log </ h3>
+<h3> To see the cron execution log </h3>
 
 Servers such as cron are centrally managed by a program called systemd.
 
 The cron start / stop log is output to the systemd log.
 
-Use the <a href="/blog/20200602135100.html"> journalctl command </a> to see the systemd logs. Specify the unit "cron" with the "-u" option. Please note that you cannot see the cron log unless you run it with sudo. If you want to see only the last part of the log, combine the "-r" option.
+Use the <a href="/blog/20200602135100.html"> journalctl command</a> to see the systemd logs. Specify the unit "cron" with the "-u" option. Please note that you cannot see the cron log unless you run it with sudo. If you want to see only the last part of the log, combine the "-r" option.
 
 <pre>
 sudo journalctl -r -u cron
-</ pre>
+</pre>
 
 This is a sample log.
 
@@ -140,10 +140,10 @@ Jul 23 14:35:05 shinshina-development-app-00000001 CRON [35331]: pam_unix (cron:
 Jul 23 14:35:05 shinshina-development-app-00000001 CRON [35330]: pam_unix (cron: session): session closed for user myapp
 Jul 23 14:35:01 shinshina-development-app-00000001 CRON [35329]: pam_unix (cron: session): session closed for user root
 Jul 23 14:35:01 shinshina-development-app-00000001 CRON [35336]: (myapp) CMD ($ HOME / $ SDIR / customer / oshirase_osusume_bukken.pl)
-</ pre>
+</pre>
 
 You can check the automatically executed jobs.
 
-<h3> cron configuration file </ h3>
+<h3> cron configuration file </h3>
 
 I will explain the cron configuration file in another article.

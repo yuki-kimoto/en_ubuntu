@@ -2,35 +2,35 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200829052743.html">
-        <span itemprop = "name"> MariaDB </ span>
-      </a>
+        <span itemprop = "name"> MariaDB </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> MariaDB start / stop / restart / status check </ h2>
+<h2> MariaDB start / stop / restart / status check </h2>
 
 Explains how to start / stop / restart / check the status of MariaDB.
 
-<h4> MariaDB status check </ h4>
+<h4> MariaDB status check </h4>
 
-To check the status of MariaDB, use "status" of the <a href="/blog/20200605104005.html"> systemctl </a> command.
+To check the status of MariaDB, use "status" of the <a href="/blog/20200605104005.html"> systemctl</a> command.
 
 <pre>
 sudo systemctl status mariadb
-</ pre>
+</pre>
 
-<h5> If it is running </ h5>
+<h5> If it is running </h5>
 
 If it is running, the following will be displayed.
 
@@ -55,10 +55,10 @@ May 18 12:38:50 development-batch / etc / mysql / debian-start [33977]: Processi
 May 18 12:38:50 development-batch / etc / mysql / debian-start [33977]: information_schema
 May 18 12:38:50 development-batch / etc / mysql / debian-start [33977]: performance_schema
 May 18 12:38:50 development-batch / etc / mysql / debian-start [33977]: Phase 7/7: Running'FLUSH PRIVILEGES'
-May 18 12:38:50 development-batch / etc / mysql / debian-start [33977]: OK </ pre>
-</ pre>
+May 18 12:38:50 development-batch / etc / mysql / debian-start [33977]: OK </pre>
+</pre>
 
-<h5> When stopped </ h5>
+<h5> When stopped </h5>
 
 If it is stopped, the following will be displayed.
 
@@ -82,49 +82,49 @@ May 18 12:38:50 development-batch / etc / mysql / debian-start [33977]: Phase 7/
 May 18 12:38:50 development-batch / etc / mysql / debian-start [33977]: OK
 May 19 10:53:01 development-batch systemd [1]: Stopping MariaDB 10.1.44 database server ...
 May 19 10:53:02 development-batch systemd [1]: Stopped MariaDB 10.1.44 database server.
-</ pre>
+</pre>
 
-<h4> Starting MariaDB </ h4>
+<h4> Starting MariaDB </h4>
 
 MariaDB is started using the systemctl command "start". Run with root privileges using the sudo command.
 
 <pre>
 sudo systemctl start mariadb
-</ pre>
+</pre>
 
 Even if the boot is successful, the message that it was successful is not returned. Please check the status.
 
-<h4> MariaDB outage </ h4>
+<h4> MariaDB outage </h4>
 
 To stop MariaDB, use the systemctl command "stop". Run with root privileges using the sudo command.
 
 <pre>
 sudo systemctl stop mariadb
-</ pre>
+</pre>
 
 If the outage is successful, no successful message will be returned. Please check the status.
 
-<h4> Restart MariaDB </ h4>
+<h4> Restart MariaDB </h4>
 
 To restart MariaDB, use the systemctl command "restart". Run with root privileges using the sudo command.
 
 <pre>
 sudo systemctl restart mariadb
-</ pre>
+</pre>
 
 restart simply executes the stop command and executes the start command.
 
-<h3> To see the MariaDB start / stop log </ h3>
+<h3> To see the MariaDB start / stop log </h3>
 
 Servers such as MariaDB are centrally managed by a program called systemd.
 
 MariaDB start / stop log is output to systemd log.
 
-Use the <a href="/blog/20200602135100.html"> journalctl command </a> to see the systemd logs. Specify the unit "mariadb" with the "-u" option. Please note that you will not be able to see the mariadb log unless you run it with sudo. If you want to see only the last part of the log, combine the "-r" option.
+Use the <a href="/blog/20200602135100.html"> journalctl command</a> to see the systemd logs. Specify the unit "mariadb" with the "-u" option. Please note that you will not be able to see the mariadb log unless you run it with sudo. If you want to see only the last part of the log, combine the "-r" option.
 
 <pre>
 sudo journalctl -r -u mariadb
-</ pre>
+</pre>
 
 This is a sample log.
 
@@ -142,26 +142,26 @@ Jul 22 13:24:35 shinshina-development-app-00000001 mysqld [1536]: 2020-07-22 13:
 Jul 22 13:24:33 shinshina-development-app-00000001 systemd [1]: Starting MariaDB 10.1.44 database server ...
 --Reboot -
 Jul 22 13:13:50 shinshina-development-app-00000001 systemd [1]: Stopped MariaDB 10.1.44 database server.
-Jul 22 13:13:47 shinshina-development-app-00000001 systemd [1]: Stopping MariaDB 10.1.44 database server ... </ pre>
+Jul 22 13:13:47 shinshina-development-app-00000001 systemd [1]: Stopping MariaDB 10.1.44 database server ... </pre>
 
-<h3> To see MariaDB's systemd configuration file </ h3>
+<h3> To see MariaDB's systemd configuration file </h3>
 
 MariaDB's systemd configuration file can be found under "systemctl status mariadb".
 
-Let's take a look at the configuration file with the <a href="https://en.linux.perlzemi.com/blog/20200113083613.html"> cat command </a>.
+Let's take a look at the configuration file with the <a href="https://en.linux.perlzemi.com/blog/20200113083613.html"> cat command</a>.
 
 <pre>
 cat /lib/systemd/system/mariadb.service
-</ pre>
+</pre>
 
-<h3> Other MariaDB information </ h3>
+<h3> Other MariaDB information </h3>
 
-<h4> To install MariaDB </ h4>
+<h4> To install MariaDB </h4>
 
 The following article explains how to install MariaDB.
 
-<a href="/blog/20200421174004.html"> Installing mariadb-server --MariaDB database server </a>
+<a href="/blog/20200421174004.html"> Installing mariadb-server --MariaDB database server</a>
 
-<h4> MariaDB configuration file </ h4>
+<h4> MariaDB configuration file </h4>
 
 MariaDB's configuration file will be discussed in another article.

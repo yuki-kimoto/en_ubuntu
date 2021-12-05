@@ -2,31 +2,31 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200819081929.html">
-        <span itemprop = "name"> Disk management </ span>
-      </a>
+        <span itemprop = "name"> Disk management </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Initial format of new physical disk and mounting on file system </ h2>
+<h2> Initial format of new physical disk and mounting on file system </h2>
 
 I will explain how to format a new disc initially. If you add a new physical disk, you need to perform the initial format before using it.
 
 Refer to the following for how to check the newly added physical disk.
 
-<a href="/blog/20200601085516.html"> Check the physically attached disk --fdisk -l </a>
+<a href="/blog/20200601085516.html"> Check the physically attached disk --fdisk -l</a>
 
-<h3> Create and format partition </ h3>
+<h3> Create and format partition </h3>
 
 First of all, create a partition. A partition is a logical disk.
 
@@ -46,13 +46,13 @@ The file system type is Ubuntu's default ext4. (This is just a hint on the parti
 
 <pre>
 sudo parted / dev / sdc --script mklabel gpt mkpart ext4part ext4 0% 100%
-</ pre>
+</pre>
 
 Let's confirm that the partition has been created.
 
 <pre>
 sudo fdisk -l
-</ pre>
+</pre>
 
 A partition called "/ dev / sdc1" will be created.
 
@@ -66,9 +66,9 @@ Disk identifier: D5DDBFFA-278E-417C-9DA7-7FF50891E1FD
 
 Device Start End Sectors Size Type
 / dev / sdc1 2048 2147481599 2147479552 1024G Linux filesystem
-</ pre>
+</pre>
 
-<h3> Creating a Linux file system </ h3>
+<h3> Creating a Linux file system </h3>
 
 Next, create a Linux file system for the partition.
 
@@ -78,7 +78,7 @@ Specify the partition as an argument.
 
 <pre>
 sudo mkfs.ext4 /dev/sdc1
-</ pre>
+</pre>
 
 This is a sample output result.
 
@@ -92,19 +92,19 @@ naming = version 2 bsize = 4096 ascii-ci = 0 ftype = 1
 log = internal log bsize = 4096 blocks = 131071, version = 2
          = sectsz = 4096 sunit = 1 blks, lazy-count = 1
 realtime = none extsz = 4096 blocks = 0, rtextents = 0
-</ pre>
+</pre>
 
 Use partprobe to immediately recognize it as a file system.
 
 <pre>
 sudo partprobe / dev / sdc1
-</ pre>
+</pre>
 
-Is the partition recognized as a Linux file system? Look at "/ dev" with the <a href="https://en.linux.perlzemi.com/blog/20191126082723.html"> ls command </a> Let's do it.
+Is the partition recognized as a Linux file system? Look at "/ dev" with the <a href="https://en.linux.perlzemi.com/blog/20191126082723.html"> ls command</a> Let's do it.
 
 <pre>
 ls / dev | grep sd
-</ pre>
+</pre>
 
 "/ Dev / sdc1" is recognized as a file system.
 
@@ -117,9 +117,9 @@ sdb
 sdb1
 sdc
 sdc1
-</ pre>
+</pre>
 
-<h3> Mount to file system </ h3>
+<h3> Mount to file system </h3>
 
 The last is mounting to the file system. "/ Dev / sdc1" is a device file that points to the partition. This is a special file and cannot be treated as a normal file system directory.
 
@@ -131,29 +131,29 @@ First, create an empty directory.
 
 <pre>
 sudo mkdir / datadrive
-</ pre>
+</pre>
 
 Then mount "/ dev / sdc2" with "/ datadrive".
 
 <pre>
 sudo mount / dev / sdc1 / datadrive
-</ pre>
+</pre>
 
 Use the df command to see if the mount was successful.
 
 <pre>
 df -h
-</ pre>
+</pre>
 
 "/ Dev / sdc1" is tied to "/ datadrive".
 
 <pre>
 / dev / sdc1 1.0T 1.1G 1023G 1% / datadrive
-</ pre>
+</pre>
 
 That's it. However, the mount is temporary and requires additional steps to mount automatically when Ubuntu restarts.
 
-<h3> Auto mount settings </ h3>
+<h3> Auto mount settings </h3>
 
 To mount automatically when Ubuntu is restarted, you first need to know an ID called UUID that can uniquely identify the partition.
 
@@ -161,7 +161,7 @@ Use the blkid command to get the UUID.
 
 <pre>
 sudo blkid
-</ pre>
+</pre>
 
 <pre>
 / dev / sda1: LABEL = "cloudimg-rootfs" UUID = "bdf328db-9606-49ba-8e44-5e1299ae56f0" TYPE = "ext4" PARTUUID = "179b1e79-bd71-4241-9557-8be63cbb8857"
@@ -169,7 +169,7 @@ sudo blkid
 / dev / sdb1: UUID = "61c57ec5-96f9-4c18-8d7e-d7b05dd48b76" TYPE = "ext4" PARTUUID = "a252cd85-01"
 / dev / sdc1: UUID = "c85b796f-b9ff-4b4d-9091-47327999d8aa" TYPE = "ext4" PARTLABEL = "ext4part" PARTUUID = "d2295ab7-22fb-49a2-a3d0-1a9819207562"
 / dev / sda14: PARTUUID = "bddfd6d3-8ef9-40d2-8fda-0083f3e0df9b"
-</ pre>
+</pre>
 
 Copy the UUID double quotes of the newly added partition "sdc1" and save it somewhere.
 
@@ -177,19 +177,19 @@ Next, make a backup of "/ etc / fstab" in case you get into a situation where yo
 
 <pre>
 sudo cp /etc/fstab /etc/fstab.original
-</ pre>
+</pre>
 
 Edit "/ etc / fstab". By writing to this config file, it will be mounted automatically on reboot.
 
 <pre>
 sudo vi / etc / fstab
-</ pre>
+</pre>
 
 Add the following line to "/ etc / fstab" using the UUID you copied in your environment.
 
 <pre>
 UUID = c85b796f-b9ff-4b4d-9091-47327999d8aa / datadrive ext4 defaults, nofail 1 2
-</ pre>
+</pre>
 
 If you specify nofail, you can restart even if the mount fails, so you can rest assured. 1 in the 5th column is 1 because it is a data disk whether to dump or not. 2 (2 or more) in the 6th column is specified when the file system is not the root etc. and normal data is stored.
 
@@ -198,13 +198,13 @@ If you make an incorrect setting for fstab, the OS will fail to restart with an 
 <pre>
 The disk drive for / datadrive is not ready yet or not present.
 Continue to wait, or Press S to skip mounting or M for manual recovery
-</ pre>
+</pre>
 
 Let's check how to recover from fstab error in VPS and each cloud service before doing it.
 
 In VPS and each cloud service, it seems that the procedure is to skip the mount from the console, restart the OS and fix "/ etc / fstab".
 
-<h3> How to use the new data area for other directories? </ h3>
+<h3> How to use the new data area for other directories? </h3>
 
 What if you want to use a new "/ datadrive" for "/ var / backup", for example?
 
@@ -215,19 +215,19 @@ Create a directory called "/ var / backup" in "/ datadrive" and create a symboli
 <pre>
 mkdir -p / datadrive / var / backup
 ls -s / datadrive / var / backup / var / backup
-</ pre>
+</pre>
 
-<h3> If you make a mistake and want to undo it </ h3>
+<h3> If you make a mistake and want to undo it </h3>
 
 This is an explanation when you make a mistake in the procedure and want to restore it.
 
-<h4> Unmount </ h4>
+<h4> Unmount </h4>
 
 Use the umount command to unmount.
 
 <pre>
 sudo umount / datadrive
-</ pre>
+</pre>
 
 If you are in a directory or using that directory with a cd etc., it will be busy and you will not be able to unmount it.
 
@@ -235,14 +235,14 @@ If someone is using it, you can check it with the following command.
 
 <pre>
 fuser -muv / datadrive
-</ pre>
+</pre>
 
 Make sure no one is inside before unmounting.
 
-<h4> Repartition </ h4>
+<h4> Repartition </h4>
 
 After dismounting, you can recreate the partition by rerunning the parted command.
 
-<h4> Recreate file system </ h4>
+<h4> Recreate file system </h4>
 
 The mkfs command also asks if you want to recreate the file system, so press y to proceed.

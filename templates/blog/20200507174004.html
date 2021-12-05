@@ -1,16 +1,16 @@
-<h2> Checking and setting the time zone --timedatectl command </ h2>
+<h2> Checking and setting the time zone --timedatectl command </h2>
 
-You can check and change the time zone with the <b> timedatectl command </ b>. The time zone sets how far each country's time is ahead of UTC time (Coordinated Universal Time).
+You can check and change the time zone with the <b> timedatectl command </b>. The time zone sets how far each country's time is ahead of UTC time (Coordinated Universal Time).
 
 In Japan, it is 9 hours ahead.
 
-<h3> Check time zone </ h3>
+<h3> Check time zone </h3>
 
 You can check the current time zone with the timedatectl command.
 
 <pre>
 timedatectl
-</ pre>
+</pre>
 
 The currently set time zone is displayed as shown below. The default is "UTC".
 
@@ -22,15 +22,15 @@ The currently set time zone is displayed as shown below. The default is "UTC".
        System clock synchronized: yes
 systemd-timesyncd.service active: yes
                  RTC in local TZ: no
-</ pre>
+</pre>
 
-<h3> List of available time zones </ h3>
+<h3> List of available time zones </h3>
 
 Use the "timedatectl list-timezones" command to display a list of available timezones.
 
 <pre>
 timedatectl list-timezones
-</ pre>
+</pre>
 
 You will see a lot. In the case of Japan, it is "Asia / Tokyo".
 
@@ -46,12 +46,12 @@ Asia / Urumqi
 Asia / Ust-Nera
 Asia / Vientiane
 Asia / Vladivostok
-</ pre>
+</pre>
 
-<h3> Change time zone </ h3>
+<h3> Change time zone </h3>
 
 Let's change the time zone. Use the "timedatectl set-timezone" command to change the timezone. For here in Japan, set "Asia / Tokyo". Execute with administrator privileges using the sudo command.
 
 <pre>
 sudo timedatectl set-timezone Asia / Tokyo
-</ pre>
+</pre>

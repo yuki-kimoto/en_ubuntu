@@ -2,61 +2,61 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200823150919.html">
-        <span itemprop = "name"> systemd </ span>
-      </a>
+        <span itemprop = "name"> systemd </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> systemctl --Managing server applications managed by systemd </ h2>
+<h2> systemctl --Managing server applications managed by systemd </h2>
 
-You can use the <b> systemctl </ b> command to manage server applications managed by systemd.
+You can use the <b> systemctl </b> command to manage server applications managed by systemd.
 
 Here, we will explain various commands using apache2.
 
-<h4> Start application </ h3>
+<h4> Start application </h3>
 
 Use the start command to start the application.
 
 <pre>
 sudo systemctl start apache2
-</ pre>
+</pre>
 
-<h4> Stop application </ h3>
+<h4> Stop application </h3>
 
 Use the stop command to stop the application.
 
 <pre>
 sudo systemctl stop apache2
-</ pre>
+</pre>
 
-<h4> Restart the application </ h3>
+<h4> Restart the application </h3>
 
 Use the restart command to restart the application.
 
 <pre>
 sudo systemctl restart apache2
-</ pre>
+</pre>
 
 After stop, start is executed.
 
-<h4> Application status </ h3>
+<h4> Application status </h3>
 
 Use the status command to see the status of the application.
 
 <pre>
 sudo systemctl status apache2
-</ pre>
+</pre>
 
 If the application is running, you should see something like this:
 
@@ -72,25 +72,25 @@ If the application is running, you should see something like this:
            tq1624 / usr / sbin / apache2 -k start
            tq1628 / usr / sbin / apache2 -k start
            mq1629 / usr / sbin / apache2 -k start
-</ pre>
+</pre>
 
-<h4> Application reload </ h3>
+<h4> Application reload </h3>
 
 If your application defines reload, you can use reload.
 
 <pre>
 sudo systemctl reload apache2
-</ pre>
+</pre>
 
-For <a href="/blog/20200526151435.html"> apache2 </a>, graceful start is defined, and for postfix, reloading of the configuration file is defined.
+For <a href="/blog/20200526151435.html"> apache2</a>, graceful start is defined, and for postfix, reloading of the configuration file is defined.
 
-<h3> View the systemd configuration file for each application </ h3>
+<h3> View the systemd configuration file for each application </h3>
 
 The systemd configuration file for each application is included in the "systemctl status" content.
 
 <pre>
 sudo systemctl status apache2
-</ pre>
+</pre>
 
 The following "/lib/systemd/system/apache2.service" is the systemd apache configuration file.
 
@@ -106,7 +106,7 @@ The following "/lib/systemd/system/apache2.service" is the systemd apache config
            tq1624 / usr / sbin / apache2 -k start
            tq1628 / usr / sbin / apache2 -k start
            mq1629 / usr / sbin / apache2 -k start
-</ pre>
+</pre>
 
 Let's use the cat command to look at the contents of "/lib/systemd/system/apache2.service".
 
@@ -126,21 +126,21 @@ Restart = on-abort
 
 [Install]
 WantedBy = multi-user.target
-</ pre>
+</pre>
 
-<h3> systemd configuration file </ h3>
+<h3> systemd configuration file </h3>
 
 The systemd configuration file is located in "/ lib / systemd / system". The following is the Apache configuration file.
 
 <pre>
 /lib/systemd/system/apache2.service
-</ pre>
+</pre>
 
-<h3> Added as a systemd service </ h3>
+<h3> Added as a systemd service </h3>
 
 To add a new application managed by systemd, add the configuration file in the directory where the systemd configuration file is located.
 
-Sample official documentation for creating a web application in Mojolicious and running it in hypnotoad with <a href="https://docs.mojolicious.org/Mojolicious/Guides/Cookbook"> systemd </a> looks like this:
+Sample official documentation for creating a web application in Mojolicious and running it in hypnotoad with <a href="https://docs.mojolicious.org/Mojolicious/Guides/Cookbook"> systemd</a> looks like this:
 
 <pre>
 [Unit]
@@ -156,12 +156,12 @@ KillMode = process
 
 [Install]
 WantedBy = multi-user.target
-</ pre>
+</pre>
 
 The file name should be as follows. The "mywebapp" part can be any name. Use vi to edit and add content.
 <pre>
 sudo vi /lib/systemd/system/mywebapp.service
-</ pre>
+</pre>
 
 If you register it as a service in systemd, you can automatically start the Web application when the OS is restarted.
 
@@ -169,4 +169,4 @@ You can check whether the configuration file is written correctly by checking th
 
 <pre>
 systemctl status mywebapp
-</ pre>
+</pre>

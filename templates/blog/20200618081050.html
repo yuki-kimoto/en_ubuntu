@@ -2,33 +2,33 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop = "name"> Apache </ span>
-      </a>
+        <span itemprop = "name"> Apache </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> HTTPS support-Automation of SSL certificate acquisition / renewal / renewal with Let's Encrypt </ h2>
+<h2> HTTPS support-Automation of SSL certificate acquisition / renewal / renewal with Let's Encrypt </h2>
 
 We will explain how to automate the acquisition, renewal, and renewal of Let's Encrypt SSL certificate.
 
-<h3> Prerequisites for obtaining an SSL certificate with Let's Encrypt </ h3>
+<h3> Prerequisites for obtaining an SSL certificate with Let's Encrypt </h3>
 
 In Let's Encrypt, the Let's Encrypt client accesses the web server and confirms that it is the domain owner, and issues an SSL certificate.
 
 Therefore, please note that it is necessary to finish the Apache settings, start the Web application, and connect with the reverse proxy as a prerequisite for building an HTTPS-compatible Web system development environment in Perl.
 
-<h4> Domain name and IP address settings on the DNS server </ h3>
+<h4> Domain name and IP address settings on the DNS server </h3>
 
 When operating on a production server, it is necessary to set the correspondence between the domain name and the IP address of the server associated with it on the DNS server.
 
@@ -36,39 +36,39 @@ In the DNS server settings for the service that acquired the domain, describe th
 
 Here, it is assumed that the A record of the domain name www.mydomain.example is set to the IP address "111.122.133.144" of the server.
 
-<h4> Install certbot </ h4>
+<h4> Install certbot </h4>
 
 Install Let's Encrypt's client application, certbot.
 
 <ul>
-  <li> <a href="/blog/20200319174004.html"> Installing certbot --Getting and Renewing Let's Encrypt SSL Certificate </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200319174004.html"> Installing certbot --Getting and Renewing Let's Encrypt SSL Certificate</a> </li>
+</ul>
 
-<h4> Launching a web application </ h4>
+<h4> Launching a web application </h4>
 
 Follow the steps below to start the web application.
 
 <ul>
-  <li> <a href="/blog/20200617081050.html"> Installing the web framework Mojolicious and running web applications </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200617081050.html"> Installing the web framework Mojolicious and running web applications</a> </li>
+</ul>
 
-<h4> Virtual host and reverse proxy settings </ h3>
+<h4> Virtual host and reverse proxy settings </h3>
 
 Follow the steps below to connect your web application from a reverse proxy.
 
 <ul>
-  <li> <a href="/blog/20200306174004.html"> Connect your web application from Apache with a virtual host and reverse proxy </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200306174004.html"> Connect your web application from Apache with a virtual host and reverse proxy</a> </li>
+</ul>
 
-<h4> Write Apache configuration file using self-SSL certificate </ h4>
+<h4> Write Apache configuration file using self-SSL certificate </h4>
 
 Follow the steps below to write your own SSL certificate.
 
 <ul>
-  <li> <a href="/blog/20200611082716.html"> Describe the SSL certificate settings in the Apache configuration file </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200611082716.html"> Describe the SSL certificate settings in the Apache configuration file</a> </li>
+</ul>
 
-<h3> Obtaining an SSL certificate with Let's Encrypt </ h3>
+<h3> Obtaining an SSL certificate with Let's Encrypt </h3>
 
 Let's assume that you have created a Mojolicious application with the user name myapp and the name Myapp under your home directory.
 
@@ -79,7 +79,7 @@ Execute the following certbot command.
 
 <pre>
 sudo certbot certonly --agree-tos --non-interactive -d www.mydomain.example --webroot -w /home/myapp/myapp/public --email kimoto.yuki@gmail.com
-</ pre>
+</pre>
 
 If you are asked if you want Apache to be auto-configured, select No.
 
@@ -89,25 +89,25 @@ The SSL certificate will be created in the following directory. From the top, th
 /etc/letsencrypt/live/www.mydomain.example/cert.pem
 /etc/letsencrypt/live/www.mydomain.example/privkey.pem
 /etc/letsencrypt/live/www.mydomain.example/chain.pem
-</ pre>
+</pre>
 
 Follow the steps below to add the SSL certificate to the Apache configuration file.
 
 <ul>
-  <li> <a href="/blog/20200611082716.html"> Describe the SSL certificate settings in the Apache configuration file </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200611082716.html"> Describe the SSL certificate settings in the Apache configuration file</a> </li>
+</ul>
 
-<h3> Renewing SSL certificate with Let's Encrypt </ h3>
+<h3> Renewing SSL certificate with Let's Encrypt </h3>
 
 Use the "certbot renew" command to renew the SSL certificate with Let's Encrypt. All the SSL certificates obtained will be checked for renewal, and if the renewal period is within one month, the certificate will be renewed.
 
 <pre>
 sudo certbot renew -q --no-self-upgrade --post-hook "systemctl reload apache2"
-</ pre>
+</pre>
 
-Please note that after updating the SSL certificate, Apache will be restarted with the <a href="/blog/20200605104005.html"> systemctl </a> command in order to reload the SSL certificate. .. If the configuration file is incorrect, Apache will stop.
+Please note that after updating the SSL certificate, Apache will be restarted with the <a href="/blog/20200605104005.html"> systemctl</a> command in order to reload the SSL certificate. .. If the configuration file is incorrect, Apache will stop.
 
-<h3> Automation of SSL certificate renewal with Let's Encrypt </ h3>
+<h3> Automation of SSL certificate renewal with Let's Encrypt </h3>
 
 Manually updating the SSL certificate with Let's Encrypt is tedious. Let's set it to update automatically once a week.
 
@@ -117,16 +117,16 @@ If it is once a month, I feel that it is easier to check if it is wrong if you i
 
 So, here, I will update it once a week at 9 o'clock on Monday.
 
-<h4> Set root crontab </ h4>
+<h4> Set root crontab </h4>
 
 Let's set up a root crontab.
 
 <pre>
 sudo crontab
-</ pre>
+</pre>
 
-When crontab starts, write the following contents. Click here for how to use <a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi </a>.
+When crontab starts, write the following contents. Click here for how to use <a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi</a>.
 
 <pre>
 0 9 * * 1 certbot renew -q --no-self-upgrade --post-hook "systemctl reload apache2"
-</ pre>
+</pre>

@@ -2,29 +2,29 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200723101434.html">
-        <span itemprop = "name"> User Management </ span>
-      </a>
+        <span itemprop = "name"> User Management </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> useradd command-add user </ h2>
+<h2> useradd command-add user </h2>
 
-You can add users using the <b> useradd </ b> command.
+You can add users using the <b> useradd </b> command.
 
 You must have root privileges to add users. Let's work with root privileges using sudo. If you use sudo, you will be asked for the root password, so enter the root password.
 
-Use the <b> useradd </ b> command to add users. If you want to create a user directory, use the "-m" option.
+Use the <b> useradd </b> command to add users. If you want to create a user directory, use the "-m" option.
 
 First, create a user for running the web application with the name "myapp". This is intended for users running web applications and running batch programs in a production environment. Use the "-m" option to create a home directory, and the "-s" option to specify a shell. In Ubuntu, if nothing is specified, it will be "/ bin / sh", so leave it as "/ bin / bash".
 
@@ -34,40 +34,40 @@ sudo useradd -m myapp -s / bin / bash
 
 #Add user (no home directory)
 sudo useradd myapp
-</ pre>
+</pre>
 
 If you have a developer user, it's a good idea to create that user as well. The procedure, such as setting a password, is the same as for the myapp user.
 
 <pre>
 #Add user (with home directory, use bash shell)
 sudo useradd -m kimoto -s / bin / bash
-</ pre>
+</pre>
 
-<h4> Password setting </ h4>
+<h4> Password setting </h4>
 
-After adding the user, set the password as well. Use the <a href="/blog/20200510173052.html"> passwd command </a>.
+After adding the user, set the password as well. Use the <a href="/blog/20200510173052.html"> passwd command</a>.
 
 <pre>
 sudo passwd myapp
-</ pre>
+</pre>
 
 You will be asked to enter the password and re-enter it for confirmation, so set it.
 
-<h4> Join sudo group </ h4>
+<h4> Join sudo group </h4>
 
-If you want to register this user as a sudo user with root privileges, add it to the sudo group using the <a href="/blog/20200330174004.html"> gpasswd </a> command.
+If you want to register this user as a sudo user with root privileges, add it to the sudo group using the <a href="/blog/20200330174004.html"> gpasswd</a> command.
 
 <pre>
 sudo gpasswd -a myapp sudo
-</ pre>
+</pre>
 
-<h4> I added a user by mistake and want to delete it </ h4>
+<h4> I added a user by mistake and want to delete it </h4>
 
 If you accidentally added a user and want to remove it, use "userdel".
 
 <pre>
 sudo userdel myapp
-</ pre>
+</pre>
 
 Rest assured that the contents of your home directory and emails will not be deleted.
 
@@ -78,37 +78,37 @@ You need to do it when the user isn't using the process, or check the process an
 <pre>
 #Check process
 ps -ef
-</ pre>
+</pre>
 
-<h3> Other user management operations </ h3>
+<h3> Other user management operations </h3>
 
 User deletion.
 
 <ul>
-  <li> <a href="/blog/20200402174004.html"> Delete user --userdel command </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200402174004.html"> Delete user --userdel command</a> </li>
+</ul>
 
 User list.
 
 <ul>
-  <li> <a href="/blog/20200401174004.html"> "/ etc / passwd" file that displays a list of users </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200401174004.html"> "/ etc / passwd" file that displays a list of users</a> </li>
+</ul>
 
-<h3> What to do if the useradd option is incorrect </ h3>
+<h3> What to do if the useradd option is incorrect </h3>
 
-<h4> If you forget to add the option "-m" in your home directory </ h4>
+<h4> If you forget to add the option "-m" in your home directory </h4>
 
 Delete the user with userdel and create the user again with useradd.
 
 <pre>
 sudo userdel myapp
 sudo useradd -m myapp -s / bin / bash
-</ pre>
+</pre>
 
-<h4> If you forget to add the default shell option "-s" </ h4>
+<h4> If you forget to add the default shell option "-s" </h4>
 
 You can fix it with usermod.
 
 <pre>
 sudo usermod -s / bin / bash myapp
-</ pre>
+</pre>

@@ -2,59 +2,59 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop = "name"> Package management </ span>
-      </a>
+        <span itemprop = "name"> Package management </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
-<h2> Redis-server installation --Redis server fast storage of volatile data and Pub / Sub </ h2>
+    </li>
+  </ul>
+</div>
+<h2> Redis-server installation --Redis server fast storage of volatile data and Pub / Sub </h2>
 
-To install the Redis server, install the redis-server package with the <a href="/blog/20200530085516.html"> apt </a> command.
+To install the Redis server, install the redis-server package with the <a href="/blog/20200530085516.html"> apt</a> command.
 
 <pre>
 sudo apt install -y redis-server
-</ pre>
+</pre>
 
-<h4> Confirm that the Redis server is installed </ h4>
+<h4> Confirm that the Redis server is installed </h4>
 
-Let's confirm that the Redis server is installed with the status command of <a href="/blog/20200605104005.html"> systemctl </a>.
+Let's confirm that the Redis server is installed with the status command of <a href="/blog/20200605104005.html"> systemctl</a>.
 
 <pre>
 sudo systemctl status redis-server
-</ pre>
+</pre>
 
-<h3> Redis client --redis-cli </ h4>
+<h3> Redis client --redis-cli </h4>
 
 Installing the Redis server also installs a command-line application called redis-cli that allows you to run Redis commands.
 
 <ul>
-  <li> <a href="/blog/20200720125704.html"> redis-cli --Run Redis command from Redis client </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200720125704.html"> redis-cli --Run Redis command from Redis client</a> </li>
+</ul>
 
-<h3> Use of Redis server </ h3>
+<h3> Use of Redis server </h3>
 
 Redis servers have two main uses.
 
-<h4> High-speed storage of volatile data </ ​​h4>
+<h4> High-speed storage of volatile data </​​h4>
 
 Redis servers can store volatile data at high speeds.
 
 Volatile data is data that is temporary and is scheduled to be erased.
 
 The session information will be erased for a certain period of time, and if it disappears, you just have to ask the user to start over from the login screen. Session information is volatile data.
-Also, since the session must be fetched for each HTTP request, Redis performs better than a relational database like <a href="https://en.mariadb.perlzemi.com/"> MariaDB </a>. Is good.
+Also, since the session must be fetched for each HTTP request, Redis performs better than a relational database like <a href="https://en.mariadb.perlzemi.com/"> MariaDB</a>. Is good.
 
-<h4> Pub / Sub push notifications </ h4>
+<h4> Pub / Sub push notifications </h4>
 
 Redis has a push notification mechanism called Pub / Sub, so it's relatively easy to implement in the areas of real-time chat and real-time updates.
 
@@ -63,5 +63,5 @@ Redis has a web API, so if your web framework supports non-blocking, you can acc
 Please refer to the following for a sample of real-time chat using Mojolicious, WebSocket, and Redis.
 
 <ul>
-  <li> <a href="https://en.mojolicious.perlzemi.com/blog/20100403127089.html"> Sample real-time chat using Mojolicious, WebSocket, Redis </a>
-</ ul>
+  <li> <a href="https://en.mojolicious.perlzemi.com/blog/20100403127089.html"> Sample real-time chat using Mojolicious, WebSocket, Redis</a>
+</ul>

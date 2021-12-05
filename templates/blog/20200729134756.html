@@ -2,37 +2,37 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200827123127.html">
-        <span itemprop = "name"> Perl </ span>
-      </a>
+        <span itemprop = "name"> Perl </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Deploying web applications with Mojolicious </ h2>
+<h2> Deploying web applications with Mojolicious </h2>
 
-This is an explanation of how to deploy a web application with Mojolicious. <a href="https://en.mojolicious.perlzemi.com/"> Mojolicious </a> is a scalable <a href="https://en.perlzemi.com/"> for the real-time web. Perl </a> web framework.
+This is an explanation of how to deploy a web application with Mojolicious. <a href="https://en.mojolicious.perlzemi.com/"> Mojolicious</a> is a scalable <a href="https://en.perlzemi.com/"> for the real-time web. Perl</a> web framework.
 
-<h3> Install Mojolicious </ h3>
+<h3> Install Mojolicious </h3>
 
-Install Mojolicious. <a href="/blog/20200413174004.html"> User Perl and cpanm must be installed </a>.
+Install Mojolicious. <a href="/blog/20200413174004.html"> User Perl and cpanm must be installed</a>.
 
 <pre>
 cpanm Mojolicious
-</ pre>
+</pre>
 
-<h3> Creating a Mojolicious application </ h3>
+<h3> Creating a Mojolicious application </h3>
 
-<a href="https://mojolicious.org/"> Mojolicious </a> Let's create an application.
+<a href="https://mojolicious.org/"> Mojolicious</a> Let's create an application.
 
 The application name is "Webapp".
 
@@ -40,24 +40,24 @@ Run the "mojo generate app" command to create a Mojolicious application.
 
 <pre>
 mojo generate app web app
-</ pre>
+</pre>
 
 A directory called webapp will be created and the Mojolicious application will be placed in it.
 
-<h3> Start Mojolicious's development server </ h3>
+<h3> Start Mojolicious's development server </h3>
 
-Start the Mojolicious development server with the <a href="https://en.mojolicious.perlzemi.com/blog/20120406133367.html"> morbo </a> command.
+Start the Mojolicious development server with the <a href="https://en.mojolicious.perlzemi.com/blog/20120406133367.html"> morbo</a> command.
 
 <pre>
 cd ~ / webapp
 morbo script / webapp
-</ pre>
+</pre>
 
 The port number is 3000 and the web application starts.
 
 <pre>
 Web application available at http://127.0.0.1:3000
-</ pre>
+</pre>
 
 The "127.0.0.1" part is the loopback address, so let's change it to the IP address of the server and access it.
 
@@ -65,7 +65,7 @@ If the IP address of the server is "132.165.23.8", you can access it with the fo
 
 <pre>
 http://132.165.23.8:3000
-</ pre>
+</pre>
 
 If you can't access it, make sure your network firewall settings allow port 3000.
 
@@ -73,38 +73,38 @@ If successful, the screen will display "Welcome to the Mojolicious real-time web
 
 You can exit with "Ctrl + C".
 
-<h3> Start Mojolicious production server </ h3>
+<h3> Start Mojolicious production server </h3>
 
-Start Mojolicious's production server with the <a href="https://en.mojolicious.perlzemi.com/blog/20110122130016.html"> hypnotoad </a> command. hypnotoad is a Mojolicious production server with a prefork + asynchronous I / O implementation and performance optimized.
+Start Mojolicious's production server with the <a href="https://en.mojolicious.perlzemi.com/blog/20110122130016.html"> hypnotoad</a> command. hypnotoad is a Mojolicious production server with a prefork + asynchronous I / O implementation and performance optimized.
 
 <pre>
 cd ~ / webapp
 hypnotoad script / webapp
-</ pre>
+</pre>
 
 <pre>
 Web application available at http://127.0.0.1:8080
-</ pre>
+</pre>
 
 Port number 8080 is closed, so use the curl command on the command line to check. If "I? Mojolicious!" Is displayed, the production server has started correctly.
 
 <pre>
 curl http://127.0.0.1:8080
-</ pre>
+</pre>
 
 Use the "--stop" option to stop.
 
 <pre>
 hypnotoad script / webapp --stop
-</ pre>
+</pre>
 
 If you want to change the port number, you can change it with the listen option in the configuration file. The configuration file name is "webapp.conf".
 
-<h3> Items required in the Mojolicious configuration file to connect to the reverse proxy </ h3>
+<h3> Items required in the Mojolicious configuration file to connect to the reverse proxy </h3>
 
-When connecting to a reverse proxy, at least the required items in the <a href="https://en.mojodoc.perlzemi.com/Mojo :: Server :: Hypnotoad.html"> Mojolicious configuration file </a> are required. ,It is less than.
+When connecting to a reverse proxy, at least the required items in the <a href="https://en.mojodoc.perlzemi.com/Mojo :: Server :: Hypnotoad.html"> Mojolicious configuration file</a> are required. ,It is less than.
 
-<h4> If the configuration file is webapp.conf </ h4>
+<h4> If the configuration file is webapp.conf </h4>
 
 If the setting file name is webapp.conf, add the following settings.
 
@@ -113,27 +113,27 @@ If the setting file name is webapp.conf, add the following settings.
 {
   hypnotoad => {proxy => 1}
 };;
-</ pre>
+</pre>
 
-<h4> When the configuration file is webapp.yml </ h4>
+<h4> When the configuration file is webapp.yml </h4>
 
 If the configuration file is webapp.yml, add the following settings. (Mojolicious 8.58 or later)
 
 <pre>
 hypnotoad:
   proxy: 1
-</ pre>
+</pre>
 
 Let's check if it can be started with the above settings.
 
 <pre>
 hypnotoad script / webapp
-</ pre>
+</pre>
 
-<h3> Connecting to a web application by reverse pixi from Apache </ h3>
+<h3> Connecting to a web application by reverse pixi from Apache </h3>
 
-Please refer to the following for how to connect from <a href="/blog/20200526151435.html"> Apache </a> from a reverse proxy and publish a web application on the Internet.
+Please refer to the following for how to connect from <a href="/blog/20200526151435.html"> Apache</a> from a reverse proxy and publish a web application on the Internet.
 
 <ul>
-  <li> <a href="/blog/20200306174004.html"> Connect your website from Apache with a virtual host and reverse proxy </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200306174004.html"> Connect your website from Apache with a virtual host and reverse proxy</a> </li>
+</ul>

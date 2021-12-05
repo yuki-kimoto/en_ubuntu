@@ -2,72 +2,72 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop = "name"> Apache </ span>
-      </a>
+        <span itemprop = "name"> Apache </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Enable mod_ssl to allow Apache to communicate over HTTPS </ h2>
+<h2> Enable mod_ssl to allow Apache to communicate over HTTPS </h2>
 
 Let's enable mod_ssl so that we can communicate over HTTPS. a2enmod seems to be an abbreviation for "Apache2 Enable Module".
 
 <pre>
 sudo a2enmod ssl
-</ pre>
+</pre>
 
 The a2enmod command enables loading of the specified module from the available modules.
 
 The activation of the configuration file is completed with just a command without editing the file.
 
-To understand how it works, take a look at the Apache configuration file directory with the <a href="https://en.linux.perlzemi.com/blog/20191126082723.html"> ls command </a>. prize.
+To understand how it works, take a look at the Apache configuration file directory with the <a href="https://en.linux.perlzemi.com/blog/20191126082723.html"> ls command</a>. prize.
 
 <pre>
 ls / etc / apache2
-</ pre>
+</pre>
 
 It is less than.
 
 <pre>
 apache2.conf conf-enabled magic mods-enabled sites-available
 conf-available envvars mods-available ports.conf sites-enabled
-</ pre>
+</pre>
 
 In "mods-available" there is a file called ssl.conf. Check with ls and grep.
 
 <pre>
 ls / etc / apache2 / mods-available | grep ssl
-</ pre>
+</pre>
 
 Certainly there is "ssl.conf".
 
 <pre>
 ssl.conf
 ssl.load
-</ pre>
+</pre>
 
 Let's take a look inside "mods-enabled". This is the configuration file that is actually loaded.
 
 <pre>
 ls / etc / apache2 / mods-enabled | grep ssl
-</ pre>
+</pre>
 
 There is "ssl.conf".
 
 <pre>
 ssl.conf
 ssl.load
-</ pre>
+</pre>
 
 You can enable / disable it depending on whether the configuration file exists in "mods-enabled".
 

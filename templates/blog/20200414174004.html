@@ -1,19 +1,19 @@
-<h2> hosts file "/ etc / hosts" --Correspondence between host name and IP address </ h2>
+<h2> hosts file "/ etc / hosts" --Correspondence between host name and IP address </h2>
 
 The hosts file is a file that describes the correspondence between IP addresses and host names.
 
 <pre>
 cat / etc / hosts
-</ pre>
+</pre>
 
 By default, the correspondence between localhost and the loopback address is written. IPv4 and IPv6.
 
 <pre>
 127.0.0.1 localhost.localdomain localhost
 :: 1 localhost6.localdomain6 localhost6
-</ pre>
+</pre>
 
-<h3> Automatic IP address resolution in applications that handle host names </ h3>
+<h3> Automatic IP address resolution in applications that handle host names </h3>
 
 The role of the hosts file is to allow applications that work with hostnames to resolve IP addresses automatically.
 
@@ -21,7 +21,7 @@ Use vi to edit the hosts file.
 
 <pre>
 sudo vi / etc / hosts
-</ pre>
+</pre>
 
 For example, suppose an application that connects to a database describes the host to connect to the database.
 
@@ -29,7 +29,7 @@ In this case, the development environment and the production environment have di
 
 <pre>
 13.66.226.204 database
-</ pre>
+</pre>
 
 This is a sample using the host name in the mysql command. If you define the correspondence with the IP address in the development environment and the production environment, you can connect with the same description.
 
@@ -39,4 +39,4 @@ mysql -h 13.66.226.204 -ukimoto -p
 
 #Specified by host name
 mysql -h database -ukimoto -p
-</ pre>
+</pre>

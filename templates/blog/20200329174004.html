@@ -2,32 +2,32 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200723101434.html">
-        <span itemprop = "name"> User Management </ span>
-      </a>
+        <span itemprop = "name"> User Management </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Remove user from group --gpasswd -d </ h2>
+<h2> Remove user from group --gpasswd -d </h2>
 
-Use "gpasswd -d" to remove a user from the group. Execute with root privileges with <a href="/blog/20200406174004.html"> sudo </a>.
+Use "gpasswd -d" to remove a user from the group. Execute with root privileges with <a href="/blog/20200406174004.html"> sudo</a>.
 
 <pre>
 sudo gpasswd -d username group name
-</ pre>
+</pre>
 
 This is a sample to remove kimoto from the myapp-group group.
 
 <pre>
 sudo gpasswd -d kimoto myapp-group
-</ pre>
+</pre>

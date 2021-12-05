@@ -1,25 +1,25 @@
-<h2> Create a private / public key pair for SSH public key authentication with ssh-keygen </ h2>
+<h2> Create a private / public key pair for SSH public key authentication with ssh-keygen </h2>
 
-Using the <b> ssh-keygen </ b> command, <a href="https://en.linux.perlzemi.com/blog/20200621103220.html"> SSH </a> secret for public key authentication You can create a key / public key pair.
+Using the <b> ssh-keygen </b> command, <a href="https://en.linux.perlzemi.com/blog/20200621103220.html"> SSH</a> secret for public key authentication You can create a key / public key pair.
 
-First, move to the directory "~ / .ssh" where you want to save the SSH private key. In this directory, use the <b> ssh-keygen </ b> command to create a private / public key pair.
+First, move to the directory "~ / .ssh" where you want to save the SSH private key. In this directory, use the <b> ssh-keygen </b> command to create a private / public key pair.
 
 <pre>
 cd ~ / .ssh
-</ pre>
+</pre>
 
-If the "~ / .ssh" directory does not exist, create it with the <a href="https://en.linux.perlzemi.com/blog/20191211133524.html"> mkdir </a> command. .. It is recommended to specify permission 700, as improper permissions can cause trouble. The permissions are set with the <a href="https://en.linux.perlzemi.com/blog/20200519082545.html"> chmod </a> command.
+If the "~ / .ssh" directory does not exist, create it with the <a href="https://en.linux.perlzemi.com/blog/20191211133524.html"> mkdir</a> command. .. It is recommended to specify permission 700, as improper permissions can cause trouble. The permissions are set with the <a href="https://en.linux.perlzemi.com/blog/20200519082545.html"> chmod</a> command.
 
 <pre>
 mkdir -p ~ / .ssh
 chmod 700 ~ / .ssh
-</ pre>
+</pre>
 
-To generate a public / private key pair, run the <b> ssh-keygen </ b> command.
+To generate a public / private key pair, run the <b> ssh-keygen </b> command.
 
 <pre>
 ssh-keygen -t rsa
-</ pre>
+</pre>
 
 You will be asked for the name of the file to generate, so enter "id_rsa_example". Change the example part according to the purpose.
 
@@ -29,15 +29,15 @@ When asked to enter a passphrase, press the passphrase to enter the passphrase, 
 
 A passphrase is "a thing that is set in the private key file for the purpose of protecting the key" and is "separate from the login password".
 
-<h3> Private key </ h3>
+<h3> Private key </h3>
 
-<h4> Contents of private key </ h4>
+<h4> Contents of private key </h4>
 
-Let's display the contents of "id_rsa_example" with the <a href="https://en.linux.perlzemi.com/blog/20200113083613.html"> cat </a> command.
+Let's display the contents of "id_rsa_example" with the <a href="https://en.linux.perlzemi.com/blog/20200113083613.html"> cat</a> command.
 
 <pre>
 cat id_rsa_example
-</ pre>
+</pre>
 
 It will be displayed as follows.
 
@@ -69,49 +69,49 @@ PL9N6QKBgAzbxGL41apbLHuZ + duuz5D8Kbolhcke61 + MSXNjvJIvOJruDt6F8TZY
 mJ4gSaRUf9C9315 + kRg0UmZafRNW6rVYcxbU9sDVLMPWS1LYd3JXx03Ac5sHK7Ks
 BxFxFujQ1PG44DZBGRWoUGht + Bu / ZBtf9faiS8yR6U5p9AKARGE2
 ----- END RSA PRIVATE KEY -----
-</ pre>
+</pre>
 
-<h4> Private key permissions are 600 </ h4>
+<h4> Private key permissions are 600 </h4>
 
-The private key permission must be 600. If created using ssh-keygen, the permissions will be set to 600, but if you have copied the contents of the private key from another server, <a href="https://en.linux.perlzemi. Use the com / blog / 20200519082545.html "> chmod </a> command to set the permissions to 600.
+The private key permission must be 600. If created using ssh-keygen, the permissions will be set to 600, but if you have copied the contents of the private key from another server, <a href="https://en.linux.perlzemi. Use the com / blog / 20200519082545.html "> chmod</a> command to set the permissions to 600.
 
 <pre>
 chmod 600 id_rsa_example
-</ pre>
+</pre>
 
-<h4> The private key used by default for the ssh command is id_rsa </ h4>
+<h4> The private key used by default for the ssh command is id_rsa </h4>
 
 The private key used by default is id_rsa. If you don't know this, you'll be confused if you use your private key for SSH public key authentication. For information on how to specify the private key file and how to specify the path of the private key file to a specific domain in the configuration file, refer to the ssh command article.
 
 The SSH client uses a private / public key pair to connect to the SSH server. If you don't have a public key, it will generate one from your private key.
 
 <ul>
-  <li> <a href="/blog/20200621103220.html"> ssh command --connect to SSH server </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200621103220.html"> ssh command --connect to SSH server</a> </li>
+</ul>
 
-<h3> Public key </ h3>
+<h3> Public key </h3>
 
-<h4> Contents of public key </ h4>
+<h4> Contents of public key </h4>
 
-Let's display the contents of "id_rsa_example.pub" with the <a href="https://en.linux.perlzemi.com/blog/20200113083613.html"> cat </a> command.
+Let's display the contents of "id_rsa_example.pub" with the <a href="https://en.linux.perlzemi.com/blog/20200113083613.html"> cat</a> command.
 
 <pre>
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjSsucYA958wTIKUcPRXC2iZxb84FXkzm41 / jzpfnUeBFsypS8xfTXpfDaSIYeMDyr9pIUfDuWWPykoofL4WZaJYDy5pQclFwby / KttDRAnm0XZQ2ZDUtnrUUdva55mxOcTJP0c1VWXpwrhBA + JSFLOGB8wxCV8UFh9XWXI4c5QKQ / Hyl8 // nXT6suQf199VNf4Ru31rs + 49FDW9FyvoX1GGEEBJCT2ROVD6qi1xY766PuhM / 4OMQeIxZmZg8ysML307viqkKh / 2mecwkdV1mxGQt8GbO3gvTOX5h9p7tGEwa3zSHhxudux1Kf6Pfcg4FwKuld8r77DKMXEszpRI11 myapp @ myhost
-</ pre>
+</pre>
 
 This is the content of the public key registered on the remote server.
 
-<h4> Registration of public key on the server side </ h4>
+<h4> Registration of public key on the server side </h4>
 
-To set the public key generated on the client side on the server side, register it in "~ / .ssh / authorized_keys". Please note that the public key file created by ssh-keygen is not installed as it is. Open "~ / .ssh / authorized_keys" with the <a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi </a> command and register the public key.
+To set the public key generated on the client side on the server side, register it in "~ / .ssh / authorized_keys". Please note that the public key file created by ssh-keygen is not installed as it is. Open "~ / .ssh / authorized_keys" with the <a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi</a> command and register the public key.
 
 <pre>
 vi ~ / .ssh / authorized_keys
-</ pre>
+</pre>
 
 <pre>
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjSsucYA958wTIKUcPRXC2iZxb84FXkzm41 / jzpfnUeBFsypS8xfTXpfDaSIYeMDyr9pIUfDuWWPykoofL4WZaJYDy5pQclFwby / KttDRAnm0XZQ2ZDUtnrUUdva55mxOcTJP0c1VWXpwrhBA + JSFLOGB8wxCV8UFh9XWXI4c5QKQ / Hyl8 // nXT6suQf199VNf4Ru31rs + 49FDW9FyvoX1GGEEBJCT2ROVD6qi1xY766PuhM / 4OMQeIxZmZg8ysML307viqkKh / 2mecwkdV1mxGQt8GbO3gvTOX5h9p7tGEwa3zSHhxudux1Kf6Pfcg4FwKuld8r77DKMXEszpRI11 myapp @ myhost
-</ pre>
+</pre>
 
 "Authorized_keys" can register multiple public keys, and you can also set each public key.
 
@@ -120,28 +120,28 @@ If you want to register more than one, please change the line.
 <pre>
 ssh-rsa AAAAB3NzaC1yc2EAAAAADAQABAAABAQCjSsucYA958wTIKUcPRXC2iZxb84FXkzm41 / jzpfnUeBFsypS8xfTXpfDaSIYeMDyr9pIUfDuWWPykoofL4WZaJYDy5pQclFwby / KttDRAnm0XZQ2ZDUtnrUUdva55mxOcTJP0c1VWXpwrhBA + JSFLOGB8wxCV8UFh9XWXI4c5QKQ / Hyl8 // nXT6suQf199VNf4Ru31rs + 49FDW9FyvoX1GGEEBJCT2ROVD6qi1xY766PuhM / 4OMQeIxZmZg8ysML307viqkKh / 2mecwkdV1mxGQt8GbO3gvTOX5h9p7tGEwa3zSHhxudux1Kf6Pfcg4FwKuld8r77DKMXEszpRI11 myapp @ myhost
 ssh-rsa CCCAB3NzaC1yc2EAAAADAQAnAABAQCjSsucYA958wTIKUcPRXC2iZxb84FXkzm41 / jzpfnUeBFsypS8xfTXpfDaSIYeMDyr9pIUfDuWWPykoofL4WZaJYDy5pQclFwby / KttDRAnm0XZQ2ZDUtnrUUdva55mxOcTJP0c1VWXpwrhBA + JSFLOGB8wxCV8UFh9XWXI4c5QKQ / Hyl8 // nXT6suQf199VNf4Ru31rs + 49FDW9FyvoX1GGEEBJCT2ROVD6qi1xY766PuhM / 4OMQeIxZmZg8ysML307viqkKh / 2mecwkdV1mxGQt8GbO3gvTOX5h9p7tGEwa3zSHhxudux1Kf6Pfcg4FwKuld8r77DKMXEszpRI11 myapp2 @ myhost
-</ pre>
+</pre>
 
 Let's set the permission to 600. This is not required, but 600 is recommended.
 
 <pre>
 chmod 600 ~ / .ssh / authorized_keys
-</ pre>
+</pre>
 
-<h3> Example of using SSH public key authentication </ h3>
+<h3> Example of using SSH public key authentication </h3>
 
-<h4> Automation of backup with rsync </ h4>
+<h4> Automation of backup with rsync </h4>
 
-When automating backup with <a href="/blog/20190130171737.html"> rsync </a>, if you are asked to enter a password, it cannot be automated, so use SSH public key authentication to authenticate SSH users. I will do it.
+When automating backup with <a href="/blog/20190130171737.html"> rsync</a>, if you are asked to enter a password, it cannot be automated, so use SSH public key authentication to authenticate SSH users. I will do it.
 
-<h4> User login </ h4>
+<h4> User login </h4>
 
 If you want to authenticate the SSH key to SSH login instead of the user's password.
 
-<h4> Github </ h4>
+<h4> Github </h4>
 
 When you use SSH on Github to get / update the Git repository, you need to register the public key on Github.
 
 <ul>
-  <li> <a href="/blog/20200613091136.html"> Register your public key on Github </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200613091136.html"> Register your public key on Github</a> </li>
+</ul>

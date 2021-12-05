@@ -2,37 +2,37 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop = "name"> Apache </ span>
-      </a>
+        <span itemprop = "name"> Apache </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Apache access log and error log locations </ h2>
+<h2> Apache access log and error log locations </h2>
 
 The location of Apache access logs and error logs on Ubuntu is defined by the environment variable "APACHE_LOG_DIR".
 
-It is defined in the "envvars" file in the <a href="/blog/20200317174004.html"> directory where the Apache configuration files are located </a>.
+It is defined in the "envvars" file in the <a href="/blog/20200317174004.html"> directory where the Apache configuration files are located</a>.
 
 <pre>
 export APACHE_LOG_DIR = / var / log / apache2 $ SUFFIX
-</ pre>
+</pre>
 
 $ SUFFIX is an empty string when only one Apache is running, so the Apache log directory will be "/ var / log / apache2".
 
 <pre>
 sudo ls / var / log / apache2
-</ pre>
+</pre>
 
 <pre>
 access.log access.log.13.gz access.log.5.gz error.log error.log.13.gz error.log.5.gz other_vhosts_access.log other_vhosts_access.log.13.gz other_vhosts_access.log.5. gz
@@ -40,6 +40,6 @@ access.log.1 access.log.14.gz access.log.6.gz error.log.1 error.log.14.gz error.
 access.log.10.gz access.log.2.gz access.log.7.gz error.log.10.gz error.log.2.gz error.log.7.gz other_vhosts_access.log.10.gz other_vhosts_access .log.2.gz other_vhosts_access.log.7.gz
 access.log.11.gz access.log.3.gz access.log.8.gz error.log.11.gz error.log.3.gz error.log.8.gz other_vhosts_access.log.11.gz other_vhosts_access .log.3.gz other_vhosts_access.log.8.gz
 access.log.12.gz access.log.4.gz access.log.9.gz error.log.12.gz error.log.4.gz error.log.9.gz other_vhosts_access.log.12.gz other_vhosts_access .log.4.gz other_vhosts_access.log.9.gz
-</ pre>
+</pre>
 
-Except for the latest and the previous access log, it seems to be compressed to <a href="https://en.linux.perlzemi.com/blog/20200608103245.html"> GZIP format </a>.
+Except for the latest and the previous access log, it seems to be compressed to <a href="https://en.linux.perlzemi.com/blog/20200608103245.html"> GZIP format</a>.

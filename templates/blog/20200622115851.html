@@ -2,85 +2,85 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200827123127.html">
-        <span itemprop = "name"> Perl </ span>
-      </a>
+        <span itemprop = "name"> Perl </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Install Image :: Magick with cpanm on user Perl </ h2>
+<h2> Install Image :: Magick with cpanm on user Perl </h2>
 
 How to install Image :: Magic with cpanm in user Perl.
 
 First of all, the Image :: Magick module is a very difficult module to install in Perl in your environment with cpanm. It is not easy to install with cpanm and you have to manually rewrite Makefile.PL.
 
-When performing image processing in a new Perl system development, an image editing module called <a href="https://en.perlzemi.com/blog/20110820131832.html"> Imager </a> written in Perl. There is, so let's try this first.
+When performing image processing in a new Perl system development, an image editing module called <a href="https://en.perlzemi.com/blog/20110820131832.html"> Imager</a> written in Perl. There is, so let's try this first.
 
-<a href="https://en.ubuntu.perlzemi.com/blog/20200425174004.html"> Install ImageMagic </a> and execute the convert command etc. <a href="https://en.perlzemi. Calling it with the com / blog / 20180124151680.html "> system function </a> is the next best thing to do.
+<a href="https://en.ubuntu.perlzemi.com/blog/20200425174004.html"> Install ImageMagic</a> and execute the convert command etc. <a href="https://en.perlzemi. Calling it with the com / blog / 20180124151680.html "> system function</a> is the next best thing to do.
 
-<h3> Packages required to install Image :: Magick with cpanm on user Perl </ h3>
+<h3> Packages required to install Image :: Magick with cpanm on user Perl </h3>
 
-<h4> Install libmagickcore-dev </ h4>
+<h4> Install libmagickcore-dev </h4>
 
 Install ImageMagick headers and libraries as a prerequisite to installing Perl's Image :: Magick.
 
 <ul>
-  <li> <a href="/blog/20200612115851.html"> Installing libmagickcore-dev --ImageMagick headers and libraries </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200612115851.html"> Installing libmagickcore-dev --ImageMagick headers and libraries</a> </li>
+</ul>
 
 Look for the following headers in ImageMagick.
 
 <pre>
 find / usr / include | grep'ImageMagick.h'
 find / usr / include | grep'magick-baseconfig.h'
-</ pre>
+</pre>
 
 It will be displayed as follows. The version number may be different.
 
 <pre>
 /usr/include/ImageMagick-6/magick/ImageMagick.h
 /usr/include/x86_64-linux-gnu/ImageMagick-6/magick/magick-baseconfig.h
-</ pre>
+</pre>
 
 Remember these ImageMagic include directories. These names may vary depending on your version of Ubuntu.
 
 <pre>
 / usr / include / ImageMagick-6
 / usr / include / x86_64-linux-gnu / ImageMagick-6
-</ pre>
+</pre>
 
-<h4> Install libperl-dev </ h4>
+<h4> Install libperl-dev </h4>
 
 Requires Perl headers and libraries.
 
 <ul>
-  <li> <a href="/blog/20200620115851.html"> Installing libperl-dev --Perl headers and libraries </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200620115851.html"> Installing libperl-dev --Perl headers and libraries</a> </li>
+</ul>
 
-<h3> Install Image :: Magick with cpanm on user Perl </ h3>
+<h3> Install Image :: Magick with cpanm on user Perl </h3>
 
 First, let's install Image :: Magick with cpanm.
 
 <pre>
 cpanm Image :: Magick
-</ pre>
+</pre>
 
 It will fail. Looking at the log, it is said that "magick / magick-baseconfig.h" does not exist.
 
 <pre>
 /usr/include/ImageMagick-6/magick/magick-config.h:21:10: fatal error: magick/magick-baseconfig.h: No such file or directory
  #include "magick / magick-baseconfig.h"
-</ pre>
+</pre>
 
 Rewrite Makefile to include directory "/ usr / include / ImageMagick-6".
 
@@ -88,38 +88,38 @@ First, change to the cpanm build directory.
 
 <pre>
 cd ~ / .cpanm / latest-build
-</ pre>
+</pre>
 
-Use the <a href="https://en.linux.perlzemi.com/blog/20191126082723.html"> ls </a> command to display the directory.
+Use the <a href="https://en.linux.perlzemi.com/blog/20191126082723.html"> ls</a> command to display the directory.
 
 <pre>
 ls
-</ pre>
+</pre>
 
 Image :: Magick is included in PerlMagick, so find the following directory. The version number depends on your environment.
 
 <pre>
 PerlMagick-6.89
-</ pre>
+</pre>
 
 Move to the directory.
 
 <pre>
 cd PerlMagick-6.89
-</ pre>
+</pre>
 
 Edit the Makefile.
 
 <pre>
 vi Makefile.PL
-</ pre>
+</pre>
 
 Rewrite $ INC_magick. Add the following include directories to the beginning. "-I" is a gcc option to add an include directory.
 
 <pre>
 / usr / include / ImageMagick-6
 / usr / include / x86_64-linux-gnu / ImageMagick-6
-</ pre>
+</pre>
 
 <pre>
 # Change before
@@ -127,7 +127,7 @@ my $ INC_magick ='-I / usr / local / include / ImageMagick-6 -DMAGICKCORE_HDRI_E
 
 # After change
 my $ INC_magick ='-I / usr / include / ImageMagick-6 -I / usr / include / x86_64-linux-gnu / ImageMagick-6 -I / usr / local / include / ImageMagick-6 -DMAGICKCORE_HDRI_ENABLE = 0 -DMAGICKCORE_QUANTUM_DEPTH = 16 -I / usr / include / libxml2 -I "'. $ Config {'usrinc'}.'/ ImageMagick-6"';
-</ pre>
+</pre>
 
 The rest is compilation and installation.
 
@@ -135,10 +135,10 @@ The rest is compilation and installation.
 perl Makefile.PL
 make
 make install
-</ pre>
+</pre>
 
 Load the module and make sure there are no errors.
 
 <pre>
 perl -e'use Image :: Magick'
-</ pre>
+</pre>

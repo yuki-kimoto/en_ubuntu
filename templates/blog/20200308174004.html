@@ -2,62 +2,62 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop = "name"> Apache </ span>
-      </a>
+        <span itemprop = "name"> Apache </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> How to use user Perl with Apache CGI program </ h2>
+<h2> How to use user Perl with Apache CGI program </h2>
 
 Learn how to use user Perl with Apache's CGI program.
 
-Apache's CGI programs typically utilize Perl installed on your system. However, to centralize the effort of managing CPAN modules, <a href="https://perlzemi.com/blog/20110220130464.html"> perlbrew </a> and <a href="https: //" You may want to use the user Perl installed in your environment at perlzemi.com/blog/20180816153437.html "> plenv </a>.
+Apache's CGI programs typically utilize Perl installed on your system. However, to centralize the effort of managing CPAN modules, <a href="https://perlzemi.com/blog/20110220130464.html"> perlbrew</a> and <a href="https: //" You may want to use the user Perl installed in your environment at perlzemi.com/blog/20180816153437.html "> plenv</a>.
 
 When creating a new web application with Perl, we recommend a web system development method using a reverse proxy that can naturally support real-time web and cloud servers, but if there are existing CGI applications, there are still more. think.
 
-<h3> Environment variable settings </ h3>
+<h3> Environment variable settings </h3>
 
 There are two ways to set environment variables in Ubuntu Apache, one is to specify it in the envvars file, and the other is to use the SetEnv directive. It is recommended to use the SetEnv directory on individual sites, leaving the envvars untouched, which has a global impact. Note that you can only use constants with SetEnv.
 
-<h4> Environment variable PATH setting </ h4>
+<h4> Environment variable PATH setting </h4>
 
-Let's set the environment variable PATH. First, check your current PATH. <a href="https://en.linux.perlzemi.com/blog/20190102171737.html"> env </a> command and <a href="https://en.linux.perlzemi.com/blog/ 20200602093211.html "> grep </a> command to display PATH. There are multiple environment variables that contain the name PATH, so I'm using <a href="https://perlzemi.com/blog/20100827127859.html"> Perl regular expressions </a> to narrow it down to just PATH. ..
+Let's set the environment variable PATH. First, check your current PATH. <a href="https://en.linux.perlzemi.com/blog/20190102171737.html"> env</a> command and <a href="https://en.linux.perlzemi.com/blog/ 20200602093211.html "> grep</a> command to display PATH. There are multiple environment variables that contain the name PATH, so I'm using <a href="https://perlzemi.com/blog/20100827127859.html"> Perl regular expressions</a> to narrow it down to just PATH. ..
 
 <pre>
 env | grep -P'^ PATH ='
-</ pre>
+</pre>
 
 Make a note of the displayed PATH.
 
 <pre>
 PATH = / home / appuser / perl5 / perlbrew / bin: /home/appuser/perl5/perlbrew/perls/perl-5.20.3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin : / usr / bin: / sbin: / bin: / usr / games: / usr / local / games: / snap / bin
-</ pre>
+</pre>
 
 Set this value using the SetEnv directory.
 
 <pre>
 SetEnv PATH / home / appuser / perl5 / perlbrew / bin: / home / appuser / perl5 / perlbrew / perls / perl-5.20.3 / bin: / usr / local / sbin: / usr / local / bin: / usr / sbin : / usr / bin: / sbin: / bin: / usr / games: / usr / local / games: / snap / bin
-</ pre>
+</pre>
 
 User Perl is now available.
 
-<h4> Setting the environment variable PERL5LIB </ h4>
+<h4> Setting the environment variable PERL5LIB </h4>
 
 If you want to load your own Perl library, set the PERL5LIB environment variable.
 
 <pre>
 SetEnv PERL5LIB / home / appuser / my-app / lib
-</ pre>
+</pre>
 
-After setting the environment variables, you need to <a href="/blog/20200519084454.html"> restart Apache </a>.
+After setting the environment variables, you need to <a href="/blog/20200519084454.html"> restart Apache</a>.

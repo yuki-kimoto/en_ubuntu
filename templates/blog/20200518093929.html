@@ -2,40 +2,40 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop = "name"> Package management </ span>
-      </a>
+        <span itemprop = "name"> Package management </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
-<h2> Install nfs-kernel-server --NFS server network file share </ h2>
+    </li>
+  </ul>
+</div>
+<h2> Install nfs-kernel-server --NFS server network file share </h2>
 
-To share network files between multiple servers, install the NFS server "nfs-kernel-server" with the <a href="/blog/20200530085516.html"> apt </a> command.
+To share network files between multiple servers, install the NFS server "nfs-kernel-server" with the <a href="/blog/20200530085516.html"> apt</a> command.
 
 <pre>
 sudo apt install -y nfs-kernel-server
-</ pre>
+</pre>
 
 NFS stands for Network File System.
 
-<a href="/blog/20200517093929.html"> nfs-common </a>, which provides the ability to mount to an NFS server as an NFS client, is also installed.
+<a href="/blog/20200517093929.html"> nfs-common</a>, which provides the ability to mount to an NFS server as an NFS client, is also installed.
 
-<h4> Confirm that the NFS server has been installed </ h4>
+<h4> Confirm that the NFS server has been installed </h4>
 
-Use the status of the <a href="/blog/20200605104005.html"> systemctl </a> command to confirm that the NFS server has been installed.
+Use the status of the <a href="/blog/20200605104005.html"> systemctl</a> command to confirm that the NFS server has been installed.
 
 <pre>
 systemctl status nfs-kernel-server
-</ pre>
+</pre>
 
 If the following is displayed, it is installed.
 
@@ -46,4 +46,4 @@ If the following is displayed, it is installed.
  Main PID: 20222 (code = exited, status = 0 / SUCCESS)
     Tasks: 0 (limit: 9479)
    CGroup: /system.slice/nfs-server.service
-</ pre>
+</pre>

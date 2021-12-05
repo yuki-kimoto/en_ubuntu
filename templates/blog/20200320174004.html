@@ -2,40 +2,40 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop = "name"> Package management </ span>
-      </a>
+        <span itemprop = "name"> Package management </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Install mod_php on Apache </ h2>
+<h2> Install mod_php on Apache </h2>
 
-Install mod_php on Apache. Required if you need to run PHP applications on Apache. To run PHP on Apache, you also need to <a href="/blog/20200321174004.html"> PHP installation </a>.
+Install mod_php on Apache. Required if you need to run PHP applications on Apache. To run PHP on Apache, you also need to <a href="/blog/20200321174004.html"> PHP installation</a>.
 
 <pre>
 sudo apt install -y libapache2-mod-php
-</ pre>
+</pre>
 
 After installing mod_php, it's time to enable mod_php. (Listed June 8, 2020. Ubuntu 18. PHP version 7.2)
 
 <pre>
 sudo a2enmod php7.2
-</ pre>
+</pre>
 
-Finally, restart Apache with the <a href="/blog/20200605104005.html"> systemctl </a> command and you're done.
+Finally, restart Apache with the <a href="/blog/20200605104005.html"> systemctl</a> command and you're done.
 
 <pre>
 sudo systemctl reload apache2
-</ pre>
+</pre>
 
 Your PHP application is now running on Apache.

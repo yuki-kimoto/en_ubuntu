@@ -1,18 +1,18 @@
-<h2> Web system development environment construction with Sakura VPS + Ubuntu 18 + Perl </ h2>
+<h2> Web system development environment construction with Sakura VPS + Ubuntu 18 + Perl </h2>
 
 A summary of the procedure for creating a Web system development environment with Sakura VPS + Ubuntu 18 + Perl.
 
-<h3> Sakura VPS application </ h3>
+<h3> Sakura VPS application </h3>
 
 Apply for Sakura VPS.
 
-<a href="https://vps.sakura.ad.jp/specification/"> Sakura VPS Price / Specification List </a>
+<a href="https://vps.sakura.ad.jp/specification/"> Sakura VPS Price / Specification List</a>
 
-<h3> Install Ubuntu 18 on Sakura VPS </ h3>
+<h3> Install Ubuntu 18 on Sakura VPS </h3>
 
 Let's install Ubuntu 18 on Sakura VPS. The installation procedure was tried on August 16, 2020.
 
-Log in from <a href="https://secure.sakura.ad.jp/vps/#/login"> Sakura VPS Control Panel </a>.
+Log in from <a href="https://secure.sakura.ad.jp/vps/#/login"> Sakura VPS Control Panel</a>.
 
 Click Add New Server in the upper right.
 
@@ -56,7 +56,7 @@ The application confirmation screen will appear. Select I Agree and click Apply.
 
 Now you can use Ubuntu 18 with Sakura VPS.
 
-<h3> Packet Filtering-Firewall Settings </ h3>
+<h3> Packet Filtering-Firewall Settings </h3>
 
 Open the ports needed for web system development. This procedure was tried on August 16, 2020.
 
@@ -72,7 +72,7 @@ Click "To Packet Filter Settings".
 
 Click "Add release port".
 
-<h4> Open HTTP and HTTPS ports </ h4>
+<h4> Open HTTP and HTTPS ports </h4>
 
 Click "Web" in "Use of Filter". HTTP port 80 and HTTPS port 443 are released.
 
@@ -82,18 +82,18 @@ Repeat the same work.
 
 "Packet filter" "To packet filter setting"
 
-<h4> Open SSH port </ h4>
+<h4> Open SSH port </h4>
 
-<a href="/blog/20200715102902.html"> SSH's default port 22 is a very security-risk port </a>.
+<a href="/blog/20200715102902.html"> SSH's default port 22 is a very security-risk port</a>.
 Add your own port for SSH. Avoid choosing well-known ports and ports used by web applications.
 
 If you can't choose by yourself, choose one port in the "30000" range (up to 32767). I will write an example.
 
 <ul>
-  <li> 30012 </ li>
-  <li> 31163 </ li>
-  <li> 32130 </ li>
-</ ul>
+  <li> 30012 </li>
+  <li> 31163 </li>
+  <li> 32130 </li>
+</ul>
 
 In Sakura VPS, packet filtering seems to require the port value to be a number in the range 1-32767.
 
@@ -111,15 +111,15 @@ Repeat the same work.
 
 "Packet filter" "To packet filter setting"
 
-<h4> Open port for Mojolicious development server </ h4>
+<h4> Open port for Mojolicious development server </h4>
 
-Let's open the port for the Mojolicious development server. <a href="https://en.mojolicious.perlzemi.com/"> Mojolicious </a> is one of Perl's web frameworks for real-time web and cloud servers.
+Let's open the port for the Mojolicious development server. <a href="https://en.mojolicious.perlzemi.com/"> Mojolicious</a> is one of Perl's web frameworks for real-time web and cloud servers.
 
 The port for the Mojolicious development server is
 
 <pre>
 3000
-</ pre>
+</pre>
 
 is.
 
@@ -139,7 +139,7 @@ Repeat the same work.
 
 "Packet filter" "To packet filter setting"
 
-<h4> Open port for Mojolicious production server </ h4>
+<h4> Open port for Mojolicious production server </h4>
 
 Let's open the port for the Mojolicious production server. This is used for testing.
 
@@ -147,7 +147,7 @@ The port for the Mojolicious production server is
 
 <pre>
 8080
-</ pre>
+</pre>
 
 is.
 
@@ -163,7 +163,7 @@ Click "Save settings". The setting is completed.
 
 If you have multiple developers, open another port from the packet filter as needed (3001, 3002, etc.).
 
-<h3> Working from the web console </ h3>
+<h3> Working from the web console </h3>
 
 I will explain the work from the Web console.
 
@@ -177,7 +177,7 @@ Once you've created a user for your web application, you'll be able to access yo
 
 You can execute all commands from the web console, but for efficiency, it is practical to install and use SSH client and software that can edit files on the server on SSH on Windows or MacOS.
 
-<h4> Display the web console </ h4>
+<h4> Display the web console </h4>
 
 Let's display the web console.
 
@@ -195,134 +195,134 @@ You will be able to enter the login user as follows:
 
 <pre>
 tk2-250-35845 login:
-</ pre>
+</pre>
 
 Type ubuntu and press Enter.
 
 <pre>
 ubuntu
-</ pre>
+</pre>
 
 You will be asked for your password as follows.
 
 <pre>
 Password: Password:
-</ pre>
+</pre>
 
 Enter your initial password and press Enter. If you can log in, you are successful. It will be displayed as follows.
 
 <pre>
 ubuntu @ tk2-250-35845: ~ $
-</ pre>
+</pre>
 
-In this state, you can execute <a href="https://en.linux.perlzemi.com/blog/20200211081227.html"> Linux commands </a>.
+In this state, you can execute <a href="https://en.linux.perlzemi.com/blog/20200211081227.html"> Linux commands</a>.
 
-<h3> Add user for web application </ h3>
+<h3> Add user for web application </h3>
 
 Let's add the user "myapp" for the web application. This name can be arbitrary, but in the following steps, we will use "myapp" for explanation.
 
-<h4> Add user </ h4>
+<h4> Add user </h4>
 
-Use the <a href="/blog/20200511173052.html"> useradd </a> command to add a user. The "-m" option creates a home directory.
+Use the <a href="/blog/20200511173052.html"> useradd</a> command to add a user. The "-m" option creates a home directory.
 
-Assuming that the <a href="/blog/20200531085516.html"> sudo </a> command is a command to be executed with administrator privileges.
+Assuming that the <a href="/blog/20200531085516.html"> sudo</a> command is a command to be executed with administrator privileges.
 
 <pre>
 #Add user (home directory available, use bash for shell)
 sudo useradd -m myapp -s / bin / bash
-</ pre>
+</pre>
 
 When you execute the sudo command, you will be asked for the password, so enter the initial password.
 
-<h4> Password setting </ h4>
+<h4> Password setting </h4>
 
 Let's set a password for the user "myapp" for the web application. "Myapp" will be added to the sudo group to give it administrator privileges, so it is recommended to keep the password secure in length and complexity.
 
-The password can be set with the <a href="/blog/20200510173052.html"> passwd </a> command.
+The password can be set with the <a href="/blog/20200510173052.html"> passwd</a> command.
 
 <pre>
 sudo passwd myapp
-</ pre>
+</pre>
 
 You will be asked to enter the password and re-enter it for confirmation, so set it.
 
-<h4> Join sudo group </ h4>
+<h4> Join sudo group </h4>
 
-Register the application user "myapp" in the sudo group using the <a href="/blog/20200330174004.html"> gpasswd </a> command. Give the "myapp" user administrator privileges.
+Register the application user "myapp" in the sudo group using the <a href="/blog/20200330174004.html"> gpasswd</a> command. Give the "myapp" user administrator privileges.
 
 <pre>
 sudo gpasswd -a myapp sudo
-</ pre>
+</pre>
 
-<h3> Using SSH client </ h3>
+<h3> Using SSH client </h3>
 
 Let's connect to the server with SSH from the computer so that you can execute commands and edit files.
 
-<h4> Command execution on SSH client </ h4>
+<h4> Command execution on SSH client </h4>
 
 In the case of Windows, TeraTerm is a tool for connecting to an SSH server with an SSH client and executing commands.
 
 <ul>
-  <li> <a href="https://en.linux.perlzemi.com/blog/20200525082545.html"> Send commands to a Linux server-Installing and using TeraTerm </a> </ li>
-</ ul>
+  <li> <a href="https://en.linux.perlzemi.com/blog/20200525082545.html"> Send commands to a Linux server-Installing and using TeraTerm</a> </li>
+</ul>
 
-<a href="https://www.atmarkit.co.jp/ait/articles/1006/25/There are other SSH clients that work on Windows, such as news095.html "> PuTTY </a>, so if you like.
+<a href="https://www.atmarkit.co.jp/ait/articles/1006/25/There are other SSH clients that work on Windows, such as news095.html "> PuTTY</a>, so if you like.
 
 For Mac, you can use the ssh command from the terminal.
 
-<h4> Use SCP to edit files on the server </ h4>
+<h4> Use SCP to edit files on the server </h4>
 
 You can edit files on the server using a protocol built on SSH called SCP.
 
 WinSCP is the SCP client for Windows.
 
 <ul>
-  <li> <a href="https://en.linux.perlzemi.com/blog/20200520082545.html"> Edit files on Linux server-Installing and using WinSCP </a> </ li>
-</ ul>
+  <li> <a href="https://en.linux.perlzemi.com/blog/20200520082545.html"> Edit files on Linux server-Installing and using WinSCP</a> </li>
+</ul>
 
 There is software on your Mac that can replace WinSCP on Windows, so install it.
 
-<h3> SSH server settings </ h3>
+<h3> SSH server settings </h3>
 
 Use an SSH client to connect to the server with SSH. By default, the SSH port number is 22.
 
 To increase the security of the server, let's change to the SSH port that was additionally released by the packet filter of Sakura VPS earlier.
 
 <ul>
-  <li> <a href="/blog/20200715102902.html"> Change SSH port-default port 22 is a high security risk </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200715102902.html"> Change SSH port-default port 22 is a high security risk</a> </li>
+</ul>
 
-<h3> Time zone setting </ h3>
+<h3> Time zone setting </h3>
 
-Let's set the time zone to "Asia / Tokyo". <a href="/blog/20200507174004.html"> You can set and check the time zone with timedatectl </a>.
+Let's set the time zone to "Asia / Tokyo". <a href="/blog/20200507174004.html"> You can set and check the time zone with timedatectl</a>.
 
 <pre>
 #Set the time zone to "Asia / Tokyo"
 sudo timedatectl set-timezone Asia / Tokyo
-</ pre>
+</pre>
 
 Check the time zone.
 
 <pre>
 #Check the time zone
 timedatectl
-</ pre>
+</pre>
 
-<h3> Package installation </ h3>
+<h3> Package installation </h3>
 
 Install the packages you need for Perl web system development.
 
-<h4> apt updates </ h4>
+<h4> apt updates </h4>
 
-The <a href="/blog/20200530085516.html"> apt </a> command is a package installation command, but if apt itself is old, the package download may fail, so <a href="/blog" //20200524135533.html "> Update apt </a>.
+The <a href="/blog/20200530085516.html"> apt</a> command is a package installation command, but if apt itself is old, the package download may fail, so <a href="/blog" //20200524135533.html "> Update apt</a>.
 
 <pre>
 sudo apt update
-</ pre>
+</pre>
 
-<h4> Compiler Linker </ h4>
+<h4> Compiler Linker </h4>
 
-Installation of the compiler / linker. <a href="/blog/20200514084132.html"> Install make </a>, <a href="/blog/20200504174004.html"> Install gcc </a>, <a href="/blog/" 20200503174004.html "> Install g ++ </a>. Required for compiling Perl modules.
+Installation of the compiler / linker. <a href="/blog/20200514084132.html"> Install make</a>, <a href="/blog/20200504174004.html"> Install gcc</a>, <a href="/blog/" 20200503174004.html "> Install g ++</a>. Required for compiling Perl modules.
 
 We recommend that you follow the steps for installing with apt line by line. Because I have a lot of experience going forward without skipping steps or making sure they are installed.
 
@@ -330,100 +330,100 @@ We recommend that you follow the steps for installing with apt line by line. Bec
 sudo apt install -y make
 sudo apt install -y gcc
 sudo apt install -y g ++
-</ pre>
+</pre>
 
-<h4> Text editor </ h4>
+<h4> Text editor </h4>
 
-Ubuntu's default vi has limited functionality, so let's do a more convenient <a href="/blog/20200825150919.html"> install vim </a>.
+Ubuntu's default vi has limited functionality, so let's do a more convenient <a href="/blog/20200825150919.html"> install vim</a>.
 
 <pre>
 sudo apt install -y vim
-</ pre>
+</pre>
 
-<h4> HTTP client </ h4>
+<h4> HTTP client </h4>
 
-Install <a href="/blog/20200826170338.html"> curl </a>, which is an HTTP client that is often used in the procedure.
+Install <a href="/blog/20200826170338.html"> curl</a>, which is an HTTP client that is often used in the procedure.
 
 <pre>
 sudo apt install -y curl
-</ pre>
+</pre>
 
-<h4> SSL communication </ h4>
+<h4> SSL communication </h4>
 
-Install <a href="/blog/20200412174004.html"> libssl-dev </a> for SSL communication.
+Install <a href="/blog/20200412174004.html"> libssl-dev</a> for SSL communication.
 
 <pre>
 sudo apt install -y libssl-dev
-</ pre>
+</pre>
 
-<h4> Image processing </ h4>
+<h4> Image processing </h4>
 
-<a href="/blog/20200501174004.html"> Install libpng-dev </a>, <a href="/blog/20200502174004.html"> Install libgif-dev </a> for image processing , <a href="/blog/20200426174004.html"> Install libjpeg-dev </a>.
+<a href="/blog/20200501174004.html"> Install libpng-dev</a>, <a href="/blog/20200502174004.html"> Install libgif-dev</a> for image processing , <a href="/blog/20200426174004.html"> Install libjpeg-dev</a>.
 
 <pre>
 sudo apt install -y libpng-dev
 sudo apt install -y libgif-dev
 sudo apt install -y libjpeg-dev
-</ pre>
+</pre>
 
-<h4> Compression / decompression </ h4>
+<h4> Compression / decompression </h4>
 
-Install <a href="/blog/20200323174004.html"> zip </a> for compression / decompression.
+Install <a href="/blog/20200323174004.html"> zip</a> for compression / decompression.
 
 <pre>
 sudo apt install -y zip
-</ pre>
+</pre>
 
-<h4> Network </ h4>
+<h4> Network </h4>
 
-Let's <a href="/blog/20200324174004.html"> install net-tools </a> so that ifconfig can be used. The ip command is recommended for Linux, but many server administrators want to use it.
+Let's <a href="/blog/20200324174004.html"> install net-tools</a> so that ifconfig can be used. The ip command is recommended for Linux, but many server administrators want to use it.
 
 <pre>
 sudo apt install -y net-tools
-</ pre>
+</pre>
 
-<h4> Repository management </ h4>
+<h4> Repository management </h4>
 
-Let's <a href="/blog/20200607082859.html"> install git </a> for repository management.
+Let's <a href="/blog/20200607082859.html"> install git</a> for repository management.
 
 <pre>
 sudo apt install -y git
-</ pre>
+</pre>
 
-<h4> Perl </ h4>
+<h4> Perl </h4>
 
-Install the tools and modules you will often use for your system Perl. <a href="/blog/20200516081846.html"> Install perl-doc package </a>, <a href="/blog/20200515081846.html"> Install libio-socket-ssl-perl </a> , <a href="/blog/20200606082859.html"> Install libreadline-dev </a>, <a href="/blog/20200227174004.html"> Install libterm-readline-gnu-perl </a> to hold.
+Install the tools and modules you will often use for your system Perl. <a href="/blog/20200516081846.html"> Install perl-doc package</a>, <a href="/blog/20200515081846.html"> Install libio-socket-ssl-perl</a> , <a href="/blog/20200606082859.html"> Install libreadline-dev</a>, <a href="/blog/20200227174004.html"> Install libterm-readline-gnu-perl</a> to hold.
 
 <pre>
 sudo apt install -y perl-doc
 sudo apt install -y libio-socket-ssl-perl
 sudo apt install -y libreadline-dev
 sudo apt install -y libterm-readline-gnu-perl
-</ pre>
+</pre>
 
-<h4> SSL certificate </ h4>
+<h4> SSL certificate </h4>
 
-Install <a href="/blog/20200319174004.html"> certbot </a> for automatic issuance of SSL certificate.
+Install <a href="/blog/20200319174004.html"> certbot</a> for automatic issuance of SSL certificate.
 
 <pre>
 sudo apt install -y certbot
-</ pre>
+</pre>
 
-<h3> Creating a directory for data </ ​​h3>
+<h3> Creating a directory for data </​​h3>
 
 Let's create a directory for the data for the web application to store the data. Set it so that not only "myapp" users but also other development users can write.
 
-Create a data directory with the <a href="https://en.linux.perlzemi.com/blog/20191211133524.html"> mkdir </a> command for "/ datadrive".
+Create a data directory with the <a href="https://en.linux.perlzemi.com/blog/20191211133524.html"> mkdir</a> command for "/ datadrive".
 
 <pre>
 sudo mkdir / datadrive
-</ pre>
+</pre>
 
 Next, allow the web application user "myapp" and other development users to write to this directory for data.
 
 <ul>
-  <li> <a href="/blog/20200327174004.html"> How multiple users read and write to the data directory --Web app file upload directory </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200327174004.html"> How multiple users read and write to the data directory --Web app file upload directory</a> </li>
+</ul>
 
 I have extracted only the part related to the "myapp" user in the above procedure.
 
@@ -436,90 +436,90 @@ sudo chmod g + s / datadrive
 
 # Verification
 ls -l / | grep datadrive
-</ pre>
+</pre>
 
 This completes the data directory.
 
-<h3> Redis server </ h3>
+<h3> Redis server </h3>
 
-<a href="/blog/20200525135533.html"> Redis server installation </a> and <a href="/blog/20200225174004.html"> Redis server startup confirmation <a href="/blog/20200525135533.html"> Redis server startup confirmation Do / a>.
+<a href="/blog/20200525135533.html"> Redis server installation</a> and <a href="/blog/20200225174004.html"> Redis server startup confirmation <a href="/blog/20200525135533.html"> Redis server startup confirmation Do / a>.
 
 Redis is primarily used for user authentication and session management.
 
 You can also use Redis' Pub / Sub feature to support real-time webs such as push notifications, real-time updates, and real-time chat.
 
-<h4> Redis server installation </ h4>
+<h4> Redis server installation </h4>
 
 Install the Redsi server.
 
 <pre>
 sudo apt install -y redis-server
-</ pre>
+</pre>
 
 The installation of Redis should be finished soon, but it takes a long time to start because the Redis server fails internally. Are you retrying? Let's wait for a while.
 
-<h4> Confirm Redis server startup </ h4>
+<h4> Confirm Redis server startup </h4>
 
 Check the startup of the Redsi server.
 
 <pre>
 sudo systemctl status redis-server
-</ pre>
+</pre>
 
 The default setting on the Redis server seems to fail to boot if IPv6 is not enabled. IPv6 is not set by default on Ubuntu 18 of Sakura's VPS.
 
-<h4> Edit Redis configuration file </ h4>
+<h4> Edit Redis configuration file </h4>
 
-Edit the Redis configuration file with the <a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi editor </a>. Make a backup in case you make a mistake.
+Edit the Redis configuration file with the <a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi editor</a>. Make a backup in case you make a mistake.
 
 <pre>
 sudo cp /etc/redis/redis.conf /etc/redis/redis.conf.bak
 sudo vi /etc/redis/redis.conf
-</ pre>
+</pre>
 
 The following
 
 <pre>
 bind 127.0.0.1 :: 1
-</ pre>
+</pre>
 
 Changed to<pre>
 bind 127.0.0.1
-</ pre>
+</pre>
 
-<h4> Start and check Redis </ h4>
+<h4> Start and check Redis </h4>
 
 Start and check Redis.
 
 <pre>
 sudo systemctl start redis-server
 sudo systemctl status redis-server
-</ pre>
+</pre>
 
-<h3> Database server MariaDB </ h3>
+<h3> Database server MariaDB </h3>
 
 Install and check the startup of MariaDB, which is a database server.
 
-<h4> Install database server and related libraries </ h4>
+<h4> Install database server and related libraries </h4>
 
-Install the database server MariaDB and related libraries. <a href="/blog/20200422174004.html"> Install mariadb-client </a>, <a href="/blog/20200421174004.html"> Install mariadb-server </a>, <a href= "/blog/20200411174004.html"> Install libmysqlclient-dev </a>, <a href="/blog/20200419174004.html"> Install libmariadb-dev </a>.
+Install the database server MariaDB and related libraries. <a href="/blog/20200422174004.html"> Install mariadb-client</a>, <a href="/blog/20200421174004.html"> Install mariadb-server</a>, <a href= "/blog/20200411174004.html"> Install libmysqlclient-dev</a>, <a href="/blog/20200419174004.html"> Install libmariadb-dev</a>.
 
 <pre>
 sudo apt install -y mariadb-client
 sudo apt install -y mariadb-server
 sudo apt install -y libmariadbclient-dev
 sudo apt install -y libmariadb-dev
-</ pre>
+</pre>
 
-<h4> Confirm database server startup </ h4>
+<h4> Confirm database server startup </h4>
 
-<a href="/blog/20200417174004.html"> Make sure MariaDB is running </a>.
+<a href="/blog/20200417174004.html"> Make sure MariaDB is running</a>.
 
 <pre>
 sudo systemctl status mariadb
-</ pre>
+</pre>
 
-<h4> Connect to MariaDB as root user </ h4>
+<h4> Connect to MariaDB as root user </h4>
 
 First of all, let's connect to MariaDB as the MariaDB root user.
 
@@ -527,38 +527,38 @@ To connect as the root user, run the mysql command with sudo. The user name is r
 
 <pre>
 sudo mysql -uroot
-</ pre>
+</pre>
 
 To end the connection to MariaDB, type quit and press Enter.
 
 <pre>
 quit
-</ pre>
+</pre>
 
-<h4> Creating a database </ h4>
+<h4> Creating a database </h4>
 
-Here, <a href="https://en.mariadb.perlzemi.com/blog/20200521082643.html"> create a database </a> for your web application. The database name should be myappdb. Changing the database name requires some ingenuity, but you can change the database name later.
+Here, <a href="https://en.mariadb.perlzemi.com/blog/20200521082643.html"> create a database</a> for your web application. The database name should be myappdb. Changing the database name requires some ingenuity, but you can change the database name later.
 
 <pre>
 create database myappdb;
-</ pre>
+</pre>
 
-Display the <a href="https://en.mariadb.perlzemi.com/blog/20200518082643.html"> database list </a> to see the database you created.
+Display the <a href="https://en.mariadb.perlzemi.com/blog/20200518082643.html"> database list</a> to see the database you created.
 
 <pre>
 show databases;
-</ pre>
+</pre>
 
-<h4> Creating an application user </ h4>
+<h4> Creating an application user </h4>
 
 Create a user "myapp" for the application.
 
 <pre>
 #Myapp Create user
 create user myapp;
-</ pre>
+</pre>
 
-<h4> Setting permissions and passwords </ h4>
+<h4> Setting permissions and passwords </h4>
 
 Give the myapp user select, update, insert, delete permissions and set a password.
 
@@ -567,31 +567,31 @@ The password is the string that follows "identified by". Please set this part yo
 <pre>
 #myapp Give user select, update, insert, delete permissions
 grant insert, update, delete, select on myappdb. * to'myapp' @'localhost' identified by'eifjutab &';
-</ pre>
+</pre>
 
 When installing DBD :: mysql with Perl, you need to have connection permission to the test database, so set it.
 
 <pre>
 create database test;
 grant all privileges on test. * to'myapp' @'localhost' identified by's3kr1t';
-</ pre>
+</pre>
 
-<h4> Connection confirmation by application user </ h4>
+<h4> Connection confirmation by application user </h4>
 
 Make sure you can disconnect and connect to MariaDB with the newly created "myapp" user.
 
 <pre>
 #Connect as root user
 mysql -umyapp -p
-</ pre>
+</pre>
 
-For a detailed explanation of MariaDB initial settings, refer to <a href="/blog/20200224174004.html"> MariaDB initial settings and user creation </a>.
+For a detailed explanation of MariaDB initial settings, refer to <a href="/blog/20200224174004.html"> MariaDB initial settings and user creation</a>.
 
-<h3> Building a Perl Web development environment </ h3>
+<h3> Building a Perl Web development environment </h3>
 
-Install <a href="https://en.perlzemi.com/"> Perl </a> in the user environment to build the Perl Web development environment, and <a href="https://en.mojolicious.perlzemi" Launch a small web application from .com / "> Mojolicious </a>.
+Install <a href="https://en.perlzemi.com/"> Perl</a> in the user environment to build the Perl Web development environment, and <a href="https://en.mojolicious.perlzemi" Launch a small web application from .com / "> Mojolicious</a>.
 
-<h4> Perl installation </ h4>
+<h4> Perl installation </h4>
 
 Here, install "perl-5.20.3" which has as few Perl troubles as possible.
 
@@ -600,8 +600,8 @@ If you prefer a version that has official security fix support, install the late
 Extract the necessary parts to install Perl in the user environment with perlbrew from the following procedure. If you want to do it with plenv, please refer to the procedure below.
 
 <ul>
-  <li> <a href="/blog/20200413174004.html"> User Perl and cpanm installation </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200413174004.html"> User Perl and cpanm installation</a> </li>
+</ul>
 
 The Perl installation is very time consuming as it is built from source code and further tested. I think it will take about 10 to 20 minutes, so let's drink tea.
 
@@ -626,19 +626,19 @@ perl -v
 
 # installation of cpanm
 perlbrew install-cpanm
-</ pre>
+</pre>
 
-<h4> Launching a web application </ h4>
+<h4> Launching a web application </h4>
 
 Next, install Mojolicious and start the web application.
 
 Please execute the contents of the following articles. Follow the steps other than the last part, "Connecting to a web application with a reverse pixie from Apache".
 
 <ul>
-  <li> <a href="/blog/20200729134756.html"> Deploying a web application with Mojolicious </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200729134756.html"> Deploying a web application with Mojolicious</a> </li>
+</ul>
 
-<h4> Allow batch programs to find the library path </ h4>
+<h4> Allow batch programs to find the library path </h4>
 
 Let the batch program find the path to the web application's library. Be prepared to create a batch program in addition to your web application.
 
@@ -646,15 +646,15 @@ Let's add it to "~ / .bashrc".
 
 <pre>
 vi ~ / .bashrc
-</ pre>
+</pre>
 
 Add the following contents.
 
 <pre>
 export PERL5LIB = / home / myapp / webapp / lib
-</ pre>
+</pre>
 
-<h3> Get domain name and set DNS server </ h3>
+<h3> Get domain name and set DNS server </h3>
 
 Get the domain and associate the domain name with the server IP address. The domain name is required to publish the website on the Internet and to set up the mail sending server.
 
@@ -663,34 +663,34 @@ The IP address of the server for Sakura VPS is described in "IPv4", "Network Inf
 Please set only the A record in the following articles.
 
 <ul>
-  <li> <a href="/blog/20200807062918.html"> DNS server settings-Make domain names correspond to IP addresses </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200807062918.html"> DNS server settings-Make domain names correspond to IP addresses</a> </li>
+</ul>
 
 The examples from here in this article use "build-sakuravps-ubuntu18.perlclub.net" as the domain name.
 
-<h3> Creating an email address and setting up a DNS server </ h3>
+<h3> Creating an email address and setting up a DNS server </h3>
 
 Let's create an email address and set up a DNS server.
 
 <ul>
-  <li> <a href="/blog/20200828123127.html"> Creating an email address and setting up a DNS server </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200828123127.html"> Creating an email address and setting up a DNS server</a> </li>
+</ul>
 
-<h3> cron </ h3>
+<h3> cron </h3>
 
 Check the startup of cron, which is a resident application for executing periodic programs.
 
-<h4> Confirmation of cron startup </ h4>
+<h4> Confirmation of cron startup </h4>
 
 Make sure Apache is running by running "sudo systemctl status cron" in the following article.
 
 <ul>
-  <li> <a href="/blog/20200520084454.html"> Start / stop / restart / status check of cron, cron execution log </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200520084454.html"> Start / stop / restart / status check of cron, cron execution log</a> </li>
+</ul>
 
-<h4> Crontab settings </ h4>
+<h4> Crontab settings </h4>
 
-<a href="/blog/20200604085516.html"> Initialize crontab </a>.
+<a href="/blog/20200604085516.html"> Initialize crontab</a>.
 
 Write cron settings in crontab. You can have a crontab for each user. If you edit the crontab as a user named myapp, it becomes myapp's crontab.
 
@@ -698,7 +698,7 @@ Use the "-e" option to edit the crontab.
 
 <pre>
 crontab -e
-</ pre>
+</pre>
 
 The editor will start.
 
@@ -706,55 +706,55 @@ One of the pitfalls of cron is that Perl installed in the user environment is no
 
 <pre>
 env | grep -P'^ PATH'
-</ pre>
+</pre>
 
 Set the displayed value as follows.
 
 <pre>
 PATH = / home / myapp / perl5 / perlbrew / bin: / home / myapp / perl5 / perlbrew / perls / perl-5.16.2 / bin: / usr / kerberos / bin: / usr / local / bin: / bin: / usr / bin: / home / myapp / bin
-</ pre>
+</pre>
 
 You will receive an email if an error occurs in the automatic execution of cron.Let's set it to.
 
 <pre>
 MAILTO = kimoto_test@perlclub.net
-</ pre>
+</pre>
 
 Let's set the batch program to read the path of the library of the web application.
 
 <pre>
 PERL5LIB = / home / myapp / webapp / lib
-</ pre>
+</pre>
 
 Save and exit.
 
-<h3> Apache </ h3>
+<h3> Apache </h3>
 
 Install and configure Apache, the web server. Set up SSL so that you can connect via HTTPS. Set up a virtual host and reverse proxy to connect to Mojolicious applications.
 
 It is assumed that the domain to be used is correctly linked to the IP address of the server in the acquisition of the domain name and the setting of the DNS server.
 
-<h4> Apache installation </ h4>
+<h4> Apache installation </h4>
 
-Install <a href="/blog/20200424174004.html"> Apache </a>.
+Install <a href="/blog/20200424174004.html"> Apache</a>.
 
 <pre>
 sudo apt install -y apache2
-</ pre>
+</pre>
 
-<h4> Apache startup confirmation </ h4>
+<h4> Apache startup confirmation </h4>
 
-<a href="/blog/20200519084454.html"> Check Apache startup </a>.
+<a href="/blog/20200519084454.html"> Check Apache startup</a>.
 
 <pre>
 sudo systemctl status apache2
-</ pre>
+</pre>
 
-<h4> Apache module </ h4>
+<h4> Apache module </h4>
 
 Enable the Apache module required for reverse proxy settings, SSL settings, and WebSocket settings.
 
-<a href="/blog/20200318174004.html"> mod_ssl </a>, <a href="/blog/20200311174004.html"> mod_rewrite </a>, <a href="/blog/20200309174004.html" > mod_headers </a>, <a href="/blog/20200310174004.html"> mod_proxy </a>, <a href="/blog/20200220174004.html"> mod_proxy_http </a>, <a href=" Enable /blog/20200718090758.html "> proxy_wstunnel </a>.
+<a href="/blog/20200318174004.html"> mod_ssl</a>, <a href="/blog/20200311174004.html"> mod_rewrite</a>, <a href="/blog/20200309174004.html" > mod_headers</a>, <a href="/blog/20200310174004.html"> mod_proxy</a>, <a href="/blog/20200220174004.html"> mod_proxy_http</a>, <a href=" Enable /blog/20200718090758.html "> proxy_wstunnel</a>.
 
 <pre>
 Enable # mod_ssl
@@ -774,42 +774,42 @@ sudo a2enmod proxy_http
 
 # mod_proxy_wstunnel
 sudo a2enmod proxy_wstunnel
-</ pre>
+</pre>
 
 Restart Apache.
 
 <pre>
 sudo systemctl restart apache2
-</ pre>
+</pre>
 
 Check the status of Apache.
 
 <pre>
 sudo systemctl status apache2
-</ pre>
+</pre>
 
-<h4> Virtual host and reverse proxy settings </ h4>
+<h4> Virtual host and reverse proxy settings </h4>
 
 Set up a virtual host and reverse proxy to forward HTTP connections to Apache to your Mojolicious application. Extract the necessary parts from the following procedure.
 
 <ul>
-  <li> <a href="/blog/20200306174004.html"> Connect your website from Apache with a virtual host and reverse proxy </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200306174004.html"> Connect your website from Apache with a virtual host and reverse proxy</a> </li>
+</ul>
 
 Place the configuration file in the following directory.
 
 <pre>
 / etc / apache2 / sites-available
-</ pre>
+</pre>
 
 The directory of this configuration file is explained in detail on the following page.
 
-<a href="https://en.linux.perlzemi.com/blog/20190401171737.html" with the site domain name (here build-sakuravps-ubuntu18.perlclub.net) with ".conf" Let's create a configuration file with the "> vi </a> command.
+<a href="https://en.linux.perlzemi.com/blog/20190401171737.html" with the site domain name (here build-sakuravps-ubuntu18.perlclub.net) with ".conf" Let's create a configuration file with the "> vi</a> command.
 
 <pre>
 cd / etc / apache2 / sites-available
 sudo vi build-sakuravps-ubuntu18.perlclub.net.conf
-</ pre>
+</pre>
 
 The contents of the virtual host and reverse proxy configuration files. It is a setting of the reverse proxy corresponding to WebSocket and HTTPS. The SSL certificate specifies the self-SSL certificate that is prepared by default. This will later be replaced with a formal SSL certificate.
 
@@ -819,14 +819,14 @@ The contents of the virtual host and reverse proxy configuration files. It is a 
 
   RewriteEngine on
   RewriteRule (. *)? $ Https: //% {HTTP_HOST}% {REQUEST_URI} [L, R = 301]
-</ VirtualHost>
+</VirtualHost>
 
 <VirtualHost *: 443>
   ServerName build-sakuravps-ubuntu18.perlclub.net
 
   <Proxy *>
     Require all granted
-  </ Proxy>
+  </Proxy>
 
   ProxyRequests Off
   ProxyPreserveHost On
@@ -838,47 +838,47 @@ The contents of the virtual host and reverse proxy configuration files. It is a 
   SSLEngine on
   SSLCertificateFile /etc/ssl/certs/ssl-cert-snakeoil.pem
   SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
-</ VirtualHost>
-</ pre>
+</VirtualHost>
+</pre>
 
-<h4> Enable configuration file </ h4>
+<h4> Enable configuration file </h4>
 
 After completing the settings, enable the configuration file.
 
 <pre>
 sudo a2ensite build-sakuravps-ubuntu18.perlclub.net.conf
-</ pre>
+</pre>
 
-<h4> Reloading the configuration file </ h4>
+<h4> Reloading the configuration file </h4>
 
-Reload the Apache configuration file. Before reloading, let's <a href="/blog/20200609132409.html"> test the Apache config file </a>.
+Reload the Apache configuration file. Before reloading, let's <a href="/blog/20200609132409.html"> test the Apache config file</a>.
 
 <pre>
 sudo apachectl -t
-</ pre>
+</pre>
 
 Restart Apache.
 
 <pre>
 sudo systemctl reload apache2
-</ pre>
+</pre>
 
 If you can display the website in the following domain, it is successful. The SSL warning will be corrected after this by setting the official SSL certificate.
 
 <pre>
 https://build-sakuravps-ubuntu18.perlclub.net
-</ pre>
+</pre>
 
-<h4> Get SSL certificate </ h4>
+<h4> Get SSL certificate </h4>
 
-To receive the request over HTTPS, <a href="/blog/20200618081050.html"> Let's Encrypt is used to issue an SSL certificate </a>.
+To receive the request over HTTPS, <a href="/blog/20200618081050.html"> Let's Encrypt is used to issue an SSL certificate</a>.
 
 Let's Encrypt authenticates the SSL certificate by HTTP request, so it launches a web application.
 
 <pre>
 #Launch web application
 hypnotoad webapp.pl
-</ pre>
+</pre>
 
 This article assumes that the domain name is obtained as "build-sakuravps-ubuntu18.perlclub.net" and that the correspondence between the domain name and the IP address in the DNS server has been described. Please rewrite the corresponding part as appropriate.
 
@@ -888,13 +888,13 @@ To get the SSL certificate with Let's Encrypt, execute the certbot command.
 
 <pre>
 sudo certbot certonly --agree-tos --non-interactive -d build-sakuravps-ubuntu18.perlclub.net --webroot -w /home/myapp/webapp/public --email kimoto_test@perlclub.net
-</ pre>
+</pre>
 
 If the following message is included, it is successful.
 
 <pre>
 Congratulations! Your certificate and chain have been saved at:
-</ pre>
+</pre>
 
 The SSL certificate will be created in the following directory. From the top, the SSL certificate file, the SSL certificate private key file, and the intermediate certificate file.
 
@@ -902,34 +902,34 @@ The SSL certificate will be created in the following directory. From the top, th
 /etc/letsencrypt/live/build-sakuravps-ubuntu18.perlclub.net/cert.pem
 /etc/letsencrypt/live/build-sakuravps-ubuntu18.perlclub.net/privkey.pem
 /etc/letsencrypt/live/build-sakuravps-ubuntu18.perlclub.net/chain.pem
-</ pre>
+</pre>
 
 Let's see it in action with the ls command.
 
 <pre>
 sudo ls -l /etc/letsencrypt/live/build-sakuravps-ubuntu18.perlclub.net
-</ pre>
+</pre>
 
 Use the "certbot renew" command to renew the SSL certificate with Let's Encrypt. All the SSL certificates obtained will be checked for renewal, and if the renewal period is within one month, the certificate will be renewed.
 
 <pre>
 sudo certbot renew -q --no-self-upgrade --post-hook "systemctl reload apache2"
-</ pre>
+</pre>
 
-If this command is set to automatic update of <a href="/blog/20200830052743.html"> cron </a>, it will be updated automatically. I will explain the cron settings later.
+If this command is set to automatic update of <a href="/blog/20200830052743.html"> cron</a>, it will be updated automatically. I will explain the cron settings later.
 
-<h4> Add SSL certificate to Apache config file </ h4>
+<h4> Add SSL certificate to Apache config file </h4>
 
-<a href="/blog/20200611082716.html"> Add the SSL certificate to the Apache config file </a>.
+<a href="/blog/20200611082716.html"> Add the SSL certificate to the Apache config file</a>.
 
 First, create an SSL basic configuration file. This is intended to be used in common later when the number of web applications increases.
 
-<a href="https://en.li" with the file name "conf-available / ssl-basic.conf"Create with nux.perlzemi.com/blog/20190401171737.html "> vi editor </a>.
+<a href="https://en.li" with the file name "conf-available / ssl-basic.conf"Create with nux.perlzemi.com/blog/20190401171737.html "> vi editor</a>.
 
 <pre>
 cd / etc / apache2
 sudo vi conf-available/ssl-basic.conf
-</ pre>
+</pre>
 
 Add the following content.
 
@@ -938,14 +938,14 @@ SSLEngine on
 SSLProtocol all -SSLv2 -SSLv3
 SSLCipherSuite ECDHE-ECDSA-CHACHA20-POLY1305: ECDHE-RSA-CHACHA20-POLY1305: ECDHE-ECDSA-AES128-GCM-SHA256: ECDHE-RSA-AES128-GCM-SHA256: ECDHE-ECDSA-AES256-GCM-SHA384 -AES256-GCM-SHA384: DHE-RSA-AES128-GCM-SHA256: DHE-RSA-AES256-GCM-SHA384: ECDHE-ECDSA-AES128-SHA256: ECDHE-RSA-AES128-SHA256: ECDHE-ECDSA-AES128-SHA : ECDHE-RSA-AES256-SHA384: ECDHE-RSA-AES128-SHA: ECDHE-ECDSA-AES256-SHA384: ECDHE-ECDSA-AES256-SHA: ECDHE-RSA-AES256-SHA: DHE-RSA-AES128-SHA256: DHE -RSA-AES128-SHA: DHE-RSA-AES256-SHA256: DHE-RSA-AES256-SHA: ECDHE-ECDSA-DES-CBC3-SHA: ECDHE-RSA-DES-CBC3-SHA: EDH-RSA-DES-CBC3 -SHA: AES128-GCM-SHA256: AES256-GCM-SHA384: AES128-SHA256: AES256-SHA256: AES128-SHA: AES256-SHA: DES-CBC3-SHA :! DSS
 SSLHonorCipherOrder on
-</ pre>
+</pre>
 
 Then edit the web application's configuration file. Change the description part of the self SSL certificate to the SSL certificate created by Let's Encrypt.
 
 <pre>
 cd / etc / apache2 / sites-available
 sudo vi build-sakuravps-ubuntu18.perlclub.net.conf
-</ pre>
+</pre>
 
 This is the setting part of the original SSL certificate.
 
@@ -953,7 +953,7 @@ This is the setting part of the original SSL certificate.
   SSLEngine on
   SSLCertificateFile /etc/ssl/certs/ssl-cert-snakeoil.pem
   SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
-</ pre>
+</pre>
 
 Please rewrite as follows.
 
@@ -963,14 +963,14 @@ Please rewrite as follows.
 
   RewriteEngine on
   RewriteRule (. *)? $ Https: //% {HTTP_HOST}% {REQUEST_URI} [L, R = 301]
-</ VirtualHost>
+</VirtualHost>
 
 <VirtualHost *: 443>
   ServerName build-sakuravps-ubuntu18.perlclub.net
 
   <Proxy *>
     Require all granted
-  </ Proxy>
+  </Proxy>
 
   ProxyRequests Off
   ProxyPreserveHost On
@@ -984,24 +984,24 @@ Please rewrite as follows.
   SSLCertificateFile /etc/letsencrypt/live/build-sakuravps-ubuntu18.perlclub.net/cert.pem
   SSLCertificateKeyFile /etc/letsencrypt/live/build-sakuravps-ubuntu18.perlclub.net/privkey.pem
   SSLCertificateChainFile /etc/letsencrypt/live/build-sakuravps-ubuntu18.perlclub.net/chain.pem
-</ VirtualHost>
-</ pre>
+</VirtualHost>
+</pre>
 
 Test if the Apache configuration file is correct.
 
 <pre>
 sudo apachectl -t
-</ pre>
+</pre>
 
-After updating the SSL certificate, restart Apache with the <a href="/blog/20200605104005.html"> systemctl </a> command to reload the SSL certificate.
+After updating the SSL certificate, restart Apache with the <a href="/blog/20200605104005.html"> systemctl</a> command to reload the SSL certificate.
 
 <pre>
 sudo systemctl reload apache2
-</ pre>
+</pre>
 
 It's OK if you visit the website and the SSL certificate is valid.
 
-<h4> Automation of SSL certificate renewal with Let's Encrypt </ h4>
+<h4> Automation of SSL certificate renewal with Let's Encrypt </h4>
 
 Manually updating the SSL certificate with Let's Encrypt is tedious. Let's set it to update automatically once a week.
 
@@ -1015,7 +1015,7 @@ To modify the root crontab, add "sudo" and start crontab.
 
 <pre>
 sudo crontab -e
-</ pre>
+</pre>
 
 Set the contents of crontab as follows. For the e-mail address, specify the e-mail address that you can receive.
 
@@ -1023,23 +1023,23 @@ Set the contents of crontab as follows. For the e-mail address, specify the e-ma
 MAILTO = kimoto_test@perlclub.net
 
 0 9 * * 1 certbot renew -q --no-self-upgrade --post-hook "systemctl reload apache2"
-</ pre>
+</pre>
 
-<h3> Systemd management of web applications </ h3>
+<h3> Systemd management of web applications </h3>
 
-Let's <a href="/blog/20200901150837.html"> register the Mojolicious application with systemd </a> so that the Mojolicious application will also start automatically when the OP is restarted.
+Let's <a href="/blog/20200901150837.html"> register the Mojolicious application with systemd</a> so that the Mojolicious application will also start automatically when the OP is restarted.
 
 Here, it is assumed that you have installed Perl 5.20.3 using perlbrew. It is assumed that the Mojolicious application was also created with the name "Webapp" in the above procedure.
 
-<h4> systemd configuration file </ h4>
+<h4> systemd configuration file </h4>
 
 Register with systemd with the service name "webapp". Create a new file as follows.
 
 <pre>
 sudo vi /lib/systemd/system/webapp.service
-</ pre>
+</pre>
 
-<a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi </a> Open the command and write the following content.
+<a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi</a> Open the command and write the following content.
 
 <pre>
 [Unit]
@@ -1059,71 +1059,71 @@ Environment = MY_SERVER_ENV = my_dev
 
 [Install]
 WantedBy = multi-user.target
-</ pre>
+</pre>
 
-<h4> Service activation </ h4>
+<h4> Service activation </h4>
 
 Let's activate the service.
 
 <pre>
 sudo systemctl enable webapp
-</ pre>
+</pre>
 
 If the Mojolicious application is already running, stop it.
 
 <pre>
 /home/myapp/perl5/perlbrew/perls/perl-5.20.3/bin/hypnotoad /home/myapp/webapp/script/webapp --stop
-</ pre>
+</pre>
 
 Start your Mojolicious application under systemd's control.
 
 <pre>
 sudo systemctl start webapp
-</ pre>
+</pre>
 
 Let's check if the Mojolicious application is running.
 
 <pre>
 sudo systemctl status webapp
-</ pre>
+</pre>
 
 Check if the Mojolicious application can be restarted.
 
 <pre>
 sudo systemctl reload webapp
-</ pre>
+</pre>
 
 Let's see if the Mojolicious application can be stopped.
 
 <pre>
 sudo systemctl stop webapp
-</ pre>
+</pre>
 
 Let's launch the Mojolicious application.
 
 <pre>
 sudo systemctl start webapp
-</ pre>
+</pre>
 
-<h4> Restart the OS </ h4>
+<h4> Restart the OS </h4>
 
-Do <a href="/blog/20200903120232.html"> Restart the OS </a> and see if the Mojolicious application is automatically restarted.
+Do <a href="/blog/20200903120232.html"> Restart the OS</a> and see if the Mojolicious application is automatically restarted.
 
 <pre>
 sudo reboot
-</ pre>
+</pre>
 
-<h3> Send email </ h3>
+<h3> Send email </h3>
 
 Allows you to send mail with the sendmail command. Install postfix to be used as an email sending server. Set the cloud mail service SendGrid to work with postfix.
 
-<h4> Postfix installation </ h4>
+<h4> Postfix installation </h4>
 
-Mail sending server <ahref="/blog/20200423174004.html"> Install postfix </a>. If you install postfix, which functions as an email sending server, you can use the sendmail command to send emails.
+Mail sending server <ahref="/blog/20200423174004.html"> Install postfix</a>. If you install postfix, which functions as an email sending server, you can use the sendmail command to send emails.
 
 <pre>
 sudo apt install -y postfix
-</ pre>
+</pre>
 
 When you execute the installation command, a GUI-like screen will appear.
 
@@ -1133,17 +1133,17 @@ Select "No configuration" with the up and down keys. Press the right key to reco
 
 postfix will be installed.
 
-<h4> Apply for SendGrid </ h4>
+<h4> Apply for SendGrid </h4>
 
 From the SendGrid top page, enter your email address to apply.
 
-<a href="https://sendgrid.kke.co.jp"> SendGrid application </a>
+<a href="https://sendgrid.kke.co.jp"> SendGrid application</a>
 
 Your account will be issued by the next business day.
 
-Regarding the cooperation between SendGrid and postfix, the one explained in <a href="/blog/20200521085509.html"> Cloud mail delivery SendGrid and Postfix cooperation </a> is written below only for the necessary parts. increase.
+Regarding the cooperation between SendGrid and postfix, the one explained in <a href="/blog/20200521085509.html"> Cloud mail delivery SendGrid and Postfix cooperation</a> is written below only for the necessary parts. increase.
 
-<h4> Get the API key </ h4>
+<h4> Get the API key </h4>
 
 Get your API key. Log in to the SendGrid management screen. Click "Settings" in the left sidebar. Click "API keys".
 
@@ -1155,13 +1155,13 @@ Change "API Key Permissions" to "Full Access".
 
 The created API key is displayed. It will only be displayed once, so copy and paste it and save it somewhere. If you turn off the screen, delete it and recreate it.
 
-<h4> Edit postfix configuration file </ h4>
+<h4> Edit postfix configuration file </h4>
 
-Edit the postfix configuration file with the <a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi </a> command.
+Edit the postfix configuration file with the <a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi</a> command.
 
 <pre>
 sudo vi /etc/postfix/main.cf
-</ pre>
+</pre>
 
 Describe the following contents. No other settings are required, just this is OK.
 
@@ -1173,28 +1173,28 @@ smtp_sasl_tls_security_options = noanonymous
 smtp_tls_security_level = encrypt
 header_size_limit = 4096000
 relayhost = [smtp.sendgrid.net]: 587
-</ pre>
+</pre>
 
 Now create the password file described in the settings above.
 
 <pre>
 sudo vi / etc / postfix / sasl_passwd
-</ pre>
+</pre>
 
 Specify the API key obtained by SendGrid. Replace the API key part with the obtained API key.
 
 <pre>
 [smtp.sendgrid.net]: 587 apikey: API key
-</ pre>
+</pre>
 
 Then make sure that this file is restricted to read and write only by the root account, and use the postmap command to update the hashtable for Postfix to use this new file:
 
 <pre>
 sudo chmod 600 / etc / postfix / sasl_passwd
 sudo postmap / etc / postfix / sasl_passwd
-</ pre>
+</pre>
 
-Finally, start Postfix with <a href="/blog/20200605104005.html"> systemctl </a>.
+Finally, start Postfix with <a href="/blog/20200605104005.html"> systemctl</a>.
 
 <pre>
 # Start-up
@@ -1202,21 +1202,21 @@ sudo systemctl start postfix
 
 #If you want to restart, use the following
 sudo systemctl restart postfix
-</ pre>
+</pre>
 
 Check the status of Postfix.
 
 <pre>
 sudo systemctl status postfix
-</ pre>
+</pre>
 
-<h4> Send an email with the sendmail command </ h4>
+<h4> Send an email with the sendmail command </h4>
 
 Let's send an email with the sendmail command. Please set [Email sender] and [Email destination] to an email address that can be sent.
 
 <pre>
 echo Hello | sendmail -f [mail source] [mail destination]
-</ pre>
+</pre>
 
 In sendmail, the standard input is the body.
 
@@ -1227,10 +1227,10 @@ After that, specify the destination of the email. When testing, both the destina
 <pre>
 # Sending example
 echo Hello | sendmail -f kimoto_test@perlclub.net kimoto_test@perlclub.net
-</ pre>
+</pre>
 
 It is OK if you can send an email.
 
-<h3> Completed !!! </ h3>
+<h3> Completed !!! </h3>
 
 The construction of the Web system development environment is completed with Sakura VPS + Ubuntu 18 + Perl. Thank you for your hard work.

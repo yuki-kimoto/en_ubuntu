@@ -2,23 +2,23 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop = "name"> Apache </ span>
-      </a>
+        <span itemprop = "name"> Apache </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Apache child process execution User and group change </ h2>
+<h2> Apache child process execution User and group change </h2>
 
 You can change the execution user and group of Apache child processes by setting "APACHE_RUN_USER" and "APACHE_RUN_GROUP" in "envvars" of the Apache configuration file.
 
@@ -27,11 +27,11 @@ Apache itself runs with root privileges, but for security reasons, the child pro
 <pre>
 cd / etc / apache2
 sudo vi envvars
-</ pre>
+</pre>
 
 This is an example of setting the execution user and group of Apache child processes to the application user. By default, there is a group with the same name to which only individual users belong, so specify it.
 
 <pre>
 export APACHE_RUN_USER = myapp
 export APACHE_RUN_GROUP = myapp
-</ pre>
+</pre>

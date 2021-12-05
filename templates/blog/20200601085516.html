@@ -2,31 +2,31 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200819081929.html">
-        <span itemprop = "name"> Disk management </ span>
-      </a>
+        <span itemprop = "name"> Disk management </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Check the physically attached disk --fdisk -l </ h2>
+<h2> Check the physically attached disk --fdisk -l </h2>
 
 Use "fdisk -l" to see which disks are physically attached to Ubuntu. It is assumed that an external hard disk is connected or a hard disk is added (attached) from the GUI screen using a cloud service. This state is not yet recognized by the Linux file system, and a device called a hard disk is physically connected.
 
-First, use "fdisk -l" to check the status of the connected disk. Run with administrator privileges using <a href="/blog/20200531085516.html"> sudo </a>.
+First, use "fdisk -l" to check the status of the connected disk. Run with administrator privileges using <a href="/blog/20200531085516.html"> sudo</a>.
 
 <pre>
 sudo fdisk -l
-</ pre>
+</pre>
 
 This is a sample output result. This sample is a 1TiB disk connected.
 
@@ -66,10 +66,10 @@ Device Boot Start End Sectors Size Id Type
 Disk / dev / sdc: 1 TiB, 1099511627776 bytes, 2147483648 sectors
 Units: sectors of 1 * 512 = 512 bytes
 Sector size (logical / physical): 512 bytes / 4096 bytes
-I / O size (minimum / optimal): 4096 bytes / 4096 bytes </ pre>
-</ pre>
+I / O size (minimum / optimal): 4096 bytes / 4096 bytes </pre>
+</pre>
 
-In <a href="https://en.linux.perlzemi.com/"> Linux </a>, names like "/ dev / sda" "/ dev / sdb" "/ dev / sdc" are physical. The disk is represented.
+In <a href="https://en.linux.perlzemi.com/"> Linux</a>, names like "/ dev / sda" "/ dev / sdb" "/ dev / sdc" are physical. The disk is represented.
 
 Disk and Device are a set. If there is no item called Device, it means that the partition has not been created yet.
 
@@ -80,14 +80,14 @@ Device Start End Sectors Size Type
 / dev / sda1 227328 62916574 62689247 29.9G Linux filesystem
 / dev / sda14 2048 10239 8192 4M BIOS boot
 / dev / sda15 10240 227327 217088 106M EFI System
-</ pre>
+</pre>
 
 It is divided into areas with numbers at the end. This is a logical disk partition using a feature called partitioning.
 
 "/ Dev / sda" represents a physical disk, and the divided "/ dev / sda1", "/ dev / sda14", and "/ dev / sda15" represent a logical disk.
 
-<h3> How to recognize a physical disk as a Linux file system? </ H3>
+<h3> How to recognize a physical disk as a Linux file system? </H3>
 
 The following article explains how to recognize a physical disk as a Linux file system.
 
-<a href="/blog/20200528085516.html"> Initial format of new physical disk and mounting on file system </a>
+<a href="/blog/20200528085516.html"> Initial format of new physical disk and mounting on file system</a>

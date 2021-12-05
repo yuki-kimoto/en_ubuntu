@@ -2,43 +2,43 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200820081929.html">
-        <span itemprop = "name"> Redis </ span>
-      </a>
+        <span itemprop = "name"> Redis </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> redis-cli --Run Redis command from Redis client </ h2>
+<h2> redis-cli --Run Redis command from Redis client </h2>
 
-redis-cli is a Redis client for executing Redis commands. <a href="/blog/20200525135533.html"> Install the Redis server </a> and it will be installed automatically.
+redis-cli is a Redis client for executing Redis commands. <a href="/blog/20200525135533.html"> Install the Redis server</a> and it will be installed automatically.
 
 <pre>
 redis-cli
-</ pre>
+</pre>
 
 The Redis client starts.
 
-<h3> Redis command </ h3>
+<h3> Redis command </h3>
 
 Run the Redis command.
 
-<h4> PUBLISH running PUB </ h4>
+<h4> PUBLISH running PUB </h4>
 
 You can execute PUB by executing the PUBLISH command. PUB is used for push notifications.
 
 <pre>
 PUBLISH channel name message
-</ pre>
+</pre>
 
 Both the channel name and the message are just strings. If you need complex data structures, use JSON for your messages.
 
@@ -48,6 +48,6 @@ Channel names are a global namespace for all processes, so consider non-overlapp
 PUBLISH / foo / bar / baz? id = 5 Hello
 PUBLISH "/ foo / bar / baz? Id = 5" "Hello"
 PUBLISH "/ foo / bar / baz? id = 5"'{message: "Hello"}'
-</ pre>
+</pre>
 
 Both double and single quotes can be used to enclose the string.

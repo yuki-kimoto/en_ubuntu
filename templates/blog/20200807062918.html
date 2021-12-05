@@ -2,47 +2,47 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200902120232.html">
-        <span itemprop = "name"> Domain management </ span>
-      </a>
+        <span itemprop = "name"> Domain management </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Get domain name and set DNS server </ h2>
+<h2> Get domain name and set DNS server </h2>
 
 Explains how to get a domain name and set up a DNS server. You can publish your website on the Internet by associating your domain name with your IP address.
 
 I will write about the basic idea and setting method of DNS.
 
-<h3> What is DNS? </ H3>
+<h3> What is DNS? </H3>
 
 DNS is a domain name system that associates a domain name (eg perlclub.net) with an IP address (59.106.185.188).
 
 You can get it with a domain name acquisition service such as Name.com.
 
 <ul>
-  <li> <a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3513971&pid=886673689" rel="nofollow"> <img src = "// ad.jp.ap.valuecommerce" .com / servlet / giftbanner? sid = 3513971 & pid = 886673689 "height =" 1 "width =" 1 "border =" 0 "> your name.com </a> </a>
-</ ul>
+  <li> <a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3513971&pid=886673689" rel="nofollow"> <img src = "// ad.jp.ap.valuecommerce" .com / servlet / giftbanner? sid = 3513971 & pid = 886673689 "height =" 1 "width =" 1 "border =" 0 "> your name.com</a></a>
+</ul>
 
 The price is about 1000 yen a year for a general domain such as .com "(example) perlclub.net". It is a good idea to estimate about 2000 yen a year on the co.jp domain "(example) perlclub.net" for your company.
 
-<h3> A record settings </ h3>
+<h3> A record settings </h3>
 
 DNS settings are explained on the following pages.
 
 <ul>
-  <li> <a href="https://www.onamae.com/guide/p/70"> About Name Server / DNS </a> </ li>
-</ ul>
+  <li> <a href="https://www.onamae.com/guide/p/70"> About Name Server / DNS</a> </li>
+</ul>
 
 There are some differences in the setting method depending on the DNS server, but basically, set the IP address in the A record and set the corresponding domain name. The domain name can be a subdomain or the domain name itself.
 
@@ -53,16 +53,16 @@ Subdomains are created using A records or CNAME records, which will be explained
 If you want to access the Web server with the IP address "59.106.185.191" with the domain name "perlclub.net", make the following settings.
 
 <table>
-  <tr> <th> perlclub.net </ th> <td> A record </ td> <td> 59.106.185.191 </ td> </ tr>
-</ table>
+  <tr> <th> perlclub.net </th> <td> A record </td> <td> 59.106.185.191 </td> </tr>
+</table>
 
 If you want to access the Web server with the IP address "59.106.185.191" with the domain name "perlclub.net", make the following settings.
 
 <table>
-  <tr> <th> perlclub.net </ th> <td> A record </ td> <td> 59.106.185.191 </ td> </ tr>
-</ table>
+  <tr> <th> perlclub.net </th> <td> A record </td> <td> 59.106.185.191 </td> </tr>
+</table>
 
-<h3> How to find the IP address of the server </ h3>
+<h3> How to find the IP address of the server </h3>
 
 I will write how to find out the IP address of the server. This is because the IP address of the server is required when setting the DNS server.
 
@@ -72,13 +72,13 @@ The network may be virtualized, but from the perspective of the engineer creatin
 
 If it is not a public cloud, you can use the ip command or ifconfig command to see the IP address of the server.
 
-<h3> Use CNAME records </ h3>
+<h3> Use CNAME records </h3>
 
 You can use a CNAME record to set an alias for your domain name.
 
 Only subdomains (perlclub.net and account.perlclub.net) can have CNAME records. Please note that it cannot be set to the naked domain (perlclub.net).
 
-<h4> Example of CNAME record settings </ h4>
+<h4> Example of CNAME record settings </h4>
 
 CNAME records are useful if you want to configure the same IP address for multiple subdomains.
 
@@ -87,15 +87,15 @@ Suppose the IP address of a server is "59.106.185.179".
 First, create a subdomain name that identifies this server using the A record.
 
 <table>
-  <tr> <th> prod001.perlclub.net </ th> <td> A record </ td> <td> 59.106.185.179 </ td> </ tr>
-</ table>
+  <tr> <th> prod001.perlclub.net </th> <td> A record </td> <td> 59.106.185.179 </td> </tr>
+</table>
 
 Then use the CNAME record to create an alias for the above domain name.
 
 <table>
-  <tr> <th> foo.perlclub.net </ th> <td> CNAME record </ td> <td> prod001.perlclub.net </ td> </ tr>
-  <tr> <th> bar.perlclub.net </ th> <td> CNAME record </ td> <td> prod001.perlclub.net </ td> </ tr>
-</ table>
+  <tr> <th> foo.perlclub.net </th> <td> CNAME record </td> <td> prod001.perlclub.net </td> </tr>
+  <tr> <th> bar.perlclub.net </th> <td> CNAME record </td> <td> prod001.perlclub.net </td> </tr>
+</table>
 
 "Foo.perlclub.net" is now another name for "prod001.perlclub.net".
 
@@ -103,14 +103,14 @@ Then use the CNAME record to create an alias for the above domain name.
 
 When querying the DNS server, both "foo.perlclub.net" and "bar.perlclub.net" return "59.106.185.179" set in the A record of "prod001.perlclub.net".
 
-<h3> DNS record query </ h3>
+<h3> DNS record query </h3>
 
-Querying DNS records is easy with the <a href="https://en.linux.perlzemi.com/blog/20200622141433.html"> dig </a> command. You can check the settings of A record, CNAME record, and MX record.
+Querying DNS records is easy with the <a href="https://en.linux.perlzemi.com/blog/20200622141433.html"> dig</a> command. You can check the settings of A record, CNAME record, and MX record.
 
-<h3> Email address settings </ h3>
+<h3> Email address settings </h3>
 
 When using e-mail, it is also necessary to set the e-mail address. Please refer to the following articles for creating an email address and setting up a DNS server.
 
 <ul>
-  <li> <a href="/blog/20200828123127.html"> Creating an email address and setting up a DNS server </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200828123127.html"> Creating an email address and setting up a DNS server</a> </li>
+</ul>

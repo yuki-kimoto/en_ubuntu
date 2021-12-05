@@ -2,35 +2,35 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop = "name"> Apache </ span>
-      </a>
+        <span itemprop = "name"> Apache </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Settings that allow Apache to execute CGI with document rooting </ h2>
+<h2> Settings that allow Apache to execute CGI with document rooting </h2>
 
 It is a description of the setting that enables CGI to be executed by document rooting in Apache of Ubuntu.
 
-Even if you do <a href="/blog/20200316174004.html"> enable mod_cgid </a> to use CGI in Apache settings of Ubuntu, "/ usr / lib / cgi-bin /" You can only run CGI with:
+Even if you do <a href="/blog/20200316174004.html"> enable mod_cgid</a> to use CGI in Apache settings of Ubuntu, "/ usr / lib / cgi-bin /" You can only run CGI with:
 
 This is secure, but many CGI applications that have already been created will be required to run under the document root.
 
-When doing <a href="https://en.webapp.perlzemi.com/"> Web system development </a> with Perl newly, security, development efficiency, real-time Web, cloud server, etc. are comprehensively integrated. Considering this, we recommend reverse proxy operation.
+When doing <a href="https://en.webapp.perlzemi.com/"> Web system development</a> with Perl newly, security, development efficiency, real-time Web, cloud server, etc. are comprehensively integrated. Considering this, we recommend reverse proxy operation.
 
-<h4> Apache config file for running CGI under the document root </ h3>
+<h4> Apache config file for running CGI under the document root </h3>
 
-Apache's configuration file for running CGI under the document root. It is supposed to operate in <a href="/blog/20200314174004.html"> default virtual host </a>.
+Apache's configuration file for running CGI under the document root. It is supposed to operate in <a href="/blog/20200314174004.html"> default virtual host</a>.
 
 The default virtual host needs to be loaded first, so it needs to be the file name to be loaded first, such as "000-default.conf", prefixed with "000". be careful.
 
@@ -44,22 +44,22 @@ The default virtual host needs to be loaded first, so it needs to be the file na
 
   <Directory / var / www / html>
     Options + ExecCGI
-  </ Directory>
-</ VirtualHost>
-</ pre>
+  </Directory>
+</VirtualHost>
+</pre>
 
-<h3> Operate with HTTPS </ h3>
+<h3> Operate with HTTPS </h3>
 
 If you want to operate the CGI program with HTTPS, the following article explains how to set the SSL certificate.
 
 <ul>
-  <li> <a href="/blog/20200611082716.html"> Describe the SSL certificate settings in the Apache configuration file </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200611082716.html"> Describe the SSL certificate settings in the Apache configuration file</a> </li>
+</ul>
 
-<h3> Run a CGI program in user Perl </ h3>
+<h3> Run a CGI program in user Perl </h3>
 
 If you want to run the program in user Perl instead of system Perl, please refer to the following articles.
 
 <ul>
-  <li> <a href="/blog/20200308174004.html"> How to use user Perl with Apache's CGI program </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200308174004.html"> How to use user Perl with Apache's CGI program</a> </li>
+</ul>

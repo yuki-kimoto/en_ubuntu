@@ -2,38 +2,38 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop = "name"> Apache </ span>
-      </a>
+        <span itemprop = "name"> Apache </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Setting environment variables in Apache </ h2>
+<h2> Setting environment variables in Apache </h2>
 
 Apache allows you to define environment variables that are used when Apache runs. The environment variable definition file is as follows.
 
 <pre>
 #Environment variable definition file
 / etc / apache2 / envvars
-</ pre>
+</pre>
 
 If you define the loading of environment variables here, it will be loaded when Apache is restarted.
 
-<h3> Example of using environment variables in Apache </ h3>
+<h3> Example of using environment variables in Apache </h3>
 
 Here is an example of using environment variables in Apache.
 
-<h4> I want to specify Perl to execute CGI </ h4>
+<h4> I want to specify Perl to execute CGI </h4>
 
 If you have a CGI script, you may want to use your own installed user Perl instead of the system Perl.
 
@@ -41,12 +41,12 @@ Add the user Perl's path to the beginning of your current PATH. The which comman
 
 <pre>
 export PATH = "/ home / admins / perl5 / perlbrew / perls / perl-5.30.2 / bin: $ PATH"
-</ pre>
+</pre>
 
-<h4> I want to load additional Perl libraries </ h4>
+<h4> I want to load additional Perl libraries </h4>
 
 Suppose you have a Perl application library in your location. In such cases, you can use the PERL5LIB environment variable to load the library.
 
 <pre>
 export PERL5LIB = / my / lib
-</ pre>
+</pre>

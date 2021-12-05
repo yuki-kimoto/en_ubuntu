@@ -2,55 +2,55 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200827123127.html">
-        <span itemprop = "name"> Perl </ span>
-      </a>
+        <span itemprop = "name"> Perl </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> How to install the web framework Mojolicious and run the web application </ h2>
+<h2> How to install the web framework Mojolicious and run the web application </h2>
 
 Learn how to install the web framework Mojolicious and run web applications. In the introduction to Ubuntu server construction, we will disclose the minimum knowledge necessary for building an environment for developing Perl Web systems.
 
-<h3> Prerequisites for installing the web framework Mojolicious </ h3>
+<h3> Prerequisites for installing the web framework Mojolicious </h3>
 
-As a prerequisite to installing the web framework <a href="https://en.mojolicious.perlzemi.com/"> Mojolicious </a>, the users Perl and cpanm must be installed.
+As a prerequisite to installing the web framework <a href="https://en.mojolicious.perlzemi.com/"> Mojolicious</a>, the users Perl and cpanm must be installed.
 
 <ul>
-  <li> <a href="/blog/20200413174004.html"> User Perl and cpanm installation </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200413174004.html"> User Perl and cpanm installation</a> </li>
+</ul>
 
-<h3> Installing the web framework Mojolicious </ h3>
+<h3> Installing the web framework Mojolicious </h3>
 
 Install the web framework Mojolicious.
 
 <pre>
 cpanm Mojolicious
-</ pre>
+</pre>
 
 Make sure you have Mojolicious installed. It's okay if no error occurs.
 
 <pre>
 perl -e'use Mojolicious'
-</ pre>
+</pre>
 
-<h3> The smallest Mojolicious application </ h3>
+<h3> The smallest Mojolicious application </h3>
 
 Let's create a Mojolicious application.
 
 <pre>
 
-</ pre>
+</pre>
 
 
 
@@ -61,21 +61,21 @@ Save the following Mojolicious program as "myapp.pl".
 use Mojolicious :: Lite;
 get'/' => {text =>'Hello World!'};
 app-> start;
-</ pre>
+</pre>
 
-<h3> Launch a web application for the development environment </ h3>
+<h3> Launch a web application for the development environment </h3>
 
-The <a href="https://en.mojolicious.perlzemi.com/blog/20120406133367.html"> morbo </a> command launches the web application in the development environment.
+The <a href="https://en.mojolicious.perlzemi.com/blog/20120406133367.html"> morbo</a> command launches the web application in the development environment.
 
 <pre>
 morbo myapp.pl
-</ pre>
+</pre>
 
 The web application starts on port 3000.
 
 <pre>
 Web application available at http://127.0.0.1:3000
-</ pre>
+</pre>
 
 127.0.0.1 is the address of the local server. Change this part to the IP address of your server and access it from your browser.
 
@@ -85,42 +85,42 @@ The following example is an example where the IP address of the server is "59.10
 
 <pre>
 http://59.105.185.197:3000
-</ pre>
+</pre>
 
 If "Hello World!" Is displayed on the screen, it is successful.
 
-<h3> Launch a web application for production environment </ h3>
+<h3> Launch a web application for production environment </h3>
 
-Next, let's start the web application for the production environment. The <a href="https://en.mojolicious.perlzemi.com/blog/20110122130016.html"> hypnotoad </a> command launches the web application for production.
+Next, let's start the web application for the production environment. The <a href="https://en.mojolicious.perlzemi.com/blog/20110122130016.html"> hypnotoad</a> command launches the web application for production.
 
 <pre>
 hypnotoad myapp.pl
-</ pre>
+</pre>
 
 The web application starts on port 8080.
 
 <pre>
 Web application available at http://127.0.0.1:8080
-</ pre>
+</pre>
 
 When you reboot, try again.
 
 <pre>
 hypnotoad myapp.pl
-</ pre>
+</pre>
 
 Use the "--stop" option to stop.
 
 <pre>
 hypnotoad --stop myapp.pl
-</ pre>
+</pre>
 
-<h3> Connect Mojolicious apps from a reverse proxy </ h3>
+<h3> Connect Mojolicious apps from a reverse proxy </h3>
 
-In the production environment, connect the web application started by hypnotoad from a web server such as <a href="/blog/20200526151435.html"> Apache </a> with a reverse proxy.
+In the production environment, connect the web application started by hypnotoad from a web server such as <a href="/blog/20200526151435.html"> Apache</a> with a reverse proxy.
 
 Please refer to the following for this procedure.
 
 <ul>
-  <li> <a href="/blog/20200306174004.html"> Connect your web application from Apache with a virtual host and reverse proxy </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200306174004.html"> Connect your web application from Apache with a virtual host and reverse proxy</a> </li>
+</ul>

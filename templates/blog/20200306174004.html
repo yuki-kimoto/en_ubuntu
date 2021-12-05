@@ -2,59 +2,59 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop = "name"> Apache </ span>
-      </a>
+        <span itemprop = "name"> Apache </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Connect your website from Apache with a virtual host and reverse proxy </ h2>
+<h2> Connect your website from Apache with a virtual host and reverse proxy </h2>
 
 Learn how to connect your website from Apache with a virtual host and reverse proxy.
 
-When doing a new <a href="https://en.webapp.perlzemi.com/"> Web system development </a> with Perl, it is complex such as security, development efficiency, real-time Web, cloud server support, etc. For that reason, we recommend that you create your website in a reverse proxy configuration.
+When doing a new <a href="https://en.webapp.perlzemi.com/"> Web system development</a> with Perl, it is complex such as security, development efficiency, real-time Web, cloud server support, etc. For that reason, we recommend that you create your website in a reverse proxy configuration.
 
-<h3> Why operate with a reverse proxy configuration </ h3>
+<h3> Why operate with a reverse proxy configuration </h3>
 
 I will write the reason why it is recommended to operate with a reverse proxy configuration instead of the method that can be operated just by arranging it like a CGI program.
 
-<h4> Mitigating security risks </ h4>
+<h4> Mitigating security risks </h4>
 
 Compared to CGI programs, web frameworks can be used to minimize security risks. Generally speaking, the web framework takes measures in advance against vulnerabilities in the web, such as escaping when outputting a character string to HTML. Of course, that's not the only thing that's safe, but by following the framework's style, you can reduce your security risks.
 
-<h4> Development efficiency </ h4>
+<h4> Development efficiency </h4>
 
 The web framework allows you to test your website in a user environment. Instead of running CGI on Apache, you can launch a website and develop in each user's home directory. The error messages that the web framework displays are kind. You can improve development efficiency.
 
-<h4> Execution speed </ h4>
+<h4> Execution speed </h4>
 
 If you use a web framework to launch a website on a Perl web server, you can get fast execution speed without launching the process every time like CGI.
 
-<h4> Real-time Web </ h4>
+<h4> Real-time Web </h4>
 
 There are modern web techniques called push notifications, streaming, real-time updates, and real-time chat, which cannot be achieved with CGI. You can do this by launching a website using a web framework that supports the real-time web and connecting with a reverse proxy from Apache.
 
-<h4> Cloud server support </ h4>
+<h4> Cloud server support </h4>
 
 CGI programs are slow to execute and do not have scalability such as increasing the number of servers and connecting them to load balancers. On the other hand, if you start the website and connect it from the Apache reverse proxy, this is a loose coupling between servers, so you can change the connection from the Apache reverse proxy to the connection from the load balancer. , Can be done naturally.
 
-<h3> Main features of Apache virtual hosts </ h3>
+<h3> Main features of Apache virtual hosts </h3>
 
 First, I will explain the functions of Apache's virtual host. Apache virtual hosting is simply a feature for running multiple websites in different domains.
 
 In other words, if you want to run multiple websites with different domains, you'll want to use Apache's virtual host feature. If you want to run multiple sites, it happens very often, so it is recommended to create an Apache configuration file on a virtual host from the beginning, even for one website.
 
-<h3> What is a reverse proxy? </ H3>
+<h3> What is a reverse proxy? </H3>
 
 A reverse proxy is simply a function that transfers access to Apache to another server. Users connect to Apache from an HTTP client such as a web browser. You can connect that connection to another server.
 
@@ -62,55 +62,55 @@ Start a Perl website as an HTTP server and listen on a specific port. This is a 
 
 Set up a reverse proxy in Apache and connect it to your Perl website. With a virtual host, you can connect to different ports in different domains, so you can operate multiple websites by launching websites on different ports and connecting according to the domain. increase.
 
-<h3> Apache module required for reverse proxy </ h3>
+<h3> Apache module required for reverse proxy </h3>
 
 The Apache modules required to configure the reverse proxy are mod_proxy, mod_proxy_http.
 
 <ul>
-  <li> <a href="/blog/20200310174004.html"> Enable mod_proxy module in Apache </a> </ li>
-  <li> <a href="/blog/20200220174004.html"> Enable mod_proxy_http module in Apache </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200310174004.html"> Enable mod_proxy module in Apache</a> </li>
+  <li> <a href="/blog/20200220174004.html"> Enable mod_proxy_http module in Apache</a> </li>
+</ul>
 
 You also need mod_rewrite to redirect HTTP to HTTPS.
 
 <ul>
-  <li> <a href="/blog/20200311174004.html"> Enable mod_rewrite module in Apache </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200311174004.html"> Enable mod_rewrite module in Apache</a> </li>
+</ul>
 
 Mod_ssl is required to support HTTPS.
 
 <ul>
-  <li> <a href="/blog/20200318174004.html"> Enable mod_ssl for HTTPS communication with Apache </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200318174004.html"> Enable mod_ssl for HTTPS communication with Apache</a> </li>
+</ul>
 
 You will need the mod_headers module to tell in the HTTP headers that it is HTTPS.
 
 <ul>
-  <li> <a href="/blog/20200309174004.html"> Enable mod_headers module in Apache </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200309174004.html"> Enable mod_headers module in Apache</a> </li>
+</ul>
 
-<h3> Apache virtual host and reverse proxy settings </ h3>
+<h3> Apache virtual host and reverse proxy settings </h3>
 
 First, place the configuration file in the following directory.
 
 <pre>
 / etc / apache2 / sites-available
-</ pre>
+</pre>
 
 The directory of this configuration file is explained in detail on the following page.
 
 <ul>
-  <li> <a href="/blog/20200610082714.html"> Enable / disable Apache config file-basic config / module config / site config </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200610082714.html"> Enable / disable Apache config file-basic config / module config / site config</a> </li>
+</ul>
 
 <a href="https://en.linux.perlzemi.com/blog/20190401171737.html"> vi < Create a configuration file with the / a> command.
 
 <pre>
 cd / etc / apache2 / sites-available
 sudo vi www.mydomain.example.conf
-</ pre>
+</pre>
 
-The contents of the configuration file are as follows. Notice that we are using the virtual host feature to connect "www.mydomain.example" to "port 8080" with a reverse proxy. Although it is a description that supports HTTPS, I have not used a real SSL certificate yet, and I am using <a href="/blog/20200307174004.html"> Self SSL certificate </a>.
+The contents of the configuration file are as follows. Notice that we are using the virtual host feature to connect "www.mydomain.example" to "port 8080" with a reverse proxy. Although it is a description that supports HTTPS, I have not used a real SSL certificate yet, and I am using <a href="/blog/20200307174004.html"> Self SSL certificate</a>.
 
 <pre>
 <VirtualHost *: 80>
@@ -118,14 +118,14 @@ The contents of the configuration file are as follows. Notice that we are using 
 
   RewriteEngine on
   RewriteRule (. *)? $ Https: //% {HTTP_HOST}% {REQUEST_URI} [L, R = 301]
-</ VirtualHost>
+</VirtualHost>
 
 <VirtualHost *: 443>
   ServerName www.mydomain.example
 
   <Proxy *>
     Require all granted
-  </ Proxy>
+  </Proxy>
 
   ProxyRequests Off
   ProxyPreserveHost On
@@ -136,10 +136,10 @@ The contents of the configuration file are as follows. Notice that we are using 
   SSLEngine on
   SSLCertificateFile /etc/ssl/certs/ssl-cert-snakeoil.pem
   SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
-</ VirtualHost>
-</ pre>
+</VirtualHost>
+</pre>
 
-<h4> A brief explanation of the configuration file </ h4>
+<h4> A brief explanation of the configuration file </h4>
 
 <pre>
 <VirtualHost *: 80>
@@ -147,8 +147,8 @@ The contents of the configuration file are as follows. Notice that we are using 
 
   RewriteEngine on
   RewriteRule (. *)? $ Https: //% {HTTP_HOST}% {REQUEST_URI} [L, R = 301]
-</ VirtualHost>
-</ pre>
+</VirtualHost>
+</pre>
 
 ServerName describes the domain name of your website. The connection to http (port 80) is redirected to https (port 443) using mod_rewrite.
 
@@ -158,7 +158,7 @@ ServerName describes the domain name of your website. The connection to http (po
 
   <Proxy *>
     Require all granted
-  </ Proxy>
+  </Proxy>
 
   ProxyRequests Off
   ProxyPreserveHost On
@@ -169,8 +169,8 @@ ServerName describes the domain name of your website. The connection to http (po
   SSLEngine on
   SSLCertificateFile /etc/ssl/certs/ssl-cert-snakeoil.pem
   SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
-</ VirtualHost>
-</ pre>
+</VirtualHost>
+</pre>
 
 ServerName describes the domain name of your website.
 
@@ -183,7 +183,7 @@ The Proxy directive is mandatory. Allow proxy requests.
 <pre>
 ProxyPass / http: // localhost: 8080 / keepalive = On
 ProxyPassReverse / http: // localhost: 8080 /
-</ pre>
+</pre>
 
 The above is the setting to connect to port 8080 of the local host. I need to write two things.
 
@@ -193,32 +193,32 @@ The above is the setting to connect to port 8080 of the local host. I need to wr
   SSLEngine on
   SSLCertificateFile /etc/ssl/certs/ssl-cert-snakeoil.pem
   SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
-</ pre>
+</pre>
 
-The above is the setting of <a href="/blog/20200307174004.html"> Self SSL certificate </a>.
+The above is the setting of <a href="/blog/20200307174004.html"> Self SSL certificate</a>.
 
-<h4> Enable configuration file </ h4>
+<h4> Enable configuration file </h4>
 
 After completing the settings, enable the configuration file.
 
 <pre>
 sudo a2ensite www.mydomain.example
-</ pre>
+</pre>
 
-<a href="/blog/20200519084454.html"> Restart Aapache </a> after activation.
+<a href="/blog/20200519084454.html"> Restart Aapache</a> after activation.
 
 <pre>
 sudo systemctl reload apache2
-</ pre>
+</pre>
 
 Make sure the website is running in Perl on port 8080.
 
 If you can display the website with "https://www.mydomain.example", it is successful.
 
-<h3> Operate with HTTPS </ h3>
+<h3> Operate with HTTPS </h3>
 
 If you want to obtain an SSL certificate and operate it over HTTPS in a production environment, the following article explains how to set the SSL certificate.
 
 <ul>
-  <li> <a href="/blog/20200611082716.html"> Describe the SSL certificate settings in the Apache configuration file </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200611082716.html"> Describe the SSL certificate settings in the Apache configuration file</a> </li>
+</ul>

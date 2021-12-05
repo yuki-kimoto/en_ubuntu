@@ -1,16 +1,16 @@
-<h2> Install cron-Run regular program </ h2>
+<h2> Install cron-Run regular program </h2>
 
-Let's install <b> cron </ b>. Cron is a resident application for executing periodic programs. I think it is installed by default, but if it is not installed, follow this procedure to install it. Use the <a href="/blog/20200530085516.html"> apt </a> command.
+Let's install <b> cron </b>. Cron is a resident application for executing periodic programs. I think it is installed by default, but if it is not installed, follow this procedure to install it. Use the <a href="/blog/20200530085516.html"> apt</a> command.
 
 <pre>
 sudo apt install -y cron
-</ pre>
+</pre>
 
-Check <a href="/blog/20200605104005.html"> systemctl </a> that cron is installed and running.
+Check <a href="/blog/20200605104005.html"> systemctl</a> that cron is installed and running.
 
 <pre>
 sudo systemctl status cron
-</ pre>
+</pre>
 
 If you see active, cron is installed and running.
 
@@ -23,4 +23,4 @@ If you see active, cron is installed and running.
     Tasks: 1 (limit: 9479)
    CGroup: /system.slice/cron.service
            mq1161 / usr / sbin / cron -f
-</ pre>
+</pre>

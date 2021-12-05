@@ -1,4 +1,4 @@
-<h2> How multiple users read and write to the data directory-Web app file upload directory </ h2>
+<h2> How multiple users read and write to the data directory-Web app file upload directory </h2>
 
 Learn how multiple users can read and write to a data directory.
 
@@ -8,62 +8,62 @@ By setting an owner group called "myapp-group" for all files under the data stor
 
 SGID is an abbreviation for Set Group ID. By setting it to a directory, the owner group will be the same as the top directory when new files under the directory are created.
 
-<h3> Procedures for multiple users to read and write to the data directory </ h3>
+<h3> Procedures for multiple users to read and write to the data directory </h3>
 
 This is a procedure for multiple users to read and write to the data directory. The data directory is "/ datadrive".
 
-<h4> Create a group for your application </ h4>
+<h4> Create a group for your application </h4>
 
-Create a group for your application with the <a href="/blog/20200405174004.html"> groupadd </a> command. The name is "myapp-group".
+Create a group for your application with the <a href="/blog/20200405174004.html"> groupadd</a> command. The name is "myapp-group".
 
 <pre>
 sudo groupadd myapp-group
-</ pre>
+</pre>
 
-<h4> Add development user to myapp-group group </ h4>
+<h4> Add development user to myapp-group group </h4>
 
-Add the development user to the myapp-group group with the <a href="/blog/20200330174004.html"> gpasswd </a> command.
+Add the development user to the myapp-group group with the <a href="/blog/20200330174004.html"> gpasswd</a> command.
 
 <pre>
 sudo gpasswd -a myapp myapp-group
 sudo gpasswd -a yamada myapp-group
-</ pre>
+</pre>
 
-<h4> Recursively change the owner group of files under the data directory to myapp-group </ h4>
+<h4> Recursively change the owner group of files under the data directory to myapp-group </h4>
 
-Recursively change the owner group of files under the data directory to myapp-group with the <a href="https://en.linux.perlzemi.com/blog/20200604095018.html"> chgrp </a> command.
+Recursively change the owner group of files under the data directory to myapp-group with the <a href="https://en.linux.perlzemi.com/blog/20200604095018.html"> chgrp</a> command.
 
 <pre>
 sudo chgrp -R myapp-group / datadrive
-</ pre>
+</pre>
 
-<h4> Give write permission to the group </ h4>
+<h4> Give write permission to the group </h4>
 
 Give "/ datadrive" write permission for the group.
 
 <pre>
 sudo chmod 775 / datadrive
-</ pre>
+</pre>
 
-<h4> Set special permissions SGID for data directories </ h4>
+<h4> Set special permissions SGID for data directories </h4>
 
-Set a special permission SGID for the data directory with the <a href="https://en.linux.perlzemi.com/blog/20200519082545.html"> chmod </a> command.
+Set a special permission SGID for the data directory with the <a href="https://en.linux.perlzemi.com/blog/20200519082545.html"> chmod</a> command.
 
 <pre>
 sudo chmod g + s / datadrive
-</ pre>
+</pre>
 
 If you check with the ls command, s is set.
 
 <pre>
 ls -l / | grep datadrive
-</ pre>
+</pre>
 
 It is a part of the output result.
 
 <pre>
 drwxr-sr-x 7 myapp myapp-group 115 Jun 3 10:36 / datadrive
-</ pre>
+</pre>
 
 Now the data directory is ready for the files to be uploaded by the web application launched by multiple developers.
 

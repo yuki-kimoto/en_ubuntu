@@ -2,53 +2,53 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200830052743.html">
-        <span itemprop = "name"> cron </ span>
-      </a>
+        <span itemprop = "name"> cron </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> crontab --Write a program to be executed periodically by cron </ h2>
+<h2> crontab --Write a program to be executed periodically by cron </h2>
 
 Cron is an application for running programs on a regular basis, but its configuration file is edited using a command called crontab.
 
 You can have a crontab for each user. If you edit the crontab as a user named myapp, it becomes myapp's crontab.
 
-<h3> Edit crontab </ h3>
+<h3> Edit crontab </h3>
 
 Use the "-e" option to edit the crontab.
 
 <pre>
 crontab -e
-</ pre>
+</pre>
 
 The editor will start.
 
-If you want to switch the editor to use, execute the <a href="/blog/20200325174004.html"> select-editor </a> command.
+If you want to switch the editor to use, execute the <a href="/blog/20200325174004.html"> select-editor</a> command.
 
-<h3> How to write crontab </ h3>
+<h3> How to write crontab </h3>
 
 With crontabe, you can specify minutes, hours, days, months, and weeks to run the program on a regular basis.
 
 <pre>
 Minute hour day month week command
-</ pre>
+</pre>
 
 For example, if you want to run it every 15 minutes, write:
 
 <pre>
 15 * * * * foo.pl
-</ pre>
+</pre>
 
 The minimum unit of execution is 1 minute.
 
@@ -58,27 +58,27 @@ If you run it every minute, it will be as follows.
 
 <pre>
 * * * * * foo.pl
-</ pre>
+</pre>
 
 It is also possible to specify multiple items by separating them with commas.
 
 <pre>
 15,30,45 * * * * foo.pl
-</ pre>
+</pre>
 
 You can use the "/" symbol to write something like every 15 minutes.
 
 <pre>
 * / 15 * * * * foo.pl
-</ pre>
+</pre>
 
 The crontab sample is detailed below.
 
 <ul>
-  <li> <a href="https://crontab.guru/examples.html"> Cron Examples (crontab guru) </a> </ li>
-</ ul>
+  <li> <a href="https://crontab.guru/examples.html"> Cron Examples (crontab guru)</a> </li>
+</ul>
 
-<h3> Use user Perl with crontab </ h3>
+<h3> Use user Perl with crontab </h3>
 
 One of the highlights of crontab is that user Perl installed with perlbrew or plenv will not be used by cron.
 
@@ -90,19 +90,19 @@ First, as the user who installed perlbrew, display the value of the PATH environ
 
 <pre>
 env | grep -P'^ PATH'
-</ pre>
+</pre>
 
 You will see some environment variables that include PATH, so look for something called PATH. (This is an example when the user name is myapp.)
 
 <pre>
 PATH = / home / myapp / perl5 / perlbrew / bin: /home/myapp/perl5/perlbrew/perls/perl-5.20.3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin : / usr / bin: / sbin: / bin: / usr / games: / usr / local / games
-</ pre>
+</pre>
 
 Edit crontab with the following command.
 
 <pre>
 crontab -e
-</ pre>
+</pre>
 
 Then write the above PATH value to the top of crontab.
 
@@ -110,60 +110,60 @@ Then write the above PATH value to the top of crontab.
 PATH = / home / myapp / perl5 / perlbrew / bin: / home / myapp / perl5 / perlbrew / perls / perl-5.16.2 / bin: / usr / kerberos / bin: / usr / local / bin: / bin: / usr / bin: / home / myapp / bin
 
 #Crontab settings continue ...
-</ pre>
+</pre>
 
 Now you can use the user Perl installed by cron.
 
-<h3> Add the Perl library path </ h3>
+<h3> Add the Perl library path </h3>
 
 If you have the library path, set "PERL5LIB" as follows. This description is required when reading an application created with Mojolicious from a batch file.
 
 <pre>
 PERL5LIB = / home / myapp / webapp / lib
-</ pre>
+</pre>
 
-<h3> Change the destination of emails when a cron error occurs MAILTO </ h3>
+<h3> Change the destination of emails when a cron error occurs MAILTO </h3>
 
 Cron works by sending an email if there is output in the standard error output.
 
-You can use <strong> MAILTO </ strong> to change the destination of your email with <strong> cron </ strong>. Add the following line inside the <strong> crontab </ strong>.
+You can use <strong> MAILTO </strong> to change the destination of your email with <strong> cron </strong>. Add the following line inside the <strong> crontab </strong>.
 
 If not set, it will be in the local mailbox of the user who ran the cron.
 
 <pre>
 MAILTO = kimoto_test@perlclub.net
-</ pre>
+</pre>
 
 When setting multiple email addresses, separate them with commas.
 
 <pre>
 MAILTO = kimoto_test@perlclub.net,taro@somehost.com
-</ pre>
+</pre>
 
 It is convenient to set an email address because you can know the error of batch processing executed by cron.
 
-<h3> Back up and save the contents of crontab </ h3>
+<h3> Back up and save the contents of crontab </h3>
 
-You can display the contents with the <b> -l </ b> option. You can redirect and back up your contents.
+You can display the contents with the <b> -l </b> option. You can redirect and back up your contents.
 
 <pre>
 crontab -l> crontab_prod
-</ pre>
+</pre>
 
 If you manage this with Git together with the source code, you can avoid the risk of losing all the crontab settings in the worst case.
 
-<h3> Read settings from file into crontab </ h3>
+<h3> Read settings from file into crontab </h3>
 
 You can load the settings from a file into crontab by specifying a file as an argument to crontab.
 
 <pre>
 crontab file name
-</ pre>
+</pre>
 
-<h3> Start / stop / restart / status check of cron, cron execution log </ h3>
+<h3> Start / stop / restart / status check of cron, cron execution log </h3>
 
 Please refer to the following articles for cron start / stop / restart / status check and cron execution log.
 
 <ul>
-  <li> <a href="/blog/20200520084454.html"> Start / stop / restart / status check of cron, cron execution log </a> </ li>
-</ ul>
+  <li> <a href="/blog/20200520084454.html"> Start / stop / restart / status check of cron, cron execution log</a> </li>
+</ul>

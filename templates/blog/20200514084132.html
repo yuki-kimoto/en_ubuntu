@@ -2,39 +2,39 @@
   <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop = "name"> Ubuntu </ span>
-      </a>
+        <span itemprop = "name"> Ubuntu </span>
+     </a>
       <meta itemprop = "position" content = "1" />
-    </ li>
+    </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop = "name"> Package management </ span>
-      </a>
+        <span itemprop = "name"> Package management </span>
+     </a>
       <meta itemprop = "position" content = "2" />
-    </ li>
+    </li>
     <li>
       here
-    </ li>
-  </ ul>
-</ div>
+    </li>
+  </ul>
+</div>
 
-<h2> Install make </ h2>
+<h2> Install make </h2>
 
-I will explain how to install make. Install make using the <a href="/blog/20200530085516.html"> apt </a> command. Run with administrator privileges using sudo.
+I will explain how to install make. Install make using the <a href="/blog/20200530085516.html"> apt</a> command. Run with administrator privileges using sudo.
 
 <pre>
 sudo apt install -y make
-</ pre>
+</pre>
 
-<h3> Main uses of make </ h3>
+<h3> Main uses of make </h3>
 
 make is a tool mainly used to check source file dependencies and compile only source files that need to be recompiled when compiling C source files.
 
 You can also create a make subcommand (not really a subcommand) such as "make test" or "make install" to execute a series of shell commands or programs.
 
-make is also required when installing Perl modules from <a href="https://perlzemi.com/blog/20100504127089.html"> CPAN </a>. For <a href="https://perlzemi.com/blog/20100809127859.html"> XS module </a> that contains C source code, of course it is necessary, but it includes C source code. Modules that aren't there are often needed.
+make is also required when installing Perl modules from <a href="https://perlzemi.com/blog/20100504127089.html"> CPAN</a>. For <a href="https://perlzemi.com/blog/20100809127859.html"> XS module</a> that contains C source code, of course it is necessary, but it includes C source code. Modules that aren't there are often needed.
 
-In most cases, <a href="https://perlzemi.com/blog/20170210150108.html"> ExtUtils :: MakeMaker </a> is used. Not needed if Module :: Build or Module :: Build :: Tiny is used.
+In most cases, <a href="https://perlzemi.com/blog/20170210150108.html"> ExtUtils :: MakeMaker</a> is used. Not needed if Module :: Build or Module :: Build :: Tiny is used.
 
 You can compile the module, place the files in a directory, test it, and install it by simply following these steps:
 
@@ -42,6 +42,6 @@ You can compile the module, place the files in a directory, test it, and install
 make
 make test
 make install
-</ pre>
+</pre>
 
 This is done in the CPAN module installation.
