@@ -1,112 +1,112 @@
-<div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
+        <span itemprop = "name"> Ubuntu </ span>
       </a>
-      <meta itemprop="position" content="1" />
-    </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <meta itemprop = "position" content = "1" />
+    </ li>
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200819081929.html">
-        <span itemprop="name">ディスク管理</span>
+        <span itemprop = "name"> Disk management </ span>
       </a>
-      <meta itemprop="position" content="2" />
-    </li>
+      <meta itemprop = "position" content = "2" />
+    </ li>
     <li>
       here
-    </li>
-  </ul>
-</div>
+    </ li>
+  </ ul>
+</ div>
 
-<h2>新しい物理ディスクの初期フォーマットとファイルシステムへのマウント</h2>
+<h2> Initial format of new physical disk and mounting on file system </ h2>
 
-新しいディスクの初期フォーマット方法を解説します。物理ディスクを新しく追加した場合は、利用する前に初期フォーマットを行う必要があります。
+I will explain how to format a new disc initially. If you add a new physical disk, you need to perform the initial format before using it.
 
-新しく追加した物理ディスクの確認方法については、以下を参考にしてください。
+Refer to the following for how to check the newly added physical disk.
 
-<a href="/blog/20200601085516.html">物理的に接続されているディスクを確認する - fdisk -l</a>
+<a href="/blog/20200601085516.html"> Check the physically attached disk --fdisk -l </a>
 
-<h3>パーティションの作成とフォーマット</h3>
+<h3> Create and format partition </ h3>
 
-まず最初に、パーティションを作成します。パーティションとは、論理的なディスクのことです。
+First of all, create a partition. A partition is a logical disk.
 
-一つの物理ディスクを、複数の論理ディスクに分けて扱うこともできますし、複数の物理ディスクを、大きなサイズのひとつの論理ディスクとして扱うこともできます。
+One physical disk can be treated as multiple logical disks, or multiple physical disks can be treated as one large-sized logical disk.
 
-パーティションが、ディスクに対してひとつの場合でも、パーティションは作成する必要があります。
+You need to create a partition even if there is only one partition for the disk.
 
-ここでは、新しい物理ディスクに対して、ひとつのパーティションを割り当てる方法を解説します。
+This section describes how to allocate one partition for a new physical disk.
 
-まずpartedコマンドを使用して、物理ディスクのパーティション分割とフォーマットを行います。
+First, use the parted command to partition and format the physical disk.
 
-fdiskを使用する方法もありますが、ここでは、対話実行ではなくコマンド実行できるpartedと呼ばれるコマンドを使って、
+You can also use fdisk, but here we use a command called parted that allows you to execute commands instead of interactively.
 
-以下の解説では、新しく追加された物理ディスクを「/dev/sdc」とします。
+In the following explanation, the newly added physical disk is referred to as "/ dev / sdc".
 
-ファイルシステムの種類はUbuntuのデフォルトのext4です。(これはパーティションにおける単なるヒントで、次の手順で、実際のファイルシステムを指定します。)
+The file system type is Ubuntu's default ext4. (This is just a hint on the partition, the next step is to specify the actual file system.)
 
 <pre>
-sudo parted /dev/sdc --script mklabel gpt mkpart ext4part ext4 0% 100%
-</pre>
+sudo parted / dev / sdc --script mklabel gpt mkpart ext4part ext4 0% 100%
+</ pre>
 
-パーティションが作成されたことを確認しましょう。
+Let's confirm that the partition has been created.
 
 <pre>
 sudo fdisk -l
-</pre>
+</ pre>
 
-「/dev/sdc1」というパーティションが作成されます。
+A partition called "/ dev / sdc1" will be created.
 
 <pre>
-Disk /dev/sdc: 1 TiB, 1099511627776 bytes, 2147483648 sectors
+Disk / dev / sdc: 1 TiB, 1099511627776 bytes, 2147483648 sectors
 Units: sectors of 1 * 512 = 512 bytes
-Sector size (logical/physical): 512 bytes / 4096 bytes
-I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Sector size (logical / physical): 512 bytes / 4096 bytes
+I / O size (minimum / optimal): 4096 bytes / 4096 bytes
 Disklabel type: gpt
 Disk identifier: D5DDBFFA-278E-417C-9DA7-7FF50891E1FD
 
-Device     Start        End    Sectors  Size Type
-/dev/sdc1   2048 2147481599 2147479552 1024G Linux filesystem
-</pre>
+Device Start End Sectors Size Type
+/ dev / sdc1 2048 2147481599 2147479552 1024G Linux filesystem
+</ pre>
 
-<h3>Linuxファイルシステムの作成</h3>
+<h3> Creating a Linux file system </ h3>
 
-次は、パーティションに対して、Linuxファイルシステムを作成します。
+Next, create a Linux file system for the partition.
 
-Linuxファイルシステムを作成するには、mkfsコマンドを使用します。XFSファイル用に「mkfs.ext4」というコマンドがあるので、これを使います。
+Use the mkfs command to create a Linux file system. There is a command called "mkfs.ext4" for the XFS file, so use this.
 
-引数には、パーティションを指定します。
+Specify the partition as an argument.
 
 <pre>
 sudo mkfs.ext4 /dev/sdc1
-</pre>
+</ pre>
 
-出力結果のサンプルです。
-
-<pre>
-meta-data=/dev/sdc1              isize=512    agcount=4, agsize=67108736 blks
-         =                       sectsz=4096  attr=2, projid32bit=1
-         =                       crc=1        finobt=1, sparse=0, rmapbt=0, reflink=0
-data     =                       bsize=4096   blocks=268434944, imaxpct=25
-         =                       sunit=0      swidth=0 blks
-naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
-log      =internal log           bsize=4096   blocks=131071, version=2
-         =                       sectsz=4096  sunit=1 blks, lazy-count=1
-realtime =none                   extsz=4096   blocks=0, rtextents=0
-</pre>
-
-partprobeを使って、すぐに、ファイルシステムとして認識させましょう。
+This is a sample output result.
 
 <pre>
-sudo partprobe /dev/sdc1
-</pre>
+meta-data = / dev / sdc1 isize = 512 agcount = 4, agsize = 67108736 blks
+         = sectsz = 4096 attr = 2, projid32bit = 1
+         = crc = 1 finobt = 1, sparse = 0, rmapbt = 0, reflink = 0
+data = bsize = 4096 blocks = 268434944, imaxpct = 25
+         = sunit = 0 swidth = 0 blks
+naming = version 2 bsize = 4096 ascii-ci = 0 ftype = 1
+log = internal log bsize = 4096 blocks = 131071, version = 2
+         = sectsz = 4096 sunit = 1 blks, lazy-count = 1
+realtime = none extsz = 4096 blocks = 0, rtextents = 0
+</ pre>
 
-パーティションが、Linuxファイルシステムとして認識されているか<a href="https://en.linux.perlzemi.com/blog/20191126082723.html">lsコマンド</a>で「/dev」を見てみましょう。
+Use partprobe to immediately recognize it as a file system.
 
 <pre>
-ls /dev | grep sd
-</pre>
+sudo partprobe / dev / sdc1
+</ pre>
 
-「/dev/sdc1」がファイルシステムとして認識されています。
+Is the partition recognized as a Linux file system? Look at "/ dev" with the <a href="https://en.linux.perlzemi.com/blog/20191126082723.html"> ls command </a> Let's do it.
+
+<pre>
+ls / dev | grep sd
+</ pre>
+
+"/ Dev / sdc1" is recognized as a file system.
 
 <pre>
 sda
@@ -117,132 +117,132 @@ sdb
 sdb1
 sdc
 sdc1
-</pre>
+</ pre>
 
-<h3>ファイルシステムへのマウント</h3>
+<h3> Mount to file system </ h3>
 
-最後はファイルシステムへのマウントです。「/dev/sdc1」は、パーティションを指し示すデバイスファイルです。これは特別なファイルで、通常のファイルシステムのディレクトリとして、扱うことができません。
+The last is mounting to the file system. "/ Dev / sdc1" is a device file that points to the partition. This is a special file and cannot be treated as a normal file system directory.
 
-デバイスファイルを、通常のディレクトリに結び付けるという操作を行う必要があります。これを、マウントと呼びます。
+You need to bind the device files to a regular directory. This is called a mount.
 
-ディレクトリ名は、自由に決めることができますがここでは「/datadrive」にします。
+The directory name can be decided freely, but here it is "/ datadrive".
 
-まず、空のディレクトリを作成します。
-
-<pre>
-sudo mkdir /datadrive
-</pre>
-
-次に「/dev/sdc2」を「/datadrive」でマウントします。
+First, create an empty directory.
 
 <pre>
-sudo mount /dev/sdc1 /datadrive
-</pre>
+sudo mkdir / datadrive
+</ pre>
 
-dfコマンドを使って、マウントが成功しているか確認しましょう。
+Then mount "/ dev / sdc2" with "/ datadrive".
+
+<pre>
+sudo mount / dev / sdc1 / datadrive
+</ pre>
+
+Use the df command to see if the mount was successful.
 
 <pre>
 df -h
-</pre>
+</ pre>
 
-「/dev/sdc1」が「/datadrive」に結び付けられています。
+"/ Dev / sdc1" is tied to "/ datadrive".
 
 <pre>
-/dev/sdc1       1.0T  1.1G 1023G   1% /datadrive
-</pre>
+/ dev / sdc1 1.0T 1.1G 1023G 1% / datadrive
+</ pre>
 
-これで、完了です。ただし、マウントは、一時的なものなので、Ubuntuの再起動時に自動的にマウントするためには、追加の手順が必要です。
+That's it. However, the mount is temporary and requires additional steps to mount automatically when Ubuntu restarts.
 
-<h3>自動マウントの設定</h3>
+<h3> Auto mount settings </ h3>
 
-Ubuntuを再起動した場合に、自動的にマウントするにはまず、UUIDと呼ばれる、パーティションを一意に識別できるIDを知る必要があります。
+To mount automatically when Ubuntu is restarted, you first need to know an ID called UUID that can uniquely identify the partition.
 
-blkidコマンドを使って、UUIDを取得しましょう。
+Use the blkid command to get the UUID.
 
 <pre>
 sudo blkid
-</pre>
+</ pre>
 
 <pre>
-/dev/sda1: LABEL="cloudimg-rootfs" UUID="bdf328db-9606-49ba-8e44-5e1299ae56f0" TYPE="ext4" PARTUUID="179b1e79-bd71-4241-9557-8be63cbb8857"
-/dev/sda15: LABEL="UEFI" UUID="54D1-0F3A" TYPE="vfat" PARTUUID="ec4144dd-3a40-4774-bfc2-73488a3f8e39"
-/dev/sdb1: UUID="61c57ec5-96f9-4c18-8d7e-d7b05dd48b76" TYPE="ext4" PARTUUID="a252cd85-01"
-/dev/sdc1: UUID="c85b796f-b9ff-4b4d-9091-47327999d8aa" TYPE="ext4" PARTLABEL="ext4part" PARTUUID="d2295ab7-22fb-49a2-a3d0-1a9819207562"
-/dev/sda14: PARTUUID="bddfd6d3-8ef9-40d2-8fda-0083f3e0df9b"
-</pre>
+/ dev / sda1: LABEL = "cloudimg-rootfs" UUID = "bdf328db-9606-49ba-8e44-5e1299ae56f0" TYPE = "ext4" PARTUUID = "179b1e79-bd71-4241-9557-8be63cbb8857"
+/ dev / sda15: LABEL = "UEFI" UUID = "54D1-0F3A" TYPE = "vfat" PARTUUID = "ec4144dd-3a40-4774-bfc2-73488a3f8e39"
+/ dev / sdb1: UUID = "61c57ec5-96f9-4c18-8d7e-d7b05dd48b76" TYPE = "ext4" PARTUUID = "a252cd85-01"
+/ dev / sdc1: UUID = "c85b796f-b9ff-4b4d-9091-47327999d8aa" TYPE = "ext4" PARTLABEL = "ext4part" PARTUUID = "d2295ab7-22fb-49a2-a3d0-1a9819207562"
+/ dev / sda14: PARTUUID = "bddfd6d3-8ef9-40d2-8fda-0083f3e0df9b"
+</ pre>
 
-新しく追加したパーティション「sdc1」のUUIDのダブルクォートの中をコピーして、どこかに保存しておきましょう。
+Copy the UUID double quotes of the newly added partition "sdc1" and save it somewhere.
 
-次に、OSの再起動ができないなどの状況に陥ったときのために「/etc/fstab」のバックアップを取っておきましょう。
+Next, make a backup of "/ etc / fstab" in case you get into a situation where you cannot restart the OS.
 
 <pre>
 sudo cp /etc/fstab /etc/fstab.original
-</pre>
+</ pre>
 
-「/etc/fstab」を編集します。この設定ファイルに書き込むことで、再起動時に自動的にマウントされるようになります。
-
-<pre>
-sudo vi /etc/fstab
-</pre>
-
-自分の環境でコピーしたUUIDを使用して、以下の行を「/etc/fstab」に追加します。
+Edit "/ etc / fstab". By writing to this config file, it will be mounted automatically on reboot.
 
 <pre>
-UUID=c85b796f-b9ff-4b4d-9091-47327999d8aa   /datadrive   ext4   defaults,nofail   1   2
-</pre>
+sudo vi / etc / fstab
+</ pre>
 
-nofailを指定しておくと、マウントに失敗しても、再起動ができるので、少し安心。5列目の1は、dumpするかどうか、データディスクなので、1に。六列目の2(2以上)は、ファイルシステムがルートなどではない場合で、通常のデータを格納する場合に指定しておく。
-
-fstabの設定は、間違った設定を行うと、以下のようなエラーメッセージでOSの再起動に失敗し、起動できなくなるので、慎重に。
+Add the following line to "/ etc / fstab" using the UUID you copied in your environment.
 
 <pre>
-The disk drive for /datadrive is not ready yet or not present.
+UUID = c85b796f-b9ff-4b4d-9091-47327999d8aa / datadrive ext4 defaults, nofail 1 2
+</ pre>
+
+If you specify nofail, you can restart even if the mount fails, so you can rest assured. 1 in the 5th column is 1 because it is a data disk whether to dump or not. 2 (2 or more) in the 6th column is specified when the file system is not the root etc. and normal data is stored.
+
+If you make an incorrect setting for fstab, the OS will fail to restart with an error message like the one below, and you will not be able to start it, so be careful.
+
+<pre>
+The disk drive for / datadrive is not ready yet or not present.
 Continue to wait, or Press S to skip mounting or M for manual recovery
-</pre>
+</ pre>
 
-VPSや各クラウドサービスでの、fstab エラーが起こった場合の復帰方法を確認してから行うようにしましょう。
+Let's check how to recover from fstab error in VPS and each cloud service before doing it.
 
-VPSや各クラウドサービスでの、コンソールから、マウントをスキップして、OSを再起動して「/etc/fstab」を修正するという手順になるかと思われます。
+In VPS and each cloud service, it seems that the procedure is to skip the mount from the console, restart the OS and fix "/ etc / fstab".
 
-<h3>他のディレクトリのために、新しいデータ領域を使うには?</h3>
+<h3> How to use the new data area for other directories? </ h3>
 
-たとえば「/var/backup」のために、新しい「/datadrive」を使いたい場合はどうするのでしょうか?
+What if you want to use a new "/ datadrive" for "/ var / backup", for example?
 
-シンボリックリンクを使います。
+Use symbolic links.
 
-「/datadrive」の中に「/var/backup」というディレクトリを作って「/var/backup」から「/datadrive/var/backup」にシンボリックリンクを作成します。
-
-<pre>
-mkdir -p /datadrive/var/backup
-ls -s /datadrive/var/backup /var/backup
-</pre>
-
-<h3>手順を間違ったしまって元に戻したい場合</h3>
-
-手順を間違ったしまって元に戻したい場合の解説です。
-
-<h4>マウントを解除する</h4>
-
-マウントを解除するにはumountコマンドを使用します。
+Create a directory called "/ var / backup" in "/ datadrive" and create a symbolic link from "/ var / backup" to "/ datadrive / var / backup".
 
 <pre>
-sudo umount /datadrive
-</pre>
+mkdir -p / datadrive / var / backup
+ls -s / datadrive / var / backup / var / backup
+</ pre>
 
-cdなどで、ディレクトリに入っていたり、そのディレクトリを使用している場合は、busyになって、アンマウントできないです。
+<h3> If you make a mistake and want to undo it </ h3>
 
-誰かが利用している場合は、以下のコマンドで確認できます。
+This is an explanation when you make a mistake in the procedure and want to restore it.
+
+<h4> Unmount </ h4>
+
+Use the umount command to unmount.
 
 <pre>
-fuser -muv /datadrive
-</pre>
+sudo umount / datadrive
+</ pre>
 
-だれも入っていない状態にしてから、アンマウントしましょう。
+If you are in a directory or using that directory with a cd etc., it will be busy and you will not be able to unmount it.
 
-<h4>パーティションの再作成</h4>
+If someone is using it, you can check it with the following command.
 
-マウントを解除したら、partedコマンドを、再実行することで、パーティションを再作成できます。
+<pre>
+fuser -muv / datadrive
+</ pre>
 
-<h4>ファイルシステムの再作成</h4>
+Make sure no one is inside before unmounting.
 
-mkfsコマンドも、再度ファイルシステムを作成するかを効かれますので、yを押して進めましょう。
+<h4> Repartition </ h4>
+
+After dismounting, you can recreate the partition by rerunning the parted command.
+
+<h4> Recreate file system </ h4>
+
+The mkfs command also asks if you want to recreate the file system, so press y to proceed.

@@ -1,57 +1,57 @@
-<h2>タイムゾーンの確認と設定 - timedatectlコマンド</h2>
+<h2> Checking and setting the time zone --timedatectl command </ h2>
 
-タイムゾーンの確認と変更は、<b>timedatectlコマンド</b>で行えます。タイムゾーンは、UTC時刻(協定世界時)を基準として、各国の時刻がどの程度進んでいるかを設定するものです。
+You can check and change the time zone with the <b> timedatectl command </ b>. The time zone sets how far each country's time is ahead of UTC time (Coordinated Universal Time).
 
-日本の場合は、9時間進んでいます。
+In Japan, it is 9 hours ahead.
 
-<h3>タイムゾーンの確認</h3>
+<h3> Check time zone </ h3>
 
-timedatectlコマンドで、現在のタイムゾーンを確認できます。
+You can check the current time zone with the timedatectl command.
 
 <pre>
 timedatectl
-</pre>
+</ pre>
 
-以下のように現在設定されているタイムゾーンが表示されます。デフォルトでは「UTC」です。
+The currently set time zone is displayed as shown below. The default is "UTC".
 
 <pre>
                       Local time: Wed 2020-05-13 03:44:55 UTC
                   Universal time: Wed 2020-05-13 03:44:55 UTC
                         RTC time: Wed 2020-05-13 03:44:55
-                       Time zone: Etc/UTC (UTC, +0000)
+                       Time zone: Etc / UTC (UTC, +0000)
        System clock synchronized: yes
 systemd-timesyncd.service active: yes
                  RTC in local TZ: no
-</pre>
+</ pre>
 
-<h3>利用可能なタイムゾーンの一覧</h3>
+<h3> List of available time zones </ h3>
 
-利用可能なタイムゾーンの一覧を表示するには「timedatectl list-timezones」コマンドを使用します。
+Use the "timedatectl list-timezones" command to display a list of available timezones.
 
 <pre>
 timedatectl list-timezones
-</pre>
+</ pre>
 
-たくさん表示されます。日本の場合は「Asia/Tokyo」です。
-
-<pre>
-Asia/Tashkent
-Asia/Tbilisi
-Asia/Tehran
-Asia/Thimphu
-Asia/Tokyo
-Asia/Tomsk
-Asia/Ulaanbaatar
-Asia/Urumqi
-Asia/Ust-Nera
-Asia/Vientiane
-Asia/Vladivostok
-</pre>
-
-<h3>タイムゾーンの変更</h3>
-
-タイムゾーンを変更しましょう。タイムゾーンを変更するには「timedatectl set-timezone」コマンドを使用します。ここ日本の場合は「Asia/Tokyo」を設定します。sudoコマンドで管理者権限で実行します。
+You will see a lot. In the case of Japan, it is "Asia / Tokyo".
 
 <pre>
-sudo timedatectl set-timezone Asia/Tokyo
-</pre>
+Asia / Tashkent
+Asia / Tbilisi
+Asia / Tehran
+Asia / Thimphu
+Asia / Tokyo
+Asia / Tomsk
+Asia / Ulaanbaatar
+Asia / Urumqi
+Asia / Ust-Nera
+Asia / Vientiane
+Asia / Vladivostok
+</ pre>
+
+<h3> Change time zone </ h3>
+
+Let's change the time zone. Use the "timedatectl set-timezone" command to change the timezone. For here in Japan, set "Asia / Tokyo". Execute with administrator privileges using the sudo command.
+
+<pre>
+sudo timedatectl set-timezone Asia / Tokyo
+</ pre>

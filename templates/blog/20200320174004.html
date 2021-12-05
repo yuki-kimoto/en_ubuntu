@@ -1,41 +1,41 @@
-<div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
+        <span itemprop = "name"> Ubuntu </ span>
       </a>
-      <meta itemprop="position" content="1" />
-    </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <meta itemprop = "position" content = "1" />
+    </ li>
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop="name">パッケージ管理</span>
+        <span itemprop = "name"> Package management </ span>
       </a>
-      <meta itemprop="position" content="2" />
-    </li>
+      <meta itemprop = "position" content = "2" />
+    </ li>
     <li>
       here
-    </li>
-  </ul>
-</div>
+    </ li>
+  </ ul>
+</ div>
 
-<h2>Apacheにmod_phpをインストールする</h2>
+<h2> Install mod_php on Apache </ h2>
 
-Apacheにmod_phpをインストールします。Apacheで、PHPアプリケーション動かす必要がある場合に、必要です。ApacheでPHPを実行するには、<a href="/blog/20200321174004.html">PHPのインストール</a>も必要です。
+Install mod_php on Apache. Required if you need to run PHP applications on Apache. To run PHP on Apache, you also need to <a href="/blog/20200321174004.html"> PHP installation </a>.
 
 <pre>
 sudo apt install -y libapache2-mod-php
-</pre>
+</ pre>
 
-mod_phpをインストールしたら、次は、mod_phpを有効にしましょう。(2020年6月8日記載。Ubuntu 18。PHPバージョンは7.2)
+After installing mod_php, it's time to enable mod_php. (Listed June 8, 2020. Ubuntu 18. PHP version 7.2)
 
 <pre>
 sudo a2enmod php7.2
-</pre>
+</ pre>
 
-最後にApacheを、<a href="/blog/20200605104005.html">systemctl</a>コマンドで、再起動して完了です。
+Finally, restart Apache with the <a href="/blog/20200605104005.html"> systemctl </a> command and you're done.
 
 <pre>
 sudo systemctl reload apache2
-</pre>
+</ pre>
 
-これで、PHPアプリケーションがApache上で動くようになりました。
+Your PHP application is now running on Apache.

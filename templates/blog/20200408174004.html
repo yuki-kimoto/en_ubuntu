@@ -1,40 +1,40 @@
-<div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
+        <span itemprop = "name"> Ubuntu </ span>
       </a>
-      <meta itemprop="position" content="1" />
-    </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <meta itemprop = "position" content = "1" />
+    </ li>
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop="name">パッケージ管理</span>
+        <span itemprop = "name"> Package management </ span>
       </a>
-      <meta itemprop="position" content="2" />
-    </li>
+      <meta itemprop = "position" content = "2" />
+    </ li>
     <li>
       here
-    </li>
-  </ul>
-</div>
-<h2>sqlite3のインストール - SQLiteユーティリティ</h2>
+    </ li>
+  </ ul>
+</ div>
+<h2> Installing sqlite3 --SQLite Utility </ h2>
 
-SQLiteクライアントである「sqlite3」をインストールしましょう。<a href="/blog/20200530085516.html">apt</a>コマンドを使います。
+Let's install "sqlite3" which is a SQLite client. Use the <a href="/blog/20200530085516.html"> apt </a> command.
 
 <pre>
-sudo apt install -y sqlite3 
-</pre>
+sudo apt install -y sqlite3
+</ pre>
 
-sqlite3コマンドが使えるようになっているか確認しましょう。
+Make sure you have the sqlite3 command available.
 
 <pre>
 sqlite3
-</pre>
+</ pre>
 
-<h3>SQLiteの特徴</h3>
+<h3> SQLite features </ h3>
 
-SQLiteは、クライアント・サーバー型のデータベースではなく、データベースファイル作成・テーブル作成、select, insert, update, deleteなどの行の処理を行うためのライブラリです。
+SQLite is not a client / server type database, but a library for processing rows such as database file creation / table creation, select, insert, update, delete.
 
-PerlのDBD::SQLiteは、SQLiteを操作するライブラリを含んでおり、DBD::MySQLやDBD::Pgのように、「*-dev」のようなヘッダーファイルや共有ライブラリをインストールするためのパッケージ必要としません。
+Perl's DBD :: SQLite contains libraries that operate SQLite, and packages for installing header files and shared libraries like "* -dev" like DBD :: MySQL and DBD :: Pg. I don't need it.
 
-sqlite3というコマンドラインユーティリティを使えるようにするために、必要な手順になります。
+This is a necessary step to enable the command line utility called sqlite3.

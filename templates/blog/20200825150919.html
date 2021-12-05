@@ -1,37 +1,37 @@
-<div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
+        <span itemprop = "name"> Ubuntu </ span>
       </a>
-      <meta itemprop="position" content="1" />
-    </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <meta itemprop = "position" content = "1" />
+    </ li>
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop="name">パッケージ管理</span>
+        <span itemprop = "name"> Package management </ span>
       </a>
-      <meta itemprop="position" content="2" />
-    </li>
+      <meta itemprop = "position" content = "2" />
+    </ li>
     <li>
       here
-    </li>
-  </ul>
-</div>
+    </ li>
+  </ ul>
+</ div>
 
-<h2>vimのインストール</h2>
+<h2> Install vim </ h2>
 
-vimのインストール方法を解説します。<a href="/blog/20200530085516.html">apt</a>コマンドを使って、vimをインストールします。sudoを使って管理者権限で実行します。
+I will explain how to install vim. Install vim using the <a href="/blog/20200530085516.html"> apt </a> command. Run with administrator privileges using sudo.
 
 <pre>
 sudo apt install -y vim
-</pre>
+</ pre>
 
-<h3>Ubuntuにおけるvimとviの違い</h3>
+<h3> Difference between vim and vi in ​​Ubuntu </ h3>
 
-Ubuntuにおいてはデフォルトでは、viには、vimの機能を限定したエディタvim-tinyが割り当てられています。
+By default on Ubuntu, vi is assigned the editor vim-tiny, which limits the functionality of vim.
 
-viの編集モードで、上下左右のキーが使えず「A B C D」のように表示されてしまうのは、viがvim-tinyであることが原因です。
+In the edit mode of vi, the up / down / left / right keys cannot be used and it is displayed as "A B C D" because vi is vim-tiny.
 
-このような場合は、上記の手順でvimをインストールすれば、viにvimが割り当てられます。
+In this case, install vim as described above and vim will be assigned to vi.
 
-(Ubuntu 18で確認)
+(Confirmed on Ubuntu 18)

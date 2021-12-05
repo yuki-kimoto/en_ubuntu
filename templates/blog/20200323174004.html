@@ -1,46 +1,46 @@
-<div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
+        <span itemprop = "name"> Ubuntu </ span>
       </a>
-      <meta itemprop="position" content="1" />
-    </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <meta itemprop = "position" content = "1" />
+    </ li>
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop="name">パッケージ管理</span>
+        <span itemprop = "name"> Package management </ span>
       </a>
-      <meta itemprop="position" content="2" />
-    </li>
+      <meta itemprop = "position" content = "2" />
+    </ li>
     <li>
       here
-    </li>
-  </ul>
-</div>
+    </ li>
+  </ ul>
+</ div>
 
-<h2>zipのインストール - ZIP形式のファイルの圧縮・解凍</h2>
+<h2> Zip installation-zipping / decompressing ZIP files </ h2>
 
-拡張子がzipのZIP形式で圧縮・解凍を行うにはzipパッケージを<a href="/blog/20200530085516.html">apt</a>コマンドを使ってインストールします。<a href="/blog/20200531085516.html">sudo</a>で管理者権限で実行します。
+To compress / decompress in ZIP format with the extension zip, install the zip package using the <a href="/blog/20200530085516.html"> apt </a> command. Execute with administrator privileges with <a href="/blog/20200531085516.html"> sudo </a>.
 
 <pre>
-# zipのインストール
+#zip installation
 sudo apt install -y zip
-</pre>
+</ pre>
 
-<h4>zipコマンドがインストールされたことの確認</h4>
+<h4> Confirm that the zip command is installed </ h4>
 
-ZIP形式のファイルの圧縮を行うzipコマンドがインストールされたことを確認しましょう。
+Make sure you have installed the zip command to compress ZIP files.
 
 <pre>
 zip --help
-</pre>
+</ pre>
 
-zipパッケージと一緒に、ZIP形式の解凍を行うunzipパッケージもインストールされます。
+Along with the zip package, the unzip package that unzips in ZIP format is also installed.
 
 <pre>
 unzip --help
-</pre>
+</ pre>
 
-一般的には、<a href="https://en.linux.perlzemi.com/">Linux</a>においては標準的な圧縮形式は拡張子がgzのGZIP形式です。Linux上で圧縮・解凍をおなう場合は、GZIP形式で圧縮・解凍できる<a href="https://en.linux.perlzemi.com/blog/20200608103245.html">gzip</a>コマンド、<a href="https://en.linux.perlzemi.com/blog/20200607103245.html">gunzip</a>コマンドを使用しましょう。tarコマンドの「-z」オプションを使って、圧縮するも一般的です。これは内部的にはgzipのアルゴリズムを使っています。
+Generally, in <a href="https://en.linux.perlzemi.com/"> Linux </a>, the standard compression format is the GZIP format with the extension gz. <a href="https://en.linux.perlzemi.com/blog/20200608103245.html"> gzip </a> command that can be compressed / decompressed in GZIP format when compressing / decompressing on Linux , Use the <a href="https://en.linux.perlzemi.com/blog/20200607103245.html"> gunzip </a> command. It is also common to compress using the "-z" option of the tar command. It uses the gzip algorithm internally.
 
-Windowsにおけるよく利用されている圧縮形式がZIP形式です。何らかのサービスやWebで提供されているファイル形式がZIPで、ZIPを扱う必要がある場合にzipパッケージをインストールします。
+The most commonly used compression format in Windows is the ZIP format. Install the zip package if the file format provided by some service or the web is ZIP and you need to handle ZIP.

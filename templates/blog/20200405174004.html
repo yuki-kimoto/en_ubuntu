@@ -1,76 +1,75 @@
-<div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
+        <span itemprop = "name"> Ubuntu </ span>
       </a>
-      <meta itemprop="position" content="1" />
-    </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <meta itemprop = "position" content = "1" />
+    </ li>
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200723101434.html">
-        <span itemprop="name">ユーザー管理</span>
+        <span itemprop = "name"> User Management </ span>
       </a>
-      <meta itemprop="position" content="2" />
-    </li>
+      <meta itemprop = "position" content = "2" />
+    </ li>
     <li>
       here
-    </li>
-  </ul>
-</div>
+    </ li>
+  </ ul>
+</ div>
 
-<h2>groupaddコマンド - グループを追加する</h2>
+<h2> groupadd command-add a group </ h2>
 
-<b>groupaddコマンド</b>でグループを追加できます。<a href="/blog/20200118092236.html">sudo</a>でroot権限で実行します。
+You can add a group with the <b> groupadd command </ b>. Execute with root privileges with <a href="/blog/20200118092236.html"> sudo </a>.
 
 <pre>
-sudo groupadd グループ名
-</pre>
+sudo groupadd group name
+</ pre>
 
-以下は、アプリケーション用のグループ「myapp-group」を作成するサンプルです。
+The following is a sample to create a group "myapp-group" for an application.
 
 <pre>
 sudo groupadd myapp-group
-</pre>
+</ pre>
 
-グループの一覧を確認するには「/etc/group」ファイルを<a href="/blog/20200113083613.html">cat</a>コマンドで出力します。
-
-<pre>
-sudo cat /etc/group
-</pre>
-
-myapp-groupが存在するのを確認しましょう。
+To check the list of groups, output the "/ etc / group" file with the <a href="/blog/20200113083613.html"> cat </a> command.
 
 <pre>
-myapp-group:x:1003:
-</pre>
+sudo cat / etc / group
+</ pre>
 
-<h3>なんのためにグループが必要になるの?</h3>
+Make sure myapp-group exists.
 
-グループの作成には複数の目的がありますが、システム開発において必要になる場合を書きます。
+<pre>
+myapp-group: x: 1003:
+</ pre>
 
-<h4>あるディレクトリに複数のユーザーがファイルを保存する場合</h4>
+<h3> What do you need a group for? </ H3>
 
-データを保存するためのディレクトリに複数のユーザーがファイルを保存する場合には、グループを作成して、そのグループがファイルを読み書きできるようにする必要があります。
+Creating a group has multiple purposes, but I will write when it is necessary for system development.
 
-すべてのユーザーが読み書きできるようにするよりも、ユーザーを限定して、特定のグループに所属するユーザーだけが、読み書きできた方が安全です。
+<h4> When multiple users save files in a directory </ h4>
 
-kimotoとtanakaとyamadaが、自分のユーザーで開発しているとします。この場合は、データディレクトリへのファイルの書き込みは、それぞれのユーザーのグループになります。
+If multiple users store files in a directory for storing data, you need to create a group so that the group can read and write the file.
 
-tanakaが書き込んだ場合は「tanaka:tanaka」になります。そうするとkimotoは、読み書きできません。
+It is safer to limit users so that only users who belong to a specific group can read and write, rather than allowing all users to read and write.
 
-これを回避する方法は別のところで解説しますが、このような場合は、まずアプリケーション用のグループを作成する必要があります。
+Suppose kimoto, tanaka, and yamada are developing with their own users. In this case, writing the file to the data directory is in each user's group.
 
-<h3>グループに対するその他の操作</h3>
+If tanaka wrote it, it will be "tanaka: tanaka". Then kimoto cannot read or write.
 
-グループの一覧を表示する方法は以下の記事で解説しています。
+I'll explain how to avoid this elsewhere, but in such cases, you first need to create a group for your application.
+
+<h3> Other operations on the group </ h3>
+
+The following article explains how to display the list of groups.
 
 <ul>
-  <li><a href="/blog/20200403174004.html">グループの一覧を表示する 「/etc/group」ファイル</a></li>
-</ul>
+  <li> <a href="/blog/20200403174004.html"> Display a list of groups "/ etc / group" file </a> </ li>
+</ ul>
 
-グループを削除する方法は、以下の記事で解説しています。
+The following article explains how to delete a group.
 
 <ul>
-  <li><a href="/blog/20200404174004.html">groupdelコマンド - グループを削除する</a></li>
-</ul>
-
+  <li> <a href="/blog/20200404174004.html"> groupdel command-delete group </a> </ li>
+</ ul>

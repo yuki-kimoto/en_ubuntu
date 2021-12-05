@@ -1,103 +1,103 @@
-<h2>Ubuntuの利用方法</h2>
+<h2> How to use Ubuntu </ h2>
 
-Ubuntuの利用方法について解説します。
+I will explain how to use Ubuntu.
 
-<h3>Ubuntuの利用方法</h3>
+<h3> How to use Ubuntu </ h3>
 
-<h4>無料でPC上でUbuntuを使いたい</h4>
+<h4> I want to use Ubuntu on my PC for free </ h4>
 
-無料でPC上で、Ubuntuを使う簡単な方法は、Windows 10上で、開発者用のWSLという機能を使うことです。まだまだ、進歩の途上ですが、期待は高いです。
+An easy way to use Ubuntu on your PC for free is to use a feature called WSL for developers on Windows 10. We are still in the process of progress, but expectations are high.
 
-VM Wareなどのバーチャルマシンをインストールして、その上でUbuntuを動かすこともできますが、重い、インストールがややこしい、PCとバーチャルマシン上でのファイルのやり取りが困難など、いくつかの点を受け入れる必要があります。
+You can install a virtual machine such as VM Ware and run Ubuntu on it, but you have to accept a few things, such as being heavy, complicated to install, and having difficulty exchanging files between your PC and the virtual machine. there is.
 
-<h4>安価にUbuntuを使いたい</h4>
+<h4> I want to use Ubuntu cheaply </ h4>
 
-安価でUbuntuを使いたい場合は、さくらインターネットやGMOのVPS(バーチャルプライベートサーバー)というサービスに申し込みましょう。
+If you want to use Ubuntu at a low price, apply for a service called VPS (Virtual Private Server) of Sakura Internet or GMO.
 
-VPSサービスを使えば、UbuntuなどのLinuxサーバーを、インターネット上で安価に利用できます。
+With VPS service, you can use Linux server such as Ubuntu cheaply on the Internet.
 
-手続きを進めていくとOSの選択でUbuntuを選択できます。
+As you proceed with the procedure, you can select Ubuntu by selecting the OS.
 
-本番サーバーとして利用する場合は、VPSはメンテナンスで、数時間から半日程度、止まるということがありますので、自社のサービスの要件から許容できるかどうかを判断してください。
+When using it as a production server, VPS is maintenance and may stop for several hours to half a day, so please judge whether it is acceptable from the requirements of your service.
 
-アプリケーションサーバーは、技術的に差し替えは可能ですが、大変ですし、DBサーバーは「うぉー」という感じです。
+The application server can be technically replaced, but it is difficult, and the DB server feels like "Wow".
 
-<h4>クラウドサービスでUbuntuを使いたい</h4>
+<h4> I want to use Ubuntu with cloud services </ h4>
 
-AWS、Microsoft Azure、gcpなどの、従量課金型のクラウドサービスに申し込みましょう。
+Sign up for pay-as-you-go cloud services such as AWS, Microsoft Azure, and gcp.
 
-クラウドサービスを使えば、UbuntuなどのLinuxサーバーを、GUI画面を使って、インターネット上で手軽に運用できます。
+With cloud services, you can easily operate a Linux server such as Ubuntu on the Internet using a GUI screen.
 
-OSのインストールで、Ubuntuの選択ができます。
+You can select Ubuntu by installing the OS.
 
-クラウドサービスの一つの注意点ですが、画像や動画を大量に利用することが分かっている場合は、オンプレミスにする方が、コストが安くなると思われます。
+One caveat with cloud services is that if you know you're going to use a lot of images and videos, it's probably cheaper to go on-premises.
 
-オブジェクトストレージS3互換のAPIを持つオンプレミスのサービスもあるので、大量の画像・動画を配信することが分かっている場合は、コスト比較をお勧めします。
+There is also an on-premises service that has an API compatible with object storage S3, so if you know that you will deliver a large amount of images and videos, we recommend cost comparison.
 
-またいざというときは、即時対応可能というのも、オンプレミスの魅力です。
+Another attraction of on-premises is that you can respond immediately in case of emergency.
 
-テキスト処理がメインのサービスであれば、クラウドサービスを使うのが、費用対効果が高いでしょう。
+If text processing is your main service, using a cloud service will be cost-effective.
 
-<h3>初期設定</h3>
+<h3> Initial settings </ h3>
 
-初期設定でよくあるパターンです。
+This is a common pattern in the initial settings.
 
-<h4>rootパスワード</h4>
+<h4> root password </ h4>
 
-クラウドサービスやVPSの場合は、rootパスワードを設定する手順があると思います。rootパスワードを設定しましょう。
+For cloud services and VPS, I think there is a procedure to set a root password. Let's set a root password.
 
-rootは、最も高い権限を持つ特別なユーザーです。
+root is the most privileged special user.
 
-<h4>ポートの設定</h4>
+<h4> Port settings </ h4>
 
-クラウドサービスやVPSの場合は、開いておくポートを聞かれる場合があると思います。
+In the case of cloud services and VPS, you may be asked which port you want to keep open.
 
-少なくとも、SSH(22), HTTP(80), HTTPS(443)のポートは開いておきましょう。
+At least SSH (22), HTTP (80), HTTPS (443) ports should be open.
 
-<a href="https://en.webapp.perlzemi.com/">Webシステム開発</a>を行う場合は、<a href="https://en.mojolicious.perlzemi.com/">Mojolicious</a>の開発用ポートである3000番を開いておくと、よいでしょう。
+<a href="https://en.webapp.perlzemi.com/"> If you are doing web system development </a>, <a href="https://en.mojolicious.perlzemi.com/"> It's a good idea to keep Mojolicious </a>'s development port 3000 open.
 
-<h3>コンソールまでたどりつく</h3>
+<h3> Get to the console </ h3>
 
-Ubuntuのインストールが終わったら、各種サービスのコーンソールの画面まで、頑張ってたどりついてください。
+After installing Ubuntu, please do your best to reach the screen of the cone sole of various services.
 
-コンソールというのは、あの真っ黒な、CUIでコマンドを打てる画面です。
+The console is that black screen where you can type commands with the CUI.
 
-WSLの場合は、bashの画面が開けていればOKです。
+In the case of WSL, it is OK if the bash screen is open.
 
-バーチャルマシンの場合は、バーチャルマシンの中のbashの画面が開けていればOKです。
+In the case of a virtual machine, it is OK if the bash screen in the virtual machine is open.
 
-VPSとクラウドサービスの場合は、Web上で、コンソールにアクセスできるものがあるので、そこに頑張ってたどり着いてください。
+In the case of VPS and cloud services, there are some that can access the console on the Web, so please do your best to get there.
 
-コンソールで、コマンドを打てる状態になれば、準備完了です。
+When you are ready to type commands on the console, you are ready to go.
 
-<h3>初期ユーザーでログイン</h3>
+<h3> Log in as the initial user </ h3>
 
-コンソールにたどり着いたら、初期設定ユーザーでログインします。サービスによって、ubuntuのような初期ユーザーが用意されている場合や、自分で初期ユーザー名を指定できる場合があります。
+When you reach the console, log in as the default user. Depending on the service, you may have an initial user like ubuntu, or you may be able to specify your own initial user name.
 
 <pre>
-login:
-</pre>
+login: login:
+</ pre>
 
-と表示されているので初期ユーザー名(たとえばubuntu)を入力してEnter。
+Is displayed, enter the initial user name (for example, ubuntu) and press Enter.
 
 <pre>
 Pawwsord:
-</pre>
+</ pre>
 
-と表示されるので、rootパスワードを入力してください。
+Is displayed, enter the root password.
 
-ログインができたら、準備完了です。<a href="/blog/20200511173052.html">ユーザーの追加</a>に進みましょう。
+Once you're logged in, you're ready to go. Proceed to <a href="/blog/20200511173052.html"> Add User </a>.
 
-<h3>もう少し詳しい手順とはないですか?</h3>
+<h3> Isn't there a more detailed procedure? </ H3>
 
-移り変わりが激しいので、検索エンジンで、各種サービスのUbuntuのインストール方法は、検索してみてください。
+Since the transition is rapid, please search for how to install Ubuntu for various services with a search engine.
 
-独学の場合は、検索して乗り越えていきます。現場でも一人で解決しないといけないことは多いので、がんばってください。
+If you are self-taught, search and overcome. There are many things that you have to solve by yourself even in the field, so please do your best.
 
-入門でのお勧めは、VPSが安価で簡単、利便性が高いですね。
+The recommendation for beginners is that VPS is cheap, easy, and convenient.
 
-<h3>Ubuntuの利用方法</h3>
+<h3> How to use Ubuntu </ h3>
 
 <ul>
-  <li><a href="https://www.youtube.com/watch?v=aM5pLf8gAZQ">Ubuntuの利用方法 - 動画解説</a></li>
-</ul>
+  <li> <a href="https://www.youtube.com/watch?v=aM5pLf8gAZQ"> How to use Ubuntu --Video commentary </a> </ li>
+</ ul>

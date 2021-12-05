@@ -1,114 +1,114 @@
-<div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
+        <span itemprop = "name"> Ubuntu </ span>
       </a>
-      <meta itemprop="position" content="1" />
-    </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <meta itemprop = "position" content = "1" />
+    </ li>
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200723101434.html">
-        <span itemprop="name">ユーザー管理</span>
+        <span itemprop = "name"> User Management </ span>
       </a>
-      <meta itemprop="position" content="2" />
-    </li>
+      <meta itemprop = "position" content = "2" />
+    </ li>
     <li>
       here
-    </li>
-  </ul>
-</div>
+    </ li>
+  </ ul>
+</ div>
 
-<h2>useraddコマンド - ユーザーの追加</h2>
+<h2> useradd command-add user </ h2>
 
-<b>useradd</b>コマンドを使用すると、ユーザーを追加できます。
+You can add users using the <b> useradd </ b> command.
 
-ユーザーを追加するにはroot権限を持っている必要があります。sudoを使って、root権限で、作業しましょう。sudoを使う場合は、ルートパスワードを聞かれますので、ルートパスワードを入力してください。
+You must have root privileges to add users. Let's work with root privileges using sudo. If you use sudo, you will be asked for the root password, so enter the root password.
 
-ユーザーを追加するには<b>useradd</b>コマンドを使用します。ユーザーディレクトリを作りたい場合は「-m」オプションを使用します。
+Use the <b> useradd </ b> command to add users. If you want to create a user directory, use the "-m" option.
 
-最初にWebアプリケーション実行用のユーザーも「myapp」という名前で作成しておきます。これは、本番環境で、Webアプリケーションを実行し、バッチプログラムを実行するユーザーを想定しています。「-m」オプションでホームディレクトリの作成、「-s」オプションでシェルを指定します。Ubuntuでは何も指定しなかった場合は「/bin/sh」になるので「/bin/bash」にしておきます。
+First, create a user for running the web application with the name "myapp". This is intended for users running web applications and running batch programs in a production environment. Use the "-m" option to create a home directory, and the "-s" option to specify a shell. In Ubuntu, if nothing is specified, it will be "/ bin / sh", so leave it as "/ bin / bash".
 
 <pre>
-# ユーザーの追加(ホームディレクトリあり。bashシェルを使う)
-sudo useradd -m myapp -s /bin/bash
+#Add user (with home directory, use bash shell)
+sudo useradd -m myapp -s / bin / bash
 
-# ユーザーの追加(ホームディレクトリなし)
+#Add user (no home directory)
 sudo useradd myapp
-</pre>
+</ pre>
 
-開発者ユーザーがいる場合は、そのユーザーも作成しておくとよいです。パスワードの設定などの手順は、myappユーザーと同じです。
+If you have a developer user, it's a good idea to create that user as well. The procedure, such as setting a password, is the same as for the myapp user.
 
 <pre>
-# ユーザーの追加(ホームディレクトリあり。bashシェルを使う)
-sudo useradd -m kimoto -s /bin/bash
-</pre>
+#Add user (with home directory, use bash shell)
+sudo useradd -m kimoto -s / bin / bash
+</ pre>
 
-<h4>パスワードの設定</h4>
+<h4> Password setting </ h4>
 
-ユーザーを追加したらパスワードも設定します。<a href="/blog/20200510173052.html">passwdコマンド</a>を使用します。
+After adding the user, set the password as well. Use the <a href="/blog/20200510173052.html"> passwd command </a>.
 
 <pre>
 sudo passwd myapp
-</pre>
+</ pre>
 
-パスワードの入力と確認のための再入力を求められるので設定します。
+You will be asked to enter the password and re-enter it for confirmation, so set it.
 
-<h4>sudoグループに登録</h4>
+<h4> Join sudo group </ h4>
 
-このユーザーをroot権限を持つsudoユーザーとして登録したい場合は<a href="/blog/20200330174004.html">gpasswd</a>コマンドを使って、sudoグループに追加します。
+If you want to register this user as a sudo user with root privileges, add it to the sudo group using the <a href="/blog/20200330174004.html"> gpasswd </a> command.
 
 <pre>
 sudo gpasswd -a myapp sudo
-</pre>
+</ pre>
 
-<h4>ユーザーを間違って追加したので削除したい</h4>
+<h4> I added a user by mistake and want to delete it </ h4>
 
-ユーザーを間違って追加したので削除したい場合は「userdel」を使います。
+If you accidentally added a user and want to remove it, use "userdel".
 
 <pre>
 sudo userdel myapp
-</pre>
+</ pre>
 
-ホームディレクトリの内容やメールは、削除されないので安心してください。
+Rest assured that the contents of your home directory and emails will not be deleted.
 
-このユーザーがプロセスを使用していた場合は、削除ができません。
+If this user was using the process, it cannot be deleted.
 
-そのユーザーがプロセスを使っていない時間に行うか、プロセスを確認して、killしてよいものであれば、killする必要があります。
+You need to do it when the user isn't using the process, or check the process and kill it if it's okay to kill it.
 
 <pre>
-# プロセスの確認
+#Check process
 ps -ef
-</pre>
+</ pre>
 
-<h3>ユーザー管理のその他の操作</h3>
+<h3> Other user management operations </ h3>
 
-ユーザー削除。
-
-<ul>
-  <li><a href="/blog/20200402174004.html">ユーザーを削除する - userdelコマンド</a></li>
-</ul>
-
-ユーザー一覧。
+User deletion.
 
 <ul>
-  <li><a href="/blog/20200401174004.html">ユーザーの一覧を表示する 「/etc/passwd」ファイル</a></li>
-</ul>
+  <li> <a href="/blog/20200402174004.html"> Delete user --userdel command </a> </ li>
+</ ul>
 
-<h3>useraddのオプションを間違った場合の対処</h3>
+User list.
 
-<h4>ホームディレクトリのオプション「-m」つけ忘れた場合</h4>
+<ul>
+  <li> <a href="/blog/20200401174004.html"> "/ etc / passwd" file that displays a list of users </a> </ li>
+</ ul>
 
-userdelでユーザーをいったん削除して、再度useraddでユーザーを作成します。
+<h3> What to do if the useradd option is incorrect </ h3>
+
+<h4> If you forget to add the option "-m" in your home directory </ h4>
+
+Delete the user with userdel and create the user again with useradd.
 
 <pre>
 sudo userdel myapp
-sudo useradd -m myapp -s /bin/bash
-</pre>
+sudo useradd -m myapp -s / bin / bash
+</ pre>
 
-<h4>デフォルトのシェルのオプション「-s」をつけ忘れた場合</h4>
+<h4> If you forget to add the default shell option "-s" </ h4>
 
-usermodで修正できます。
+You can fix it with usermod.
 
 <pre>
-sudo usermod -s /bin/bash myapp
-</pre>
+sudo usermod -s / bin / bash myapp
+</ pre>

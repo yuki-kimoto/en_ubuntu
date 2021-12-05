@@ -1,67 +1,67 @@
-<div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
+        <span itemprop = "name"> Ubuntu </ span>
       </a>
-      <meta itemprop="position" content="1" />
-    </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <meta itemprop = "position" content = "1" />
+    </ li>
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop="name">パッケージ管理</span>
+        <span itemprop = "name"> Package management </ span>
       </a>
-      <meta itemprop="position" content="2" />
-    </li>
+      <meta itemprop = "position" content = "2" />
+    </ li>
     <li>
       here
-    </li>
-  </ul>
-</div>
-<h2>redis-serverのインストール - Redisサーバー 揮発性データの高速保存とPub/Sub</h2>
+    </ li>
+  </ ul>
+</ div>
+<h2> Redis-server installation --Redis server fast storage of volatile data and Pub / Sub </ h2>
 
-Redisサーバーをインストールするにはredis-serverパッケージを<a href="/blog/20200530085516.html">apt</a>コマンドでインストールします。
+To install the Redis server, install the redis-server package with the <a href="/blog/20200530085516.html"> apt </a> command.
 
 <pre>
 sudo apt install -y redis-server
-</pre>
+</ pre>
 
-<h4>Redisサーバーがインストールされたことの確認</h4>
+<h4> Confirm that the Redis server is installed </ h4>
 
-Redisサーバーがインストールされたことを<a href="/blog/20200605104005.html">systemctl</a>のstatusコマンドで確認してみましょう。
+Let's confirm that the Redis server is installed with the status command of <a href="/blog/20200605104005.html"> systemctl </a>.
 
 <pre>
 sudo systemctl status redis-server
-</pre>
+</ pre>
 
-<h3>Redisクライアント - redis-cli</h4>
+<h3> Redis client --redis-cli </ h4>
 
-RedisサーバーをインストールするとRedisコマンドを実行できるredis-cliというコマンドラインアプリケーションもインストールされます。
-
-<ul>
-  <li><a href="/blog/20200720125704.html">redis-cli - RedisクライアントからRedisコマンドを実行する</a></li>
-</ul>
-
-<h3>Redisサーバーの用途</h3>
-
-Redisサーバーには主に二つの用途があります。
-
-<h4>揮発性データの高速保存</h4>
-
-Redisサーバーは、揮発性データを高速に保存できます。
-
-揮発性データというのは、一時的で消去が予定されているデータです。
-
-セッション情報は、一定期間で消しますし、もし消えたとしても、ユーザーにログイン画面からやりなおしてもらうだけです。セッション情報は、揮発性のデータといえます。
-またセッションは、HTTPリクエストのたびに取得しないといけないので、<a href="https://en.mariadb.perlzemi.com/">MariaDB</a>のようなリレーショナルデータベースよりもRedisが、パフォーマンスがよいです。
-
-<h4>Pub/Subによるpush通知</h4>
-
-Redisは、Pub/Subと呼ばれるpush通知の仕組みを持っているので、リアルタイムチャット、リアルタイム更新、という分野の実装を比較的簡単に行うことができます。
-
-Redisは、Web APIを持っているので、Webフレームワークがノンブロッキング対応している場合は、ノンブロッキングのHTTPリクエストでRedisにアクセスできます。
-
-Mojolicious、WebSocket、Redisを使ったリアルタイムチャットのサンプルについては、以下を参考にしてください。
+Installing the Redis server also installs a command-line application called redis-cli that allows you to run Redis commands.
 
 <ul>
-  <li><a href="https://en.mojolicious.perlzemi.com/blog/20100403127089.html">Mojolicious、WebSocket、Redisを使ったリアルタイムチャットのサンプル</a>
-</ul>
+  <li> <a href="/blog/20200720125704.html"> redis-cli --Run Redis command from Redis client </a> </ li>
+</ ul>
+
+<h3> Use of Redis server </ h3>
+
+Redis servers have two main uses.
+
+<h4> High-speed storage of volatile data </ ​​h4>
+
+Redis servers can store volatile data at high speeds.
+
+Volatile data is data that is temporary and is scheduled to be erased.
+
+The session information will be erased for a certain period of time, and if it disappears, you just have to ask the user to start over from the login screen. Session information is volatile data.
+Also, since the session must be fetched for each HTTP request, Redis performs better than a relational database like <a href="https://en.mariadb.perlzemi.com/"> MariaDB </a>. Is good.
+
+<h4> Pub / Sub push notifications </ h4>
+
+Redis has a push notification mechanism called Pub / Sub, so it's relatively easy to implement in the areas of real-time chat and real-time updates.
+
+Redis has a web API, so if your web framework supports non-blocking, you can access Redis with a non-blocking HTTP request.
+
+Please refer to the following for a sample of real-time chat using Mojolicious, WebSocket, and Redis.
+
+<ul>
+  <li> <a href="https://en.mojolicious.perlzemi.com/blog/20100403127089.html"> Sample real-time chat using Mojolicious, WebSocket, Redis </a>
+</ ul>

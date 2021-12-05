@@ -1,44 +1,44 @@
-<div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
+        <span itemprop = "name"> Ubuntu </ span>
       </a>
-      <meta itemprop="position" content="1" />
-    </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <meta itemprop = "position" content = "1" />
+    </ li>
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop="name">パッケージ管理</span>
+        <span itemprop = "name"> Package management </ span>
       </a>
-      <meta itemprop="position" content="2" />
-    </li>
+      <meta itemprop = "position" content = "2" />
+    </ li>
     <li>
       here
-    </li>
-  </ul>
-</div>
-<h2>gccのインストール</h2>
+    </ li>
+  </ ul>
+</ div>
+<h2> Install gcc </ h2>
 
-gccのインストール方法を解説します。<a href="/blog/20200530085516.html">apt</a>コマンドを使って、gccをインストールします。sudoを使って管理者権限で実行します。
+I will explain how to install gcc. Install gcc using the <a href="/blog/20200530085516.html"> apt </a> command. Run with administrator privileges using sudo.
 
 <pre>
 sudo apt install -y gcc
-</pre>
+</ pre>
 
-<h3>gccの主な用途</h3>
+<h3> Main uses of gcc </ h3>
 
-gccの主な用途は、C言語のコンパイルです。C言語のソースファイルをコンパイルして、オブジェクトファイルを作成できます。
+The main use of gcc is to compile C language. You can compile C source files to create object files.
 
-オブジェクトファイルというのは、一つまたは複数のC言語ファイルに対応する処理を含む機械語になったファイルです。
+An object file is a machine language file that contains processing for one or more C language files.
 
-gccはリンカも含んでいます。リンカ機能で、オブジェクトファイルを結合して、実行ファイル、静的ライブラリ、共有ライブラリを作成できます。
+gcc also includes a linker. The linker feature allows you to combine object files to create executables, static libraries, and shared libraries.
 
-gccは、<a href="https://perlzemi.com/blog/20100504127089.html">CPAN</a>からC言語ソースファイルを含んでいる<a href="https://perlzemi.com/blog/20100809127859.html">XSモジュール</a>をインストールするときに必要です。
+gcc contains C language source files from <a href="https://perlzemi.com/blog/20100504127089.html"> CPAN </a> <a href="https://perlzemi.com/ blog / 20100809127859.html "> XS Module </a> Required when installing.
 
-<h3>C++のコンパイラ g++</h3>
+<h3> C ++ compiler g ++ </ h3>
 
-PerlのXSモジュールでは、C++が使われていることもあるので、合わせてC++のコンパイラであるg++もインストールしておきましょう。
+C ++ may be used in Perl's XS module, so be sure to install g ++, which is a C ++ compiler.
 
 <ul>
-  <li><a href="/blog/20200503174004.html">g++のインストール</a></li>
-</ul>
+  <li> <a href="/blog/20200503174004.html"> Install g ++ </a> </ li>
+</ ul>

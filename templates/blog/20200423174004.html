@@ -1,137 +1,137 @@
-<div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
+        <span itemprop = "name"> Ubuntu </ span>
       </a>
-      <meta itemprop="position" content="1" />
-    </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <meta itemprop = "position" content = "1" />
+    </ li>
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop="name">パッケージ管理</span>
+        <span itemprop = "name"> Package management </ span>
       </a>
-      <meta itemprop="position" content="2" />
-    </li>
+      <meta itemprop = "position" content = "2" />
+    </ li>
     <li>
       here
-    </li>
-  </ul>
-</div>
-<h2>postfixのインストール - メール送信 sendmailコマンド</h2>
+    </ li>
+  </ ul>
+</ div>
+<h2> Postfix installation-send mail sendmail command </ h2>
 
-メールを送信するためのsendmailコマンドを使うためにpostfixを<a href="/blog/20200530085516.html">apt</a>コマンドでインストールしましょう。
+Install postfix with the <a href="/blog/20200530085516.html"> apt </a> command to use the sendmail command to send mail.
 
 <pre>
 sudo apt install -y postfix
-</pre>
+</ pre>
 
-Webシステム開発では、postfixは受信メールサーバーになる必要はないです。postfixのインストールは、送信メールを配送するサーバーとして機能することと、sendmailコマンドが使えるようにすることが、主な目的です。
+For web system development, postfix does not have to be an incoming mail server. The main purpose of installing postfix is ​​to act as a server for delivering outbound mail and to be able to use the sendmail command.
 
-メール送信は、お問い合わせフォームにおけるメール送信や、アカウント登録機能のメール認証で利用します。
+E-mail transmission is used for sending e-mail in the inquiry form and for e-mail authentication of the account registration function.
 
-インストールコマンドを実行すると、GUIの画面が立ち上がってびっくりします。
+When I execute the installation command, the GUI screen pops up and I am surprised.
 
-(CUIで行う方法知っておられましたら「kimoto.yuki@gmail.com」まで、お願いします。)
+(If you know how to do it with CUI, please contact "kimoto.yuki@gmail.com".)
 
-キーボードの右を押すと、Okが光ります。Enterを押します。
+Press the right side of the keyboard and Ok will illuminate. Press Enter.
 
-上下キーで「No configuration」を選択します。右キーを押すとOkに勧めるので、Enterを押します。
+Select "No configuration" with the up and down keys. Press the right key to recommend Ok, so press Enter.
 
-インストールが始まります。
+The installation will start.
 
-<h4>postfixがインストールされたことの確認</h4>
+<h4> Confirm that postfix is ​​installed </ h4>
 
-postfixがインストールされたことを確認するために<a href="/blog/20200605104005.html">systemctl</a>コマンドのstatusを使いましょう。
+Use the status of the <a href="/blog/20200605104005.html"> systemctl </a> command to verify that postfix is ​​installed.
 
 <pre>
 sudo systemctl status postfix
-</pre>
+</ pre>
 
-inactiveで起動はしていないですが、インストールはできています。
+I haven't started it inactive, but I have installed it.
 
 <pre>
-● postfix.service - Postfix Mail Transport Agent
+● postfix.service --Postfix Mail Transport Agent
    Loaded: loaded (/lib/systemd/system/postfix.service; enabled; vendor preset: enabled)
    Active: inactive (dead)
 Condition: start condition failed at Sat 2020-05-16 15:36:13 JST; 2 days ago
-</pre>
+</ pre>
 
-postfixが起動していないのは、設定ファイルがないためです。
+Postfix is ​​not running because there is no configuration file.
 
-<h3>メールを送信するには?</h3>
+<h3> How to send an email? </ h3>
 
-メールを送信するには、どうすればよいのでしょうか?
+How do I send an email?
 
-ここからは、普通の方法で、メールを送信するのは、どれほど難しいかということを書きます。
+From here on, I'll write about how difficult it is to send an email in the usual way.
 
-<h4>postfixの機能について</h4>
+<h4> About the function of postfix </ h4>
 
-まず、postfixの設定に関して、Web上には、いろいろな種類の設定方法が掲載されています。
+First of all, regarding the postfix settings, various types of setting methods are posted on the Web.
 
-postfixには、主に三つの機能があって、メールを送信する機能、メールを転送する機能、メールを受信する機能です。
+postfix has three main functions: sending mail, forwarding mail, and receiving mail.
 
-Webシステム開発をする上で、少なくとも、欲しい機能は、メール送信機能だけです。
+When developing a Web system, at least the only function I want is the email sending function.
 
-postfixについて、自分で調べる場合は、メール送信機能に限定した手順を探す必要があります。
+If you want to find out about postfix yourself, you need to look for a procedure that is limited to the mail sending function.
 
-<h4>postfixのバージョンについて</h4>
+<h4> About the postfix version </ h4>
 
-postfixはバージョン2とバージョン3がありますが、同じ設定をしても動かなかったり意味が違う項目があります。
+There are version 2 and version 3 of postfix, but there are some items that do not work or have different meanings even if the same settings are made.
 
-<h4>DNS解決</h4>
+<h4> DNS resolution </ h4>
 
-次にpostfixの設定項目で「myhostname」という項目がありますが、これは「ホスト名.ドメイン名」という名前で指定します。
+Next, there is an item called "myhostname" in the postfix setting item, which is specified by the name "hostname.domain name".
 
-この場合に、postfix 3では、ドメイン名はDNSサーバーで解決できる必要があります。postfix 2では、これは必須ではなかったような気もします。
+In this case, postfix 3 requires that the domain name be resolvable by the DNS server. With postfix 2, I feel like this wasn't required.
 
 <pre>
 myhostname = app1.perlclub.net
-myorigin = $mydomain
-relayhost = $mydomain
+myorigin = $ mydomain
+relayhost = $ mydomain
 inet_interfaces = loopback-only
 mydestination =
-</pre>
+</ pre>
 
-<h4>25番ポートの外部送信のブロック</h4>
+<h4> Block external transmission on port 25 </ h4>
 
-VPSやクラウドサーバーなどで、ポート25番の外部送信がブロックされていると、通常の設定では、sendmailコマンドでメールは送れません。
+If external sending on port 25 is blocked by VPS or cloud server, you cannot send mail with the sendmail command under normal settings.
 
-これは、迷惑メール対策のようです。
+This seems to be a measure against junk mail.
 
-つまり、外向き25番ポートがブロックされている環境が2020年では、普通のことだと想定しなければなりません。
+In other words, we have to assume that the environment where the outward port 25 is blocked is normal in 2020.
 
-<h4>認証付きSMTPサーバー</h4>
+<h4> Authenticated SMTP server </ h4>
 
-25番ポートがブロックされている場合に、どのようにメールを送信するのでしょうか?
+How do you send an email if port 25 is blocked?
 
-一番簡単な方法は、認証付きSMTPサーバーに対して、postfixの送信メールをリレーすることです。
+The easiest way is to relay postfix outbound mail to an authenticated SMTP server.
 
-このようなメールサービスが公開されており、メール送信、月10000件程度までは、無料で利用できます。
+Such an email service is open to the public, and you can send emails and use up to 10,000 emails a month for free.
 
-ですので、まず認証付きSMTPサーバーを提供しているサービスを利用するというのが、最も簡単で、無料で始められる方法です。
+Therefore, the easiest and free way to get started is to use a service that provides an authenticated SMTP server.
 
 <ul>
-  <li><a href="/blog/20200521085509.html">クラウドメール配信SendGridとPostfixとの連携</a></li>
-</ul>
+  <li> <a href="/blog/20200521085509.html"> Cloud mail delivery SendGrid and Postfix work together </a> </ li>
+</ ul>
 
-<h3>sendmailコマンドが使えることの確認</h3>
+<h3> Confirm that the sendmail command can be used </ h3>
 
-sendmailが使えることを確認しましょう。
+Make sure you can use sendmail.
 
 <pre>
 sendmail
-</pre>
+</ pre>
 
-入力待ちになったら、sendmailがインストールされています。Ctrl + C でsendmailを終了しましょう。
+If you're waiting for input, sendmail is installed. Let's end sendmail with Ctrl + C.
 
-ではメールを送信してみましょう。「メール送信元」「メール送信先」のところを自分のメールにしてください。
+Let's send an email. Please use your own email for "Email sender" and "Email destination".
 
 <pre>
-echo Hello | sendmail -f メール送信元 メール送信先
-</pre>
+echo Hello | sendmail -f mail source mail destination
+</ pre>
 
-sendmailでは、標準入力が、本文になります。
+In sendmail, the standard input is the body.
 
--fはfromでメール送信元を指定します。メール送信元がない場合は、メールがはじかれるという経験が多いので、指定しています。
+-f specifies the mail sender with from. If there is no sender of the email, the email is often rejected, so I have specified it.
 
-その後ろに、メールの送信先を指定します。試験するときは、送信先、送信元どちらも同じで大丈夫です。
+After that, specify the destination of the email. When testing, both the destination and the source can be the same.

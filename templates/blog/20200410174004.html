@@ -1,167 +1,167 @@
-<h2>UbuntuとCentOSの違いと共通化された部分</h2>
+<h2> Differences between Ubuntu and CentOS and common parts </ h2>
 
-Ubuntuと<a href="https://en.centos.perlzemi.com/">CentOS</a>の違うところをここでまとめておきます。両方で動くようになるのがよいですね。
+Here is a summary of the differences between Ubuntu and <a href="https://en.centos.perlzemi.com/"> CentOS </a>. It's good to be able to work with both.
 
-<h3>シェルのシェバン「/bin/sh」</h3>
+<h3> Shell shebang "/ bin / sh" </ h3>
 
-CentOSでは「/bin/sh」は「/bin/bash」にシンボリックリンクが張られているので、bashで実行されます。
+In CentOS, "/ bin / sh" has a symbolic link in "/ bin / bash", so it will be executed in bash.
 
-Ubuntuでは「/bin/sh」で実行されます。実装は「dash」と呼ばれるシェルになっています。
+On Ubuntu it runs in "/ bin / sh". The implementation is in a shell called "dash".
 
-シェバンを以下のように書いているとCentOSでは、bashで実行されるのに対して、Ubuntuでは「/bin/sh」で実行されます。
+If you write the shebang as follows, it will be executed by "/ bin / sh" on Ubuntu, while it will be executed by bash on CentOS.
 
 <pre>
-#!/bin/sh
-</pre>
+#! / bin / sh
+</ pre>
 
-そして、bashの文法を使っていると以下のように文法エラーになる。
+And when using the bash grammar, a grammar error occurs as follows.
 
 <pre>
 ./morbo: 10: ./morbo: Syntax error: "(" unexpected
-</pre>
+</ pre>
 
-<a href="https://en.linux.perlzemi.com/">Linux</a>間ポータビリティを持たせるためには、明示的にbashとシェバンと明示的に書きます。
-
-<pre>
-#!/bin/bash
-</pre>
-
-Unix間ともポータビリティを持たせる場合はshの文法で書き直す必要があるでしょう。
-
-<a href="https://en.perlzemi.com/">Perl</a>で書けば、Unix/Linux間で、ポータブルなプログラムが書けます。
-
-<h3>パッケージ管理</h3>
-
-パッケージ管理ツールUbuntuではapt、CentOSではyumの違いがあります。
-
-CentOS 8からはdnfがyumを置き換えます。yumはdnfのエイリアスになります。
-
-パッケージ名も異なります。パッケージ管理は現在のところ共通化できなさそうです。
-
-<h3>sudo</h3>
-
-Ubuntuは、sudoがデフォルトで利用可能です。
-
-sudoを許可するには、Ubuntuでは、ユーザーをsudoグループに追加します。
+<a href="https://en.linux.perlzemi.com/"> Linux </a> To have inter-portability, explicitly write bash and shebang.
 
 <pre>
-# Ubuntuでsudoを許可
+#! / bin / bash
+</ pre>
+
+If you want to have portability between Unixes, you will need to rewrite it with sh syntax.
+
+You can write portable programs between Unix / Linux by writing <a href="https://en.perlzemi.com/"> Perl </a>.
+
+<h3> Package management </ h3>
+
+There is a difference between apt in the package management tool Ubuntu and yum in CentOS.
+
+Starting with CentOS 8, dnf replaces yum. yum is an alias for dnf.
+
+The package name is also different. It seems that package management cannot be standardized at this time.
+
+<h3> sudo </ h3>
+
+For Ubuntu, sudo is available by default.
+
+To allow sudo, Ubuntu adds the user to the sudo group.
+
+<pre>
+#Allow sudo on Ubuntu
 gpasswd -a myapp sudo
-</pre>
+</ pre>
 
-CentOSでは、sudoが有効になっていません。visudoでsudoが利用可能になる設定を行います。(CentOS 7の場合)
+Sudo is not enabled on CentOS. Make settings to enable sudo with visudo. (For CentOS 7)
 
-「%wheel ALL=(ALL) ALL」のコメントを外します。
+Uncomment "% wheel ALL = (ALL) ALL".
 
 <pre>
 ## Allows people in group wheel to run all commands
-#%wheel ALL=(ALL) ALL
-%wheel ALL=(ALL) ALL
-</pre>
+#% wheel ALL = (ALL) ALL
+% wheel ALL = (ALL) ALL
+</ pre>
 
-sudoを許可するには、ユーザーをwheelグループに追加します。
+To allow sudo, add the user to the wheel group.
 
 <pre>
-# CentOSでsudoを許可
+#Allow sudo on CentOS
 gpasswd -a myapp wheel
-</pre>
+</ pre>
 
-<h3>サーバー</h3>
+<h3> Server </ h3>
 
-<h4>Apache</h4>
+<h4> Apache </ h4>
 
-Apacheは名前が異なります。CentOSではhttpdなのに対して、Ubuntuでは、apache2です。
+Apache has a different name. In CentOS it is httpd, but in Ubuntu it is apache2.
 
-設定ファイルの場所や、<a href="/blog/20200605104005.html">systemctl</a>コマンドを実行するときの名前が異なっています。
+The location of the configuration file and the name when executing the <a href="/blog/20200605104005.html"> systemctl </a> command are different.
 
-設定ファイルの構成も、CentOSとUbuntuで異なっています。
+The configuration of the configuration file is also different between CentOS and Ubuntu.
 
-UbuntuのApacheには、a2ensite, a2enmod, a2enconfなどの、設定ファイル有効化コマンドがあります。
+Apache on Ubuntu has configuration file enable commands such as a2ensite, a2enmod, a2enconf.
 
-コマンドを使って設定ファイルを有効化・無効可するといったことが、Ubuntuでは、やりやすくなっています。
+In Ubuntu, it is easier to enable / disable the configuration file using commands.
 
-<h3>ファイアーウォール</h3>
+<h3> Firewall </ h3>
 
-ファイアーウォールは、Ubuntuはufw、CentOSはfirewalldです。
+The firewall is ufw for Ubuntu and firewalld for CentOS.
 
-ファイアーウォールは、コマンドラインでの設定は、非常にややこしく、やりたくないという気持ちは強い。
+Firewalls are very confusing to set up on the command line, and I have a strong feeling that I don't want to do it.
 
-VPS、クラウドサービスには、たいてい、ファイアーウォールの設定が存在するので、それで設定すると、Linux自体のファイアーウォールを意識しないですむ。ネットワークの設定でパケット制御を行う部分があります。
+VPS and cloud services usually have a firewall setting, so if you set it with that, you do not have to be aware of the firewall of Linux itself. There is a part that controls packets in the network settings.
 
-オンプレミスの場合は、コマンドでファイアーウォール管理を行う。
+In case of on-premises, firewall management is performed by command.
 
-<h3>cron</h3>
+<h3> cron </ h3>
 
-Ubuntuの場合は、デフォルトでcronがインストールされていて、普通のcronです。自然にcronを使えます。
+For Ubuntu, cron is installed by default, which is a normal cron. You can use cron naturally.
 
-CentOSの場合は、デフォルトのcronがanacronです。普通のcronが欲しい場合は、anacronをアンインストールして、普通のcronをインストールする必要があります。
+For CentOS, the default cron is anacron. If you want a regular cron, you need to uninstall anacron and install a regular cron.
 
-<h3>SeLinux</h3>
+<h3> SeLinux </ h3>
 
-Ubuntuの場合は、CentOSのSeLinuxに該当する機能は、デフォルトでoffになっています。
+In case of Ubuntu, the function corresponding to SeLinux of CentOS is off by default.
 
-CentOSの場合は、SeLinuxがデフォルトでonになっている。この機能、リバースプロキシでの接続で、プロキシエラーになっちゃうので、SeLinuxを無効にするか、リバースプロキシができる設定にする必要があります。
+For CentOS, SeLinux is on by default. This function causes a proxy error when connecting with a reverse proxy, so you need to disable SeLinux or set it to allow reverse proxy.
 
-<h3>Let's EncryptによるSSL証明書</h3>
+<h3> SSL certificate by Let's Encrypt </ h3>
 
-Ubuntuでは、certbotがaptからインストールできます。
+On Ubuntu, certbot can be installed from apt.
 
-CentOSでは、以下のようにcertbotをインストールします。
+On CentOS, install certbot as follows.
 
 <pre>
 # Cent OS 7
 yum install epel-release
-yum install --enablerepo=epel certbot
-</pre>
+yum install --enablerepo = epel certbot
+</ pre>
 
-新しいCent OSのバージョンが出たばかりなど、certbotがepelレポジトリに含まれていない場合は、ソースコードからインストールしする必要があります。またcertbotは、certbot-autoという名前です。
+If the certbot is not included in the epel repository, such as when a new Cent OS version is just out, you will need to install it from source code. Also, certbot is named certbot-auto.
 
-<h3>UbuntuとCentOSで共通になったもの</h3>
+<h3> What is common to Ubuntu and CentOS </ h3>
 
-CentOSとUbuntuで、ここ最近共通になったもの。
+CentOS and Ubuntu have recently become common.
 
-<h4>systemctl</h4>
+<h4> systemctl </ h4>
 
-CentOSもUbuntuもサービス(サーバーとして起動する者)は、systemdで管理するようになって、管理コマンドもsystemctlになりました。
+In both CentOS and Ubuntu, services (those who start as a server) are now managed by systemd, and the management command is also systemctl.
 
-CentOS 7からはsystemctlコマンドをUbuntuと共通で使うことができます。
+From CentOS 7, you can use the systemctl command in common with Ubuntu.
 
-<h4>journalctl</h4>
+<h4> journalctl </ h4>
 
-systemdのログ管理もjournalctlがUbuntuとCentOSで共通で使える。
+For systemd log management, journalctl can be used for both Ubuntu and CentOS.
 
-CentOS 7からはjournalctlコマンドをUbuntuと共通で使うことができます。
+From CentOS 7, you can use the journalctl command in common with Ubuntu.
 
-<h3>Perl</h3>
+<h3> Perl </ h3>
 
-Ubuntuの一般的な構成ではデフォルトで<a href="https://en.perlzemi.com/">Perl</a>がインストールされています。
+<a href="https://en.perlzemi.com/"> Perl </a> is installed by default in a typical Ubuntu configuration.
 
-CentOSの一般的な構成ではデフォルトでPerlがインストールされていないことが多いです。さらに、付け加えておくと、Perlのコアモジュールがperlパッケージから分離されて別になっています。
+Perl is often not installed by default in a typical CentOS configuration. In addition, Perl's core modules are separate from the perl package.
 
 <pre>
-# CentOSにおけるPerlのインストール
+#Install Perl on CentOS
 yum install perl
 yum install perl-core
-</pre>
+</ pre>
 
-<h3>パッケージのインストール後のサーバーの状態</h3>
+<h3> Server state after package installation </ h3>
 
-サーバーアプリケーションをインストールした場合は、Ubuntuの場合は、起動されます。
+If you installed the server application, it will be launched for Ubuntu.
 
-サーバーアプリケーションをインストールした場合は、CentOSの場合は、起動されていません。
+If you installed the server application, it is not started for CentOS.
 
-<h3>標準パッケージの種類</h3>
+<h3> Standard package type </ h3>
 
-Ubuntuでは標準パッケージでLet's Encryptのクライアントであるcertbotと、Redisサーバーが提供されています。
+Ubuntu provides a Let's Encrypt client, certbot, and a Redis server as standard packages.
 
-CentOSの場合は(CentOS 7の場合)は、上記が提供されていません。Linux 用の拡張パッケージ(EPEL)リポジトリをインストールすることで利用可能になります。
+For CentOS (for CentOS 7), the above is not provided. It is available by installing the Expansion Package (EPEL) repository for Linux.
 
 <pre>
 sudo yum -y install epel-release
-</pre>
+</ pre>
 
-<h3>バージョン間の変化の大きさ</h3>
+<h3> The magnitude of change between versions </ h3>
 
-Ubuntuは、変化はあれども、なるべく互換性が保たれ、大きな変更は少ない感じがします。
+Ubuntu is as compatible as possible, despite changes, and I feel that there are few major changes.
 
-CentOSの方が変化が大きく。バージョン間の差分は大きく感じる。CentOS 5, 6, 7, 8で、変化は多い。
+The change is bigger in CentOS. The difference between the versions feels big. There are many changes in CentOS 5, 6, 7, 8.

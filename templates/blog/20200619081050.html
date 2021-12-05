@@ -1,42 +1,42 @@
-<div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
+        <span itemprop = "name"> Ubuntu </ span>
       </a>
-      <meta itemprop="position" content="1" />
-    </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <meta itemprop = "position" content = "1" />
+    </ li>
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop="name">Apache</span>
+        <span itemprop = "name"> Apache </ span>
       </a>
-      <meta itemprop="position" content="2" />
-    </li>
+      <meta itemprop = "position" content = "2" />
+    </ li>
     <li>
       here
-    </li>
-  </ul>
-</div>
+    </ li>
+  </ ul>
+</ div>
 
-<h2>Let's EncryptのSSL証明書の新しいサーバーへの引っ越し作業</h2>
+<h2> Let's Encrypt SSL certificate moving to a new server </ h2>
 
-Let's EncryptのSSL証明書の引っ越し作業の記録です。Let's Encryptで作成したSSL証明書を新しいサーバーに引っ越すのですが、その時の手順を公開します。
+It is a record of moving work of Let's Encrypt SSL certificate. I am moving the SSL certificate created by Let's Encrypt to a new server, and I will publish the procedure at that time.
 
-<h3>どのファイルを移動すればよいの?</h3>
+<h3> Which file should I move? </ H3>
 
-まず疑問なのは、どのファイルを移動すれば、移行先でcertbotは正しく動くのだろうかということですね。certbotがバージョンアップして、設定ファイルに互換性がない場合などが懸念点です。
+The first question is, which files should I move to get certbot to work properly at the destination? The concern is that the certbot has been upgraded and the configuration files are incompatible.
 
-Let's EncryptのSSL証明書は、発行制限があって、間違って証明書の要求をし続けると、一定期間取得できなくなるのも、慎重になる理由です。
+Let's Encrypt's SSL certificate has issuance restrictions, and if you continue to request a certificate by mistake, you will not be able to obtain it for a certain period of time, which is also a reason to be cautious.
 
-移行元のディレクトリ構成はこんな感じでした。ドメイン名は「www.myhost.example」に変えてあります。
+The directory structure of the migration source was like this. The domain name has been changed to "www.myhost.example".
 
 <pre>
-/etc/letsencrypt
-/etc/letsencrypt/renewal-hooks
-/etc/letsencrypt/renewal-hooks/post
-/etc/letsencrypt/renewal-hooks/deploy
-/etc/letsencrypt/renewal-hooks/pre
-/etc/letsencrypt/archive
+/ etc / letsencrypt
+/ etc / letsencrypt / renewal-hooks
+/ etc / letsencrypt / renewal-hooks / post
+/ etc / letsencrypt / renewal-hooks / deploy
+/ etc / letsencrypt / renewal-hooks / pre
+/ etc / letsencrypt / archive
 /etc/letsencrypt/archive/www.myhost.example
 /etc/letsencrypt/archive/www.myhost.example/chain2.pem
 /etc/letsencrypt/archive/www.myhost.example/cert1.pem
@@ -55,7 +55,7 @@ Let's EncryptのSSL証明書は、発行制限があって、間違って証明�
 /etc/letsencrypt/archive/www.myhost.example/cert2.pem
 /etc/letsencrypt/archive/www.myhost.example/privkey4.pem
 /etc/letsencrypt/.updated-options-ssl-apache-conf-digest.txt
-/etc/letsencrypt/csr
+/ etc / letsencrypt / csr
 /etc/letsencrypt/csr/0147_csr-certbot.pem
 /etc/letsencrypt/csr/0173_csr-certbot.pem
 /etc/letsencrypt/csr/0241_csr-certbot.pem
@@ -63,19 +63,19 @@ Let's EncryptのSSL証明書は、発行制限があって、間違って証明�
 /etc/letsencrypt/csr/0049_csr-certbot.pem
 /etc/letsencrypt/csr/0252_csr-certbot.pem
 /etc/letsencrypt/csr/0243_csr-certbot.pem
-/etc/letsencrypt/accounts
+/ etc / letsencrypt / accounts
 /etc/letsencrypt/accounts/acme-v02.api.letsencrypt.org
 /etc/letsencrypt/accounts/acme-v02.api.letsencrypt.org/directory
 /etc/letsencrypt/accounts/acme-v02.api.letsencrypt.org/directory/32d2139cf78454841dbfafc66f94f9c9
 /etc/letsencrypt/accounts/acme-v02.api.letsencrypt.org/directory/32d2139cf78454841dbfafc66f94f9c9/regr.json
 /etc/letsencrypt/accounts/acme-v02.api.letsencrypt.org/directory/32d2139cf78454841dbfafc66f94f9c9/meta.json
 /etc/letsencrypt/accounts/acme-v02.api.letsencrypt.org/directory/32d2139cf78454841dbfafc66f94f9c9/private_key.json
-/etc/letsencrypt/keys
+/ etc / letsencrypt / keys
 /etc/letsencrypt/keys/0045_key-certbot.pem
 /etc/letsencrypt/keys/0139_key-certbot.pem
 /etc/letsencrypt/keys/0002_key-certbot.pem
 /etc/letsencrypt/keys/0152_key-certbot.pem
-/etc/letsencrypt/live
+/ etc / letsencrypt / live
 /etc/letsencrypt/live/www.myhost.example
 /etc/letsencrypt/live/www.myhost.example/privkey.pem
 /etc/letsencrypt/live/www.myhost.example/README
@@ -84,91 +84,91 @@ Let's EncryptのSSL証明書は、発行制限があって、間違って証明�
 /etc/letsencrypt/live/www.myhost.example/fullchain.pem
 /etc/letsencrypt/live/www.ganeshiaru.co.jp
 /etc/letsencrypt/options-ssl-apache.conf
-/etc/letsencrypt/renewal
+/ etc / letsencrypt / renewal
 /etc/letsencrypt/renewal/www.myhost.example.conf
-</pre>
+</ pre>
 
-certbotのバージョンは1.0.0です。
+The version of certbot is 1.0.0.
 
 <pre>
 certbot --version
 certbot 1.0.0
-</pre>
+</ pre>
 
-移行先のcertbotのバージョンは「0.27.0」です。なんで、バージョンが下がっているのだろうか???
+The version of the destination certbot is "0.27.0". Why is the version down ???
 
 <pre>
 certbot --version
 certbot 0.27.0
-</pre>
+</ pre>
 
-<h3>必要なもの、必要がないもの</h3>
+<h3> What you need, what you don't need </ h3>
 
-「options-ssl-apache.conf」は、ApacheにおけるSSLの証明書の自動設定用のものだけれど、手動で設定することにしたので、これは、いらない。
+"Options-ssl-apache.conf" is for automatic setting of SSL certificate in Apache, but I decided to set it manually, so I don't need it.
 
-「renewal-hooks」は空だからいらない。
+I don't need "renewal-hooks" because they are empty.
 
-Apacheから読み込むSSL証明書のことだけを考えると「live」ディレクトリ以下のSSL証明書を移動してくればよいはず。
+Considering only the SSL certificate read from Apache, you should move the SSL certificate under the "live" directory.
 
-問題は、Let's Encryptが、更新を正しくしてくれるためには、どの情報が必要かということだね。
+The question is, what information does Let's Encrypt need for the update to be correct?
 
-どうやら、Let's EncryptのドメインごとのSSL証明書の更新のための設定ファイルは「/etc/letsencrypt/renewal」の中にあるようだ。引っ越しに必要そうだ。
+Apparently, the configuration file for renewing the SSL certificate for each domain of Let's Encrypt is in "/ etc / letsencrypt / renewal". It seems necessary to move.
 
-Let's Encryptのアカウント情報は「/etc/letsencrypt/accounts/etc/letsencrypt/accounts」の中にあるようだ。引っ越しに必要そうだ。
+Let's Encrypt account information seems to be in "/ etc / letsencrypt / accounts / etc / letsencrypt / accounts". It seems necessary to move.
 
-「/etc/letsencrypt/archive」の中には、過去からのすべてのLet's EncryptのSSL証明書の情報があるようです。この証明書情報は、liveディレクトリの中から参照されています。これは、必要だ。
+It seems that "/ etc / letsencrypt / archive" contains information on all Let's Encrypt SSL certificates from the past. This certificate information is referenced from within the live directory. This is necessary.
 
-「/etc/letsencrypt/csr」と「/etc/letsencrypt/keys」は、バックアップ用だけに存在しているようです。これは、いらなさそう。
+"/ Etc / letsencrypt / csr" and "/ etc / letsencrypt / keys" seem to exist only for backup. This doesn't look annoying.
 
-というわけで、そのまま全部移動するのが、無難なようです。
+So, it seems safe to move everything as it is.
 
-<h4>Let's EncryptのSSL証明書の引っ越しに必要なもの</h4>
+<h4> What you need to move Let's Encrypt SSL certificate </ h4>
 
-Let's EncryptのSSL証明書の引っ越しに必要なもの。「/etc/letsencrypt」以下をすべて移動させましょう。
+What you need to move your Let's Encrypt SSL certificate. Let's move everything under "/ etc / letsencrypt".
 
 <ul>
-  <li>/etc/letsencrypt</li>
-</ul>
+  <li> / etc / letsencrypt </ li>
+</ ul>
 
-<h3>root権限で移動しないといけない</h3>
+<h3> You have to move with root privileges </ h3>
 
-「/etc/letsencrypt」ディレクトリは、root権限で移動しないといけないので、必要なものを「sudo tar cfv」でtar.gzに固めて、移行先に移動して、「sudo tar xfv」展開という手順を踏む。
+Since the "/ etc / letsencrypt" directory must be moved with root privileges, the necessary items are fixed in tar.gz with "sudo tar cfv", moved to the migration destination, and "sudo tar xfv" is expanded. Step on.
 
-rootログイン禁止しているので、rsyncでは、移動ができない。
+Since root login is prohibited, you cannot move with rsync.
 
-<h4>移動元での作業</h4>
+<h4> Working at the source </ h4>
 
-tarで固めて、アプリケーションユーザーのホームディレクトリに移動。すぐに消せるように、所有者もアプリケーションユーザーに変更しておく。
+Tar it and move it to the application user's home directory. Owned so that it can be erased immediatelyAlso change to the application user.
 
 <pre>
-cd /etc
+cd / etc
 sudo tar cfv letsencrypt.tar.gz letsencrypt
 sudo chown myapp letsencrypt.tar.gz
 sudo mv letsencrypt.tar.gz /home/myapp/
-</pre>
+</ pre>
 
-参考: <a href="/blog/20200531085516.html">sudo</a>, <a href="https://en.linux.perlzemi.com/blog/20191012191854.html">cd</a>, <a href="https://en.linux.perlzemi.com/blog/20190129171737.html">tar</a>, <a href="https://en.linux.perlzemi.com/blog/20200603102015.html">chown</a>, <a href="https://en.linux.perlzemi.com/blog/20191204081652.html">mv</a>
+Reference: <a href="/blog/20200531085516.html"> sudo </a>, <a href="https://en.linux.perlzemi.com/blog/20191012191854.html"> cd </a> , <a href="https://en.linux.perlzemi.com/blog/20190129171737.html"> tar </a>, <a href="https://en.linux.perlzemi.com/blog/ 20200603102015.html "> chown </a>, <a href="https://en.linux.perlzemi.com/blog/20191204081652.html"> mv </a>
 
-引っ越し先のアプリケーションユーザーのホームディレクトリに移動する。
+Move to the home directory of the application user you are moving to.
 
-<h4>移動先での作業</h4>
+<h4> Working at the destination </ h4>
 
-展開して、<a href="https://en.linux.perlzemi.com/blog/20190130171737.html">rsync</a>でコピーして、再帰的に所有者をrootに変更。
+Unzip it, copy it with <a href="https://en.linux.perlzemi.com/blog/20190130171737.html"> rsync </a>, and recursively change the owner to root.
 
 <pre>
 cd ~
 tar xfv letsencrypt.tar.gz
-sudo rsync -av letsencrypt/ /etc/letsencrypt/
-sudo chown -R root:root /etc/letsencrypt/
-</pre>
+sudo rsync -av letsencrypt / / etc / letsencrypt /
+sudo chown -R root: root / etc / letsencrypt /
+</ pre>
 
-上記で記述した、不必要なファイルは、消す。消さなくっても、そのままにしておいてもよいが。
+Delete unnecessary files described above. You can leave it as it is, even if you don't erase it.
 
-<h3>renewalディレクトリの中の設定ファイルのwebroot_mapのチェック</h3>
+<h3> Check webroot_map in the configuration file in the renewal directory </ h3>
 
-引っ越し作業をしたときに、ユーザー名が変更されている場合などは、renewalディレクトリの中の設定ファイルに記述されているパスの更新が必要です。
+If the user name has been changed when you moved, you need to update the path described in the configuration file in the renewal directory.
 
 <pre>
 [[webroot_map]]
 www.myhost.example = /home/myapp/fooapp/public
-</pre>
+</ pre>

@@ -1,102 +1,102 @@
-<h2>cronとrsyncを使ったファイルバックアップ自動化</h2>
+<h2> File backup automation using cron and rsync </ h2>
 
-cronとrsyncを使ったファイルバックアップ自動化する方法を解説します。
+Learn how to automate file backups using cron and rsync.
 
-<h4>バックアップサーバーにバックアップディレクトリを作成</h4>
+<h4> Create a backup directory on the backup server </ h4>
 
-バックアップサーバーにバックアップディレクトリを作成しましょう。「/datadrive」はすでに存在するとします。
-
-<pre>
-mkdir -p /datadrive/backup
-</pre>
-
-<h4>ファイルバックアップにはrsyncを使う</h4>
-
-ファイルのバックアップには<a href="https://en.linux.perlzemi.com/blog/20190130171737.html">rsync</a>を使います。
+Create a backup directory on your backup server. Suppose "/ datadrive" already exists.
 
 <pre>
-sudo rsync -e "ssh -p22" -av --delete /datadrive/ myapp@133.242.230.50:/datadrive/backup/datadrive/
+mkdir -p / datadrive / backup
+</ pre>
+
+<h4> Use rsync for file backup </ h4>
+
+Use <a href="https://en.linux.perlzemi.com/blog/20190130171737.html"> rsync </a> to back up your files.
+
+<pre>
+sudo rsync -e "ssh -p22" -av --delete /datadrive/myapp@133.242.230.50:/datadrive/backup/datadrive/
 sudo rsync -e "ssh -p22" -av --delete /etc_letsencrypt/ myapp@133.242.230.50:/datadrive/backup/etc_letsencrypt/
-</pre>
+</ pre>
 
-rsyncは、ディレクトリを再帰的にコピーでき、ファイルの差分だけをコピーしてくれるので、ファイルの更新は差分のチェックと差分のコピーの時間だけになります。
+rsync can copy directories recursively and only copy the diffs of the files, so the only time to update the files is to check the diffs and copy the diffs.
 
-「--delete」オプションを指定しておくと、削除したファイルも検知してくれて、ミラーリングを行うことができます。
+If you specify the "--delete" option, deleted files will also be detected and mirroring will be possible.
 
-<h4>ファイルは本番機からバックアップ機に向かって転送する</h4>
+<h4> Transfer files from the production machine to the backup machine </ h4>
 
-ファイルは、本番機からバックアップ機に向かって転送します。セキュリティの理由で、本番機へのrootログインはSSHでは禁止されていると思われるからです。
+The file is transferred from the production machine to the backup machine. For security reasons, root login to the production machine seems to be prohibited by SSH.
 
-バックアップしたいファイルの中には、root権限が必要なものもあります。
+Some files you want to back up require root privileges.
 
-ですので、本番機側で、rsyncコマンドを実行して、バックアップ機に転送します。
+Therefore, execute the rsync command on the production machine side to transfer it to the backup machine.
 
-<h4>秘密鍵と公開鍵のペアを作成し公開鍵をバックアップサーバーに登録する</h4>
+<h4> Create a private / public key pair and register the public key on the backup server </ h4>
 
-本番機で、<a href="/blog/20200623095744.html">ssh-keygenコマンド</a>を使って、秘密鍵と公開鍵のペアを作成し公開鍵をバックアップサーバーに登録しましょう。
+On the production machine, use the <a href="/blog/20200623095744.html"> ssh-keygen command </a> to create a private / public key pair and register the public key on the backup server.
 
-rootのディレクトリに秘密鍵と公開鍵のペアを生成します。
+Generate a private / public key pair in the root directory.
 
 <pre>
 sudo mkdir -p /root/.ssh
 sudo chmod 700 /root/.ssh
 
-# ファイル名は「/root/.ssh/id_rsa_backup」
+# File name is "/root/.ssh/id_rsa_backup"
 sudo ssh-keygen -t rsa
-</pre>
+</ pre>
 
-公開鍵を表示します。
+Shows the public key.
 
 <pre>
 sudo cat /root/.ssh/id_rsa_backup.pub
-</pre>
+</ pre>
 
-表示された公開鍵をコピーしておきます。
+Make a copy of the displayed public key.
 
-バックアップサーバーで作業します。
-
-<pre>
-mkdir -p ~/.ssh
-chmod 700 ~/.ssh
-cd ~/.ssh
-</pre>
-
-公開鍵を登録します。「authorized_keys」ファイルを開いて、コピーした公開鍵を一番下に、張り付けます。
+Work on a backup server.
 
 <pre>
-vi ~/.ssh/authorized_keys
-</pre>
+mkdir -p ~ / .ssh
+chmod 700 ~ / .ssh
+cd ~ / .ssh
+</ pre>
 
-これで、SSH公開鍵認証で、rsyncができるようになります。
+Register the public key. Open the "authorized_keys" file and paste the copied public key at the bottom.
 
 <pre>
-sudo rsync -e "ssh -p22 -i /root/.ssh/id_rsa_backup" -av --delete /datadrive/ myapp@133.242.230.50:/datadrive/backup/datadrive/
+vi ~ / .ssh / authorized_keys
+</ pre>
+
+Now you can do rsync with SSH public key authentication.
+
+<pre>
+sudo rsync -e "ssh -p22 -i /root/.ssh/id_rsa_backup" -av --delete /datadrive/myapp@133.242.230.50:/datadrive/backup/datadrive/
 sudo rsync -e "ssh -p22 -i /root/.ssh/id_rsa_backup" -av --delete /etc_letsencrypt/ myapp@133.242.230.50:/datadrive/backup/etc_letsencrypt/
-</pre>
+</ pre>
 
-バックアップ用のディレクトリも作成しておきましょう。
+Create a backup directory as well.
 
-<h4>ファイルバックアップをrootのcrontabに登録する</h4>
+<h4> Register file backup in root crontab </ h4>
 
-実行するコマンドは本番機のrootの<a href="/blog/20200604085516.html">crontab</a>に登録しましょう。
+Register the command to be executed in <a href="/blog/20200604085516.html"> crontab </a> of the root of the production machine.
 
-rootのcrontabを以下のようにして開くことができます。
+You can open the root crontab as follows:
 
 <pre>
 sudo crontab -e
-</pre>
+</ pre>
 
-crontabの中に、以下のようにバックアップのコマンドを記述します。<a href="/blog/20200531085516.html">sudo</a>はcrontabには書かないので、注意してください。
+Write the backup command in crontab as follows. Please note that <a href="/blog/20200531085516.html"> sudo </a> is not written in crontab.
 
-時間は任意です。夜間の処理が少ない時間帯が良いと思います。
+Time is arbitrary. I think it's better to have less processing at night.
 
-MAILはrsyncに失敗した場合に通知するメールアドレスです。詳細を表示する「-v」オプションは外しておきましょう。
+MAIL is the email address you will be notified if rsync fails. Remove the "-v" option to show details.
 
 <pre>
-MAILTO=kimoto.yuki@gmail.com
+MAILTO = kimoto.yuki@gmail.com
 
-30 03 * * * rsync -e "ssh -p22 -i /root/.ssh/id_rsa_backup" -a --delete /datadrive/ myapp@133.242.230.50:/datadrive/backup/datadrive/
+30 03 * * * rsync -e "ssh -p22 -i /root/.ssh/id_rsa_backup" -a --delete /datadrive/myapp@133.242.230.50:/datadrive/backup/datadrive/
 30 03 * * * rsync -e "ssh -p22 -i /root/.ssh/id_rsa_backup" -a --delete /etc_letsencrypt/ myapp@133.242.230.50:/datadrive/backup/etc_letsencrypt/
-</pre>
+</ pre>
 
-rsyncコマンドは「mkdir -p」のように複数階層のディレクトリを作れないことに注意しましょう。
+Note that the rsync command can't create multi-level directories like "mkdir -p".

@@ -1,40 +1,40 @@
-<div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
+        <span itemprop = "name"> Ubuntu </ span>
       </a>
-      <meta itemprop="position" content="1" />
-    </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <meta itemprop = "position" content = "1" />
+    </ li>
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop="name">パッケージ管理</span>
+        <span itemprop = "name"> Package management </ span>
       </a>
-      <meta itemprop="position" content="2" />
-    </li>
+      <meta itemprop = "position" content = "2" />
+    </ li>
     <li>
       here
-    </li>
-  </ul>
-</div>
-<h2>postgresql-clientのインストール - PostgreSQLデータベースクライアント</h2>
+    </ li>
+  </ ul>
+</ div>
+<h2> Installing postgresql-client-PostgreSQL database client </ h2>
 
-PostgreSQLデータベースのクライアントアプリケーションである「psql」を使えるように「postgresql-client」を<a href="/blog/20200530085516.html">apt</a>コマンドでインストールしましょう。
+Install "postgresql-client" with the <a href="/blog/20200530085516.html"> apt </a> command so that you can use the PostgreSQL database client application "psql".
 
 <pre>
 sudo apt install -y postgresql-client
-</pre>
+</ pre>
 
-<h4>pgコマンドがインストールされたことの確認</h4>
+<h4> Confirm that the pg command has been installed </ h4>
 
-PostgreSQLのpgコマンドがインストールされたことを確認しましょう。
+Make sure you have the PostgreSQL pg command installed.
 
 <pre>
 psql --version
-</pre>
+</ pre>
 
-以下のようにバージョン情報が表示されるとインストールされています。
+It is installed when the version information is displayed as shown below.
 
 <pre>
 psql (PostgreSQL) 10.12 (Ubuntu 10.12-0ubuntu0.18.04.1)
-</pre>
+</ pre>

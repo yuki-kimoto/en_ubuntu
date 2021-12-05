@@ -1,43 +1,43 @@
-<div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
+        <span itemprop = "name"> Ubuntu </ span>
       </a>
-      <meta itemprop="position" content="1" />
-    </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <meta itemprop = "position" content = "1" />
+    </ li>
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200827123127.html">
-        <span itemprop="name">Perl</span>
+        <span itemprop = "name"> Perl </ span>
       </a>
-      <meta itemprop="position" content="2" />
-    </li>
+      <meta itemprop = "position" content = "2" />
+    </ li>
     <li>
       here
-    </li>
-  </ul>
-</div>
+    </ li>
+  </ ul>
+</ div>
 
-<h2>ユーザーPerlにcpanmでXML::LibXMLをインストールする</h2>
+<h2> Install XML :: LibXML with cpanm in user Perl </ h2>
 
-ユーザーPerlにcpanmでXML::LibXMLをインストールする方法です。
+How to install XML :: LibXML with cpanm in user Perl.
 
-<h3>XML::LibXMLに必要なパッケージ</h3>
+<h3> XML :: Package required for LibXML </ h3>
 
-XML::LibXMLのインストールにはlibxml2-devパッケージが必要です。
+The libxml2-dev package is required to install XML :: LibXML.
 
 <ul>
-  <li><a href="/blog/20200222174004.html">libxml2-devのインストール - Libxml2のヘッダとライブラリ</a></li>
-</ul>
+  <li> <a href="/blog/20200222174004.html"> Installing libxml2-dev --Libxml2 headers and libraries </a> </ li>
+</ ul>
 
-<h3>XML::LibXMLのインストール</h3>
-
-<pre>
-cpanm XML::LibXML
-</pre>
-
-XML::LibXMLが読み込めることが確認しましょう。
+<h3> XML :: Install LibXML </ h3>
 
 <pre>
-perl -e 'use XML::LibXML'
-</pre>
+cpanm XML :: LibXML
+</ pre>
+
+Make sure you can read XML :: LibXML.
+
+<pre>
+perl -e'use XML :: LibXML'
+</ pre>

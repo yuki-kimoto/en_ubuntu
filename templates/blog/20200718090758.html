@@ -1,35 +1,35 @@
-<div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
+        <span itemprop = "name"> Ubuntu </ span>
       </a>
-      <meta itemprop="position" content="1" />
-    </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <meta itemprop = "position" content = "1" />
+    </ li>
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
-        <span itemprop="name">Apache</span>
+        <span itemprop = "name"> Apache </ span>
       </a>
-      <meta itemprop="position" content="2" />
-    </li>
+      <meta itemprop = "position" content = "2" />
+    </ li>
     <li>
       here
-    </li>
-  </ul>
-</div>
+    </ li>
+  </ ul>
+</ div>
 
-<h2>ApacheでWebSocketリバースプロキシのproxy_wstunnelモジュールを有効にする</h2>
+<h2> Enable the proxy_wstunnel module for WebSocket reverse proxy in Apache </ h2>
 
-WebSocketのWebアプリケーションがある場合は、Apacheでリバースプロキシを行うにはproxy_wstunnelモジュールを有効にします。
+If you have a WebSocket web application, enable the proxy_wstunnel module to reverse proxy with Apache.
 
 <pre>
 sudo a2enmod proxy_wstunnel
-</pre>
+</ pre>
 
-設定を反映させるためには<a href="/blog/20200519084454.html">Apacheを再起動</a>してください。
+Please <a href="/blog/20200519084454.html"> Restart Apache </a> for the settings to take effect.
 
-Apacheのモジュールを有効・無効にする方法については、以下の記事を参考にしてください。
+Please refer to the following articles for how to enable / disable Apache modules.
 
 <ul>
-  <li><a href="/blog/20200610082714.html">Apache設定ファイルを有効・無効にする - 基本設定・モジュール設定・サイト設定</a></li>
-</ul>
+  <li> <a href="/blog/20200610082714.html"> Enable / disable Apache config file-basic config / module config / site config </a> </ li>
+</ ul>

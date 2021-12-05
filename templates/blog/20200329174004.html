@@ -1,33 +1,33 @@
-<div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
+        <span itemprop = "name"> Ubuntu </ span>
       </a>
-      <meta itemprop="position" content="1" />
-    </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <meta itemprop = "position" content = "1" />
+    </ li>
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200723101434.html">
-        <span itemprop="name">ユーザー管理</span>
+        <span itemprop = "name"> User Management </ span>
       </a>
-      <meta itemprop="position" content="2" />
-    </li>
+      <meta itemprop = "position" content = "2" />
+    </ li>
     <li>
       here
-    </li>
-  </ul>
-</div>
+    </ li>
+  </ ul>
+</ div>
 
-<h2>ユーザーをグループから削除する - gpasswd -d</h2>
+<h2> Remove user from group --gpasswd -d </ h2>
 
-ユーザーをグループから削除するには「gpasswd -d」を使用します。<a href="/blog/20200406174004.html">sudo</a>でroot権限で実行します。
+Use "gpasswd -d" to remove a user from the group. Execute with root privileges with <a href="/blog/20200406174004.html"> sudo </a>.
 
 <pre>
-sudo gpasswd -d ユーザー名 グループ名
-</pre>
+sudo gpasswd -d username group name
+</ pre>
 
-kimotoをmyapp-groupグループから削除するサンプルです。
+This is a sample to remove kimoto from the myapp-group group.
 
 <pre>
 sudo gpasswd -d kimoto myapp-group
-</pre>
+</ pre>

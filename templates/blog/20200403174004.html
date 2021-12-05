@@ -1,61 +1,61 @@
-<div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
+        <span itemprop = "name"> Ubuntu </ span>
       </a>
-      <meta itemprop="position" content="1" />
-    </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <meta itemprop = "position" content = "1" />
+    </ li>
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200723101434.html">
-        <span itemprop="name">ユーザー管理</span>
+        <span itemprop = "name"> User Management </ span>
       </a>
-      <meta itemprop="position" content="2" />
-    </li>
+      <meta itemprop = "position" content = "2" />
+    </ li>
     <li>
       here
-    </li>
-  </ul>
-</div>
+    </ li>
+  </ ul>
+</ div>
 
-<h2>すべてのグループとグループに所属するユーザーを表示する 「/etc/group」ファイル</h2>
+<h2> "/ etc / group" file showing all groups and users belonging to the group </ h2>
 
-<b>グループの一覧</b>は、「/etc/group」ファイルに記述されています。<a href="/blog/20200113083613.html">cat</a>コマンドで、「/etc/group」ファイルを表示しましょう。<a href="/blog/20200118092236.html">sudoコマンド</a>を使ってroot権限で実行します。
+The <b> list of groups </ b> can be found in the "/ etc / group" file. Use the <a href="/blog/20200113083613.html"> cat </a> command to display the "/ etc / group" file. Execute it with root privileges using the <a href="/blog/20200118092236.html"> sudo command </a>.
 
-グループに所属しているユーザーを調べるのにも「/etc/group」は利用できます。
-
-<pre>
-sudo cat /etc/group
-</pre>
-
-出力結果のサンプルです。
+You can also use "/ etc / group" to find out who belongs to a group.
 
 <pre>
-chrony:x:993:
-tcpdump:x:72:
-admins:x:1000:
-batch:x:1001:
-gitprep:x:1002:
-webdbviewer:x:1003:
-apache:x:48:
-mysql:x:27:
-okamoto:x:1004:
-izawa:x:1005:
-kimoto2:x:1006:
-cgred:x:992:
-myapp-group:x:1007:kimoto,yamada,tanaka
-</pre>
+sudo cat / etc / group
+</ pre>
 
-<h3>グループに対するその他の操作</h3>
+This is a sample output result.
 
-グループを追加する方法は、以下の記事で解説しています。
+<pre>
+chrony: x: 993:
+tcpdump: x: 72:
+admins: x: 1000:
+batch: x: 1001:
+gitprep: x: 1002:
+webdbviewer: x: 1003:
+apache: x: 48:
+mysql: x: 27:
+okamoto: x: 1004:
+izawa: x: 1005:
+kimoto2: x: 1006:
+cgred: x: 992:
+myapp-group: x: 1007: kimoto, yamada, tanaka
+</ pre>
+
+<h3> Other operations on the group </ h3>
+
+The following article explains how to add a group.
 
 <ul>
-  <li><a href="/blog/20200405174004.html">groupaddコマンド - グループを追加する</a></li>
-</ul>
+  <li> <a href="/blog/20200405174004.html"> groupadd command-add a group </a> </ li>
+</ ul>
 
-グループを削除する方法は、以下の記事で解説しています。
+The following article explains how to delete a group.
 
 <ul>
-  <li><a href="/blog/20200404174004.html">groupdelコマンド - グループを削除する</a></li>
-</ul>
+  <li> <a href="/blog/20200404174004.html"> groupdel command-delete group </a> </ li>
+</ ul>

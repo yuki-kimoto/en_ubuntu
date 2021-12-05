@@ -1,44 +1,44 @@
-<div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
+        <span itemprop = "name"> Ubuntu </ span>
       </a>
-      <meta itemprop="position" content="1" />
-    </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <meta itemprop = "position" content = "1" />
+    </ li>
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop="name">パッケージ管理</span>
+        <span itemprop = "name"> Package management </ span>
       </a>
-      <meta itemprop="position" content="2" />
-    </li>
+      <meta itemprop = "position" content = "2" />
+    </ li>
     <li>
       here
-    </li>
-  </ul>
-</div>
-<h2>g++のインストール</h2>
+    </ li>
+  </ ul>
+</ div>
+<h2> Install g ++ </ h2>
 
-g++のインストール方法を解説します。<a href="/blog/20200530085516.html">apt</a>コマンドを使って、g++をインストールします。sudoを使って管理者権限で実行します。
+I will explain how to install g ++. Install g ++ using the <a href="/blog/20200530085516.html"> apt </a> command. Run with administrator privileges using sudo.
 
 <pre>
-sudo apt install -y g++
-</pre>
+sudo apt install -y g ++
+</ pre>
 
-<h3>g++の主な用途</h3>
+<h3> Main uses of g ++ </ h3>
 
-g++の用途は、C++コンパイルです。C++のソースファイルをコンパイルして、オブジェクトファイルを作成できます。
+The use of g ++ is C ++ compilation. You can compile C ++ source files to create object files.
 
-オブジェクトファイルというのは、一つまたは複数のC言語ファイルに対応する処理を含む機械語になったファイルです。
+An object file is a machine language file that contains processing for one or more C language files.
 
-g++はリンカも含んでいます。リンカ機能で、オブジェクトファイルを結合して、実行ファイル、静的ライブラリ、共有ライブラリを作成できます。
+g ++ also includes a linker. The linker feature allows you to combine object files to create executables, static libraries, and shared libraries.
 
-g++は、<a href="https://perlzemi.com/blog/20100504127089.html">CPAN</a>からC++ソースファイルを含んでいる<a href="https://perlzemi.com/blog/20100809127859.html">XSモジュール</a>をインストールするときに必要です。
+g ++ contains C ++ source files from <a href="https://perlzemi.com/blog/20100504127089.html"> CPAN </a> <a href="https://perlzemi.com/blog" /20100809127859.html "> XS Module </a> Required when installing.
 
-<h3>C言語のコンパイラ gcc</h3>
+<h3> C language compiler gcc </ h3>
 
-PerlのXSモジュールでは、C言語が使われているので、C言語のコンパイラであるgccもインストールしておきましょう。
+Since C language is used in Perl's XS module, let's also install gcc, which is a C language compiler.
 
 <ul>
-  <li><a href="/blog/20200504174004.html">gccのインストール</a></li>
-</ul>
+  <li> <a href="/blog/20200504174004.html"> Install gcc </a> </ li>
+</ ul>

@@ -1,40 +1,45 @@
-<div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
+        <span itemprop = "name"> Ubuntu </ span>
       </a>
-      <meta itemprop="position" content="1" />
-    </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <meta itemprop = "position" content = "1" />
+    </ li>
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop="name">パッケージ管理</span>
+        <span itemprop = "name"> Package management </ span>
       </a>
-      <meta itemprop="position" content="2" />
-    </li>
+      <meta itemprop = "position" content = "2" />
+    </ li>
     <li>
       here
-    </li>
-  </ul>
-</div>
-<h2>aptのアップデート - apt update</h2>
+    </ li>
+  </ ul>
+</ div>
+<h2> Installing postgresql-PostgreSQL server </ h2>
 
-aptをアップデートするには「apt update」を使用します。sudoを使ってroot権限で実行します。
-
-<pre>
-sudo apt update
-</pre>
-
-aptが参照するURLなどが変更していたりした場合は「apt install」が失敗する場合があります。
-
-ですので、aptを最初に使い始める場合は「apt update」をしておくと安心です。
-
-「apt install gcc」を実行すると、以下のようなエラーがでましたが「apt update」を実行すると、このエラーがでなくなりました。
+Let's install "postgresql" so that we can use the PostgreSQL database server. PostgreSQL is a convenient relational database system. Use the <a href="/blog/20200530085516.html"> apt </a> command.
 
 <pre>
-Err:1 http://security.ubuntu.com/ubuntu bionic-updates/main amd64 linux-libc-dev amd64 4.15.0-99.100
-  404  Not Found [IP: 13.66.189.214 80]
-Fetched 378 kB in 0s (950 kB/s)
-E: Failed to fetch http://security.ubuntu.com/ubuntu/pool/main/l/linux/linux-libc-dev_4.15.0-99.100_amd64.deb  404  Not Found [IP: 13.66.189.214 80]
-E: Unable to fetch some archives, maybe run apt-get update or try with --fix-missing?
-</pre>
+sudo apt install -y postgresql
+</ pre>
+
+<h4> Confirm that the PostgreSQL database server is installed </ h4>
+
+Use the status of the <a href="/blog/20200605104005.html"> systemctl </a> command to confirm that the PostgreSQL database server has been installed.
+
+<pre>
+systemctl status postgresql
+</ pre>
+
+The status is displayed as follows.
+
+<pre>
+● postgresql.service --PostgreSQL RDBMS
+   Loaded: loaded (/lib/systemd/system/postgresql.service; enabled; vendor preset: enabled)
+   Active: active (exited) since Wed 2020-06-03 08:56:27 JST; 11s ago
+ Main PID: 26352 (code = exited, status = 0 / SUCCESS)
+    Tasks: 0 (limit: 9479)
+   CGroup: /system.slice/postgresql.service
+</ pre>

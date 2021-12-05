@@ -1,70 +1,70 @@
-<h2>ロケールの確認と変更 - localectlコマンド</h2>
+<h2> Locale check and change --localectl command </ h2>
 
-ロケールの確認と変更は、<b>localectlコマンド</b>で行えます。ロケールは、ロケール対応のソフトウェアがあった場合に、どの国の言語で画面に出力するか、どの文字コードで出力するかを指定するものです。
+You can check and change the locale with the <b> localectl command </ b>. Locale specifies which country's language to output to the screen and which character code to output when there is locale-compatible software.
 
-PerlでWebシステム開発環境を構築する場合は、ロケールの設定は、デフォルトの設定でよく、必要がないと感じます。
+When building a Web system development environment with Perl, I feel that the default settings are fine and unnecessary for the locale settings.
 
-その理由は、<a href="https://perlzemi.com/">Perlプログラミング言語</a>は、文字コードに関して、OSフラット、ロケールフラットだからです。
+The reason is that <a href="https://perlzemi.com/"> Perl programming language </a> is OS flat and locale flat in terms of character code.
 
-(本当に大丈夫かどうかは、2020年5月13日時点では未確認。)
+(It is unconfirmed as of May 13, 2020 whether it is really okay.)
 
-<h3>ロケールの確認</h3>
+<h3> Locale confirmation </ h3>
 
-localectlコマンドで、現在のロケールを確認できます。
-
-<pre>
-localectl
-</pre>
-
-以下のように現在設定されているロケールが表示されます。デフォルトでは「C.UTF-8」です。初期インストールの状態で、シェルでは、UTF-8で入力・出力が行えます。
+You can check the current locale with the localectl command.
 
 <pre>
-   System Locale: LANG=C.UTF-8
-       VC Keymap: n/a
+localectlctl
+</ pre>
+
+The currently set locale is displayed as shown below. The default is "C.UTF-8". In the initial installation state, the shell can input and output in UTF-8.
+
+<pre>
+   System Locale: LANG = C.UTF-8
+       VC Keymap: n / a
       X11 Layout: us
        X11 Model: pc105
-</pre>
+</ pre>
 
-<h3>利用可能なロケールの一覧</h3>
+<h3> List of available locales </ h3>
 
-利用可能なロケールの一覧を表示するには「localectl list-locales」コマンドを使用します。
+Use the "localectl list-locales" command to see a list of available locales.
 
 <pre>
 localectl list-locales
-</pre>
+</ pre>
 
 <pre>
 C.UTF-8
 en_US.utf8
-</pre>
+</ pre>
 
-どうやら日本語で利用可能なロケールは、ないようです。
+Apparently there is no locale available in Japanese.
 
-<h3>ロケールのインストール</h3>
+<h3> Locale installation </ h3>
 
-ロケールをインストールしてみましょう。aptコマンドで、日本語パッケージをダウンロードします。sodoを使って管理者権限で実行します。
+Let's install the locale. Download the Japanese package with the apt command. Run with administrator privileges using sodo.
 
 <pre>
 sudo apt install language-pack-ja
-</pre>
+</ pre>
 
-もう一度利用可能なロケールを確認。
+Check the available locales again.
 
 <pre>
-localectl list-locales</pre>
+localectl list-locales </ pre>
 
-「ja_JP.utf8」が追加されています。
+"Ja_JP.utf8" has been added.
 
 <pre>
 C.UTF-8
 en_US.utf8
 ja_JP.utf8
-</pre>
+</ pre>
 
-<h3>ロケールの変更</h3>
+<h3> Change locale </ h3>
 
-ロケールを変更しましょう。ロケールを変更するには「localectl set-locale」コマンドを使用します。sudoコマンドで管理者権限で実行します。
+Let's change the locale. Use the "localectl set-locale" command to change the locale. Execute with administrator privileges using the sudo command.
 
 <pre>
-sudo localectl set-locale LANG=ja_JP.UTF-8
-</pre>
+sudo localectl set-locale LANG = ja_JP.UTF-8
+</ pre>

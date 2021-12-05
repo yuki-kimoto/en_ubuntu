@@ -1,39 +1,39 @@
-<div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
+        <span itemprop = "name"> Ubuntu </ span>
       </a>
-      <meta itemprop="position" content="1" />
-    </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <meta itemprop = "position" content = "1" />
+    </ li>
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop="name">パッケージ管理</span>
+        <span itemprop = "name"> Package management </ span>
       </a>
-      <meta itemprop="position" content="2" />
-    </li>
+      <meta itemprop = "position" content = "2" />
+    </ li>
     <li>
       here
-    </li>
-  </ul>
-</div>
+    </ li>
+  </ ul>
+</ div>
 
-<h2>日本語フォント IPAフォントのインストール</h2>
+<h2> Japanese font IPA font installation </ h2>
 
-IPAが提供する日本語フォント IPAフォントをUbuntuにインストールしましょう。<a href="/blog/20200530085516.html">apt</a>コマンドでインストールできます。
+Japanese fonts provided by IPA Let's install IPA fonts on Ubuntu. It can be installed with the <a href="/blog/20200530085516.html"> apt </a> command.
 
 <pre>
 sudo apt install -y fonts-ipafont
-</pre>
+</ pre>
 
-fontのキャッシュを更新しましょう。
+Let's update the font cache.
 
 <pre>
 fc-cache -fv
-</pre>
+</ pre>
 
-フォントがインストールされたか確認しましょう。
+Make sure the fonts are installed.
 
 <pre>
 fc-list | grep -i ipa
-</pre>
+</ pre>

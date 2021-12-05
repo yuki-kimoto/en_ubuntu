@@ -1,41 +1,41 @@
-<div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
+        <span itemprop = "name"> Ubuntu </ span>
       </a>
-      <meta itemprop="position" content="1" />
-    </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <meta itemprop = "position" content = "1" />
+    </ li>
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200723101434.html">
-        <span itemprop="name">ユーザー管理</span>
+        <span itemprop = "name"> User Management </ span>
       </a>
-      <meta itemprop="position" content="2" />
-    </li>
+      <meta itemprop = "position" content = "2" />
+    </ li>
     <li>
       here
-    </li>
-  </ul>
-</div>
+    </ li>
+  </ ul>
+</ div>
 
-<h2>passwdコマンド - パスワードの設定</h2>
+<h2> passwd command-password setting </ h2>
 
-ユーザーを追加したらパスワードも設定します。<b>passwd</b>コマンドを使用します。パスワード設定などのユーザー管理は、sudoを使ってrootユーザーとして実行します。
+After adding the user, set the password as well. Use the <b> passwd </ b> command. User management such as password setting is performed as the root user using sudo.
 
 <pre>
 sudo passwd kimoto
-</pre>
+</ pre>
 
-パスワードの入力と確認のための再入力を求められるので設定します。
+You will be asked to enter the password and re-enter it for confirmation, so set it.
 
-<h3>rootユーザーのパスワードを変更するには?</h3>
+<h3> How to change the root user password? </ h3>
 
-ユーザー名をrootにするか、ユーザー名を指定しないでpasswdコマンドを実行します。
+Run the passwd command with the username root or without a username.
 
 <pre>
 sudo passwd root
 
-あるいは
+or
 
 sudo passwd
-</pre>
+</ pre>

@@ -1,61 +1,61 @@
-<h2>ファイアウォールの設定 - ufwコマンド</h2>
+<h2> Firewall settings --ufw command </ h2>
 
-Ubuntuにおけるufwコマンドをを使った、ファイアーウォールの設定方法の解説です。
+This is an explanation of how to set a firewall using the ufw command in Ubuntu.
 
-サーバーの外側から入ってくる通信に対して、ポート番号ごとにブロックできる設定ができるようになることを目標にします。
+The goal is to be able to block communication coming in from outside the server for each port number.
 
-VPSやクラウドサービスが、ファイアーウォールの機能を提供している場合は、それを使うのが便利でしょう。オンプレミスであったり、コマンドで制御したいという要望がある場合は、ufwコマンドを使えます。
+If your VPS or cloud service provides firewall functionality, it may be useful to use it. If you are on-premises or have a desire to control it with commands, you can use the ufw command.
 
-<h3>ファイアーウォールの状態確認</h3>
+<h3> Check the firewall status </ h3>
 
-ファイアーウォールの状態確認は「ufw status」コマンドで行います。
+Use the "ufw status" command to check the status of the firewall.
 
 <pre>
 sudo ufw status
-</pre>
+</ pre>
 
-<h3>ファイアーウォールの有効化</h3>
+<h3> Enable firewall </ h3>
 
-ファイアーウォールを有効にするには「ufw enable」コマンドで行います。
+To enable the firewall, use the "ufw enable" command.
 
 <pre>
 sudo ufw enable
-</pre>
+</ pre>
 
-ファイアーウォールを有効にした場合は、ファイアーウォールの確認が終わるまで、その端末を落とさないように気をつけてください。接続中のSSL接続は影響を受けません。
+If you have enabled a firewall, be careful not to drop the device until you have checked the firewall. The SSL connection you are connecting to is not affected.
 
-SSHの接続ポートがブロックされてしまうと、通信が行えず、VPSやクラウドサーバーの場合はWebコンソールで、オンプレミスの場合で、Webコンソールが準備されていない場合は、現地でのマシンのコンソールから操作する必要がでてきます。注意して作業を行ってください。
+If the SSH connection port is blocked, communication will not be possible, and in the case of VPS or cloud server, it will be operated from the web console, and in the case of on-premises, if the web console is not prepared, it will be operated from the console of the local machine. You will need to do it. Please work with caution.
 
-<h3>ファイアーウォールの無効化</h3>
+<h3> Disable firewall </ h3>
 
-ファイアーウォールを無効にするには「ufw disable」コマンドで行います。
+To disable the firewall, use the "ufw disable" command.
 
 <pre>
 sudo ufw disable
-</pre>
+</ pre>
 
-<h3>ポートの解放</h3>
+<h3> Open port </ h3>
 
-ポートを開放してみましょう。
+Let's open the port.
 
 <pre>
-# HTTPポート
+#HTTP port
 sudo ufw allow 80
 
-# HTTPSポート
+# HTTPS port
 sudo ufw allow 443
 
-# デフォルトのSSHポート
+#Default SSH port
 sudo ufw allow 22
 
-# 任意に設定したSSHポート
+# SSH port set arbitrarily
 sudo ufw allow 51234
-</pre>
+</ pre>
 
-<h3>解放したポートを閉じる</h3>
+<h3> Close the released port </ h3>
 
-解放したポートを閉じるには「ufw delete」を使用します。ルール名は「allow 22」のようになります。
+Use "ufw delete" to close the released port. The rule name will be something like "allow 22".
 
 <pre>
 sudo ufw delete allow 22
-</pre>
+</ pre>

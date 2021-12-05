@@ -1,26 +1,26 @@
-<h2>cronのインストール - 定期プログラム実行</h2>
+<h2> Install cron-Run regular program </ h2>
 
-<b>cron</b>をインストールしましょう。cronは定期プログラム実行を行うための常駐アプリケーションです。デフォルトでインストールされていると思いますが、もしインストールされていない場合は、この手順でインストールしてください。<a href="/blog/20200530085516.html">apt</a>コマンドを使います。
+Let's install <b> cron </ b>. Cron is a resident application for executing periodic programs. I think it is installed by default, but if it is not installed, follow this procedure to install it. Use the <a href="/blog/20200530085516.html"> apt </a> command.
 
 <pre>
 sudo apt install -y cron
-</pre>
+</ pre>
 
-cronがインストールされて実行されていることを<a href="/blog/20200605104005.html">systemctl</a>で確認します。
+Check <a href="/blog/20200605104005.html"> systemctl </a> that cron is installed and running.
 
 <pre>
 sudo systemctl status cron
-</pre>
+</ pre>
 
-activeと表示されれば、cronがインストールされて実行されています。
+If you see active, cron is installed and running.
 
 <pre>
-● cron.service - Regular background program processing daemon
+● cron.service --Regular background program processing daemon
    Loaded: loaded (/lib/systemd/system/cron.service; enabled; vendor preset: enabled)
    Active: active (running) since Fri 2020-06-12 10:43:36 JST; 4 days ago
-     Docs: man:cron(8)
+     Docs: man: cron (8)
  Main PID: 1161 (cron)
     Tasks: 1 (limit: 9479)
    CGroup: /system.slice/cron.service
-           mq1161 /usr/sbin/cron -f
-</pre>
+           mq1161 / usr / sbin / cron -f
+</ pre>

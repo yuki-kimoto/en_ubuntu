@@ -1,150 +1,150 @@
-<div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
+        <span itemprop = "name"> Ubuntu </ span>
       </a>
-      <meta itemprop="position" content="1" />
-    </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <meta itemprop = "position" content = "1" />
+    </ li>
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop="name">パッケージ管理</span>
+        <span itemprop = "name"> Package management </ span>
       </a>
-      <meta itemprop="position" content="2" />
-    </li>
+      <meta itemprop = "position" content = "2" />
+    </ li>
     <li>
       here
-    </li>
-  </ul>
-</div>
+    </ li>
+  </ ul>
+</ div>
 
-<h2>wkhtmltopdfのインストール - HTMLをPDFへ変換</h2>
+<h2> Install wkhtmltopdf-convert HTML to PDF </ h2>
 
-wkhtmltopdfのインストール方法を解説します。<a href="/blog/20200530085516.html">apt</a>コマンドを使って、wkhtmltopdfをインストールします。sudoを使って管理者権限で実行します。
+I will explain how to install wkhtmltopdf. Install wkhtmltopdf using the <a href="/blog/20200530085516.html"> apt </a> command. Run with administrator privileges using sudo.
 
 <pre>
 sudo apt install -y wkhtmltopdf
-</pre>
+</ pre>
 
-<h3>wkhtmltopdfのインストールの確認</h3>
+<h3> Confirmation of installation of wkhtmltopdf </ h3>
 
-wkhtmltopdfコマンドが利用できることを確認しましょう。
+Make sure the wkhtmltopdf command is available.
 
 <pre>
 wkhtmltopdf
-</pre>
+</ pre>
 
-<h3>wkhtmltopdfとは</h3>
+<h3> What is wkhtmltopdf? </ H3>
 
-wkhtmltopdfはHTMLをPDFに変換するためのツールです。レンダリングエンジンWebkitでレンダリングした結果をPDFに変換します。
+wkhtmltopdf is a tool for converting HTML to PDF. Converts the result rendered by the rendering engine Webkit to PDF.
 
-wkhtmltopdfは、PDF帳票作成に利用できます。Webで無料で公開されているHTMLで作られた帳票を、PDFに変換するのに便利です。
+wkhtmltopdf can be used to create PDF forms. It is convenient to convert a form made of HTML that is published for free on the Web to PDF.
 
-生成されるPDFは、書籍の品質には届かないですが、専門学校のテキストや、同人誌などの製作に利用可能だと思います。
+The generated PDF does not reach the quality of the book, but I think it can be used for the production of vocational school textbooks and doujinshi.
 
-<h3>wkhtmltopdfが実行できないバグの修正</h3>
+<h3> Fixed a bug that wkhtmltopdf cannot be executed </ h3>
 
-wkhtmltopdfのPDF生成には、X ServerあるいはQtが必要なようですが、古いQtにパッチが当たっていない場合に、実行できないバグが存在します。
+It seems that X Server or Qt is required for PDF generation of wkhtmltopdf, but there is a bug that can not be executed if the old Qt is not patched.
 
-<a href="https://github.com/wkhtmltopdf/wkhtmltopdf/issues/2037">QXcbConnection: Could not connect to display</a>
+<a href="https://github.com/wkhtmltopdf/wkhtmltopdf/issues/2037"> QXcbConnection: Could not connect to display </a>
 
-これを解決する一つの手段は、パッチの当たったQtを利用するwkhtmltopdfをインストールすることのようです。これは、正式な手段ではないかもしれない。
+One way to solve this seems to be to install wkhtmltopdf, which utilizes patched Qt. This may not be a formal means.
 
 <pre>
 cd ~
 wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.3/wkhtmltox-0.12.3_linux-generic-amd64.tar.xz
-tar vxf wkhtmltox-0.12.3_linux-generic-amd64.tar.xz 
+tar vxf wkhtmltox-0.12.3_linux-generic-amd64.tar.xz
 
-mkdir -p /usr/local/bin
-sudo cp wkhtmltox/bin/wk* /usr/local/bin/
-</pre>
+mkdir -p / usr / local / bin
+sudo cp wkhtmltox / bin / wk * / usr / local / bin /
+</ pre>
 
 <pre>
-$ /usr/local/bin/wkhtmltopdf --version
-</pre>
+$ / usr / local / bin / wkhtmltopdf --version
+</ pre>
 
 <pre>
 wkhtmltopdf 0.12.3 (with patched qt)
-</pre>
+</ pre>
 
-<h3>wkhtmltopdfでSSLエラーが表示される場合の解決策 Ubuntu 18で確認</h3>
+<h3> Solution when wkhtmltopdf shows SSL error Check on Ubuntu 18 </ h3>
 
-wkhtmltopdfでSSLエラーが表示される場合の解決策。
+Solution if wkhtmltopdf shows SSL error.
 
 <pre>
 Exit with code 1 due to network error: UnknownNetworkError
 QSslSocket: cannot call unresolved function CRYPTO_num_locks
 QSslSocket: cannot call unresolved function CRYPTO_set_id_callback
 QSslSocket: cannot call unresolved function CRYPTO_set_locking_callback
-</pre>
+</ pre>
 
-以下のパッケージをインストールすると解決しました。
+Installing the following packages solved the problem.
 
 <pre>
 sudo apt install libssl1.0-dev
-</pre>
+</ pre>
 
-<h3>wkhtmltopdfで日本語が表示できない場合</h3>
+<h3> If Japanese cannot be displayed with wkhtmltopdf </ h3>
 
-wkhtmltopdfで日本語が表示できない場合「□□□」のようになる場合は、日本語フォントをインストールしてください。
+If Japanese cannot be displayed with wkhtmltopdf If it looks like "□□□", please install the Japanese font.
 
 <ul>
-  <li><a href="/blog/20200906132441.html">日本語フォント IPAフォントのインストール</a></li>
-</ul>
+  <li> <a href="/blog/20200906132441.html"> Japanese font IPA font installation </a> </ li>
+</ ul>
 
-<!--
+<!-
 
-これを解決するために、最新版のwkhtmltopdfを、Ubuntu 18にインストールする手順が公開されているので、ここに書いておきます。
+To solve this, the procedure to install the latest version of wkhtmltopdf on Ubuntu 18 is published, so I will write it here.
 
-<h4>Ubuntu 18へのwkhtmltopdf 0.12.6のインストール。</h4>
+<h4> Install wkhtmltopdf 0.12.6 on Ubuntu 18. </ h4>
 
-Ubuntu 18への0.12.6のインストール。
+Installing 0.12.6 on Ubuntu 18.
 
-その後、0.12.6にアップグレードし、0.12.4および0.12.5で見つかった問題を修正しました。
+Then I upgraded to 0.12.6 and fixed the issues found in 0.12.4 and 0.12.5.
 
-更新されたインストール手順は次のとおりです。
+The updated installation procedure is as follows:
 
-現在使用しているバージョンがある場合は、それを確認します。
+Check the version you are currently using, if any.
 
 <pre>
 $ wkhtmltopdf --version
-</pre>
+</ pre>
 
 <pre>
 wkhtmltopdf 0.12.3 (with patched qt)
-</pre>
+</ pre>
 
-「wkhtml」ですべてのファイルを見つけて削除することにより、既存のバージョンを削除します。
+Delete the existing version by finding and deleting all the files in "wkhtml".
 
 <pre>
-sudo find / -name *wkhtml*
-</pre>
+sudo find / -name * wkhtml *
+</ pre>
 
-「wkhtmltopdf」および「wkhtmltox」関連ファイルを削除します。
+Delete "wkhtmltopdf" and "wkhtmltox" related files.
 
-バージョン0.12.6の.debパッケージをダウンロードします。
+Download the version 0.12.6 .deb package.
 
 <pre>
 wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb
-</pre>
+</ pre>
 
-.debパッケージをインストールします。
+Install the .deb package.
 
 <pre>
 sudo dpkg -i wkhtmltox_0.12.6-1.bionic_amd64.deb
-</pre>
+</ pre>
 
 
-依存関係が欠落しているエラーが発生した場合は「sudo apt install -f」を使用して依存関係をインストールします。
+If you get the error that the dependency is missing, use "sudo apt install -f" to install the dependency.
 
-正しいバージョンがインストールされ、アクセスできることを確認します。
+Make sure the correct version is installed and accessible.
 
 <pre>
 $ wkhtmltopdf --version
-</pre>
+</ pre>
 
 <pre>
 wkhtmltopdf 0.12.6 (with patched qt)
-</pre>
+</ pre>
 
--->
+->

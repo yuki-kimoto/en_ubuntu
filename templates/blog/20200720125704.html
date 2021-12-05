@@ -1,53 +1,53 @@
-<div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
+        <span itemprop = "name"> Ubuntu </ span>
       </a>
-      <meta itemprop="position" content="1" />
-    </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <meta itemprop = "position" content = "1" />
+    </ li>
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200820081929.html">
-        <span itemprop="name">Redis</span>
+        <span itemprop = "name"> Redis </ span>
       </a>
-      <meta itemprop="position" content="2" />
-    </li>
+      <meta itemprop = "position" content = "2" />
+    </ li>
     <li>
       here
-    </li>
-  </ul>
-</div>
+    </ li>
+  </ ul>
+</ div>
 
-<h2>redis-cli - RedisクライアントからRedisコマンドを実行する</h2>
+<h2> redis-cli --Run Redis command from Redis client </ h2>
 
-redis-cliは、Redisコマンドを実行するためのRedisクライアントです。<a href="/blog/20200525135533.html">Redisサーバーをインストール</a>すると自動的にインストールされます。
+redis-cli is a Redis client for executing Redis commands. <a href="/blog/20200525135533.html"> Install the Redis server </a> and it will be installed automatically.
 
 <pre>
 redis-cli
-</pre>
+</ pre>
 
-Redisクライアントが起動します。
+The Redis client starts.
 
-<h3>Redisコマンド</h3>
+<h3> Redis command </ h3>
 
-Redisコマンドを実行しましょう。
+Run the Redis command.
 
-<h4>PUBを実行するPUBLISH</h4>
+<h4> PUBLISH running PUB </ h4>
 
-PUBLISHコマンドを実行するとPUBを実行できます。PUBは、push通知に使用します。
-
-<pre>
-PUBLISH チャンネル名 メッセージ
-</pre>
-
-チャンネル名もメッセージも単なる文字列です。複雑なデータ構造が必要な場合は、メッセージにJSONを使いましょう。
-
-チャンネル名はすべてのプロセスでグローバルな名前空間ですので、重ならない名前を考えましょう。
+You can execute PUB by executing the PUBLISH command. PUB is used for push notifications.
 
 <pre>
-PUBLISH  /foo/bar/baz?id=5 Hello
-PUBLISH  "/foo/bar/baz?id=5" "Hello"
-PUBLISH  "/foo/bar/baz?id=5" '{message : "Hello"}'
-</pre>
+PUBLISH channel name message
+</ pre>
 
-文字列の囲みは、ダブルクォートとシングルクォートの両方が使えます。
+Both the channel name and the message are just strings. If you need complex data structures, use JSON for your messages.
+
+Channel names are a global namespace for all processes, so consider non-overlapping names.
+
+<pre>
+PUBLISH / foo / bar / baz? id = 5 Hello
+PUBLISH "/ foo / bar / baz? Id = 5" "Hello"
+PUBLISH "/ foo / bar / baz? id = 5"'{message: "Hello"}'
+</ pre>
+
+Both double and single quotes can be used to enclose the string.

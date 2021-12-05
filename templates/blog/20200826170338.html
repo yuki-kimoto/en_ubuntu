@@ -1,30 +1,30 @@
-<div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
+        <span itemprop = "name"> Ubuntu </ span>
       </a>
-      <meta itemprop="position" content="1" />
-    </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <meta itemprop = "position" content = "1" />
+    </ li>
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop="name">パッケージ管理</span>
+        <span itemprop = "name"> Package management </ span>
       </a>
-      <meta itemprop="position" content="2" />
-    </li>
+      <meta itemprop = "position" content = "2" />
+    </ li>
     <li>
       here
-    </li>
-  </ul>
-</div>
-<h2>curlのインストール</h2>
+    </ li>
+  </ ul>
+</ div>
+<h2> Install curl </ h2>
 
-curlのインストール方法を解説します。<a href="/blog/20200530085516.html">apt</a>コマンドを使って、curlをインストールします。sudoを使って管理者権限で実行します。
+I will explain how to install curl. Install curl using the <a href="/blog/20200530085516.html"> apt </a> command. Run with administrator privileges using sudo.
 
 <pre>
 sudo apt install -y curl
-</pre>
+</ pre>
 
-<h3>curlの主な用途</h3>
+<h3> Main uses of curl </ h3>
 
-curlは、取得内容をデフォルトで標準出力に出力するHTTPクライアントです。デフォルトでインストールされているHTTPクライアントはwgetのことが多いですが、curlも手順で利用されることが多いので、インストールしておきます。
+curl is an HTTP client that outputs the fetched content to standard output by default. The HTTP client installed by default is often wget, but curl is also often used in the procedure, so install it.

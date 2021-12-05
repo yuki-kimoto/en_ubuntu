@@ -1,26 +1,64 @@
-<div class="bread">
-  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<div class = "bread">
+  <ul itemscope itemtype = "http://schema.org/BreadcrumbList">
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
-        <span itemprop="name">Ubuntu</span>
+        <span itemprop = "name"> Ubuntu </ span>
       </a>
-      <meta itemprop="position" content="1" />
-    </li>
-    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <meta itemprop = "position" content = "1" />
+    </ li>
+    <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200529085516.html">
-        <span itemprop="name">パッケージ管理</span>
+        <span itemprop = "name"> Package management </ span>
       </a>
-      <meta itemprop="position" content="2" />
-    </li>
+      <meta itemprop = "position" content = "2" />
+    </ li>
     <li>
       here
-    </li>
-  </ul>
-</div>
-<h2>Ubuntuのパッケージの検索サイト</h2>
+    </ li>
+  </ ul>
+</ div>
+<h2> Header file read path </ h2>
 
-Ubuntuのパッケージの検索には「Ubuntu パッケージ検索」が便利です。
+Information about the read path of Ubuntu header files.
 
-<a href="https://packages.ubuntu.com/">Ubuntu パッケージ検索</a>
+<h4> Header file for packages installed with apt </ h4>
 
-ライブラリの部分名はわかるのにUbuntuのパッケージの正しい名前がわからない場合に、便利です。
+The header files for packages installed with apt are in "/ usr / include".
+
+<pre>
+/ usr / include
+</ pre>
+
+<h3> Check the read path of the header file </ h3>
+
+The header file read path is written to the C preprocessor.
+
+First, find out the path of the preprocessor used by gcc.
+
+<pre>
+gcc -print-prog-name = cc1
+</ pre>
+
+The output is as follows.
+
+<pre>
+/ usr / lib / gcc / x86_64-linux-gnu / 7 / cc1
+</ pre>
+
+When viewing the preprocessor version, the include path is displayed.
+
+<pre>
+/ usr / lib / gcc / x86_64-linux-gnu / 7 / cc1 -v
+</ pre>
+
+The default header file read path is displayed.
+
+<pre>
+ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/7/../../../../x86_64-linux-gnu/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ / usr / lib / gcc / x86_64-linux-gnu / 7 / include
+ / usr / local / include
+ / usr / lib / gcc / x86_64-linux-gnu / 7 / include-fixed
+ / usr / include
+</ pre>
