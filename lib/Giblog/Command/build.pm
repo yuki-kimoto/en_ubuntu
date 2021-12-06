@@ -72,7 +72,7 @@ sub run {
   </script>
 </div>
 EOS
-      $data->{content} =~ s|</p>|</p>\n$ad\n|;
+      $api->add_content_after_first_p_tag($data, {content => $ad});
     }
 
     # Read common templates
