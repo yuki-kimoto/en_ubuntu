@@ -3,13 +3,13 @@
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
         <span itemprop = "name"> Ubuntu </span>
-     </a>
+    </a>
       <meta itemprop = "position" content = "1" />
     </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200819081929.html">
         <span itemprop = "name"> Disk management </span>
-     </a>
+    </a>
       <meta itemprop = "position" content = "2" />
     </li>
     <li>
@@ -45,7 +45,7 @@ In the following explanation, the newly added physical disk is referred to as "/
 The file system type is Ubuntu's default ext4. (This is just a hint on the partition, the next step is to specify the actual file system.)
 
 <pre>
-sudo parted / dev / sdc --script mklabel gpt mkpart ext4part ext4 0% 100%
+sudo parted / dev / sdc --script mklabel gpt mkpart ext4part ext4 0%100%
 </pre>
 
 Let's confirm that the partition has been created.
@@ -148,7 +148,7 @@ df -h
 "/ Dev / sdc1" is tied to "/ datadrive".
 
 <pre>
-/ dev / sdc1 1.0T 1.1G 1023G 1% / datadrive
+/ dev / sdc1 1.0T 1.1G 1023G 1%/ datadrive
 </pre>
 
 That's it. However, the mount is temporary and requires additional steps to mount automatically when Ubuntu restarts.

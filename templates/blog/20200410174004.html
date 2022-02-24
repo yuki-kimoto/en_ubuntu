@@ -51,12 +51,12 @@ gpasswd -a myapp sudo
 
 Sudo is not enabled on CentOS. Make settings to enable sudo with visudo. (For CentOS 7)
 
-Uncomment "% wheel ALL = (ALL) ALL".
+Uncomment "%wheel ALL = (ALL) ALL".
 
 <pre>
 ## Allows people in group wheel to run all commands
-#% wheel ALL = (ALL) ALL
-% wheel ALL = (ALL) ALL
+#%wheel ALL = (ALL) ALL
+%wheel ALL = (ALL) ALL
 </pre>
 
 To allow sudo, add the user to the wheel group.

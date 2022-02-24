@@ -96,7 +96,7 @@ The SSH client uses a private / public key pair to connect to the SSH server. If
 Let's display the contents of "id_rsa_example.pub" with the <a href="https://en.linux.perlzemi.com/blog/20200113083613.html"> cat</a> command.
 
 <pre>
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjSsucYA958wTIKUcPRXC2iZxb84FXkzm41 / jzpfnUeBFsypS8xfTXpfDaSIYeMDyr9pIUfDuWWPykoofL4WZaJYDy5pQclFwby / KttDRAnm0XZQ2ZDUtnrUUdva55mxOcTJP0c1VWXpwrhBA + JSFLOGB8wxCV8UFh9XWXI4c5QKQ / Hyl8 // nXT6suQf199VNf4Ru31rs + 49FDW9FyvoX1GGEEBJCT2ROVD6qi1xY766PuhM / 4OMQeIxZmZg8ysML307viqkKh / 2mecwkdV1mxGQt8GbO3gvTOX5h9p7tGEwa3zSHhxudux1Kf6Pfcg4FwKuld8r77DKMXEszpRI11 myapp @ myhost
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjSsucYA958wTIKUcPRXC2iZxb84FXkzm41 / jzpfnUeBFsypS8xfTXpfDaSIYeMDyr9pIUfDuWWPykoofL4WZaJYDy5pQclFwby / KttDRAnm0XZQ2ZDUtnrUUdva55mxOcTJP0c1VWXpwrhBA + JSFLOGB8wxCV8UFh9XWXI4c5QKQ / Hyl8 // nXT6suQf199VNf4Ru31rs + 49FDW9FyvoX1GGEEBJCT2ROVD6qi1xY766PuhM / 4OMQeIxZmZg8ysML307viqkKh / 2mecwkdV1mxGQt8GbO3gvTOX5h9p7tGEwa3zSHhxudux1Kf6Pfcg4FwKuld8r77DKMXEszpRI11 myapp @myhost
 </pre>
 
 This is the content of the public key registered on the remote server.
@@ -110,7 +110,7 @@ vi ~ / .ssh / authorized_keys
 </pre>
 
 <pre>
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjSsucYA958wTIKUcPRXC2iZxb84FXkzm41 / jzpfnUeBFsypS8xfTXpfDaSIYeMDyr9pIUfDuWWPykoofL4WZaJYDy5pQclFwby / KttDRAnm0XZQ2ZDUtnrUUdva55mxOcTJP0c1VWXpwrhBA + JSFLOGB8wxCV8UFh9XWXI4c5QKQ / Hyl8 // nXT6suQf199VNf4Ru31rs + 49FDW9FyvoX1GGEEBJCT2ROVD6qi1xY766PuhM / 4OMQeIxZmZg8ysML307viqkKh / 2mecwkdV1mxGQt8GbO3gvTOX5h9p7tGEwa3zSHhxudux1Kf6Pfcg4FwKuld8r77DKMXEszpRI11 myapp @ myhost
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjSsucYA958wTIKUcPRXC2iZxb84FXkzm41 / jzpfnUeBFsypS8xfTXpfDaSIYeMDyr9pIUfDuWWPykoofL4WZaJYDy5pQclFwby / KttDRAnm0XZQ2ZDUtnrUUdva55mxOcTJP0c1VWXpwrhBA + JSFLOGB8wxCV8UFh9XWXI4c5QKQ / Hyl8 // nXT6suQf199VNf4Ru31rs + 49FDW9FyvoX1GGEEBJCT2ROVD6qi1xY766PuhM / 4OMQeIxZmZg8ysML307viqkKh / 2mecwkdV1mxGQt8GbO3gvTOX5h9p7tGEwa3zSHhxudux1Kf6Pfcg4FwKuld8r77DKMXEszpRI11 myapp @myhost
 </pre>
 
 "Authorized_keys" can register multiple public keys, and you can also set each public key.
@@ -118,8 +118,8 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjSsucYA958wTIKUcPRXC2iZxb84FXkzm41 / jzpf
 If you want to register more than one, please change the line.
 
 <pre>
-ssh-rsa AAAAB3NzaC1yc2EAAAAADAQABAAABAQCjSsucYA958wTIKUcPRXC2iZxb84FXkzm41 / jzpfnUeBFsypS8xfTXpfDaSIYeMDyr9pIUfDuWWPykoofL4WZaJYDy5pQclFwby / KttDRAnm0XZQ2ZDUtnrUUdva55mxOcTJP0c1VWXpwrhBA + JSFLOGB8wxCV8UFh9XWXI4c5QKQ / Hyl8 // nXT6suQf199VNf4Ru31rs + 49FDW9FyvoX1GGEEBJCT2ROVD6qi1xY766PuhM / 4OMQeIxZmZg8ysML307viqkKh / 2mecwkdV1mxGQt8GbO3gvTOX5h9p7tGEwa3zSHhxudux1Kf6Pfcg4FwKuld8r77DKMXEszpRI11 myapp @ myhost
-ssh-rsa CCCAB3NzaC1yc2EAAAADAQAnAABAQCjSsucYA958wTIKUcPRXC2iZxb84FXkzm41 / jzpfnUeBFsypS8xfTXpfDaSIYeMDyr9pIUfDuWWPykoofL4WZaJYDy5pQclFwby / KttDRAnm0XZQ2ZDUtnrUUdva55mxOcTJP0c1VWXpwrhBA + JSFLOGB8wxCV8UFh9XWXI4c5QKQ / Hyl8 // nXT6suQf199VNf4Ru31rs + 49FDW9FyvoX1GGEEBJCT2ROVD6qi1xY766PuhM / 4OMQeIxZmZg8ysML307viqkKh / 2mecwkdV1mxGQt8GbO3gvTOX5h9p7tGEwa3zSHhxudux1Kf6Pfcg4FwKuld8r77DKMXEszpRI11 myapp2 @ myhost
+ssh-rsa AAAAB3NzaC1yc2EAAAAADAQABAAABAQCjSsucYA958wTIKUcPRXC2iZxb84FXkzm41 / jzpfnUeBFsypS8xfTXpfDaSIYeMDyr9pIUfDuWWPykoofL4WZaJYDy5pQclFwby / KttDRAnm0XZQ2ZDUtnrUUdva55mxOcTJP0c1VWXpwrhBA + JSFLOGB8wxCV8UFh9XWXI4c5QKQ / Hyl8 // nXT6suQf199VNf4Ru31rs + 49FDW9FyvoX1GGEEBJCT2ROVD6qi1xY766PuhM / 4OMQeIxZmZg8ysML307viqkKh / 2mecwkdV1mxGQt8GbO3gvTOX5h9p7tGEwa3zSHhxudux1Kf6Pfcg4FwKuld8r77DKMXEszpRI11 myapp @myhost
+ssh-rsa CCCAB3NzaC1yc2EAAAADAQAnAABAQCjSsucYA958wTIKUcPRXC2iZxb84FXkzm41 / jzpfnUeBFsypS8xfTXpfDaSIYeMDyr9pIUfDuWWPykoofL4WZaJYDy5pQclFwby / KttDRAnm0XZQ2ZDUtnrUUdva55mxOcTJP0c1VWXpwrhBA + JSFLOGB8wxCV8UFh9XWXI4c5QKQ / Hyl8 // nXT6suQf199VNf4Ru31rs + 49FDW9FyvoX1GGEEBJCT2ROVD6qi1xY766PuhM / 4OMQeIxZmZg8ysML307viqkKh / 2mecwkdV1mxGQt8GbO3gvTOX5h9p7tGEwa3zSHhxudux1Kf6Pfcg4FwKuld8r77DKMXEszpRI11 myapp2 @myhost
 </pre>
 
 Let's set the permission to 600. This is not required, but 600 is recommended.

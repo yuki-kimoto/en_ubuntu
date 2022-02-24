@@ -3,13 +3,13 @@
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
         <span itemprop = "name"> Ubuntu </span>
-     </a>
+    </a>
       <meta itemprop = "position" content = "1" />
     </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200526151435.html">
         <span itemprop = "name"> Apache </span>
-     </a>
+    </a>
       <meta itemprop = "position" content = "2" />
     </li>
     <li>
@@ -89,7 +89,7 @@ Enable the SSL settings and load the <a href="/blog/20200307174004.html"> self-S
   ServerName www.mydomain.example
 
   RewriteEngine on
-  RewriteRule (. *)? $ Https: //% {HTTP_HOST}% {REQUEST_URI} [L, R = 301]
+  RewriteRule (. *)? $Https: //%{HTTP_HOST}%{REQUEST_URI} [L, R = 301]
 </VirtualHost>
 
 <VirtualHost *: 443>
@@ -119,7 +119,7 @@ Let's Encrypt's certbot may automatically set the Apache SSL certificate, but si
   ServerName www.mydomain.example
 
   RewriteEngine on
-  RewriteRule (. *)? $ Https: //% {HTTP_HOST}% {REQUEST_URI} [L, R = 301]
+  RewriteRule (. *)? $Https: //%{HTTP_HOST}%{REQUEST_URI} [L, R = 301]
 </VirtualHost>
 
 <VirtualHost *: 443>

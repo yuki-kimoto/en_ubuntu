@@ -3,13 +3,13 @@
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
         <span itemprop = "name"> Ubuntu </span>
-     </a>
+    </a>
       <meta itemprop = "position" content = "1" />
     </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200827123127.html">
         <span itemprop = "name"> Perl </span>
-     </a>
+    </a>
       <meta itemprop = "position" content = "2" />
     </li>
     <li>
@@ -58,9 +58,9 @@ Let's create a Mojolicious application.
 Save the following Mojolicious program as "myapp.pl".
 
 <pre>
-use Mojolicious :: Lite;
+use Mojolicious::Lite;
 get'/' => {text =>'Hello World!'};
-app-> start;
+app->start;
 </pre>
 
 <h3> Launch a web application for the development environment </h3>

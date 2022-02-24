@@ -212,7 +212,7 @@ Password: Password:
 Enter your initial password and press Enter. If you can log in, you are successful. It will be displayed as follows.
 
 <pre>
-ubuntu @ tk2-250-35845: ~ $
+ubuntu @tk2-250-35845: ~ $
 </pre>
 
 In this state, you can execute <a href="https://en.linux.perlzemi.com/blog/20200211081227.html"> Linux commands</a>.
@@ -480,7 +480,7 @@ sudo vi /etc/redis/redis.conf
 The following
 
 <pre>
-bind 127.0.0.1 :: 1
+bind 127.0.0.1::1
 </pre>
 
 Changed to<pre>
@@ -569,7 +569,7 @@ The password is the string that follows "identified by". Please set this part yo
 grant insert, update, delete, select on myappdb. * to'myapp' @'localhost' identified by'eifjutab &';
 </pre>
 
-When installing DBD :: mysql with Perl, you need to have connection permission to the test database, so set it.
+When installing DBD::mysql with Perl, you need to have connection permission to the test database, so set it.
 
 <pre>
 create database test;
@@ -818,7 +818,7 @@ The contents of the virtual host and reverse proxy configuration files. It is a 
   ServerName build-sakuravps-ubuntu18.perlclub.net
 
   RewriteEngine on
-  RewriteRule (. *)? $ Https: //% {HTTP_HOST}% {REQUEST_URI} [L, R = 301]
+  RewriteRule (. *)? $Https: //%{HTTP_HOST}%{REQUEST_URI} [L, R = 301]
 </VirtualHost>
 
 <VirtualHost *: 443>
@@ -962,7 +962,7 @@ Please rewrite as follows.
   ServerName build-sakuravps-ubuntu18.perlclub.net
 
   RewriteEngine on
-  RewriteRule (. *)? $ Https: //% {HTTP_HOST}% {REQUEST_URI} [L, R = 301]
+  RewriteRule (. *)? $Https: //%{HTTP_HOST}%{REQUEST_URI} [L, R = 301]
 </VirtualHost>
 
 <VirtualHost *: 443>

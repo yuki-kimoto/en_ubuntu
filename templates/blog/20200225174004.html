@@ -3,13 +3,13 @@
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/">
         <span itemprop = "name"> Ubuntu </span>
-     </a>
+    </a>
       <meta itemprop = "position" content = "1" />
     </li>
     <li itemprop = "itemListElement" itemscope itemtype = "http://schema.org/ListItem">
       <a itemprop="item" href="/blog/20200820081929.html">
         <span itemprop = "name"> Redis </span>
-     </a>
+    </a>
       <meta itemprop = "position" content = "2" />
     </li>
     <li>
@@ -56,7 +56,7 @@ If it is stopped, the following will be displayed.
    Active: inactive (dead) since Tue 2020-06-16 14:11:18 JST; 2s ago
      Docs: http://redis.io/documentation,
            man: redis-server (1)
-  Process: 27892 ExecStop = / bin / kill -s TERM $ MAINPID (code = exited, status = 0 / SUCCESS)
+  Process: 27892 ExecStop = / bin / kill -s TERM $MAINPID (code = exited, status = 0 / SUCCESS)
  Main PID: 108380 (code = exited, status = 0 / SUCCESS)
 </pre>
 
@@ -143,7 +143,7 @@ sudo vi /etc/redis/redis.conf
 The following
 
 <pre>
-bind 127.0.0.1 :: 1
+bind 127.0.0.1::1
 </pre>
 
 Changed to
